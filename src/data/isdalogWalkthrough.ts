@@ -147,25 +147,35 @@ export function perspectiveScreenshot(role: WalkthroughRole, step: number) {
   if (role === "harvester")
     return {
       src: telegram,
+      width: 632,
+      height: 885,
       alt: "Original IsdaLog Telegram catch classification interface",
     }
   if (role === "rider")
     return {
       src: rider,
+      width: 1675,
+      height: 1032,
       alt: "Original IsdaLog rider custody and dispatch dashboard",
     }
   if (step >= 6)
     return {
       src: inspection,
+      width: 1406,
+      height: 908,
       alt: "Original IsdaLog buyer inspection and escrow release interface",
     }
   if (step >= 4)
     return {
       src: tracking,
+      width: 1480,
+      height: 907,
       alt: "Original IsdaLog buyer delivery tracking and delivery code interface",
     }
   return {
     src: bidding,
+    width: 952,
+    height: 901,
     alt: "Original IsdaLog buyer auction and bidding interface",
   }
 }

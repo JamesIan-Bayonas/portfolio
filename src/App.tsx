@@ -8,12 +8,6 @@ import {
 } from "motion/react"
 import Nav from "./components/Nav"
 import Hero from "./components/Hero"
-import About from "./components/About"
-import Process from "./components/Process"
-import Projects from "./components/Projects"
-import SkillsMatrix from "./components/SkillsMatrix"
-import ContactFooter from "./components/ContactFooter"
-import EngineeringLab from "./components/EngineeringLab"
 import caseStudyPages from "./data/caseStudyPages.json"
 import sitePages from "./data/sitePages.json"
 import { projects } from "./data/projects"
@@ -23,6 +17,7 @@ const DedicatedCaseStudy = lazy(() => import("./components/DedicatedCaseStudy"))
 const Explore = lazy(() => import("./components/Explore"))
 const Lab = lazy(() => import("./components/Lab"))
 const Notes = lazy(() => import("./components/Notes"))
+const HomeSections = lazy(() => import("./components/HomeSections"))
 const PortfolioSearch = lazy(() => import("./components/PortfolioSearch"))
 
 // ─── ScrollProgress ────────────────────────────────────────────────────────
@@ -241,12 +236,7 @@ export default function App() {
       >
         {notesPage ? <Suspense fallback={<p className="case-page-loading" role="status">Opening the engineering notes…</p>}><Notes /></Suspense> : labPage ? <Suspense fallback={<p className="case-page-loading" role="status">Opening the engineering lab…</p>}><Lab /></Suspense> : explorePage ? <Suspense fallback={<p className="case-page-loading" role="status">Opening the project explorer…</p>}><Explore /></Suspense> : dedicatedProject && caseStudyPage ? <Suspense fallback={<p className="case-page-loading" role="status">Opening the case study…</p>}><DedicatedCaseStudy project={dedicatedProject} path={caseStudyPage.path} /></Suspense> : <>
         <Hero />
-        <About />
-        <Process />
-        <Projects />
-        <EngineeringLab />
-        <SkillsMatrix />
-        <ContactFooter />
+        <Suspense fallback={<div className="home-sections-loading" role="status">Opening the project collection…</div>}><HomeSections /></Suspense>
         </>}
       </main>
       {searchUsed && <Suspense fallback={null}><PortfolioSearch open={searchOpen} onClose={() => setSearchOpen(false)} /></Suspense>}

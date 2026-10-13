@@ -22,4 +22,9 @@ for (const page of pages) {
   }
 }
 await access(path.join(root, "dist/RESUME.pdf"))
+const fontCss = await readFile(path.join(root, "src/fonts.css"), "utf8")
+for (const match of fontCss.matchAll(/url\((\/fonts\/[^)]+)\)/g)) {
+  const bytes = await readFile(path.join(root, "dist", match[1]))
+  assert.equal(bytes.subarray(0, 4).toString(), "wOF2", `Invalid font: ${match[1]}`)
+}
 console.log(`Verified ${pages.length} static pages, ${assets.size} shared entry assets, metadata, favicon, and resume.`)

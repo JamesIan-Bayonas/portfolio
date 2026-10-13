@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './fonts.css';
 
 @theme {
   --font-display: 'IBM Plex Sans', sans-serif;
@@ -17,7 +18,7 @@
   --color-text1: #F0F6FC;
   --color-text2: #8B949E;
   --color-diff-add: #3FB950;
-  --color-diff-remove: #F85149;
+  --color-diff-remove: #FF8F87;
   --color-diff-add-bg: rgba(63, 185, 80, 0.15);
   --color-diff-remove-bg: rgba(248, 81, 73, 0.15);
   --color-nav-bg: rgba(13, 17, 23, 0.85);
@@ -36,8 +37,8 @@
   --color-accent: #2563EB;
   --color-text1: #0D1117;
   --color-text2: #57606A;
-  --color-diff-add: #1A7F37;
-  --color-diff-remove: #CF222E;
+  --color-diff-add: #146C2E;
+  --color-diff-remove: #A31520;
   --color-diff-add-bg: rgba(26, 127, 55, 0.12);
   --color-diff-remove-bg: rgba(207, 34, 46, 0.12);
   --color-nav-bg: rgba(246, 248, 250, 0.85);
@@ -121,6 +122,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .skip-content { position: fixed; top: 12px; left: 16px; z-index: 100; padding: 12px 18px; color: var(--color-bg); background: var(--color-accent); font-size: 14px; font-weight: 500; transform: translateY(-180%); }
 .skip-content:focus { transform: translateY(0); }
 .demo-unavailable { display: inline-flex; align-items: center; padding: 12px 14px; font-size: 11px; color: var(--color-text2); border: 1px dashed var(--color-border); }
+.home-sections-loading { min-height: 600px; padding: 48px 24px; color: var(--color-text2); font-size: 13px; }
 #main-content { scroll-margin-top: 96px; }
 
 /* Project narratives */

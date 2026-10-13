@@ -374,6 +374,8 @@ export default function IsdaLogWalkthrough() {
                   <img
                     src={screenshot.src}
                     alt={screenshot.alt}
+                    width={screenshot.width}
+                    height={screenshot.height}
                     loading="lazy"
                   />
                 </a>

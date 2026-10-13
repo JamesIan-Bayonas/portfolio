@@ -145,3 +145,6 @@
 *.nc                 filter=lfs diff=lfs merge=lfs -text
 *.mat                filter=lfs diff=lfs merge=lfs -text
 
+# Small font subsets are deployed as regular static files.
+public/fonts/*.woff2 -filter -diff -merge -text
+

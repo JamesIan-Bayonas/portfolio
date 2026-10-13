@@ -259,8 +259,7 @@ export default function Hero() {
             JAMES IAN BAYONAS / FULL-STACK DEVELOPER
           </motion.p>
 
-          <motion.h1
-            {...fadeUp(0.1)}
+          <h1
             className="leading-[1.05] tracking-tight mb-6"
             style={{
               fontFamily: "var(--font-display)",
@@ -270,10 +269,9 @@ export default function Hero() {
             }}
           >
             I build systems that make complex workflows clear.
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            {...fadeUp(0.2)}
+          <p
             className="text-base leading-relaxed max-w-md mb-8"
             style={{
               fontFamily: "var(--font-body)",
@@ -284,7 +282,7 @@ export default function Hero() {
             fisheries, housing, asset management, and pharmacy operations. My
             focus is clear interfaces, connected workflows, and consistent data
             from the first action to the final record.
-          </motion.p>
+          </p>
 
           <motion.div
             {...fadeUp(0.3)}
