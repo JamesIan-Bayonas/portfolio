@@ -66,3 +66,8 @@ Explore now compares two projects using shared case-study content. Browser check
 
 All four dedicated case studies now have shared section navigation. Browser checks verified that every link has a target, direct engineering-decision fragments load below the sticky bar, and current-section highlighting responds to manual scrolling. Compact-menu selection closes the menu and focuses the destination; Escape restores menu-button focus. All four pages showed no horizontal overflow at 320px. Desktop navigation fit one row at 1280px. The copy action showed its success status; clipboard contents could not be independently read through the browser tool. No browser console errors were observed in the inspected page. TypeScript, 48 existing tests, production build, and static asset checks passed.
 
+
+## Engineering capabilities map — October 13, 2026
+
+The homepage Skills section now begins with four capability cards and eight documented examples, with role and project context resolved from shared project data. Browser checks visited all eight evidence destinations; two workflow headings needed scroll margins to clear the sticky case-study navigator, and the corrected links were checked again. At 1280px the map used two columns; at 320px it stacked with no document overflow. No duplicate homepage IDs were found. Keyboard search opened the transaction-integrity card, and searching from an IsdaLog case study reached the asset-lifecycle card on the homepage. The React technology disclosure retained all four project links. No console errors were observed in the inspected tab. TypeScript, 48 existing tests, production build, and all static-page/image checks passed.
+

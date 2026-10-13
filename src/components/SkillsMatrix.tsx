@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "motion/react"
 import { skillGroups } from "../data/skills"
+import CapabilitiesMap from "./CapabilitiesMap"
 
 export default function SkillsMatrix() {
   const reduced = useReducedMotion()
@@ -13,15 +14,20 @@ export default function SkillsMatrix() {
           <div>
             <p className="project-eyebrow font-mono">03 — SKILLS & EVIDENCE</p>
             <h2>
-              Tools, with work
+              What I build,
               <br />
-              behind them.
+              with evidence.
             </h2>
           </div>
           <p>
-            Open a technology to see where I used it. Each link takes you to the
-            project, its context, and my contribution.
+            Start with a capability, then inspect the project decisions or try
+            a sample workflow. Each example includes my role and project context.
           </p>
+        </div>
+        <CapabilitiesMap />
+        <div className="technology-evidence-heading">
+          <h3>Explore by technology</h3>
+          <p>Open a tool to see the projects where I used it.</p>
         </div>
         <div className="evidence-grid">
           {skillGroups.map((group, index) => (
@@ -37,7 +43,7 @@ export default function SkillsMatrix() {
               <span className="project-eyebrow font-mono">
                 {String(index + 1).padStart(2, "0")} /
               </span>
-              <h3 id={`skill-group-${index}`}>{group.name}</h3>
+              <h4 id={`skill-group-${index}`}>{group.name}</h4>
               <p>{group.description}</p>
               <div className="evidence-tools">
                 {group.tools.map((tool) => (

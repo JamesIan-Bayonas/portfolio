@@ -293,9 +293,25 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .hero-project-count { font-size: 11px; line-height: 1.8; color: var(--color-text2); margin-bottom: 16px; }
 .hero-feature-link { display: inline-flex; gap: 20px; align-items: center; color: var(--color-accent); font-size: 12px; min-height: 44px; margin-top: 12px; }
 .skills-section, .engineering-lab { border-top: 1px solid var(--color-border); }
+.capabilities-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.capability-card { min-width: 0; padding: 28px; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-surface); scroll-margin-top: 96px; }
+.capability-card > h3 { font-size: 24px; font-weight: 500; margin: 14px 0; line-height: 1.4; letter-spacing: -.02em; }
+.capability-description { font-size: 14px; line-height: 1.8; color: var(--color-text2); }
+.capability-evidence { margin-top: 24px; }
+.capability-evidence > li { border-top: 1px solid var(--color-border); padding-top: 20px; margin-top: 20px; }
+.capability-project-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.capability-project-heading h4 { font-size: 16px; font-weight: 600; }
+.capability-project-heading span { font-size: 11px; line-height: 1.8; color: var(--color-text2); }
+.capability-evidence li > p { font-size: 14px; line-height: 1.8; margin-top: 12px; color: var(--color-text2); }
+.capability-evidence a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 8px; color: var(--color-accent); font-size: 11px; line-height: 1.7; }
+.capability-evidence a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+.technology-evidence-heading { margin: 48px 0 24px; }
+.technology-evidence-heading h3 { font-size: 22px; font-weight: 500; margin-bottom: 10px; }
+.technology-evidence-heading p { font-size: 14px; color: var(--color-text2); line-height: 1.8; }
+@media(max-width:767px) { .capabilities-grid { grid-template-columns: 1fr; } .capability-card { padding: 20px; } }
 .evidence-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .evidence-card { border: 1px solid var(--color-border); border-radius: 4px; padding: 24px; background: var(--color-surface); }
-.evidence-card h3 { font-size: 18px; font-weight: 500; margin: 12px 0; }
+.evidence-card h4 { font-size: 18px; font-weight: 500; margin: 12px 0; }
 .evidence-card > p { font-size: 13px; color: var(--color-text2); line-height: 1.7; min-height: 66px; }
 .evidence-tools { margin-top: 16px; }
 .evidence-tool { border-top: 1px solid var(--color-border); }
@@ -422,7 +438,7 @@ body:has(.portfolio-search[open]) { overflow: hidden; }
 .case-section-toggle { display: none; }
 .case-section-status:not(:empty) { position: absolute; top: 100%; left: 0; right: 0; padding: 12px 16px; background: var(--color-bg); border: 1px solid var(--color-border); overflow-wrap: anywhere; }
 .case-section-nav :is(a,button):focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
-.dedicated-case-study :is(#overview,#walkthrough,#lab,#engineering,[id$="-contribution"],[id$="-decision"]) { scroll-margin-top: 156px; }
+.dedicated-case-study :is(#overview,#walkthrough,#lab,#engineering,[id$="-contribution"],[id$="-decision"],[id$="-workflow"]) { scroll-margin-top: 156px; }
 @media(max-width:1199px) {
   .case-section-nav { gap: 12px; padding: 8px 12px; }
   .case-section-label { display: none; }

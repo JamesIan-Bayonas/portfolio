@@ -1,8 +1,17 @@
 import { projects } from "./projects"
 import type { SearchEntry } from "../lib/search"
 import { engineeringNotes } from "./notes"
+import { engineeringCapabilities } from "./capabilities"
 
 export const portfolioSearchEntries: SearchEntry[] = [
+  ...engineeringCapabilities.map(capability => ({
+    id: `capability-${capability.id}`,
+    label: capability.name,
+    description: capability.description,
+    category: "Engineering capability",
+    target: `capability-${capability.id}`,
+    keywords: ["skills", "capabilities", "evidence", ...capability.evidence.flatMap(evidence => [evidence.projectId, evidence.summary])],
+  })),
   { id: "notes", label: "Engineering Notes", description: "Read the reasoning behind project decisions and trade-offs.", category: "Writing", path: "/notes/", target: "case-study", keywords: ["articles", "publications", "decisions", "writing", "explanations"] },
   ...engineeringNotes.map(note => ({ id: note.id, label: note.title, description: note.summary, category: "Engineering note", path: note.path, target: "case-study", keywords: [note.projectId, note.topic, ...note.sections.flatMap(section => [section.title, ...section.paragraphs])] })),
   { id: "explore", label: "Explore all projects", description: "Filter systems by domain and technology, then try a walkthrough.", category: "Project explorer", path: "/explore/", target: "case-study", keywords: ["browse", "filter", "discover", "portfolio", "projects", "technologies"] },
@@ -55,7 +64,7 @@ export const portfolioSearchEntries: SearchEntry[] = [
   {
     id: "skills",
     label: "Skills & project evidence",
-    description: "See where each technology is used.",
+    description: "Explore engineering capabilities and the projects behind each technology.",
     category: "Section",
     target: "skills",
     keywords: ["stack", "technologies", "experience", "dotnet", "net", "c#"],
