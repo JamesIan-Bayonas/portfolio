@@ -458,6 +458,11 @@ body:has(.portfolio-search[open]) { overflow: hidden; }
 .dedicated-case-image img { display: block; width: 100%; height: auto; }
 .dedicated-case-image figcaption { font-size: 10px; color: var(--color-text2); padding: 14px; line-height: 1.6; border-top: 1px solid var(--color-border); }
 .case-copy-link { min-height: 44px; font-size: 11px; color: var(--color-accent); cursor: pointer; margin-top: 12px; }
+.case-share-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 12px; }
+.case-share-actions .case-copy-link { margin-top: 0; }
+.case-brief-link { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-border); border-radius: 4px; font-size: 11px; color: var(--color-accent); }
+.case-brief-format { color: var(--color-text2); font-size: 10px; }
+.case-brief-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
 .case-share-status { min-height: 20px; font-size: 11px; line-height: 1.7; color: var(--color-accent); overflow-wrap: anywhere; }
 .isdalog-walkthrough { padding-block: 64px; }
 .walkthrough-shell { border: 1px solid var(--color-border); border-radius: 6px; background: var(--color-surface); overflow: hidden; }

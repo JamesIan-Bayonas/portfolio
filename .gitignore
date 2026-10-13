@@ -7,3 +7,5 @@ build/
 *.tsbuildinfo
 *.log
 .tmp-*
+output/pdf/
+tmp/pdfs/

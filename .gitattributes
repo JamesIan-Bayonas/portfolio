@@ -150,4 +150,5 @@ public/fonts/*.woff2 -filter -diff -merge -text
 
 # Responsive previews must be available directly in static deployments.
 public/screenshots/*.webp -filter -diff -merge -text
+public/briefs/*.pdf -filter -diff -merge -text
 

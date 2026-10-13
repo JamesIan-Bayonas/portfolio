@@ -40,6 +40,25 @@ for (const page of pages) {
   }
 }
 await access(path.join(root, "dist/RESUME.pdf"))
+const briefs = JSON.parse(await readFile(path.join(root, "public/briefs/manifest.json"), "utf8"))
+for (const source of ["src/data/projects.ts", "src/data/caseStudyPages.json", "scripts/generate-project-briefs.mjs", "scripts/render-project-briefs.py", "scripts/briefs-requirements.txt"]) {
+  assert.equal(createHash("sha256").update((await readFile(path.join(root, source), "utf8")).replace(/\r\n/g, "\n")).digest("hex"), briefs.sourceHashes[source], `Stale project briefs: ${source}; run npm run briefs:generate`)
+}
+const casePages = pages.filter(page => page.projectId)
+assert.equal(briefs.files.length, casePages.length, "Each project needs a PDF brief")
+assert.equal(new Set(briefs.files.map(brief => brief.projectId)).size, casePages.length, "Duplicate PDF briefs")
+for (const page of casePages) {
+  const brief = briefs.files.find(brief => brief.projectId === page.projectId)
+  assert.ok(brief, `Missing brief: ${page.projectId}`)
+  assert.equal(brief.filename, `${page.projectId}-project-brief.pdf`)
+  assert.equal(brief.pageCount, 1)
+  const bytes = await readFile(path.join(root, "dist/briefs", brief.filename))
+  assert.equal(bytes.subarray(0, 5).toString(), "%PDF-", `Invalid PDF: ${brief.filename}`)
+  assert.equal(bytes.length, brief.bytes)
+  assert.equal(createHash("sha256").update(bytes).digest("hex"), brief.sha256, `Modified brief: ${brief.filename}`)
+  assert.ok(brief.links[0].endsWith(page.path), `Incorrect case-study link: ${brief.filename}`)
+  assert.equal(brief.links[1], `${brief.links[0]}#walkthrough`)
+}
 const fontCss = await readFile(path.join(root, "src/fonts.css"), "utf8")
 for (const match of fontCss.matchAll(/url\((\/fonts\/[^)]+)\)/g)) {
   const bytes = await readFile(path.join(root, "dist", match[1]))
@@ -64,4 +83,4 @@ for (const [id, image] of Object.entries(screenshots)) {
     variantCount++
   }
 }
-console.log(`Verified ${pages.length} static pages, ${assets.size} shared entry assets, ${variantCount} responsive screenshots, fonts, metadata, favicon, and resume.`)
+console.log(`Verified ${pages.length} static pages, ${assets.size} shared entry assets, ${variantCount} responsive screenshots, ${briefs.files.length} project briefs, fonts, metadata, favicon, and resume.`)

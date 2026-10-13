@@ -1,0 +1,63 @@
+{
+  "sourceHashes": {
+    "src/data/projects.ts": "e59b766b6b97b135503e7133b351ca9ec3355191a78594f2acf6429b9d475184",
+    "src/data/caseStudyPages.json": "e67acbca7cdadb4170a3821e50cfdabdf839b6bd873fc7a8bda193d6631fab5a",
+    "scripts/generate-project-briefs.mjs": "9f22a1536945a321e1ba32b89b7b8f4af1ac7adfd8d410ffa65319158792124e",
+    "scripts/render-project-briefs.py": "39310ab839452c7ad009361392b4d909e516f626e9f31bc622a8b9453a77ec30",
+    "scripts/briefs-requirements.txt": "aff9e2a7514ab38c61169ff48cd7e414e424068c9216e3a9e277318c38a8dac8"
+  },
+  "files": [
+    {
+      "projectId": "isdalog",
+      "filename": "isdalog-project-brief.pdf",
+      "pageCount": 1,
+      "links": [
+        "https://jamesian-portfolio.vercel.app/projects/isdalog/",
+        "https://jamesian-portfolio.vercel.app/projects/isdalog/#walkthrough",
+        "https://github.com/JamesIan-Bayonas/isdalog",
+        "https://jamesian-portfolio.vercel.app/"
+      ],
+      "sha256": "ff733fbd5c7efd9c35ecd36babaf5e38b0c4cfb4f71e8552da4e2aefcc723d3c",
+      "bytes": 4629
+    },
+    {
+      "projectId": "dormfix",
+      "filename": "dormfix-project-brief.pdf",
+      "pageCount": 1,
+      "links": [
+        "https://jamesian-portfolio.vercel.app/projects/dormfix/",
+        "https://jamesian-portfolio.vercel.app/projects/dormfix/#walkthrough",
+        "https://github.com/JamesIan-Bayonas/dormfix",
+        "https://jamesian-portfolio.vercel.app/"
+      ],
+      "sha256": "7e363dae8ecbe2f985c35acaf6299ed605e798bc9779def849f28727b3ce4172",
+      "bytes": 4498
+    },
+    {
+      "projectId": "centralog",
+      "filename": "centralog-project-brief.pdf",
+      "pageCount": 1,
+      "links": [
+        "https://jamesian-portfolio.vercel.app/projects/centralog/",
+        "https://jamesian-portfolio.vercel.app/projects/centralog/#walkthrough",
+        "https://github.com/JamesIan-Bayonas/centralog",
+        "https://jamesian-portfolio.vercel.app/"
+      ],
+      "sha256": "b24617a4ed5a0d4184eb5c5c5618fcdef00c4112df7c58f0f6910d27a06f957d",
+      "bytes": 4501
+    },
+    {
+      "projectId": "pharmalink",
+      "filename": "pharmalink-project-brief.pdf",
+      "pageCount": 1,
+      "links": [
+        "https://jamesian-portfolio.vercel.app/projects/pharmalink/",
+        "https://jamesian-portfolio.vercel.app/projects/pharmalink/#walkthrough",
+        "https://github.com/JamesIan-Bayonas/pharmalink",
+        "https://jamesian-portfolio.vercel.app/"
+      ],
+      "sha256": "35ef3c8cb89882e44883fc76afa32dd82782ef4c6c6f80a84391768003715cf3",
+      "bytes": 4355
+    }
+  ]
+}

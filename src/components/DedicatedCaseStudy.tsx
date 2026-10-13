@@ -9,6 +9,7 @@ import { isdalogScreenshotGallery } from "../data/isdalogWalkthrough"
 import ContactAction from "./ContactAction"
 import CaseStudyNavigation from "./CaseStudyNavigation"
 import RelatedProjects from "./RelatedProjects"
+import ProjectBriefDownload from "./ProjectBriefDownload"
 
 const IsdaLogWalkthrough = lazy(() => import("./IsdaLogWalkthrough"))
 const DormFixWalkthrough = lazy(() => import("./DormFixWalkthrough"))
@@ -96,6 +97,7 @@ export default function DedicatedCaseStudy({
                 Source code ↗
               </a>
             </div>
+            <div className="case-share-actions">
             <button
               type="button"
               className="case-copy-link font-mono"
@@ -103,6 +105,8 @@ export default function DedicatedCaseStudy({
             >
               Copy page link
             </button>
+            <ProjectBriefDownload projectId={project.id} />
+            </div>
             <p className="case-share-status" role="status">
               {shareMessage}
             </p>
