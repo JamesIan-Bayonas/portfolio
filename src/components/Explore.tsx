@@ -2,14 +2,17 @@ import { useEffect, useState } from "react"
 import { projects, projectScreenshot } from "../data/projects"
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
 import ScreenshotPreview from "./ScreenshotPreview"
+import ProjectComparison from "./ProjectComparison"
 import {
   emptyExploreFilters,
   exploreFilterSearch,
   filterProjects,
   readExploreFilters,
+  readComparison,
 } from "../lib/explore"
 
 const domains = [...new Set(projects.map((project) => project.category))]
+const projectIds = projects.map(project => project.id)
 const searchableProjects = projects.map((project) => ({
   ...project,
   searchText: [
@@ -27,19 +30,21 @@ export default function Explore() {
     readExploreFilters(window.location.search, domains, technologies),
   )
   const results = filterProjects(searchableProjects, filters)
+  const [comparison, setComparison] = useState(() => readComparison(window.location.search, projectIds))
   const filtered = Boolean(
     filters.query || filters.domain || filters.technology,
   )
   useEffect(() => {
-    const search = exploreFilterSearch(filters)
+    const search = exploreFilterSearch(filters, comparison.filter(Boolean))
     window.history.replaceState(
       null,
       "",
       `${window.location.pathname}${search}${window.location.hash}`,
     )
-  }, [filters])
+  }, [filters, comparison])
   useEffect(() => {
     function restoreFilters() {
+      setComparison(readComparison(window.location.search, projectIds))
       setFilters(
         readExploreFilters(window.location.search, domains, technologies),
       )
@@ -69,6 +74,7 @@ export default function Explore() {
             open the live system.
           </p>
         </header>
+        <ProjectComparison selected={comparison} onChange={setComparison} />
         <section aria-labelledby="explore-projects-title">
           <div className="explore-section-heading">
             <h2 id="explore-projects-title">Explore the projects</h2>

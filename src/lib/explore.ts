@@ -29,11 +29,17 @@ export function readExploreFilters(search: string, domains: string[], technologi
   return { query: params.get("q") ?? "", domain: domains.includes(domain) ? domain : "", technology: technologies.includes(technology) ? technology : "" }
 }
 
-export function exploreFilterSearch(filters: ExploreFilters): string {
+export function readComparison(search: string, projectIds: string[]): string[] {
+  return [...new Set(new URLSearchParams(search).getAll("compare"))]
+    .filter(id => projectIds.includes(id)).slice(0, 2)
+}
+
+export function exploreFilterSearch(filters: ExploreFilters, comparison: string[] = []): string {
   const params = new URLSearchParams()
   if (filters.query.trim()) params.set("q", filters.query.trim())
   if (filters.domain) params.set("domain", filters.domain)
   if (filters.technology) params.set("tech", filters.technology)
+  for (const id of [...new Set(comparison)].slice(0, 2)) params.append("compare", id)
   const search = params.toString()
   return search ? `?${search}` : ""
 }

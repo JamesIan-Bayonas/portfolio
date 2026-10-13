@@ -483,6 +483,24 @@ body:has(.portfolio-search[open]) { overflow: hidden; }
 .explore-filters button, .explore-empty button { min-height: 44px; padding: 10px 16px; font-size: 12px; border: 1px solid var(--color-border); border-radius: 4px; cursor: pointer; }
 .explore-filters button:disabled { opacity: .5; cursor: default; }
 .explore-results-status { margin: 20px 0; font-size: 13px; color: var(--color-text2); }
+.project-comparison { margin-bottom: 48px; padding: 24px; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-surface); }
+.project-comparison > p { max-width: 760px; font-size: 14px; line-height: 1.8; color: var(--color-text2); }
+.project-comparison .project-eyebrow { margin-bottom: 10px; }
+.project-comparison button { min-height: 44px; padding: 10px 16px; border: 1px solid var(--color-border); border-radius: 4px; font-size: 12px; cursor: pointer; }
+.project-comparison button:disabled { opacity: .5; cursor: default; }
+.comparison-selectors, .comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 24px; }
+.comparison-selectors > div, .comparison-card { min-width: 0; }
+.comparison-selectors label { display: block; font-size: 12px; margin-bottom: 10px; }
+.comparison-selectors select { width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-bg); color: var(--color-text1); font-size: 14px; }
+.project-comparison .comparison-status { margin-top: 16px; font-size: 12px; }
+.comparison-card { padding: 24px; border: 1px solid var(--color-border); background: var(--color-bg); border-radius: 4px; overflow-wrap: anywhere; }
+.comparison-card h3 { font-family: var(--font-display); font-size: 30px; font-weight: 600; margin-bottom: 24px; }
+.comparison-card dl > div { margin-bottom: 24px; }
+.comparison-card dt { font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+.comparison-card dd { font-size: 14px; line-height: 1.8; color: var(--color-text2); }
+.comparison-card .project-tech { margin: 0; }
+.comparison-card .case-study-contact { border: 0; padding: 0; text-align: left; color: var(--color-accent); }
+@media(max-width:767px) { .comparison-selectors, .comparison-grid { grid-template-columns: 1fr; } .project-comparison { padding: 20px; } .comparison-card { padding: 20px; } }
 .explore-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; }
 .explore-card { min-width: 0; border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; background: var(--color-surface); }
 .explore-image { display: block; background: var(--color-bg); border-bottom: 1px solid var(--color-border); }

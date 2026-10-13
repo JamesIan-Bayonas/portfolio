@@ -56,3 +56,8 @@ TypeScript, 46 tests, the production build, static dependency-graph assertions, 
 
 `VISITOR_REVIEW.md` records the task walkthrough, concrete fixes, verification, and human-testing limits. The home primary action now opens Explore; case-study headers expose contact and the written explanation directly. Role labels and screenshot captions are more specific. Zoomed gallery regions preserve arrow-key panning, and gallery position/title changes have explicit status markup. All 12 routes fit 320 pixels in the inspected DOM, with one H1, no duplicate IDs, no missing alt attributes, and no unlabelled fields. Keyboard recovery, 46 tests, build checks, and image verification passed. Actual screen-reader speech, browser zoom, and reduced-motion preference emulation remain untested; this is not a WCAG certification or a human usability study.
 
+
+## Project comparison — October 13, 2026
+
+Explore now compares two projects using shared case-study content. Browser checks covered selection, disabled duplicate options, changing filters without losing the pair, URL reload restoration, independent clearing, DormFix team credit, and CentraLog contact context with Escape focus recovery. At 320px the comparison stacked without document overflow. TypeScript, 48 tests, the production build, and all static-page/image checks passed. No message was sent during contact verification.
+

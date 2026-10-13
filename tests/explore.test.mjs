@@ -1,11 +1,22 @@
 import test from "node:test"
 import assert from "node:assert/strict"
-import { filterProjects, readExploreFilters, exploreFilterSearch, emptyExploreFilters } from "../src/lib/explore.ts"
+import { filterProjects, readExploreFilters, exploreFilterSearch, emptyExploreFilters, readComparison } from "../src/lib/explore.ts"
 
 const projects = [
   { name: "DormFix", category: "Housing", description: "Receipt OCR and tenant approvals", tech: ["React", "MSSQL"] },
   { name: "CentraLog", category: "Assets", description: "Inventory and valuation", tech: ["React", ".NET"] },
 ]
+test("comparison URLs discard unknown and duplicate projects and limit selection to two", () => {
+  assert.deepEqual(readComparison("?compare=unknown&compare=dormfix&compare=dormfix&compare=centralog&compare=pharmalink", ["dormfix", "centralog", "pharmalink"]), ["dormfix", "centralog"])
+})
+test("comparison selection survives changing and clearing explorer filters", () => {
+  const selected = ["centralog", "pharmalink"]
+  for (const filters of [emptyExploreFilters, { query: "receipt", domain: "Housing", technology: "C#" }]) {
+    const search = exploreFilterSearch(filters, selected)
+    assert.deepEqual(readComparison(search, selected), selected)
+    assert.deepEqual(readExploreFilters(search, ["Housing"], ["C#"]), filters)
+  }
+})
 test("empty explorer filters preserve project order and all results", () => {
   assert.deepEqual(filterProjects(projects, emptyExploreFilters), projects)
 })
