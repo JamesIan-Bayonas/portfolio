@@ -1,4 +1,5 @@
 import { useReducer } from "react"
+import WalkthroughCompletion from "./WalkthroughCompletion"
 import {
   advanceAssetWalkthrough,
   initialAssetWalkthrough,
@@ -203,6 +204,7 @@ export default function CentraLogWalkthrough() {
           </div>
         </div>
       </div>
+      {state.step === 5 && <WalkthroughCompletion projectId="centralog" outcome={`The sample laptop is active in ${state.location}, assigned to ${state.custodian}. Its transfer history and ${state.repairDays}-day repair window remain in the record after reporting.`} onReplay={() => dispatch({ type: "reset" })} />}
     </section>
   )
 }

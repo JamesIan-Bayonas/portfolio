@@ -1,4 +1,5 @@
 import { useReducer, useState } from "react"
+import WalkthroughCompletion from "./WalkthroughCompletion"
 import {
   advanceSaleWalkthrough,
   initialSaleWalkthrough,
@@ -294,6 +295,7 @@ export default function PharmaLinkWalkthrough() {
           void; no payment gateway or refund is involved.
         </p>
       </div>
+      {state.step === 3 && <WalkthroughCompletion projectId="pharmalink" outcome={`The sample void restored ${state.quantity} units, returning stock to ${state.stock}. The original ${money.format(state.originalTotal)} sale remains in history beside its adjustment; the effective sale total is ${money.format(state.effectiveTotal)}.`} onReplay={reset} />}
     </section>
   )
 }

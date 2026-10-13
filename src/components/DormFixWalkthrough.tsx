@@ -1,4 +1,5 @@
 import { useReducer } from "react"
+import WalkthroughCompletion from "./WalkthroughCompletion"
 import {
   advanceReceiptReview,
   EXPECTED_RENT,
@@ -298,6 +299,7 @@ export default function DormFixWalkthrough() {
           review flow. All receipt references and amounts here are sample data.
         </p>
       </div>
+      {state.decision !== null && <WalkthroughCompletion projectId="dormfix" outcome={`${receipt.title}: the sample reviewer recorded a ${state.decision === "verified" ? "verification" : "rejection"} after reviewing ${flags.length} ${flags.length === 1 ? "flag" : "flags"}. The model did not record the decision automatically.`} onReplay={() => dispatch({ type: "reset" })} />}
     </section>
   )
 }

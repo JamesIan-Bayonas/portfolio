@@ -1,4 +1,5 @@
 import { useReducer, useState } from "react"
+import WalkthroughCompletion from "./WalkthroughCompletion"
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
 import ScreenshotPreview from "./ScreenshotPreview"
 import {
@@ -69,19 +70,7 @@ export default function IsdaLogWalkthrough() {
           </button>
         </div>
       )
-    if (state.step === 7)
-      return (
-        <div className="walkthrough-complete">
-          <h4>One catch. A completed chain of custody.</h4>
-          <p>
-            The sample held balance is zero. The catch-price shares add up to
-            ₱1,600.
-          </p>
-          <button type="button" onClick={() => perform({ type: "reset" })}>
-            Replay the walkthrough
-          </button>
-        </div>
-      )
+    if (state.step === 7) return null
     if (role !== actor)
       return (
         <div className="walkthrough-past">
@@ -414,6 +403,7 @@ export default function IsdaLogWalkthrough() {
           separately during settlement.
         </p>
       </div>
+      {state.step === 7 && <WalkthroughCompletion projectId="isdalog" outcome={`Buyer inspection released the sample catch-price settlement: ${money.format(balances.harvester)} to the harvester and ${money.format(balances.platform)} to the platform. The held catch-price balance is ${money.format(balances.held)}. Delivery fees are outside this sample ledger.`} onReplay={() => perform({ type: "reset" })} />}
     </section>
   )
 }
