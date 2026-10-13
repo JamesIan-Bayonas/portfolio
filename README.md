@@ -3,7 +3,7 @@
 > **Executive Summary:** A developer portfolio and engineering showcase built with React 19, TypeScript, Vite 8, and Tailwind CSS v4. It presents four project case studies, interactive demonstrations, and engineering notes, with dark/light themes, keyboard navigation, and reduced-motion handling.
 
 <p align="center">
-  <a href="https://portpolio-dun.vercel.app/" target="_blank">
+  <a href="https://jamesian-portfolio.vercel.app/" target="_blank">
     <img src="https://img.shields.io/badge/Live%20Production%20Demo-Click%20To%20Launch-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
   </a>
 </p>
@@ -38,6 +38,8 @@ Modern technical recruiting requires immediate signal clarity: demonstrating ful
 ---
 
 ## Key Features & Engineering Capabilities
+
+* **Measured Mobile Performance:** IBM Plex fonts are served locally with a primary font preload, homepage sections load separately, and walkthrough screenshots reserve their layout dimensions. The [mobile performance review](PERFORMANCE_REVIEW.md) records live before-and-after PageSpeed reports, validation, and remaining image-delivery work.
 
 * **Engineering Notes (`/notes/`):** An index and first article, “Why receipt parsing is not payment verification” (`/notes/dormfix-receipt-review/`). The article distinguishes OCR, local structured parsing, schema checks, deterministic business rules, and landlord decisions, while crediting the collaborative capstone accurately. It includes section navigation, a reading-time estimate derived from content, and links to DormFix's case study, sample lab, and documentation. Navigation, search, and the relevant project/demo link back to the note; both pages receive static metadata.
   The collection also includes `/notes/isdalog-delivery-settlement/`, `/notes/centralog-calculated-valuation/`, and `/notes/pharmalink-void-adjustment/`. These explain delivery versus settlement, calculation from source records, and traceable sale adjustments respectively. Shared article rendering uses each note's flow, source context, and project-specific links; related notes appear automatically on the corresponding case study and Lab experiment.
