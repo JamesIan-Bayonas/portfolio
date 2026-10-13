@@ -203,7 +203,7 @@ function DiffLine({ type, children }: DiffLineProps) {
     >
       <span
         className="text-xs w-3 shrink-0 select-none"
-        style={{ color, opacity: 0.7 }}
+        style={{ color }}
       >
         {prefix}
       </span>
@@ -211,7 +211,6 @@ function DiffLine({ type, children }: DiffLineProps) {
         style={{
           color,
           textDecoration: type === "remove" ? "line-through" : "none",
-          opacity: type === "remove" ? 0.55 : 1,
           overflowWrap: "anywhere",
           minWidth: 0,
           whiteSpace: "pre-wrap",
