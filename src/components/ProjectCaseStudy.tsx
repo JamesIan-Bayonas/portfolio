@@ -1,15 +1,14 @@
 import type { Project } from "../data/projects"
+import ContactAction from "./ContactAction"
 
 interface CaseStudyContentProps {
   project: Project
   headingLevel?: 2 | 4
-  contactHref?: string
 }
 
 export function CaseStudyContent({
   project,
   headingLevel = 4,
-  contactHref = "#contact",
 }: CaseStudyContentProps) {
   const study = project.caseStudy
   const Heading = headingLevel === 2 ? "h2" : "h4"
@@ -92,9 +91,7 @@ export function CaseStudyContent({
           </dl>
         </section>
       </div>
-      <a className="case-study-contact font-mono" href={contactHref}>
-        Discuss a similar project <span aria-hidden="true">↗</span>
-      </a>
+      <ContactAction projectId={project.id} />
     </div>
   )
 }

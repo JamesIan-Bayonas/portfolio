@@ -126,7 +126,6 @@ export default function DedicatedCaseStudy({
           <CaseStudyContent
             project={project}
             headingLevel={2}
-            contactHref="/#contact"
           />
         </div>
         {engineeringNotes.filter(note => note.projectId === project.id).map(note => <aside className="project-note-link" key={note.id}><p className="project-eyebrow font-mono">ENGINEERING NOTE</p><h2><a href={note.path}>{note.title} ↗</a></h2><p>{note.summary}</p></aside>)}

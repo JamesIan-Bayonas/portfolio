@@ -1,11 +1,13 @@
 import { motion, useReducedMotion } from "motion/react"
 import SpotlightCard from "./ui/SpotlightCard"
+import ContactAction from "./ContactAction"
+import { contactEmail } from "../lib/contact"
 
 const cards = [
   {
     label: "Direct Email",
-    sub: "jamesianbayonas21@gmail.com",
-    href: "mailto:jamesianbayonas21@gmail.com",
+    sub: contactEmail,
+    href: `mailto:${contactEmail}`,
     icon: (
       <svg
         width="32"
@@ -180,6 +182,8 @@ export default function ContactFooter() {
           {"Let's build something that matters."}
         </motion.h2>
 
+        <div className="contact-start-actions">
+        <ContactAction label="Start a conversation" className="contact-resume font-mono" />
         <a
           href={`${import.meta.env.BASE_URL}RESUME.pdf`}
           download="James_Ian_Bayonas_Resume.pdf"
@@ -187,6 +191,7 @@ export default function ContactFooter() {
         >
           Download my resume <span aria-hidden="true">↓</span>
         </a>
+        </div>
 
         {/* 3 cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 lg:mb-24">
