@@ -5,6 +5,7 @@ import rider from "../assets/isdalog/08-rider-en-route-dashboard.png"
 import tracking from "../assets/isdalog/09-buyer-live-tracking-otp.png"
 import inspection from "../assets/isdalog/11-buyer-verify-release-escrow.png"
 import screenshots from "./screenshots.json"
+import type { GalleryScreenshot } from "../components/ScreenshotViewer"
 
 export interface WalkthroughStep {
   title: string
@@ -185,3 +186,11 @@ export function perspectiveScreenshot(role: WalkthroughRole, step: number) {
     alt: "Original IsdaLog buyer auction and bidding interface",
   }
 }
+
+export const isdalogScreenshotGallery: GalleryScreenshot[] = [
+  { ...perspectiveScreenshot("harvester", 0), id: "isdalog-telegram", title: "IsdaLog / Catch classification", caption: "The harvester submits a catch photo through the linked Telegram gateway before confirming the listing details." },
+  { ...perspectiveScreenshot("buyer", 0), id: "isdalog-bidding", title: "IsdaLog / Live bidding", caption: "The buyer monitors listings and places an offer. Bidding is separate from accepting the order and holding funds." },
+  { ...perspectiveScreenshot("rider", 0), id: "isdalog-rider", title: "IsdaLog / Rider custody", caption: "The rider follows the dispatch and custody workflow. Pickup and delivery require separate verification codes." },
+  { ...perspectiveScreenshot("buyer", 4), id: "isdalog-tracking", title: "IsdaLog / Delivery tracking", caption: "The buyer tracks the delivery and receives a private delivery code. Funds remain held during transit." },
+  { ...perspectiveScreenshot("buyer", 6), id: "isdalog-inspection", title: "IsdaLog / Inspection and settlement", caption: "Buyer inspection authorizes settlement after delivery. Captured account balances are separate from the walkthrough's sample ledger." },
+]

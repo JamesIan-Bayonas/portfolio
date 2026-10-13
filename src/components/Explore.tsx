@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { projects } from "../data/projects"
+import { projects, projectScreenshot } from "../data/projects"
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
+import ScreenshotPreview from "./ScreenshotPreview"
 import {
   emptyExploreFilters,
   exploreFilterSearch,
@@ -149,17 +150,18 @@ export default function Explore() {
                   className="explore-card"
                   aria-labelledby={`explore-${project.id}`}
                 >
-                  <a
+                  <ScreenshotPreview
                     className="explore-image"
-                    href={project.caseStudyPath}
-                    aria-label={`Read the ${project.name} case study`}
+                    images={results.map(projectScreenshot)}
+                    selectedId={project.id}
+                    label={`Inspect ${project.name} screenshot`}
                   >
                     <ResponsiveScreenshot
                       asset={project.screenshot}
                       alt={project.imageAlt}
                       sizes="(min-width: 1520px) 704px, (min-width: 1024px) calc((100vw - 110px) / 2), (min-width: 768px) calc((100vw - 78px) / 2), (min-width: 640px) calc(100vw - 50px), calc(100vw - 34px)"
                     />
-                  </a>
+                  </ScreenshotPreview>
                   <div className="explore-card-body">
                     <p className="project-eyebrow font-mono">
                       {project.category}

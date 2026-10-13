@@ -33,3 +33,9 @@ This was a local structural, keyboard, responsive, asset, and link review. It do
 The other live demos remain linked based on their successful URL responses. IsdaLog needs active hosting and a valid live URL before its live link can be restored through `demoAvailable` in `src/data/projects.ts`. No paid hosting purchase or production deployment was made.
 
 Re-run the checks after further code changes, then verify the published routes and their metadata when deploying.
+
+## Screenshot viewer follow-up — 13 October 2026
+
+The viewer is loaded only after a screenshot button is activated. Closed Explore pages contain no original PNG image elements. Explore's gallery follows filtered results; case-study galleries use the project captures, including six IsdaLog images. Original links, alt text, source dimensions, and workflow captions are retained.
+
+Local browser checks covered arrow-key navigation, zoom and Fit, scrollable zoomed images without aspect-ratio distortion, Tab/Shift+Tab wrapping, Escape dismissal, restored opening-button focus, and restored background scrolling. A single-result filtered gallery disabled previous/next navigation. At 390 × 844, the light-theme dialog fit the viewport, retained usable controls and captions, and caused no document overflow. Dark-theme desktop and IsdaLog walkthrough galleries were also inspected. No console errors appeared. TypeScript, all 43 existing tests, the production build, and all route/image asset checks passed. These checks do not replace a screen-reader audit.

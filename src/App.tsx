@@ -189,6 +189,7 @@ export default function App() {
   useEffect(() => {
     function handleShortcut(event: KeyboardEvent) {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        if (document.querySelector(".screenshot-viewer[open]")) return
         event.preventDefault()
         setSearchUsed(true)
         if (!event.repeat) setSearchOpen(open => !open)

@@ -5,6 +5,7 @@ import centraLogImg from "../components/docs/demo/centralog-demo.png"
 import caseStudyPages from "./caseStudyPages.json"
 import screenshots from "./screenshots.json"
 import type { ScreenshotAsset } from "../components/ResponsiveScreenshot"
+import type { GalleryScreenshot } from "../components/ScreenshotViewer"
 
 export interface Project {
   id: string
@@ -37,6 +38,18 @@ export interface Project {
     challenge: string
     approach: string
     tradeoff: string
+  }
+}
+
+export function projectScreenshot(project: Project): GalleryScreenshot {
+  return {
+    id: project.id,
+    src: project.image,
+    width: project.screenshot.width,
+    height: project.screenshot.height,
+    alt: project.imageAlt,
+    title: `${project.name} / System overview`,
+    caption: `${project.description} Original project capture; displayed records belong to that captured session.`,
   }
 }
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import type { Project } from "../data/projects"
+import { projectScreenshot, type Project } from "../data/projects"
 import { CaseStudyContent } from "./ProjectCaseStudy"
 import IsdaLogWalkthrough from "./IsdaLogWalkthrough"
 import DormFixWalkthrough from "./DormFixWalkthrough"
@@ -8,6 +8,8 @@ import EngineeringLab from "./EngineeringLab"
 import PharmaLinkWalkthrough from "./PharmaLinkWalkthrough"
 import { engineeringNotes } from "../data/notes"
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
+import ScreenshotPreview from "./ScreenshotPreview"
+import { isdalogScreenshotGallery } from "../data/isdalogWalkthrough"
 
 interface DedicatedCaseStudyProps {
   project: Project
@@ -99,12 +101,18 @@ export default function DedicatedCaseStudy({
             </p>
           </div>
           <figure className="dedicated-case-image">
+            <ScreenshotPreview
+              images={[projectScreenshot(project), ...(project.id === "isdalog" ? isdalogScreenshotGallery : [])]}
+              selectedId={project.id}
+              label={`Inspect ${project.name} screenshot`}
+            >
             <ResponsiveScreenshot
               asset={project.screenshot}
               alt={project.imageAlt}
               sizes="(min-width: 1520px) 663px, (min-width: 1024px) calc((100vw - 128px) / 2.1), (min-width: 640px) calc(100vw - 50px), calc(100vw - 34px)"
               loading="eager"
             />
+            </ScreenshotPreview>
             <figcaption className="font-mono">
               Original {project.name} interface / {project.context.toLowerCase()}
             </figcaption>

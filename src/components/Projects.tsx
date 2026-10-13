@@ -1,7 +1,8 @@
 import { motion, useReducedMotion } from "motion/react"
-import { projects, type Project } from "../data/projects"
+import { projects, projectScreenshot, type Project } from "../data/projects"
 import ProjectCaseStudy from "./ProjectCaseStudy"
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
+import ScreenshotPreview from "./ScreenshotPreview"
 
 interface ProjectCardProps {
   project: Project
@@ -30,34 +31,17 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             </span>
             <span>{featured ? "FEATURED PROJECT" : project.context}</span>
           </div>
-          <a
-            href={
-              project.demoAvailable === false
-                ? project.caseStudyPath
-                : project.demo
-            }
-            target={project.demoAvailable === false ? undefined : "_blank"}
-            rel={
-              project.demoAvailable === false
-                ? undefined
-                : "noopener noreferrer"
-            }
-            aria-label={`Open ${project.name} ${
-              project.demoAvailable === false ? "case study" : "live demo"
-            }`}
+          <ScreenshotPreview
+            images={projects.map(projectScreenshot)}
+            selectedId={project.id}
+            label={`Inspect ${project.name} screenshot`}
           >
             <ResponsiveScreenshot
               asset={project.screenshot}
               alt={project.imageAlt}
               sizes="(min-width: 1520px) 672px, (min-width: 1024px) calc((100vw - 160px) / 2), (min-width: 640px) calc(100vw - 110px), calc(100vw - 76px)"
             />
-            <span className="project-image-caption font-mono">
-              {project.demoAvailable === false
-                ? "Explore the case study"
-                : "Explore the live system"}{" "}
-              <span aria-hidden="true">↗</span>
-            </span>
-          </a>
+          </ScreenshotPreview>
         </div>
         <div className="project-overview">
           <p className="project-eyebrow font-mono">{project.category}</p>

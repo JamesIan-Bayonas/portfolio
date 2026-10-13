@@ -1,5 +1,6 @@
 import { useReducer, useState } from "react"
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
+import ScreenshotPreview from "./ScreenshotPreview"
 import {
   advanceWalkthrough,
   initialWalkthrough,
@@ -11,6 +12,7 @@ import {
 } from "../lib/isdalogWalkthrough"
 import {
   perspectiveScreenshot,
+  isdalogScreenshotGallery,
   roleLabels,
   routeCheckpoints,
   walkthroughSteps,
@@ -366,18 +368,17 @@ export default function IsdaLogWalkthrough() {
                 See the original {roleLabels[role].toLowerCase()} interface
               </summary>
               <figure>
-                <a
-                  href={screenshot.src}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Open full screenshot: ${screenshot.alt}`}
+                <ScreenshotPreview
+                  images={isdalogScreenshotGallery}
+                  selectedId={isdalogScreenshotGallery.find(image => image.src === screenshot.src)!.id}
+                  label={`Inspect screenshot: ${screenshot.alt}`}
                 >
                   <ResponsiveScreenshot
                     asset={screenshot.preview}
                     alt={screenshot.alt}
                     sizes="(min-width: 1520px) 810px, (min-width: 1024px) 58vw, calc(100vw - 84px)"
                   />
-                </a>
+                </ScreenshotPreview>
                 <figcaption>
                   Original project screenshot. Its account balances belong to
                   that captured session; the walkthrough ledger below uses
