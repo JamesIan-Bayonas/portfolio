@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from "motion/react"
+import { useRef } from "react"
+import { motion, useInView, useReducedMotion } from "motion/react"
 import SpotlightCard from "./ui/SpotlightCard"
 import ContactAction from "./ContactAction"
 import { contactEmail } from "../lib/contact"
@@ -131,8 +132,11 @@ function ContactCard({ card, index }: ContactCardProps) {
 }
 
 export default function ContactFooter() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const visible = useInView(sectionRef)
   return (
     <section
+      ref={sectionRef}
       id="contact"
       className="relative z-10 px-4 pt-16 sm:px-6 sm:pt-20 lg:px-10 lg:pt-24"
       style={{ borderTop: "1px solid var(--color-border)" }}
@@ -149,7 +153,7 @@ export default function ContactFooter() {
           <span className="relative flex w-2 h-2">
             <span
               className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-              style={{ backgroundColor: "var(--color-diff-add)" }}
+              style={{ backgroundColor: "var(--color-diff-add)", animationPlayState: visible ? "running" : "paused" }}
             />
             <span
               className="relative inline-flex rounded-full w-2 h-2"

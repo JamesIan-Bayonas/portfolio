@@ -1,6 +1,6 @@
-import { lazy, Suspense, useRef } from "react"
-import { useInView } from "motion/react"
+import { lazy, Suspense, useEffect, useRef, useState } from "react"
 import caseStudyPages from "../data/caseStudyPages.json"
+import LoadingState from "./LoadingState"
 
 const AssetValuationDemo = lazy(() => import("./AssetValuationDemo"))
 
@@ -10,7 +10,14 @@ export default function EngineeringLab({
   embedded?: boolean
 }) {
   const ref = useRef<HTMLElement>(null)
-  const visible = useInView(ref, { once: true, margin: "200px" })
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { setVisible(true); observer.disconnect() }
+    }, { rootMargin: "200px" })
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
   return (
     <section
       ref={ref}
@@ -41,9 +48,7 @@ export default function EngineeringLab({
         {visible ? (
           <Suspense
             fallback={
-              <p className="lab-loading" role="status">
-                Preparing the demonstration…
-              </p>
+              <LoadingState label="Preparing the demonstration…" />
             }
           >
             <AssetValuationDemo caseStudyHref={embedded ? "#engineering" : `${caseStudyPages.find(page => page.projectId === "centralog")?.path ?? "/"}#engineering`} />

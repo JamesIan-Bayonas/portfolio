@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react"
-import { motion, AnimatePresence, useReducedMotion } from "motion/react"
 
 const resumeUrl = `${import.meta.env.BASE_URL}RESUME.pdf`
 
@@ -72,9 +71,7 @@ function applyTheme(t: "dark" | "light") {
 export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = false, labPage = false, notesPage = false }: NavProps) {
   const [active, setActive] = useState(notesPage ? "notes" : labPage ? "lab" : explorePage ? "explore" : portfolioPage ? "about" : "")
   const [menuOpen, setMenuOpen] = useState(false)
-  const [logoCursor, setLogoCursor] = useState(true)
   const [theme, setTheme] = useState<"dark" | "light">("dark")
-  const reduced = useReducedMotion()
   const toggleRef = useRef<HTMLButtonElement>(null)
 
   // Initialise theme from localStorage on mount
@@ -115,16 +112,9 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
   }, [menuOpen])
 
   useEffect(() => {
-    if (reduced) return
-    const id = setInterval(() => setLogoCursor((v) => !v), 530)
-    return () => clearInterval(id)
-  }, [reduced])
-
-  useEffect(() => {
     if (!portfolioPage) return
-    const sections = links.map((l) =>
-      document.getElementById(l === "about" ? "about" : l),
-    )
+    const sectionIds = links.filter(link => link !== "explore" && link !== "notes")
+    const observed = new Set<string>()
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -136,8 +126,18 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
       },
       { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
     )
-    sections.forEach((s) => s && observer.observe(s))
-    return () => observer.disconnect()
+    function bindSections() {
+      for (const id of sectionIds) {
+        const section = document.getElementById(id)
+        if (section && !observed.has(id)) { observer.observe(section); observed.add(id) }
+      }
+      if (observed.size === sectionIds.length) mountObserver.disconnect()
+    }
+    const mountObserver = new MutationObserver(bindSections)
+    const main = document.getElementById("main-content")
+    if (main) mountObserver.observe(main, { childList: true })
+    bindSections()
+    return () => { observer.disconnect(); mountObserver.disconnect() }
   }, [portfolioPage])
 
   return (
@@ -162,14 +162,13 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
           >
             [DEV/
             <span
+              className="nav-logo-cursor"
               style={{
                 display: "inline-block",
                 width: "0.55ch",
                 backgroundColor: "var(--color-accent)",
                 height: "1em",
                 verticalAlign: "text-bottom",
-                opacity: logoCursor ? 1 : 0,
-                transition: "opacity 0.1s",
               }}
             />
             ]
@@ -207,11 +206,9 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
             >
               {link}
               {active === link && (
-                <motion.span
-                  layoutId="nav-pill"
+                <span
                   className="absolute bottom-0 left-0 right-0 h-px"
                   style={{ backgroundColor: "var(--color-accent)" }}
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
             </a>
@@ -319,44 +316,34 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            <motion.span
-              className="block w-5 h-px"
+            <span
+              className="menu-line block w-5 h-px"
               style={{ backgroundColor: "var(--color-text1)" }}
-              animate={menuOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.2 }}
+              data-open={menuOpen}
             />
-            <motion.span
-              className="block w-5 h-px"
+            <span
+              className="menu-line menu-line-middle block w-5 h-px"
               style={{ backgroundColor: "var(--color-text1)" }}
-              animate={
-                menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }
-              }
-              transition={{ duration: 0.15 }}
+              data-open={menuOpen}
             />
-            <motion.span
-              className="block w-5 h-px"
+            <span
+              className="menu-line menu-line-last block w-5 h-px"
               style={{ backgroundColor: "var(--color-text1)" }}
-              animate={menuOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.2 }}
+              data-open={menuOpen}
             />
           </button>
         </div>
       </div>
 
       {/* Mobile menu */}
-      <AnimatePresence>
         {menuOpen && (
-          <motion.div
+          <div
             id="mobile-navigation"
             className="max-h-[calc(100dvh-72px)] overflow-y-auto xl:hidden border-t px-4 sm:px-6 lg:px-10 py-6 flex flex-col gap-4"
             style={{
               backgroundColor: "var(--color-bg)",
               borderColor: "var(--color-border)",
             }}
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
           >
             {links.map((link) => (
               <a
@@ -393,9 +380,8 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
             >
               Resume
             </a>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </header>
   )
 }

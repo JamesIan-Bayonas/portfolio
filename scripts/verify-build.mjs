@@ -10,6 +10,19 @@ const readJson = async name => JSON.parse(await readFile(path.join(root, "src/da
 const pages = [{ path: "/", title: "James Ian Bayonas | Full-Stack Developer" }, ...await readJson("caseStudyPages.json"), ...await readJson("sitePages.json")]
 assert.equal(new Set(pages.map(page => page.path)).size, pages.length, "Duplicate static routes")
 const assets = new Set()
+const manifest = JSON.parse(await readFile(path.join(root, "dist/.vite/manifest.json"), "utf8"))
+function staticDependencies(key, visited = new Set()) {
+  if (visited.has(key)) return visited
+  visited.add(key)
+  for (const dependency of manifest[key]?.imports ?? []) staticDependencies(dependency, visited)
+  return visited
+}
+for (const route of ["index.html", "src/components/Explore.tsx", "src/components/DedicatedCaseStudy.tsx", "src/components/Lab.tsx", "src/components/Notes.tsx"]) {
+  assert.ok(manifest[route], `Missing route chunk: ${route}`)
+  for (const key of staticDependencies(route)) {
+    assert.ok(!/\/(?:motion|HomePage)-/.test(manifest[key].file), `Homepage runtime eagerly loaded by ${route}`)
+  }
+}
 for (const page of pages) {
   const file = path.join(root, "dist", page.path, "index.html")
   const html = await readFile(file, "utf8")
@@ -17,6 +30,9 @@ for (const page of pages) {
   assert.equal((html.match(/name="description"/g) ?? []).length, 1, `Description count: ${page.path}`)
   assert.equal((html.match(/property="og:title"/g) ?? []).length, 1, `Sharing title count: ${page.path}`)
   assert.ok(html.includes('name="viewport"'), `Missing viewport: ${page.path}`)
+  const preloadsHome = /rel="modulepreload"[^>]+HomePage-/.test(html)
+  assert.equal(preloadsHome, page.path === "/", `Homepage preload leaked or missing: ${page.path}`)
+  if (page.path !== "/") assert.ok(!/rel="modulepreload"[^>]+\/motion-/.test(html), `Animation preload leaked: ${page.path}`)
   for (const match of html.matchAll(/(?:src|href)="(\/[^"?#]+)(?:[?#][^"]*)?"/g)) {
     const asset = match[1]
     await access(path.join(root, "dist", asset))

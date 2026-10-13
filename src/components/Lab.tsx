@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react"
 import { labDemos, labDemoFromHash, type LabDemoId } from "../data/labDemos"
 import { projects } from "../data/projects"
 import { engineeringNotes } from "../data/notes"
+import LoadingState from "./LoadingState"
 
 const AssetValuationDemo = lazy(() => import("./AssetValuationDemo"))
 const DormFixWalkthrough = lazy(() => import("./DormFixWalkthrough"))
@@ -114,9 +115,7 @@ export default function Lab() {
           <Suspense
             key={selected}
             fallback={
-              <p className="lab-loading" role="status">
-                Preparing {demo.title.toLowerCase()}…
-              </p>
+              <LoadingState label={`Preparing ${demo.title.toLowerCase()}…`} />
             }
           >
             {selected === "centralog" ? (

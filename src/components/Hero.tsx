@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react"
+import { useEffect, useRef, useState, type ReactNode } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { projects } from "../data/projects"
 
@@ -22,6 +22,7 @@ const LINE_STAGGER = 280
 const INITIAL_PAUSE = 600
 
 function DiffPanel() {
+  const panelRef = useRef<HTMLDivElement>(null)
   const reduced = useReducedMotion()
   const [typedLines, setTypedLines] = useState<string[]>(["", "", ""])
   const [visibleLines, setVisibleLines] = useState<boolean[]>([
@@ -74,16 +75,31 @@ function DiffPanel() {
       }
     }
 
-    run()
+    function finish() {
+      if (cancelled) return
+      cancelled = true
+      timers.forEach(clearTimeout)
+      setTypedLines(linePairs.map(pair => pair.next))
+      setVisibleLines([true, true, true])
+    }
+    const observer = new IntersectionObserver(entries => { if (!entries[0].isIntersecting) finish() })
+    if (panelRef.current) observer.observe(panelRef.current)
+    const onVisibility = () => { if (document.hidden) finish() }
+    document.addEventListener("visibilitychange", onVisibility)
+    if (document.hidden) finish()
+    else run()
 
     return () => {
       cancelled = true
       timers.forEach(clearTimeout)
+      observer.disconnect()
+      document.removeEventListener("visibilitychange", onVisibility)
     }
   }, [reduced])
 
   return (
     <div
+      ref={panelRef}
       className="border"
       style={{
         backgroundColor: "var(--color-surface)",
@@ -142,10 +158,9 @@ function DiffPanel() {
         {linePairs.map((pair, i) => (
           <div key={i}>
             <DiffLine type="remove">{pair.old}</DiffLine>
-            {visibleLines[i] && (
               <DiffLine type="add">
-                {typedLines[i]}
-                {typedLines[i].length < pair.next.length && (
+                {visibleLines[i] ? typedLines[i] : ""}
+                {visibleLines[i] && typedLines[i].length < pair.next.length && (
                   <span
                     className="inline-block w-1.5 h-4 align-middle animate-pulse"
                     style={{
@@ -155,7 +170,6 @@ function DiffPanel() {
                   />
                 )}
               </DiffLine>
-            )}
           </div>
         ))}
 

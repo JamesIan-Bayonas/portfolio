@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react"
+import { lazy, Suspense, useEffect, useState } from "react"
 import { projectScreenshot, type Project } from "../data/projects"
 import { CaseStudyContent } from "./ProjectCaseStudy"
-import IsdaLogWalkthrough from "./IsdaLogWalkthrough"
-import DormFixWalkthrough from "./DormFixWalkthrough"
-import CentraLogWalkthrough from "./CentraLogWalkthrough"
-import EngineeringLab from "./EngineeringLab"
-import PharmaLinkWalkthrough from "./PharmaLinkWalkthrough"
+import LoadingState from "./LoadingState"
 import { engineeringNotes } from "../data/notes"
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
 import ScreenshotPreview from "./ScreenshotPreview"
 import { isdalogScreenshotGallery } from "../data/isdalogWalkthrough"
+
+const IsdaLogWalkthrough = lazy(() => import("./IsdaLogWalkthrough"))
+const DormFixWalkthrough = lazy(() => import("./DormFixWalkthrough"))
+const CentraLogWalkthrough = lazy(() => import("./CentraLogWalkthrough"))
+const EngineeringLab = lazy(() => import("./EngineeringLab"))
+const PharmaLinkWalkthrough = lazy(() => import("./PharmaLinkWalkthrough"))
 
 interface DedicatedCaseStudyProps {
   project: Project
@@ -118,10 +120,13 @@ export default function DedicatedCaseStudy({
             </figcaption>
           </figure>
         </header>
+        <Suspense fallback={<div id="walkthrough"><LoadingState label="Preparing the project walkthrough…" /></div>}>
         {project.id === "isdalog" && <IsdaLogWalkthrough />}
         {project.id === "dormfix" && <DormFixWalkthrough />}
         {project.id === "pharmalink" && <PharmaLinkWalkthrough />}
-        {project.id === "centralog" && <><CentraLogWalkthrough /><EngineeringLab embedded /></>}
+        {project.id === "centralog" && <CentraLogWalkthrough />}
+        </Suspense>
+        {project.id === "centralog" && <Suspense fallback={<div id="lab"><LoadingState label="Preparing the valuation lab…" /></div>}><EngineeringLab embedded /></Suspense>}
         <div className="dedicated-engineering" id="engineering">
           <CaseStudyContent
             project={project}

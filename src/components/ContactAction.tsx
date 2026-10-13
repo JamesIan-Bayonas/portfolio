@@ -1,4 +1,5 @@
 import { lazy, Suspense, useState } from "react"
+import LoadingState from "./LoadingState"
 
 const ContactPanel = lazy(() => import("./ContactPanel"))
 
@@ -14,7 +15,7 @@ export default function ContactAction({ projectId, label = "Discuss a similar sy
     <button type="button" className={className} aria-haspopup="dialog" onClick={() => setOpen(true)}>
       {label} <span aria-hidden="true">↗</span>
     </button>
-    {open && <Suspense fallback={<p role="status">Opening contact panel…</p>}>
+    {open && <Suspense fallback={<LoadingState label="Opening contact panel…" variant="compact" />}>
       <ContactPanel projectId={projectId} onClose={() => setOpen(false)} />
     </Suspense>}
   </>
