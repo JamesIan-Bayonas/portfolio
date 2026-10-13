@@ -3,6 +3,8 @@ import isdaLogImg from "../components/docs/demo/isdalog-demo.png"
 import pharmaLinkImg from "../components/docs/demo/pharmalink-demo.png"
 import centraLogImg from "../components/docs/demo/centralog-demo.png"
 import caseStudyPages from "./caseStudyPages.json"
+import screenshots from "./screenshots.json"
+import type { ScreenshotAsset } from "../components/ResponsiveScreenshot"
 
 export interface Project {
   id: string
@@ -17,6 +19,7 @@ export interface Project {
   demoAvailable?: boolean
   source: string
   image: string
+  screenshot: ScreenshotAsset
   imageAlt: string
   caseStudyPath?: string
   caseStudy: {
@@ -67,6 +70,7 @@ export const projects: Project[] = [
     demoAvailable: false,
     source: "https://github.com/JamesIan-Bayonas/isdalog",
     image: isdaLogImg,
+    screenshot: screenshots.isdalog,
     imageAlt: "IsdaLog maritime marketplace and logistics interface",
     caseStudy: {
       problem:
@@ -141,6 +145,7 @@ export const projects: Project[] = [
     demo: "https://dormfix-jamesian-bayonas-projects.vercel.app",
     source: "https://github.com/JamesIan-Bayonas/dormfix",
     image: dormFixImg,
+    screenshot: screenshots.dormfix,
     imageAlt: "DormFix landlord dashboard with property management tools",
     caseStudy: {
       problem:
@@ -208,6 +213,7 @@ export const projects: Project[] = [
     demo: "https://centralog.vercel.app/",
     source: "https://github.com/JamesIan-Bayonas/centralog",
     image: centraLogImg,
+    screenshot: screenshots.centralog,
     imageAlt: "CentraLog asset management and valuation dashboard",
     caseStudy: {
       problem:
@@ -274,6 +280,7 @@ export const projects: Project[] = [
     demo: "https://pharmalink-web-wine.vercel.app/dashboard",
     source: "https://github.com/JamesIan-Bayonas/pharmalink",
     image: pharmaLinkImg,
+    screenshot: screenshots.pharmalink,
     imageAlt: "PharmaLink pharmacy inventory and point-of-sale dashboard",
     caseStudy: {
       problem:

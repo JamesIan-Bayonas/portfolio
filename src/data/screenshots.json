@@ -1,0 +1,281 @@
+{
+  "isdalog": {
+    "original": "src/components/docs/demo/isdalog-demo.png",
+    "originalSha256": "0f8212955a635065c9cfde6c787312d8e791175e2ca42d085e7d59b56cfc24ef",
+    "width": 1917,
+    "height": 1078,
+    "originalBytes": 173089,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-480.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 11208
+      },
+      {
+        "src": "/screenshots/isdalog-800.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 27352
+      },
+      {
+        "src": "/screenshots/isdalog-1200.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 46810
+      },
+      {
+        "src": "/screenshots/isdalog-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 72636
+      }
+    ]
+  },
+  "dormfix": {
+    "original": "src/components/docs/demo/dorm-fix-demo.png",
+    "originalSha256": "13030d08981fbff879c312ec894db048c4f8bae6419c33a51ab275e7d28c6e3d",
+    "width": 1917,
+    "height": 1078,
+    "originalBytes": 166759,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-480.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 7086
+      },
+      {
+        "src": "/screenshots/dormfix-800.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 16254
+      },
+      {
+        "src": "/screenshots/dormfix-1200.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 29926
+      },
+      {
+        "src": "/screenshots/dormfix-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 45410
+      }
+    ]
+  },
+  "centralog": {
+    "original": "src/components/docs/demo/centralog-demo.png",
+    "originalSha256": "810fe88906f8fc818dc8e0479bcf1e1f91f9daa31f9afa8a119303aee10ac0ba",
+    "width": 1917,
+    "height": 1076,
+    "originalBytes": 257251,
+    "variants": [
+      {
+        "src": "/screenshots/centralog-480.webp",
+        "width": 480,
+        "height": 269,
+        "bytes": 15050
+      },
+      {
+        "src": "/screenshots/centralog-800.webp",
+        "width": 800,
+        "height": 449,
+        "bytes": 37142
+      },
+      {
+        "src": "/screenshots/centralog-1200.webp",
+        "width": 1200,
+        "height": 674,
+        "bytes": 72618
+      },
+      {
+        "src": "/screenshots/centralog-1600.webp",
+        "width": 1600,
+        "height": 898,
+        "bytes": 110246
+      }
+    ]
+  },
+  "pharmalink": {
+    "original": "src/components/docs/demo/pharmalink-demo.png",
+    "originalSha256": "d07816006ae330aff34caa7486f7e3beff2fee52b1a11a269f9e6a4dc2acf496",
+    "width": 1917,
+    "height": 1078,
+    "originalBytes": 166148,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-480.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 12708
+      },
+      {
+        "src": "/screenshots/pharmalink-800.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 29574
+      },
+      {
+        "src": "/screenshots/pharmalink-1200.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 56854
+      },
+      {
+        "src": "/screenshots/pharmalink-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 87220
+      }
+    ]
+  },
+  "isdalog-telegram": {
+    "original": "src/assets/isdalog/02-telegram-ai-scan.png",
+    "originalSha256": "1fbb261578f35446d61f3ca08ca352cb754f4a49c16b6cc7cea72d0394de2b9d",
+    "width": 632,
+    "height": 885,
+    "originalBytes": 436314,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-telegram-480.webp",
+        "width": 480,
+        "height": 672,
+        "bytes": 48114
+      },
+      {
+        "src": "/screenshots/isdalog-telegram-632.webp",
+        "width": 632,
+        "height": 885,
+        "bytes": 70788
+      }
+    ]
+  },
+  "isdalog-bidding": {
+    "original": "src/assets/isdalog/07-buyer-place-bid.png",
+    "originalSha256": "f77c2744e6813c08c4a2b349d172f48e71ad369df626309f22e5f8541e067ec4",
+    "width": 952,
+    "height": 901,
+    "originalBytes": 554438,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-bidding-480.webp",
+        "width": 480,
+        "height": 454,
+        "bytes": 35794
+      },
+      {
+        "src": "/screenshots/isdalog-bidding-800.webp",
+        "width": 800,
+        "height": 757,
+        "bytes": 72954
+      },
+      {
+        "src": "/screenshots/isdalog-bidding-952.webp",
+        "width": 952,
+        "height": 901,
+        "bytes": 94094
+      }
+    ]
+  },
+  "isdalog-rider": {
+    "original": "src/assets/isdalog/08-rider-en-route-dashboard.png",
+    "originalSha256": "88fb6ecf7ceeadef06071f97feda5f1d5c3a21ba3727db6e75bcfeace5341f98",
+    "width": 1675,
+    "height": 1032,
+    "originalBytes": 269815,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-rider-480.webp",
+        "width": 480,
+        "height": 296,
+        "bytes": 7962
+      },
+      {
+        "src": "/screenshots/isdalog-rider-800.webp",
+        "width": 800,
+        "height": 493,
+        "bytes": 18272
+      },
+      {
+        "src": "/screenshots/isdalog-rider-1200.webp",
+        "width": 1200,
+        "height": 739,
+        "bytes": 31184
+      },
+      {
+        "src": "/screenshots/isdalog-rider-1600.webp",
+        "width": 1600,
+        "height": 986,
+        "bytes": 46322
+      }
+    ]
+  },
+  "isdalog-tracking": {
+    "original": "src/assets/isdalog/09-buyer-live-tracking-otp.png",
+    "originalSha256": "e803482211db04ebc54d63564cde04dcffb4398bfe84c53972d4288738f5d520",
+    "width": 1480,
+    "height": 907,
+    "originalBytes": 262331,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-tracking-480.webp",
+        "width": 480,
+        "height": 294,
+        "bytes": 11862
+      },
+      {
+        "src": "/screenshots/isdalog-tracking-800.webp",
+        "width": 800,
+        "height": 490,
+        "bytes": 28240
+      },
+      {
+        "src": "/screenshots/isdalog-tracking-1200.webp",
+        "width": 1200,
+        "height": 735,
+        "bytes": 51780
+      },
+      {
+        "src": "/screenshots/isdalog-tracking-1480.webp",
+        "width": 1480,
+        "height": 907,
+        "bytes": 69890
+      }
+    ]
+  },
+  "isdalog-inspection": {
+    "original": "src/assets/isdalog/11-buyer-verify-release-escrow.png",
+    "originalSha256": "c7556a6bc559fb2e04f4c19b468884c20cc2e3b27b073ea2829dabf6abf219e9",
+    "width": 1406,
+    "height": 908,
+    "originalBytes": 248401,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-inspection-480.webp",
+        "width": 480,
+        "height": 310,
+        "bytes": 13400
+      },
+      {
+        "src": "/screenshots/isdalog-inspection-800.webp",
+        "width": 800,
+        "height": 517,
+        "bytes": 30008
+      },
+      {
+        "src": "/screenshots/isdalog-inspection-1200.webp",
+        "width": 1200,
+        "height": 775,
+        "bytes": 54544
+      },
+      {
+        "src": "/screenshots/isdalog-inspection-1406.webp",
+        "width": 1406,
+        "height": 908,
+        "bytes": 66396
+      }
+    ]
+  }
+}

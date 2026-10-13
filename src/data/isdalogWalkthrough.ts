@@ -4,6 +4,7 @@ import bidding from "../assets/isdalog/07-buyer-place-bid.png"
 import rider from "../assets/isdalog/08-rider-en-route-dashboard.png"
 import tracking from "../assets/isdalog/09-buyer-live-tracking-otp.png"
 import inspection from "../assets/isdalog/11-buyer-verify-release-escrow.png"
+import screenshots from "./screenshots.json"
 
 export interface WalkthroughStep {
   title: string
@@ -147,6 +148,7 @@ export function perspectiveScreenshot(role: WalkthroughRole, step: number) {
   if (role === "harvester")
     return {
       src: telegram,
+      preview: screenshots["isdalog-telegram"],
       width: 632,
       height: 885,
       alt: "Original IsdaLog Telegram catch classification interface",
@@ -154,6 +156,7 @@ export function perspectiveScreenshot(role: WalkthroughRole, step: number) {
   if (role === "rider")
     return {
       src: rider,
+      preview: screenshots["isdalog-rider"],
       width: 1675,
       height: 1032,
       alt: "Original IsdaLog rider custody and dispatch dashboard",
@@ -161,6 +164,7 @@ export function perspectiveScreenshot(role: WalkthroughRole, step: number) {
   if (step >= 6)
     return {
       src: inspection,
+      preview: screenshots["isdalog-inspection"],
       width: 1406,
       height: 908,
       alt: "Original IsdaLog buyer inspection and escrow release interface",
@@ -168,12 +172,14 @@ export function perspectiveScreenshot(role: WalkthroughRole, step: number) {
   if (step >= 4)
     return {
       src: tracking,
+      preview: screenshots["isdalog-tracking"],
       width: 1480,
       height: 907,
       alt: "Original IsdaLog buyer delivery tracking and delivery code interface",
     }
   return {
     src: bidding,
+    preview: screenshots["isdalog-bidding"],
     width: 952,
     height: 901,
     alt: "Original IsdaLog buyer auction and bidding interface",

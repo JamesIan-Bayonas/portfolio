@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { projects } from "../data/projects"
+import ResponsiveScreenshot from "./ResponsiveScreenshot"
 import {
   emptyExploreFilters,
   exploreFilterSearch,
@@ -153,12 +154,10 @@ export default function Explore() {
                     href={project.caseStudyPath}
                     aria-label={`Read the ${project.name} case study`}
                   >
-                    <img
-                      src={project.image}
+                    <ResponsiveScreenshot
+                      asset={project.screenshot}
                       alt={project.imageAlt}
-                      width="1600"
-                      height="900"
-                      loading="lazy"
+                      sizes="(min-width: 1520px) 704px, (min-width: 1024px) calc((100vw - 110px) / 2), (min-width: 768px) calc((100vw - 78px) / 2), (min-width: 640px) calc(100vw - 50px), calc(100vw - 34px)"
                     />
                   </a>
                   <div className="explore-card-body">

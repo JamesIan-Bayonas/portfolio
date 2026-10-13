@@ -51,6 +51,14 @@ This run estimated 600 ms of render-blocking savings and reported an error for t
 
 ## Remaining work
 
-Image delivery is the next measured opportunity: the retests estimate 153 KiB for Home, 657 KiB for Explore, and 149 KiB for IsdaLog. Produce responsive, compressed screenshot variants while retaining the originals, and compare them in another mobile audit. Unused JavaScript estimates remain 45–55 KiB; optimize only after checking which shared features contribute to that cost.
+The font-update retests estimated image-delivery opportunities of 153 KiB for Home, 657 KiB for Explore, and 149 KiB for IsdaLog. The screenshot update below addresses that opportunity. Unused JavaScript estimates remain 45–55 KiB; optimize only after checking which shared features contribute to that cost.
 
 Keep the report dates and links when comparing future changes. Repeat runs or collect real-user data before treating small timing differences as reliable trends.
+
+## Responsive screenshot update
+
+The four project previews and five IsdaLog walkthrough captures now have 33 WebP variants, from 480 pixels to a maximum of 1600 pixels. No source is enlarged. A shared image component supplies candidate widths, page-specific layout sizes, source aspect ratios, and asynchronous decoding. Explore and home previews retain lazy loading; case-study heroes load eagerly. Walkthrough links retain their original PNG destinations.
+
+The four original project preview PNGs total 763,247 bytes. Their 800-pixel WebP candidates total 110,322 bytes, a reduction of 85.5%; the 480-pixel set totals 46,052 bytes. These are file-size comparisons, not a claim that every visitor downloads that exact set: selection depends on viewport width, pixel density, browser behavior, and which lazy images become visible.
+
+Local checks confirmed 480-pixel candidates at a 390-pixel viewport and 800-pixel candidates on the tested desktop viewport. Both layouts fit without horizontal overflow. Explore search and reset worked, and the harvester/buyer walkthrough previews loaded while retaining full-resolution original links. TypeScript, 43 tests, the production build, and verification of 12 routes and all 33 preview files passed. Build verification also checks source hashes to catch stale previews after a PNG is replaced.

@@ -1,4 +1,5 @@
 import { useReducer, useState } from "react"
+import ResponsiveScreenshot from "./ResponsiveScreenshot"
 import {
   advanceWalkthrough,
   initialWalkthrough,
@@ -371,12 +372,10 @@ export default function IsdaLogWalkthrough() {
                   rel="noopener noreferrer"
                   aria-label={`Open full screenshot: ${screenshot.alt}`}
                 >
-                  <img
-                    src={screenshot.src}
+                  <ResponsiveScreenshot
+                    asset={screenshot.preview}
                     alt={screenshot.alt}
-                    width={screenshot.width}
-                    height={screenshot.height}
-                    loading="lazy"
+                    sizes="(min-width: 1520px) 810px, (min-width: 1024px) 58vw, calc(100vw - 84px)"
                   />
                 </a>
                 <figcaption>

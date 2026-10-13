@@ -7,6 +7,7 @@ import CentraLogWalkthrough from "./CentraLogWalkthrough"
 import EngineeringLab from "./EngineeringLab"
 import PharmaLinkWalkthrough from "./PharmaLinkWalkthrough"
 import { engineeringNotes } from "../data/notes"
+import ResponsiveScreenshot from "./ResponsiveScreenshot"
 
 interface DedicatedCaseStudyProps {
   project: Project
@@ -98,11 +99,11 @@ export default function DedicatedCaseStudy({
             </p>
           </div>
           <figure className="dedicated-case-image">
-            <img
-              src={project.image}
+            <ResponsiveScreenshot
+              asset={project.screenshot}
               alt={project.imageAlt}
-              width="1600"
-              height="900"
+              sizes="(min-width: 1520px) 663px, (min-width: 1024px) calc((100vw - 128px) / 2.1), (min-width: 640px) calc(100vw - 50px), calc(100vw - 34px)"
+              loading="eager"
             />
             <figcaption className="font-mono">
               Original {project.name} interface / {project.context.toLowerCase()}

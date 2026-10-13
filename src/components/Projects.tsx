@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "motion/react"
 import { projects, type Project } from "../data/projects"
 import ProjectCaseStudy from "./ProjectCaseStudy"
+import ResponsiveScreenshot from "./ResponsiveScreenshot"
 
 interface ProjectCardProps {
   project: Project
@@ -45,12 +46,10 @@ function ProjectCard({ project, index }: ProjectCardProps) {
               project.demoAvailable === false ? "case study" : "live demo"
             }`}
           >
-            <img
-              src={project.image}
+            <ResponsiveScreenshot
+              asset={project.screenshot}
               alt={project.imageAlt}
-              loading="lazy"
-              width="1600"
-              height="900"
+              sizes="(min-width: 1520px) 672px, (min-width: 1024px) calc((100vw - 160px) / 2), (min-width: 640px) calc(100vw - 110px), calc(100vw - 76px)"
             />
             <span className="project-image-caption font-mono">
               {project.demoAvailable === false
