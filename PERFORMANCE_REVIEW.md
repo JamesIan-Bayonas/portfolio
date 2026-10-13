@@ -62,3 +62,19 @@ The four project previews and five IsdaLog walkthrough captures now have 33 WebP
 The four original project preview PNGs total 763,247 bytes. Their 800-pixel WebP candidates total 110,322 bytes, a reduction of 85.5%; the 480-pixel set totals 46,052 bytes. These are file-size comparisons, not a claim that every visitor downloads that exact set: selection depends on viewport width, pixel density, browser behavior, and which lazy images become visible.
 
 Local checks confirmed 480-pixel candidates at a 390-pixel viewport and 800-pixel candidates on the tested desktop viewport. Both layouts fit without horizontal overflow. Explore search and reset worked, and the harvester/buyer walkthrough previews loaded while retaining full-resolution original links. TypeScript, 43 tests, the production build, and verification of 12 routes and all 33 preview files passed. Build verification also checks source hashes to catch stale previews after a PNG is replaced.
+
+### Published Explore retest
+
+Commit `8627af6` deployed successfully. The public preview URLs served `image/webp` with the expected bytes; the published Explore page selected and loaded the WebP candidates.
+
+The [Explore mobile retest](https://pagespeed.web.dev/analysis/https-jamesian-portfolio-vercel-app-explore/l3ijgrbq63?form_factor=mobile), captured at 15:38 GMT+8 on 13 October, retained the same Moto G Power / Slow 4G / Lighthouse 13.5.0 setup. Performance scored 96; Accessibility, Best Practices, and SEO each scored 100. **Improve image delivery** moved into the passed audits, replacing the previous 657 KiB estimated savings warning. Total network payload was reported as 309 KiB.
+
+| Metric | Before screenshot update | After screenshot update |
+| --- | ---: | ---: |
+| FCP | 1.706 s | 1.535 s |
+| LCP | 2.293 s | 1.951 s |
+| Blocking time | 1 ms | 0 ms |
+| Layout shift | 0 | 0 |
+| Speed Index | 3.959 s | 4.225 s |
+
+These are single-run lab comparisons, with no field data available. Speed Index increased while FCP and LCP decreased; the result supports the image-delivery correction but does not establish a sustained timing improvement across all metrics. Remaining diagnostics include 300 ms estimated render-blocking savings and 49 KiB unused JavaScript.
