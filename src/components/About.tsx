@@ -67,10 +67,10 @@ export default function About() {
                   className="text-base leading-relaxed mb-8 max-w-lg"
                   style={{ fontFamily: "var(--font-body)", color: "var(--color-text2)" }}
                 >
-                  I build full-stack web applications with React, TypeScript, Node.js, and Supabase.
-                  I focus on clean data models, reliable real-time APIs, and intuitive user experiences
-                  that scale cleanly without technical debt. I care about solid architecture under the
-                  hood and interfaces that feel effortless to use.
+                  I work across React, TypeScript, Node.js, Laravel, and ASP.NET Core.
+                  My projects connect people and records: a catch moving through auction and delivery,
+                  a tenant waiting for approval, or an asset changing custody. I focus on the data
+                  models and business rules underneath each interface, and explain the choices behind them.
                 </p>
               </div>
 

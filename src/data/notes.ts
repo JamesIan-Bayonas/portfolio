@@ -1,0 +1,167 @@
+export interface EngineeringNoteSection {
+  id: string
+  title: string
+  paragraphs: string[]
+}
+export interface EngineeringNote {
+  id: string
+  path: string
+  projectId: string
+  title: string
+  summary: string
+  topic: string
+  flow: string[]
+  flowCaption: string
+  demoLabel: string
+  sourceContext: string
+  sections: EngineeringNoteSection[]
+}
+
+export const engineeringNotes: EngineeringNote[] = [
+  {
+    id: "dormfix-receipt-review",
+    path: "/notes/dormfix-receipt-review/",
+    projectId: "dormfix",
+    title: "Why receipt parsing is not payment verification",
+    summary: "A readable receipt, a valid JSON response, and a matching rent amount answer different questions. DormFix keeps those steps separate before a landlord records a decision.",
+    topic: "AI output & business rules",
+    flow: ["Extract text", "Structure fields", "Validate & compare", "Landlord review"],
+    flowCaption: "Each stage answers a different question. None of the first three confirms that funds were received.",
+    demoLabel: "Try the receipt-review demo",
+    sourceContext: "Based on DormFix's supplied project documentation and the portfolio's illustrative receipt workflow. This note does not report a security audit or measured model accuracy.",
+    sections: [
+      { id: "context", title: "The problem starts with a screenshot", paragraphs: [
+        "DormFix is a collaborative capstone proposed by my classmate. I implemented its features as part of the team. One of those workflows accepts a tenant's payment screenshot so a landlord can review the payment claim alongside the expected record.",
+        "Screenshots vary in layout and quality. An amount may be blurred, a date may be old, or a submitted amount may differ from the rent due. Turning the image into usable fields helps the reviewer, but it cannot by itself establish that a transfer reached the intended account.",
+      ] },
+      { id: "extract", title: "OCR answers: what text can be read?", paragraphs: [
+        "The documented pipeline begins with Tesseract.js extracting text from the uploaded image. That gives the next stage something to parse, rather than asking business rules to interpret an entire picture.",
+        "Extraction is still fallible. A cropped reference number or an unclear digit can produce incomplete or incorrect text. Missing information should remain visible as a review problem; it should not become an invented amount or date just to keep the workflow moving.",
+      ] },
+      { id: "parse", title: "Parsing answers: how should the text be structured?", paragraphs: [
+        "A local Ollama model maps the extracted text into fields such as amount, date, and reference number. Zod checks the response structure so downstream code can work with the expected shape.",
+        "Structure and truth are separate properties. A numeric amount can satisfy a schema even when OCR read the wrong digit. A reference string can be well formed without proving that it belongs to a genuine transaction. Schema validation helps manage the software boundary; it is not a receipt-authenticity check.",
+      ] },
+      { id: "check", title: "Rules answer: do these details match the expected record?", paragraphs: [
+        "DormFix's documented checks compare the extracted amount with expected payment details and flag date drift greater than seven days. These checks are explicit business rules applied after parsing, rather than decisions left entirely to the model.",
+        "For the portfolio example, the expected rent is ₱3,500. A ₱2,800 receipt raises an amount flag. A ten-day-old receipt raises a date flag. Missing fields require manual review. A matching amount and recent date pass those illustrated checks, while the landlord decision remains pending.",
+        "These examples use fixed sample data. The portfolio walkthrough runs no OCR or model inference and makes no live payment update. It demonstrates the boundaries of the process rather than evaluating a visitor's financial document.",
+      ] },
+      { id: "review", title: "Review answers: what decision should be recorded?", paragraphs: [
+        "A flag is a reason to investigate, not proof of fraud. Equally, the absence of an amount or date flag does not confirm that money was received. The landlord still needs to review the evidence and the relevant payment record before recording a decision.",
+        "The walkthrough therefore separates its diagnostic result from sample verification or rejection. Keeping that distinction visible makes it easier to explain why an AI-assisted workflow needs a review step and what each stage actually contributes.",
+      ] },
+      { id: "tradeoff", title: "The trade-off: local inference still has a cost", paragraphs: [
+        "Local OCR and model parsing avoid a hosted inference API fee for this pipeline, but require server memory, compute, and an available local model service. The design moves that operational responsibility into the application environment.",
+        "The useful lesson is to give each stage a clear job: extract text, structure fields, validate the shape, compare against known expectations, then record a review decision. Keeping those responsibilities explicit makes failures and limitations easier to understand.",
+      ] },
+    ],
+  },
+  {
+    id: "isdalog-delivery-settlement",
+    path: "/notes/isdalog-delivery-settlement/",
+    projectId: "isdalog",
+    title: "Why delivery confirmation and settlement are separate events",
+    summary: "A delivery handoff changes cargo status. Buyer inspection authorizes the next financial step. IsdaLog keeps those events distinct so custody and held funds remain understandable.",
+    topic: "Custody & financial state",
+    flow: ["Accept & hold", "Verify pickup", "Verify delivery", "Inspect & settle"],
+    flowCaption: "The delivery code confirms a workflow handoff. The catch-price funds remain held until buyer inspection is confirmed.",
+    demoLabel: "Try the custody-and-settlement demo",
+    sourceContext: "Based on the supplied IsdaLog documentation and the sample portfolio walkthrough. The described escrow is an application wallet mechanism; this note does not establish regulated escrow services or prove physical delivery.",
+    sections: [
+      { id: "context", title: "One order carries two kinds of state", paragraphs: [
+        "I initiated and built IsdaLog independently after noticing a lack of transparency in the fisheries trade in my area. Its workflow connects a harvester, a buyer, and a logistics rider, from catch registration to delivery and settlement.",
+        "That order has both a physical story and a financial story. A rider can take custody while money remains held. Cargo can reach its destination while the buyer has not yet confirmed inspection. Treating every delivery update as permission to pay would collapse those different responsibilities into one event.",
+      ] },
+      { id: "hold", title: "Acceptance is where the funds become held", paragraphs: [
+        "Placing a bid and accepting it are separate actions. The documented workflow holds buyer wallet funds when the harvester accepts the winning bid, then stages the delivery run. The portfolio walkthrough follows that order: bidding alone does not change the sample held balance.",
+        "Holding the catch-price amount gives the order an explicit financial state during transit. It also makes the later release a transition that can be checked against the order's current state, rather than an unrelated balance update.",
+      ] },
+      { id: "custody", title: "Two codes describe two handoffs", paragraphs: [
+        "The pickup and delivery stages use separate codes. A valid pickup code moves the workflow into transit. A valid delivery code records the destination handoff. In the sample walkthrough, an incorrect code leaves the stage and held funds unchanged.",
+        "A code validates a workflow interaction; it is not independent evidence of the condition of a physical crate. Live GPS similarly provides transit visibility without deciding whether the delivered catch meets the buyer's expectations. Those limits are why inspection remains a distinct step.",
+      ] },
+      { id: "settlement", title: "Inspection precedes the catch-price split", paragraphs: [
+        "After delivery is recorded, the buyer confirms inspection before the settlement step. In the documented example, a ₱1,600 catch price produces a ₱1,552 harvester share and a ₱48 platform share. The rider's delivery fee is handled separately from that 97/3 catch-price split.",
+        "The portfolio simulation shows only catch-price funds so the transition is easy to inspect. Its held balance remains ₱1,600 after the delivery code, then returns to zero after inspection. It performs no live transfer, and repeating the completed sample action cannot release the same amount again.",
+      ] },
+      { id: "integrity", title: "A database transaction protects the related updates", paragraphs: [
+        "IsdaLog's supplied documentation describes settlement inside a database transaction with row-level locking. The intent is to coordinate related order and wallet mutations under concurrency. The application still needs clear authorization, valid transitions, and repeat-action handling around that transaction.",
+        "The design lesson is to name events for the responsibility they fulfill. Pickup establishes a custody transition, delivery establishes a destination handoff, and inspection authorizes settlement. Keeping them distinct makes the workflow easier to explain and the financial boundary easier to review.",
+      ] },
+    ],
+  },
+  {
+    id: "centralog-calculated-valuation",
+    path: "/notes/centralog-calculated-valuation/",
+    projectId: "centralog",
+    title: "Why valuation is calculated from asset and maintenance records",
+    summary: "A stored book value can drift when repair history changes. CentraLog calculates valuation from its source records, using explicit strategies and an application-specific downtime policy.",
+    topic: "Derived values & source records",
+    flow: ["Asset inputs", "Repair history", "Select strategy", "Calculate on read"],
+    flowCaption: "The current value is derived from asset details and maintenance history. The source records remain separate from the calculated result.",
+    demoLabel: "Try the asset-valuation calculator",
+    sourceContext: "Based on the supplied CentraLog documentation and the portfolio calculator's implementation of its strategy formulas. The repair adjustment is an application policy, not a claim of universal accounting compliance.",
+    sections: [
+      { id: "context", title: "The asset has a history before it has a value", paragraphs: [
+        "I built CentraLog independently as a school project. Its records connect an asset's purchase details, lifecycle, location, custodian, and maintenance windows. Those facts also inform the valuation calculation.",
+        "A separate stored book-value column would need to stay synchronized whenever those inputs changed. A corrected repair date or useful life could otherwise leave the displayed value based on an earlier version of the history.",
+      ] },
+      { id: "strategy", title: "Keep the calculation behind an interchangeable strategy", paragraphs: [
+        "The documented implementation uses a depreciation strategy interface with straight-line and double-declining implementations. That keeps the asset workflow from having to embed each formula directly into its update operations.",
+        "The portfolio calculator follows the project's strategy formulas, including a 30.4375-day month, the residual-value floor, and the monthly compound rate used by the double-declining strategy. These details matter: a label such as double-declining is not enough to specify the exact calculation.",
+      ] },
+      { id: "downtime", title: "Make the repair adjustment an explicit policy", paragraphs: [
+        "CentraLog's application policy excludes repair time from the active time used in valuation. It calculates the adjustment from maintenance timestamps. In the portfolio lab, the shaded interval shows one sample repair window and the adjusted line pauses across it.",
+        "The calculator keeps that policy visible rather than presenting the result as a universally applicable accounting rule. Visitors can compare a value with and without the adjustment, inspect the exact values in a table, and change the repair duration to see the difference.",
+      ] },
+      { id: "tradeoff", title: "Computing on read trades work for fewer synchronization paths", paragraphs: [
+        "Calculating when the value is requested adds computation to a read. It avoids maintaining a separate result every time an input changes, reducing the number of update paths that must keep a cached number synchronized.",
+        "That trade-off does not make caching inherently wrong. It means a future cache would need an explicit invalidation policy tied to the asset and maintenance records. The supplied project design favors direct evaluation instead of introducing that extra responsibility.",
+      ] },
+      { id: "records", title: "Keep custody updates and valuation concerns distinct", paragraphs: [
+        "The supplied documentation groups bulk location, custodian, and audit-entry updates inside EF Core transactions with an execution strategy. Those mutations preserve the physical custody story. Valuation reads the financial and maintenance inputs rather than pretending that a room transfer changes the depreciation formula.",
+        "The lifecycle walkthrough and valuation lab therefore use independent sample state. One illustrates custody and repairs; the other lets visitors examine calculation inputs. Neither writes to the live asset ledger. Together they show why source records and derived values deserve separate responsibilities.",
+      ] },
+    ],
+  },
+  {
+    id: "pharmalink-void-adjustment",
+    path: "/notes/pharmalink-void-adjustment/",
+    projectId: "pharmalink",
+    title: "Why a void preserves the original sale",
+    summary: "A sale reversal changes effective totals and stock, but should leave a trace of what was recorded. PharmaLink represents the change as a reasoned adjustment alongside the original sale.",
+    topic: "Inventory & adjustment history",
+    flow: ["Record sale", "Keep original", "Record adjustment", "Restore stock once"],
+    flowCaption: "Voiding changes the effective sale and inventory quantities. The original record remains visible, and no refund is processed by this inventory adjustment.",
+    demoLabel: "Try the sale-and-stock demo",
+    sourceContext: "Based on PharmaLink's public README, saleService.ts contracts, and SaleAdjustmentModal.tsx interface inspected for this portfolio. The transaction behavior is documented; this article is not a backend audit.",
+    sections: [
+      { id: "context", title: "The sale and inventory describe the same event", paragraphs: [
+        "I built PharmaLink independently as a school project. Its point-of-sale workflow connects a recorded sale with its line items and the quantities deducted from inventory. The supplied project description uses explicit PostgreSQL transactions through Dapper to coordinate those writes.",
+        "A partial checkout could otherwise leave stock reduced without the corresponding sale, or a sale recorded without the intended deduction. The portfolio failure example illustrates the intended all-or-nothing outcome: a failed sample checkout leaves both records unchanged.",
+      ] },
+      { id: "original", title: "Changing a record should not erase its explanation", paragraphs: [
+        "The current public adjustment interface explains that the original sale and receipt are retained. A correction or void is represented separately, with a staff account, recorded time, and reason. That gives a reviewer both the initial event and an explanation for the later change.",
+        "The service contracts distinguish the original total and items from the effective total and items, together with revisions and adjustment history. This separation lets the interface show the current recorded outcome without overwriting the original story.",
+      ] },
+      { id: "stock", title: "A void restores the current recorded quantities once", paragraphs: [
+        "The public void interface describes returning the current recorded quantities to inventory once and leaving the sale visible as voided. This matters when corrections have already changed the effective items: restoration should follow the current recorded state, rather than blindly returning an earlier quantity.",
+        "The portfolio demo uses a simpler sale with no intervening correction. A four-unit sale reduces ten available units to six. Recording a reasoned void returns the available stock to ten, retains the original ₱100 sale total, and sets the effective total to zero. The completed sample cannot restore those units a second time.",
+      ] },
+      { id: "recovery", title: "An uncertain response needs reconciliation", paragraphs: [
+        "The inspected frontend retains an adjustment request key and its inputs when the server outcome is unknown. It offers a way to check that request before retrying, and a retry reuses the same request instead of inventing a new key.",
+        "The reason is practical: a missing response does not mean a server operation failed. The interface also distinguishes checking an unresolved request from submitting a new adjustment. These controls express the intended recovery contract; their effectiveness depends on the API enforcing that contract as well.",
+      ] },
+      { id: "boundary", title: "Inventory reversal is not a payment refund", paragraphs: [
+        "The public modal explicitly states that the adjustment does not process payment or a refund. The portfolio demo preserves that boundary: it changes sample stock and recorded totals, while performing no live transaction or money movement.",
+        "The design lesson is to keep related quantities consistent and retain the evidence of change. Original records, effective records, and adjustment history each serve a different purpose. Making all three visible turns a sale reversal into something that can be followed and reviewed.",
+      ] },
+    ],
+  },
+]
+
+export function noteReadingMinutes(note: EngineeringNote): number {
+  const words = [note.title, note.summary, ...note.sections.flatMap(section => [section.title, ...section.paragraphs])].join(" ").trim().split(/\s+/).length
+  return Math.max(1, Math.ceil(words / 200))
+}

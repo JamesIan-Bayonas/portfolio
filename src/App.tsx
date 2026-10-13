@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { lazy, Suspense, useEffect, useRef, useState } from "react"
 import {
   motion,
   useScroll,
@@ -13,10 +13,22 @@ import Process from "./components/Process"
 import Projects from "./components/Projects"
 import SkillsMatrix from "./components/SkillsMatrix"
 import ContactFooter from "./components/ContactFooter"
+import EngineeringLab from "./components/EngineeringLab"
+import caseStudyPages from "./data/caseStudyPages.json"
+import sitePages from "./data/sitePages.json"
+import { projects } from "./data/projects"
+import { findCaseStudyPage } from "./lib/caseStudyPages"
+
+const DedicatedCaseStudy = lazy(() => import("./components/DedicatedCaseStudy"))
+const Explore = lazy(() => import("./components/Explore"))
+const Lab = lazy(() => import("./components/Lab"))
+const Notes = lazy(() => import("./components/Notes"))
+const PortfolioSearch = lazy(() => import("./components/PortfolioSearch"))
 
 // ─── ScrollProgress ────────────────────────────────────────────────────────
 function ScrollProgress() {
   const { scrollYProgress } = useScroll()
+  const reduced = useReducedMotion()
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -33,7 +45,7 @@ function ScrollProgress() {
         height: "2px",
         backgroundColor: "var(--color-accent)",
         transformOrigin: "0%",
-        scaleX,
+        scaleX: reduced ? scrollYProgress : scaleX,
         zIndex: 49,
         opacity: 0.85,
       }}
@@ -163,25 +175,81 @@ function AmbientAtmosphere() {
 
 // ─── App ───────────────────────────────────────────────────────────────────
 export default function App() {
+  const [searchOpen, setSearchOpen] = useState(false)
+  const [searchUsed, setSearchUsed] = useState(false)
+  function openSearch() { setSearchUsed(true); setSearchOpen(true) }
+  const caseStudyPage = findCaseStudyPage([...caseStudyPages, ...sitePages], window.location.pathname)
+  const explorePage = caseStudyPage?.path === "/explore/"
+  const labPage = caseStudyPage?.path === "/lab/"
+  const notesPage = Boolean(caseStudyPage?.path.startsWith("/notes/"))
+  const dedicatedProject = projects.find(project => project.id === caseStudyPage?.projectId)
+
+  useEffect(() => {
+    if (!caseStudyPage) return
+    document.title = caseStudyPage.title
+    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]')
+    if (description) description.content = caseStudyPage.description
+  }, [caseStudyPage])
+
+  useEffect(() => {
+    function handleShortcut(event: KeyboardEvent) {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault()
+        setSearchUsed(true)
+        if (!event.repeat) setSearchOpen(open => !open)
+      }
+    }
+    window.addEventListener("keydown", handleShortcut)
+    return () => window.removeEventListener("keydown", handleShortcut)
+  }, [])
+
+  useEffect(() => {
+    if (dedicatedProject || explorePage || labPage || notesPage) return
+    if (!window.location.hash) return
+    let id: string
+    try {
+      id = decodeURIComponent(window.location.hash.slice(1))
+    } catch {
+      return
+    }
+    // The initial fragment is resolved after React mounts its section targets.
+    const frame = requestAnimationFrame(() => {
+      const target = document.getElementById(id)
+      if (id.startsWith("project-")) {
+        const details = target?.querySelector("details")
+        if (details) details.open = true
+      }
+      target?.scrollIntoView({ behavior: "auto" })
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [dedicatedProject, explorePage, labPage, notesPage])
+
   return (
     <div
       className="relative min-h-screen"
       style={{ backgroundColor: "var(--color-bg)", color: "var(--color-text1)" }}
     >
-      <AmbientAtmosphere />
-      <Nav />
+      {!dedicatedProject && !explorePage && !labPage && !notesPage && <AmbientAtmosphere />}
+      <a className="skip-content" href="#main-content">Skip to content</a>
+      <Nav portfolioPage={!dedicatedProject && !explorePage && !labPage && !notesPage} explorePage={explorePage} labPage={labPage} notesPage={notesPage} onOpenSearch={openSearch} />
       <ScrollProgress />
       <main
+        id="main-content"
+        tabIndex={-1}
         className="relative z-10 max-w-none"
         style={{ fontFamily: "var(--font-body)" }}
       >
+        {notesPage ? <Suspense fallback={<p className="case-page-loading" role="status">Opening the engineering notes…</p>}><Notes /></Suspense> : labPage ? <Suspense fallback={<p className="case-page-loading" role="status">Opening the engineering lab…</p>}><Lab /></Suspense> : explorePage ? <Suspense fallback={<p className="case-page-loading" role="status">Opening the project explorer…</p>}><Explore /></Suspense> : dedicatedProject && caseStudyPage ? <Suspense fallback={<p className="case-page-loading" role="status">Opening the case study…</p>}><DedicatedCaseStudy project={dedicatedProject} path={caseStudyPage.path} /></Suspense> : <>
         <Hero />
         <About />
         <Process />
         <Projects />
+        <EngineeringLab />
         <SkillsMatrix />
         <ContactFooter />
+        </>}
       </main>
+      {searchUsed && <Suspense fallback={null}><PortfolioSearch open={searchOpen} onClose={() => setSearchOpen(false)} /></Suspense>}
     </div>
   )
 }

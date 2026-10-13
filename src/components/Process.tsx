@@ -29,11 +29,13 @@ export default function Process() {
   return (
     <section
       id="process"
+      aria-labelledby="process-title"
       className="relative z-10 px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-16"
       style={{ borderTop: "1px solid var(--color-border)" }}
     >
       <div className="max-w-[1440px] mx-auto min-w-0">
-        <motion.p
+        <motion.h2
+          id="process-title"
           className="text-xs tracking-widest mb-12"
           style={{ fontFamily: "var(--font-mono)", color: "var(--color-text2)" }}
           initial={{ opacity: 0, y: 20 }}
@@ -42,7 +44,7 @@ export default function Process() {
           transition={{ duration: 0.55 }}
         >
           HOW I WORK
-        </motion.p>
+        </motion.h2>
 
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-0 items-stretch" onMouseLeave={() => setHoveredStep(null)}>
           {steps.map((step, i) => (
@@ -74,12 +76,12 @@ export default function Process() {
                 >
                   {step.num}
                 </motion.p>
-                <p
+                <h3
                   className="text-sm mb-1 leading-snug"
                   style={{ fontFamily: "var(--font-display)", color: "var(--color-text1)" }}
                 >
                   {step.title}
-                </p>
+                </h3>
                 <p
                   className="text-xs"
                   style={{ fontFamily: "var(--font-mono)", color: "var(--color-text2)" }}

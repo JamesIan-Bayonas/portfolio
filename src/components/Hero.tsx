@@ -1,18 +1,19 @@
-import { useEffect, useRef, useState, type ReactNode } from "react"
+import { useEffect, useState, type ReactNode } from "react"
 import { motion, useReducedMotion } from "motion/react"
+import { projects } from "../data/projects"
 
 const linePairs = [
   {
-    old: '  role: "builds websites for clients",',
-    next: '  role: "architects scalable distributed systems",',
+    old: '  catch: "paper records",',
+    next: '  catch: "photo → listing → auction",',
   },
   {
-    old: '  approach: "solves bugs when they appear",',
-    next: '  approach: "eliminates failure modes before production",',
+    old: '  delivery: "untracked handoffs",',
+    next: '  delivery: "pickup → transit → verification",',
   },
   {
-    old: '  scope: "knows React and some backend",',
-    next: '  scope: "owns the full stack, schema through deploy",',
+    old: '  settlement: "manual reconciliation",',
+    next: '  settlement: "inspection → wallet ledger",',
   },
 ]
 
@@ -23,11 +24,15 @@ const INITIAL_PAUSE = 600
 function DiffPanel() {
   const reduced = useReducedMotion()
   const [typedLines, setTypedLines] = useState<string[]>(["", "", ""])
-  const [visibleLines, setVisibleLines] = useState<boolean[]>([false, false, false])
+  const [visibleLines, setVisibleLines] = useState<boolean[]>([
+    false,
+    false,
+    false,
+  ])
 
   useEffect(() => {
     if (reduced) {
-      setTypedLines(linePairs.map(pair => pair.next))
+      setTypedLines(linePairs.map((pair) => pair.next))
       setVisibleLines([true, true, true])
       return
     }
@@ -61,7 +66,9 @@ function DiffPanel() {
         for (let c = 1; c <= target.length; c++) {
           if (cancelled) return
           const lineIdx = i
-          setTypedLines((prev) => prev.map((l, j) => (j === lineIdx ? target.slice(0, c) : l)))
+          setTypedLines((prev) =>
+            prev.map((l, j) => (j === lineIdx ? target.slice(0, c) : l)),
+          )
           await sleep(CHAR_DELAY)
         }
       }
@@ -90,12 +97,27 @@ function DiffPanel() {
         style={{ borderColor: "var(--color-border)" }}
       >
         <div className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "#FF5F57" }} />
-          <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "#FFBD2E" }} />
-          <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "#28C840" }} />
+          <span
+            className="w-3 h-3 rounded-full"
+            style={{ backgroundColor: "#FF5F57" }}
+          />
+          <span
+            className="w-3 h-3 rounded-full"
+            style={{ backgroundColor: "#FFBD2E" }}
+          />
+          <span
+            className="w-3 h-3 rounded-full"
+            style={{ backgroundColor: "#28C840" }}
+          />
         </div>
-        <span className="text-xs" style={{ fontFamily: "var(--font-mono)", color: "var(--color-text2)" }}>
-          developer.config.ts
+        <span
+          className="text-xs"
+          style={{
+            fontFamily: "var(--font-mono)",
+            color: "var(--color-text2)",
+          }}
+        >
+          isdalog.workflow.ts
         </span>
         <span
           className="ml-auto text-xs px-2 py-0.5 border"
@@ -110,9 +132,12 @@ function DiffPanel() {
         </span>
       </div>
 
-      <div className="p-0 text-xs sm:text-sm leading-6 sm:leading-7" style={{ fontFamily: "var(--font-mono)" }}>
-        <DiffLine type="ctx">{"const config = {"}</DiffLine>
-        <DiffLine type="ctx">{'  name: "James Ian Bayonas",'}</DiffLine>
+      <div
+        className="p-0 text-xs sm:text-sm leading-6 sm:leading-7"
+        style={{ fontFamily: "var(--font-mono)" }}
+      >
+        <DiffLine type="ctx">{"const workflow = {"}</DiffLine>
+        <DiffLine type="ctx">{'  project: "IsdaLog",'}</DiffLine>
 
         {linePairs.map((pair, i) => (
           <div key={i}>
@@ -123,7 +148,10 @@ function DiffPanel() {
                 {typedLines[i].length < pair.next.length && (
                   <span
                     className="inline-block w-1.5 h-4 align-middle animate-pulse"
-                    style={{ backgroundColor: "var(--color-accent)", marginLeft: "1px" }}
+                    style={{
+                      backgroundColor: "var(--color-accent)",
+                      marginLeft: "1px",
+                    }}
                   />
                 )}
               </DiffLine>
@@ -141,14 +169,19 @@ function DiffPanel() {
             color: "var(--color-text2)",
           }}
         >
-          refactor: clarify self-description to match actual scope of work
+          A system I built independently for transparency in local fisheries.
         </div>
       </div>
     </div>
   )
 }
 
-function DiffLine({ type, children }: { type: "add" | "remove" | "ctx"; children: ReactNode }) {
+interface DiffLineProps {
+  type: "add" | "remove" | "ctx"
+  children: ReactNode
+}
+
+function DiffLine({ type, children }: DiffLineProps) {
   const prefix = type === "add" ? "+" : type === "remove" ? "−" : " "
   const color =
     type === "add"
@@ -164,8 +197,14 @@ function DiffLine({ type, children }: { type: "add" | "remove" | "ctx"; children
         : "transparent"
 
   return (
-    <div className="flex min-w-0 items-baseline gap-2 sm:gap-3 px-3 sm:px-4" style={{ backgroundColor: bg, minHeight: "28px" }}>
-      <span className="text-xs w-3 shrink-0 select-none" style={{ color, opacity: 0.7 }}>
+    <div
+      className="flex min-w-0 items-baseline gap-2 sm:gap-3 px-3 sm:px-4"
+      style={{ backgroundColor: bg, minHeight: "28px" }}
+    >
+      <span
+        className="text-xs w-3 shrink-0 select-none"
+        style={{ color, opacity: 0.7 }}
+      >
         {prefix}
       </span>
       <span
@@ -188,7 +227,12 @@ export default function Hero() {
   const reduced = useReducedMotion()
 
   function fadeUp(delay: number) {
-    if (reduced) return { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0.3, delay } }
+    if (reduced)
+      return {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        transition: { duration: 0.3, delay },
+      }
     return {
       initial: { opacity: 0, y: 20 },
       animate: { opacity: 1, y: 0 },
@@ -197,18 +241,22 @@ export default function Hero() {
   }
 
   return (
-    <section id="about" className="relative z-10 min-h-[100svh] flex items-center pt-28 pb-16 lg:pt-[72px] lg:pb-0">
-      <div
-        className="max-w-[1440px] mx-auto min-w-0 px-4 sm:px-6 lg:px-10 w-full grid grid-cols-1 gap-10 lg:gap-16 items-center lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)]"
-      >
+    <section
+      id="about"
+      className="relative z-10 min-h-[100svh] flex items-center pt-28 pb-16 lg:pt-[72px] lg:pb-0"
+    >
+      <div className="max-w-[1440px] mx-auto min-w-0 px-4 sm:px-6 lg:px-10 w-full grid grid-cols-1 gap-10 lg:gap-16 items-center lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)]">
         {/* Left */}
         <div className="flex flex-col gap-0">
           <motion.p
             {...fadeUp(0)}
             className="text-xs tracking-widest mb-6"
-            style={{ fontFamily: "var(--font-mono)", color: "var(--color-text2)" }}
+            style={{
+              fontFamily: "var(--font-mono)",
+              color: "var(--color-text2)",
+            }}
           >
-            a3f9c2 — FULL-STACK DEVELOPER
+            JAMES IAN BAYONAS / FULL-STACK DEVELOPER
           </motion.p>
 
           <motion.h1
@@ -221,20 +269,27 @@ export default function Hero() {
               color: "var(--color-text1)",
             }}
           >
-            Building scalable web systems where precision meets logic.
+            I build systems that make complex workflows clear.
           </motion.h1>
 
           <motion.p
             {...fadeUp(0.2)}
             className="text-base leading-relaxed max-w-md mb-8"
-            style={{ fontFamily: "var(--font-body)", color: "var(--color-text2)" }}
+            style={{
+              fontFamily: "var(--font-body)",
+              color: "var(--color-text2)",
+            }}
           >
-            I design and engineer full-stack systems—from transactional database schemas in MSSQL,
-            PostgreSQL, and MySQL to reactive interfaces in React—with an emphasis on correctness,
-            data integrity, and performance. Based in the Philippines, open to remote opportunities.
+            Based in the Philippines, I build full-stack applications for
+            fisheries, housing, asset management, and pharmacy operations. My
+            focus is clear interfaces, connected workflows, and consistent data
+            from the first action to the final record.
           </motion.p>
 
-          <motion.div {...fadeUp(0.3)} className="flex flex-col min-[400px]:flex-row flex-wrap items-stretch min-[400px]:items-center gap-3 mb-8">
+          <motion.div
+            {...fadeUp(0.3)}
+            className="flex flex-col min-[400px]:flex-row flex-wrap items-stretch min-[400px]:items-center gap-3 mb-8"
+          >
             <motion.a
               href="#projects"
               className="text-sm text-center min-h-11 px-6 py-3"
@@ -244,16 +299,21 @@ export default function Hero() {
                 color: "var(--color-bg)",
                 display: "inline-block",
               }}
-              whileHover={reduced ? {} : { y: -2, boxShadow: "0 0 28px -4px var(--color-accent-shadow)" }}
+              whileHover={
+                reduced
+                  ? {}
+                  : {
+                      y: -2,
+                      boxShadow: "0 0 28px -4px var(--color-accent-shadow)",
+                    }
+              }
               whileTap={reduced ? {} : { scale: 0.98 }}
               transition={{ duration: 0.18 }}
             >
-              Explore Work →
+              Explore case studies →
             </motion.a>
             <a
-              href="https://github.com/JamesIan-Bayonas"
-              target="_blank"
-              rel="noopener noreferrer"
+               href="/lab/"
               className="text-sm text-center min-h-11 px-6 py-3 border transition-colors duration-150"
               style={{
                 fontFamily: "var(--font-mono)",
@@ -261,42 +321,78 @@ export default function Hero() {
                 borderColor: "var(--color-border)",
               }}
               onMouseEnter={(e) => {
-                ;(e.currentTarget as HTMLElement).style.borderColor = "var(--color-accent)"
-                ;(e.currentTarget as HTMLElement).style.color = "var(--color-accent)"
+                ;(e.currentTarget as HTMLElement).style.borderColor =
+                  "var(--color-accent)"
+                ;(e.currentTarget as HTMLElement).style.color =
+                  "var(--color-accent)"
               }}
               onMouseLeave={(e) => {
-                ;(e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)"
-                ;(e.currentTarget as HTMLElement).style.color = "var(--color-text1)"
+                ;(e.currentTarget as HTMLElement).style.borderColor =
+                  "var(--color-border)"
+                ;(e.currentTarget as HTMLElement).style.color =
+                  "var(--color-text1)"
               }}
             >
-              View GitHub
+              Try the engineering lab
             </a>
           </motion.div>
 
+          <motion.p {...fadeUp(0.4)} className="hero-project-count font-mono">
+            {projects.length} systems ·{" "}
+            {
+              projects.filter((project) => project.role === "Sole developer")
+                .length
+            }{" "}
+            built independently · 1 collaborative capstone
+          </motion.p>
           <motion.div {...fadeUp(0.4)} className="flex items-center gap-5">
             <a
               href="https://github.com/JamesIan-Bayonas"
+              aria-label="GitHub profile"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors duration-150"
               style={{ color: "var(--color-text2)" }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-text1)" }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-text2)" }}
+              onMouseEnter={(e) => {
+                ;(e.currentTarget as HTMLElement).style.color =
+                  "var(--color-text1)"
+              }}
+              onMouseLeave={(e) => {
+                ;(e.currentTarget as HTMLElement).style.color =
+                  "var(--color-text2)"
+              }}
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
               </svg>
             </a>
             <a
               href="https://www.linkedin.com/in/james-ian-bayonas-6a556323a/"
+              aria-label="LinkedIn profile"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors duration-150"
               style={{ color: "var(--color-text2)" }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-text1)" }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-text2)" }}
+              onMouseEnter={(e) => {
+                ;(e.currentTarget as HTMLElement).style.color =
+                  "var(--color-text1)"
+              }}
+              onMouseLeave={(e) => {
+                ;(e.currentTarget as HTMLElement).style.color =
+                  "var(--color-text2)"
+              }}
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
               </svg>
             </a>
@@ -310,6 +406,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
         >
           <DiffPanel />
+          <a href={projects.find(project => project.id === "isdalog")?.caseStudyPath ?? "#project-isdalog"} className="hero-feature-link font-mono">
+            Explore IsdaLog <span aria-hidden="true">↗</span>
+          </a>
         </motion.div>
       </div>
     </section>

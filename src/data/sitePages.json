@@ -1,0 +1,37 @@
+[
+  {
+    "path": "/explore/",
+    "title": "Explore Projects | James Ian Bayonas",
+    "description": "Explore four full-stack projects by domain and technology. Find case studies, interactive walkthroughs, source code, and live systems built by James Ian Bayonas."
+  },
+  {
+    "path": "/lab/",
+    "title": "Engineering Lab | James Ian Bayonas",
+    "description": "Try interactive demonstrations from CentraLog, DormFix, IsdaLog, and PharmaLink. Explore valuation, receipt review, custody and settlement, and sale-and-stock accounting using sample data."
+  },
+  {
+    "path": "/notes/",
+    "title": "Engineering Notes | James Ian Bayonas",
+    "description": "Explore the reasoning behind DormFix receipt review, IsdaLog custody and settlement, CentraLog calculated valuation, and PharmaLink sale adjustments."
+  },
+  {
+    "path": "/notes/dormfix-receipt-review/",
+    "title": "Why Receipt Parsing Is Not Payment Verification | James Ian Bayonas",
+    "description": "A DormFix engineering note explaining the separate roles of OCR, local model parsing, schema validation, deterministic checks, and landlord review."
+  },
+  {
+    "path": "/notes/isdalog-delivery-settlement/",
+    "title": "Delivery Confirmation and Settlement | James Ian Bayonas",
+    "description": "An IsdaLog engineering note explaining why custody, delivery confirmation, buyer inspection, and settlement are separate workflow events."
+  },
+  {
+    "path": "/notes/centralog-calculated-valuation/",
+    "title": "Calculated Asset Valuation | James Ian Bayonas",
+    "description": "A CentraLog engineering note on deriving valuation from asset and maintenance records, strategy formulas, and an explicit downtime policy."
+  },
+  {
+    "path": "/notes/pharmalink-void-adjustment/",
+    "title": "Why a Void Preserves the Original Sale | James Ian Bayonas",
+    "description": "A PharmaLink engineering note on original and effective sale records, reasoned adjustments, stock restoration, and uncertain-response recovery."
+  }
+]

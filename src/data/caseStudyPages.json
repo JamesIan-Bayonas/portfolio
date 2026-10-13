@@ -1,0 +1,26 @@
+[
+  {
+    "projectId": "isdalog",
+    "path": "/projects/isdalog/",
+    "title": "IsdaLog Case Study | James Ian Bayonas",
+    "description": "An independently built fisheries marketplace connecting catch registration, bidding, verified delivery, and buyer-confirmed settlement. Explore the guided IsdaLog walkthrough."
+  },
+  {
+    "projectId": "dormfix",
+    "path": "/projects/dormfix/",
+    "title": "DormFix Case Study | James Ian Bayonas",
+    "description": "A collaborative dormitory management capstone. Explore James Ian Bayonas's feature development contribution and a guided sample receipt-review pipeline."
+  },
+  {
+    "projectId": "centralog",
+    "path": "/projects/centralog/",
+    "title": "CentraLog Case Study | James Ian Bayonas",
+    "description": "An independently built school project connecting asset custody, maintenance, and valuation. Explore the guided lifecycle and interactive depreciation demo."
+  },
+  {
+    "projectId": "pharmalink",
+    "path": "/projects/pharmalink/",
+    "title": "PharmaLink Case Study | James Ian Bayonas",
+    "description": "An independently built pharmacy inventory and POS school project. Explore a sample sale, stock deduction, failed checkout, and recorded void adjustment."
+  }
+]

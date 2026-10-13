@@ -3,11 +3,45 @@ import { motion, AnimatePresence, useReducedMotion } from "motion/react"
 
 const resumeUrl = `${import.meta.env.BASE_URL}RESUME.pdf`
 
-const links = ["about", "process", "projects", "skills", "contact"]
+const links = ["about", "process", "projects", "explore", "lab", "notes", "skills", "contact"]
+
+interface NavProps {
+  onOpenSearch: () => void
+  portfolioPage?: boolean
+  explorePage?: boolean
+  labPage?: boolean
+  notesPage?: boolean
+}
+
+function SearchIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      aria-hidden="true"
+    >
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="m16 16 5 5" />
+    </svg>
+  )
+}
 
 function SunIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="12" cy="12" r="4" />
       <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
     </svg>
@@ -16,7 +50,16 @@ function SunIcon() {
 
 function MoonIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
     </svg>
   )
@@ -26,8 +69,8 @@ function applyTheme(t: "dark" | "light") {
   document.documentElement.setAttribute("data-theme", t)
 }
 
-export default function Nav() {
-  const [active, setActive] = useState("about")
+export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = false, labPage = false, notesPage = false }: NavProps) {
+  const [active, setActive] = useState(notesPage ? "notes" : labPage ? "lab" : explorePage ? "explore" : portfolioPage ? "about" : "")
   const [menuOpen, setMenuOpen] = useState(false)
   const [logoCursor, setLogoCursor] = useState(true)
   const [theme, setTheme] = useState<"dark" | "light">("dark")
@@ -36,7 +79,9 @@ export default function Nav() {
 
   // Initialise theme from localStorage on mount
   useEffect(() => {
-    const saved = localStorage.getItem("portfolio-theme") as "dark" | "light" | null
+    const saved = localStorage.getItem(
+      "portfolio-theme",
+    ) as "dark" | "light" | null
     const initial = saved === "light" ? "light" : "dark"
     setTheme(initial)
     applyTheme(initial)
@@ -52,10 +97,15 @@ export default function Nav() {
   useEffect(() => {
     if (!menuOpen) return
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") { setMenuOpen(false); toggleRef.current?.focus() }
+      if (event.key === "Escape") {
+        setMenuOpen(false)
+        toggleRef.current?.focus()
+      }
     }
-    const desktop = window.matchMedia("(min-width: 1024px)")
-    const onResize = () => { if (desktop.matches) setMenuOpen(false) }
+    const desktop = window.matchMedia("(min-width: 1280px)")
+    const onResize = () => {
+      if (desktop.matches) setMenuOpen(false)
+    }
     document.addEventListener("keydown", onKey)
     desktop.addEventListener("change", onResize)
     return () => {
@@ -71,7 +121,10 @@ export default function Nav() {
   }, [reduced])
 
   useEffect(() => {
-    const sections = links.map((l) => document.getElementById(l === "about" ? "about" : l))
+    if (!portfolioPage) return
+    const sections = links.map((l) =>
+      document.getElementById(l === "about" ? "about" : l),
+    )
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -85,7 +138,7 @@ export default function Nav() {
     )
     sections.forEach((s) => s && observer.observe(s))
     return () => observer.disconnect()
-  }, [])
+  }, [portfolioPage])
 
   return (
     <header
@@ -101,8 +154,11 @@ export default function Nav() {
         {/* Logo */}
         <div className="flex min-w-0 items-center gap-2 sm:gap-3">
           <span
-            className="text-sm select-none"
-            style={{ fontFamily: "var(--font-mono)", color: "var(--color-accent)" }}
+            className="text-sm select-none shrink-0 whitespace-nowrap"
+            style={{
+              fontFamily: "var(--font-mono)",
+              color: "var(--color-accent)",
+            }}
           >
             [DEV/
             <span
@@ -120,23 +176,33 @@ export default function Nav() {
           </span>
           <span
             className="text-xs sm:text-sm font-bold"
-            style={{ fontFamily: "var(--font-display)", color: "var(--color-text1)" }}
+            style={{
+              fontFamily: "var(--font-display)",
+              color: "var(--color-text1)",
+            }}
           >
             James Ian Bayonas
           </span>
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav
+          className="hidden xl:flex items-center gap-5"
+          aria-label="Main navigation"
+        >
           {links.map((link) => (
             <a
               key={link}
-              href={`#${link}`}
+              href={link === "explore" ? "/explore/" : link === "lab" ? "/lab/" : link === "notes" ? "/notes/" : `${portfolioPage ? "" : "/"}#${link}`}
+              aria-current={(link === "explore" && explorePage) || (link === "lab" && labPage) || (link === "notes" && notesPage) ? "page" : undefined}
               onClick={() => setActive(link)}
               className="relative text-sm lowercase transition-colors duration-150 pb-1"
               style={{
                 fontFamily: "var(--font-mono)",
-                color: active === link ? "var(--color-accent)" : "var(--color-text2)",
+                color:
+                  active === link
+                    ? "var(--color-accent)"
+                    : "var(--color-text2)",
               }}
             >
               {link}
@@ -151,14 +217,35 @@ export default function Nav() {
             </a>
           ))}
 
+          <button
+            type="button"
+            onClick={onOpenSearch}
+            className="nav-search"
+            aria-label="Search portfolio"
+            aria-keyshortcuts="Control+k Meta+k"
+          >
+            <SearchIcon />
+            <kbd>⌘/Ctrl K</kbd>
+          </button>
+
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
-            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            aria-label={
+              theme === "dark"
+                ? "Switch to light theme"
+                : "Switch to dark theme"
+            }
             className="transition-colors duration-150 w-9 h-9 flex items-center justify-center"
             style={{ color: "var(--color-text2)" }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-text1)" }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-text2)" }}
+            onMouseEnter={(e) => {
+              ;(e.currentTarget as HTMLElement).style.color =
+                "var(--color-text1)"
+            }}
+            onMouseLeave={(e) => {
+              ;(e.currentTarget as HTMLElement).style.color =
+                "var(--color-text2)"
+            }}
           >
             {theme === "dark" ? <SunIcon /> : <MoonIcon />}
           </button>
@@ -174,12 +261,16 @@ export default function Nav() {
               borderColor: "var(--color-border)",
             }}
             onMouseEnter={(e) => {
-              ;(e.currentTarget as HTMLElement).style.borderColor = "var(--color-accent)"
-              ;(e.currentTarget as HTMLElement).style.color = "var(--color-accent)"
+              ;(e.currentTarget as HTMLElement).style.borderColor =
+                "var(--color-accent)"
+              ;(e.currentTarget as HTMLElement).style.color =
+                "var(--color-accent)"
             }}
             onMouseLeave={(e) => {
-              ;(e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)"
-              ;(e.currentTarget as HTMLElement).style.color = "var(--color-text1)"
+              ;(e.currentTarget as HTMLElement).style.borderColor =
+                "var(--color-border)"
+              ;(e.currentTarget as HTMLElement).style.color =
+                "var(--color-text1)"
             }}
           >
             Resume
@@ -187,14 +278,35 @@ export default function Nav() {
         </nav>
 
         {/* Mobile: theme toggle + hamburger */}
-        <div className="lg:hidden flex items-center gap-1">
+        <div className="xl:hidden flex items-center gap-0">
+          <button
+            type="button"
+            onClick={() => {
+              setMenuOpen(false)
+              onOpenSearch()
+            }}
+            className="nav-search-mobile"
+            aria-label="Search portfolio"
+          >
+            <SearchIcon />
+          </button>
           <button
             onClick={toggleTheme}
-            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            aria-label={
+              theme === "dark"
+                ? "Switch to light theme"
+                : "Switch to dark theme"
+            }
             className="transition-colors duration-150 w-11 h-11 flex items-center justify-center"
             style={{ color: "var(--color-text2)" }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-text1)" }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-text2)" }}
+            onMouseEnter={(e) => {
+              ;(e.currentTarget as HTMLElement).style.color =
+                "var(--color-text1)"
+            }}
+            onMouseLeave={(e) => {
+              ;(e.currentTarget as HTMLElement).style.color =
+                "var(--color-text2)"
+            }}
           >
             {theme === "dark" ? <SunIcon /> : <MoonIcon />}
           </button>
@@ -216,7 +328,9 @@ export default function Nav() {
             <motion.span
               className="block w-5 h-px"
               style={{ backgroundColor: "var(--color-text1)" }}
-              animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+              animate={
+                menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }
+              }
               transition={{ duration: 0.15 }}
             />
             <motion.span
@@ -234,7 +348,7 @@ export default function Nav() {
         {menuOpen && (
           <motion.div
             id="mobile-navigation"
-            className="max-h-[calc(100dvh-72px)] overflow-y-auto lg:hidden border-t px-4 sm:px-6 lg:px-10 py-6 flex flex-col gap-4"
+            className="max-h-[calc(100dvh-72px)] overflow-y-auto xl:hidden border-t px-4 sm:px-6 lg:px-10 py-6 flex flex-col gap-4"
             style={{
               backgroundColor: "var(--color-bg)",
               borderColor: "var(--color-border)",
@@ -247,12 +361,19 @@ export default function Nav() {
             {links.map((link) => (
               <a
                 key={link}
-                href={`#${link}`}
-                onClick={() => { setActive(link); setMenuOpen(false) }}
+                href={link === "explore" ? "/explore/" : link === "lab" ? "/lab/" : link === "notes" ? "/notes/" : `${portfolioPage ? "" : "/"}#${link}`}
+                aria-current={(link === "explore" && explorePage) || (link === "lab" && labPage) || (link === "notes" && notesPage) ? "page" : undefined}
+                onClick={() => {
+                  setActive(link)
+                  setMenuOpen(false)
+                }}
                 className="text-sm lowercase flex items-center min-h-11"
                 style={{
                   fontFamily: "var(--font-mono)",
-                  color: active === link ? "var(--color-accent)" : "var(--color-text2)",
+                  color:
+                    active === link
+                      ? "var(--color-accent)"
+                      : "var(--color-text2)",
                 }}
               >
                 {link}

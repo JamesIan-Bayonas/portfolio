@@ -1,272 +1,157 @@
-import { useEffect, useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
-import SpotlightCard from "./ui/SpotlightCard"
+import { projects, type Project } from "../data/projects"
+import ProjectCaseStudy from "./ProjectCaseStudy"
 
-// 1. Import image assets directly
-import dormFixImg from "./docs/demo/dorm-fix-demo.png"
-import isdaLogImg from "./docs/demo/isdalog-demo.png"
-import pharmaLinkImg from "./docs/demo/pharmalink-demo.png"
-import centraLogImg from "./docs/demo/centralog-demo.png"
-
-const projects = [
-  {
-    num: "01",
-    hash: "7e1d40",
-    title: "DORMFIX — Property & Dormitory Management System",
-    description:
-      "A full-stack dormitory management platform featuring a Zero-Trust AI payment verification pipeline (Tesseract OCR + LLM receipt audit), ACID-compliant room capacity allocation in PostgreSQL, real-time WebSocket communication, and automated maintenance triaging.",
-    tech: ["React 19", "TypeScript", "Node.js", "Express 5", "PostgreSQL", "Supabase", "Tesseract.js", "Gemini AI", "Socket.io", "Tailwind CSS", "Recharts"],
-    additions: 1240,
-    deletions: 182,
-    demo: "https://dormfix-jamesian-bayonas-projects.vercel.app",
-    source: "https://github.com/JamesIan-Bayonas/dormfix",
-    image: dormFixImg,
-    imageAlt: "Dormitory management dashboard",
-  },
-  {
-    num: "02",
-    hash: "b2c8f1",
-    title: "ISDALOG — Maritime Catch Consignment & Escrow Logistics Ecosystem",
-    description:
-      "An autonomous maritime catch consignment and cold-chain logistics platform coupling an Edge-to-Cloud AI Telegram gateway (Gemini 2.5 Flash + Ollama LLaVA vision fallback) with a real-time Laravel/Inertia core, sub-second Reverb WebSocket bidding, cryptographic dual-OTP custody handshakes, and automated wallet escrow settlements.",
-    tech: ["Laravel 11", "React 18", "Inertia.js", "Laravel Reverb", "Node.js", "Gemini AI", "Ollama", "Leaflet", "PostgreSQL", "Supabase", "Tailwind CSS"],
-    additions: 1540,
-    deletions: 210,
-    demo: "https://isdalog-production.up.railway.app",
-    source: "https://github.com/JamesIan-Bayonas/isdalog",
-    image: isdaLogImg,
-    imageAlt: "Maritime logistics platform",
-  },
-  {
-    num: "03",
-    hash: "d4a391",
-    title: "PHARMALINK — Clinical Pharmacy Inventory & POS System",
-    description:
-      "A high-availability clinical pharmacy management and POS platform built with ASP.NET Core 8 and Dapper. Features atomic ACID-compliant multi-table sales transactions, automated stock deduction and void restoration, custom JWT role-based access control (Admin/Pharmacist), and real-time expiration audits.",
-    tech: ["ASP.NET Core 8", "C#", "React 19", "TypeScript", "PostgreSQL", "Supabase", "Dapper", "JWT Auth", "Tailwind CSS", "Recharts"],
-    additions: 1120,
-    deletions: 145,
-    demo: "https://pharmalink-web-wine.vercel.app/dashboard",
-    source: "https://github.com/JamesIan-Bayonas/pharmalink",
-    image: pharmaLinkImg,
-    imageAlt: "Pharmacy inventory and POS system",
-  },
-  {
-    num: "04",
-    hash: "9fe05c",
-    title: "CENTRALOG — Institutional Asset Telemetry & Depreciation Ledger",
-    description:
-      "An enterprise hardware resource management and financial accounting platform built with .NET 8 and React 19. Features dynamic straight-line/double-declining depreciation accounting adjusting for repair downtime, an autonomous 60-second preventative maintenance background daemon, atomic bulk transfers with audit trails, and printable QR sticker queues.",
-    tech: ["ASP.NET Core 8", "C#", "React 19", "TypeScript", "EF Core 8", "Azure SQL Database", "JWT Auth", "Vitest", "xUnit"],
-    additions: 1420,
-    deletions: 165,
-    demo: "https://centralog.vercel.app/",
-    source: "https://github.com/JamesIan-Bayonas/centralog",
-    image: centraLogImg,
-    imageAlt: "Asset telemetry and depreciation dashboard",
-  },
-]
-
-function useCountUp(target: number, duration = 600) {
-  const [value, setValue] = useState(0)
-  const [started, setStarted] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
-  const reduced = useReducedMotion()
-
-  useEffect(() => {
-    if (reduced) { setValue(target); return }
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting && !started) setStarted(true) },
-      { threshold: 0.4 },
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [reduced, started, target])
-
-  useEffect(() => {
-    if (!started || reduced) return
-    let frame: number
-    const start = performance.now()
-    function tick(now: number) {
-      const elapsed = now - start
-      const progress = Math.min(elapsed / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 3)
-      setValue(Math.round(eased * target))
-      if (progress < 1) frame = requestAnimationFrame(tick)
-    }
-    frame = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(frame)
-  }, [started, reduced, target, duration])
-
-  return { value, ref }
+interface ProjectCardProps {
+  project: Project
+  index: number
 }
 
-function DiffStatBadge({ additions, deletions }: { additions: number; deletions: number }) {
-  const add = useCountUp(additions)
-  const del = useCountUp(deletions)
+function ProjectCard({ project, index }: ProjectCardProps) {
+  const reduced = useReducedMotion()
+  const featured = index === 0
+
   return (
-    <div
-      ref={add.ref}
-      className="absolute top-4 right-4 z-20 flex items-center gap-2 border px-3 py-1"
-      style={{
-        backgroundColor: "var(--color-surface)",
-        borderColor: "var(--color-border)",
-        borderRadius: "4px",
-      }}
+    <motion.article
+      id={`project-${project.id}`}
+      className={`project-card${featured ? " project-card-featured" : ""}`}
+      aria-labelledby={`${project.id}-title`}
+      initial={reduced ? false : { opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.45 }}
     >
-      <span className="text-xs font-mono" style={{ color: "var(--color-diff-add)" }}>+{add.value}</span>
-      <span className="text-xs font-mono" style={{ color: "var(--color-text2)" }}>/</span>
-      <span className="text-xs font-mono" style={{ color: "var(--color-diff-remove)" }}>−{del.value}</span>
-    </div>
+      <div className="project-card-main">
+        <div className="project-visual">
+          <div className="project-image-bar font-mono">
+            <span>
+              {String(index + 1).padStart(2, "0")} / {project.name}
+            </span>
+            <span>{featured ? "FEATURED PROJECT" : project.context}</span>
+          </div>
+          <a
+            href={
+              project.demoAvailable === false
+                ? project.caseStudyPath
+                : project.demo
+            }
+            target={project.demoAvailable === false ? undefined : "_blank"}
+            rel={
+              project.demoAvailable === false
+                ? undefined
+                : "noopener noreferrer"
+            }
+            aria-label={`Open ${project.name} ${
+              project.demoAvailable === false ? "case study" : "live demo"
+            }`}
+          >
+            <img
+              src={project.image}
+              alt={project.imageAlt}
+              loading="lazy"
+              width="1600"
+              height="900"
+            />
+            <span className="project-image-caption font-mono">
+              {project.demoAvailable === false
+                ? "Explore the case study"
+                : "Explore the live system"}{" "}
+              <span aria-hidden="true">↗</span>
+            </span>
+          </a>
+        </div>
+        <div className="project-overview">
+          <p className="project-eyebrow font-mono">{project.category}</p>
+          <h3 id={`${project.id}-title`} className="project-name">
+            {project.name}
+          </h3>
+          <p className="project-title">{project.title}</p>
+          <p className="project-description">{project.description}</p>
+          <dl className="project-credits">
+            <div>
+              <dt>My role</dt>
+              <dd>{project.role}</dd>
+            </div>
+            <div>
+              <dt>Context</dt>
+              <dd>{project.context}</dd>
+            </div>
+          </dl>
+          <ul
+            className="project-tech"
+            aria-label={`${project.name} technologies`}
+          >
+            {project.tech.map((tech) => (
+              <li key={tech} className="font-mono">
+                {tech}
+              </li>
+            ))}
+          </ul>
+          <div className="project-links font-mono">
+            {project.caseStudyPath && (
+              <a href={project.caseStudyPath}>
+                Explore the full case study <span aria-hidden="true">↗</span>
+              </a>
+            )}
+            {project.demoAvailable !== false ? (
+              <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                Live demo <span aria-hidden="true">↗</span>
+              </a>
+            ) : (
+              <span className="demo-unavailable">Live demo unavailable</span>
+            )}
+            <a href={project.source} target="_blank" rel="noopener noreferrer">
+              Source code <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <ProjectCaseStudy project={project} />
+    </motion.article>
   )
 }
 
-const VIEW = { once: true, margin: "-80px" } as const
-const EASE = [0.16, 1, 0.3, 1] as const
-
 export default function Projects() {
-  const reduced = useReducedMotion()
-
   return (
     <section
       id="projects"
-      className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
-      style={{ borderTop: "1px solid var(--color-border)" }}
+      className="project-section relative z-10 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
     >
-      <div className="max-w-[1440px] mx-auto min-w-0">
-        <motion.p
-          className="text-xs tracking-widest mb-16 font-mono"
-          style={{ color: "var(--color-text2)" }}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={VIEW}
-          transition={{ duration: 0.55 }}
-        >
-          7e1d40 — SELECTED WORK
-        </motion.p>
-
-        {projects.map((project, i) => {
-          const isEven = i % 2 === 1
-
-          const visual = (
-            <motion.div
-              className={isEven ? "min-w-0 order-1 lg:order-2" : "min-w-0 order-1"}
-              initial={reduced ? { opacity: 0 } : { opacity: 0, x: isEven ? 28 : -28 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={VIEW}
-              transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
-            >
-              <SpotlightCard
-                className="relative border flex items-center justify-center overflow-hidden p-2"
-                style={{
-                  aspectRatio: "16/9",
-                  backgroundColor: "var(--color-surface)",
-                  borderColor: "var(--color-border)",
-                  borderRadius: "4px",
-                }}
-              >
-                <DiffStatBadge additions={project.additions} deletions={project.deletions} />
-                <motion.img
-                  src={project.image}
-                  alt={project.imageAlt}
-                  className="w-full h-full object-cover rounded-[2px]"
-                  style={{ opacity: 0.85 }}
-                  whileHover={reduced ? {} : { scale: 1.03, opacity: 1 }}
-                  transition={{ duration: 0.4, ease: EASE }}
-                />
-              </SpotlightCard>
-            </motion.div>
-          )
-
-          const content = (
-            <motion.div
-              className={isEven ? "min-w-0 flex flex-col justify-center order-2 lg:order-1" : "min-w-0 flex flex-col justify-center order-2"}
-              initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={VIEW}
-              transition={{ duration: 0.65, delay: 0.15, ease: EASE }}
-              whileHover={reduced ? {} : { y: -4 }}
-            >
-              <p className="text-xs mb-3 font-mono" style={{ color: "var(--color-text2)" }}>
-                {project.hash} · {project.num} of 04
-              </p>
-              <h3
-                className="mb-4 leading-tight font-display font-semibold"
-                style={{ fontSize: "clamp(22px, 2vw, 30px)", color: "var(--color-text1)" }}
-              >
-                {project.title}
-              </h3>
-              <p className="text-sm leading-relaxed mb-6 font-body" style={{ color: "var(--color-text2)" }}>
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-8">
-                {project.tech.map((t, ti) => (
-                  <motion.span
-                    key={t}
-                    className="text-xs px-3 py-1 border font-mono"
-                    style={{
-                      color: "var(--color-text2)",
-                      borderColor: "var(--color-border)",
-                      borderRadius: "4px",
-                      display: "inline-block",
-                    }}
-                    initial={{ opacity: 0, y: 8 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={VIEW}
-                    transition={{ duration: 0.35, delay: 0.25 + ti * 0.04 }}
-                    whileHover={reduced ? {} : { borderColor: "var(--color-accent)", color: "var(--color-text1)" }}
-                  >
-                    {t}
-                  </motion.span>
-                ))}
-              </div>
-              <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs min-h-11 inline-flex items-center px-5 py-2.5 border font-mono transition-colors duration-150"
-                  style={{ color: "var(--color-text1)", borderColor: "var(--color-border)" }}
-                  onMouseEnter={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = "var(--color-accent)"
-                    ;(e.currentTarget as HTMLElement).style.color = "var(--color-accent)"
-                  }}
-                  onMouseLeave={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)"
-                    ;(e.currentTarget as HTMLElement).style.color = "var(--color-text1)"
-                  }}
-                >
-                  Live Demo
-                </a>
-                <a
-                  href={project.source}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs min-h-11 inline-flex items-center px-5 py-2.5 font-mono transition-colors duration-150"
-                  style={{ color: "var(--color-text2)" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-text1)" }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-text2)" }}
-                >
-                  Source Code
-                </a>
-              </div>
-            </motion.div>
-          )
-
-          return (
-            <div
-              key={project.num}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
-              style={{
-                marginBottom: i < projects.length - 1 ? "96px" : 0,
-              }}
-            >
-              {isEven ? <>{content}{visual}</> : <>{visual}{content}</>}
-            </div>
-          )
-        })}
+      <div className="max-w-[1440px] mx-auto">
+        <div className="project-section-heading">
+          <div>
+            <p className="project-eyebrow font-mono">01 — SELECTED WORK</p>
+            <h2>
+              Systems built around
+              <br />
+              real workflows.
+            </h2>
+          </div>
+          <p>
+            From a local fisheries marketplace to institutional asset
+            management. Explore the problem, my contribution, and the decisions
+            behind each system.
+          </p>
+        </div>
+        <nav className="project-index font-mono" aria-label="Jump to a project">
+          <a href="/explore/">
+            Explore & filter all projects <span aria-hidden="true">↗</span>
+          </a>
+          {projects.map((project, index) => (
+            <a key={project.id} href={`#project-${project.id}`}>
+              <span className="project-index-number">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              {project.name}
+              <span aria-hidden="true">↓</span>
+            </a>
+          ))}
+        </nav>
+        <div className="project-list">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))}
+        </div>
       </div>
     </section>
   )
