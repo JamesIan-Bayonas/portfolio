@@ -61,3 +61,8 @@ TypeScript, 46 tests, the production build, static dependency-graph assertions, 
 
 Explore now compares two projects using shared case-study content. Browser checks covered selection, disabled duplicate options, changing filters without losing the pair, URL reload restoration, independent clearing, DormFix team credit, and CentraLog contact context with Escape focus recovery. At 320px the comparison stacked without document overflow. TypeScript, 48 tests, the production build, and all static-page/image checks passed. No message was sent during contact verification.
 
+
+## Case-study section navigation — October 13, 2026
+
+All four dedicated case studies now have shared section navigation. Browser checks verified that every link has a target, direct engineering-decision fragments load below the sticky bar, and current-section highlighting responds to manual scrolling. Compact-menu selection closes the menu and focuses the destination; Escape restores menu-button focus. All four pages showed no horizontal overflow at 320px. Desktop navigation fit one row at 1280px. The copy action showed its success status; clipboard contents could not be independently read through the browser tool. No browser console errors were observed in the inspected page. TypeScript, 48 existing tests, production build, and static asset checks passed.
+

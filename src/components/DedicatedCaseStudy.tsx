@@ -7,6 +7,7 @@ import ResponsiveScreenshot from "./ResponsiveScreenshot"
 import ScreenshotPreview from "./ScreenshotPreview"
 import { isdalogScreenshotGallery } from "../data/isdalogWalkthrough"
 import ContactAction from "./ContactAction"
+import CaseStudyNavigation from "./CaseStudyNavigation"
 
 const IsdaLogWalkthrough = lazy(() => import("./IsdaLogWalkthrough"))
 const DormFixWalkthrough = lazy(() => import("./DormFixWalkthrough"))
@@ -60,7 +61,7 @@ export default function DedicatedCaseStudy({
           <span aria-hidden="true">/</span>
           <span>{project.name}</span>
         </nav>
-        <header className="dedicated-case-hero">
+        <header className="dedicated-case-hero" id="overview">
           <div>
             <p className="project-eyebrow font-mono">
               CASE STUDY / {project.context.toUpperCase()}
@@ -123,6 +124,7 @@ export default function DedicatedCaseStudy({
             </figcaption>
           </figure>
         </header>
+        <CaseStudyNavigation projectId={project.id} />
         <Suspense fallback={<div id="walkthrough"><LoadingState label="Preparing the project walkthrough…" /></div>}>
         {project.id === "isdalog" && <IsdaLogWalkthrough />}
         {project.id === "dormfix" && <DormFixWalkthrough />}
