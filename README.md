@@ -65,58 +65,21 @@ Modern technical recruiting requires immediate signal clarity: demonstrating ful
 * **Shareable Project Pages:** A shared page manifest connects project links, search results, and build output. The production build generates a nested HTML entry with its own title, description, and Open Graph text, so direct visits work on static hosting. Search can navigate between the dedicated page and expanded home case studies.
 
 ---
-
 ## Project Structure
-
 ```text
-├── .gitattributes              # Git LFS tracking rules for media and assets
-├── .gitignore                  # Git exclusion definitions (build artifacts, dependencies)
-├── .mise.toml                  # Tool version manager lock (Node 22, pnpm 10.34.3)
-├── index.html                  # HTML entry point with metadata and root mount target
-├── package.json                # Project dependencies, scripts, and runtime engine specs
-├── public/
-│   └── RESUME.pdf              # Direct static downloadable resume asset
-├── src/
-│   ├── App.tsx                 # Root application wrapper, scroll progress & ambient engine
-│   ├── index.css               # Tailwind v4 @theme tokens, IBM Plex imports & grid masks
-│   ├── main.tsx                # StrictMode React DOM root initialization
-│   ├── vite-env.d.ts           # Ambient type declarations for Vite clients and PDF imports
-│   ├── components/
-│   │   ├── About.tsx           # Systems thinking philosophy & discipline capabilities
-│   │   ├── ContactFooter.tsx   # Direct contact endpoints, external links & footer bar
-│   │   ├── Hero.tsx            # Project-led introduction & illustrative IsdaLog workflow diff
-│   │   ├── Nav.tsx             # Responsive header with scroll tracking & mobile drawer
-│   │   ├── Process.tsx         # Engineering workflow: Schema -> Component -> Deployment
-│   │   ├── Projects.tsx        # Project index, featured work, and contribution summaries
-│   │   ├── ProjectCaseStudy.tsx # Expandable problem, architecture, and decision narratives
-│   │   ├── DedicatedCaseStudy.tsx # Shareable project page using the shared narratives
-│   │   ├── IsdaLogWalkthrough.tsx # Guided role perspectives, handoffs, and sample ledger
-│   │   ├── PortfolioSearch.tsx # Native modal search with keyboard selection
-│   │   ├── EngineeringLab.tsx  # Section wrapper and deferred demo loading
-│   │   ├── AssetValuationDemo.tsx # Sample valuation controls, chart, and data table
-│   │   ├── SkillsMatrix.tsx    # Categorized tooling matrix with contribution heatmaps
-│   │   ├── docs/demo/          # Showcase project image assets
-│   │   │   ├── centralog-demo.png
-│   │   │   ├── dorm-fix-demo.png
-│   │   │   ├── isdalog-demo.png
-│   │   │   └── pharmalink-demo.png
-│   │   └── ui/
-│   │       └── SpotlightCard.tsx # Reusable cursor-driven radial glow container
-│   ├── data/
-│       ├── projects.ts        # Shared project content and case-study contracts
-│       ├── caseStudyPages.json # Dedicated project routes and static metadata
-│       ├── isdalogWalkthrough.ts # Step narratives and original interface screenshots
-│       ├── skills.ts          # Technology-to-project evidence derived from project content
-│       └── searchEntries.ts   # Project and section search entries
-│   └── lib/
-│       ├── depreciation.ts    # Browser illustration of CentraLog's calculation strategies
-│       ├── caseStudyPages.ts   # Route matching and escaped static-page metadata
-│       ├── isdalogWalkthrough.ts # Pure sample order transitions and fund accounting
-│       └── search.ts          # Query normalization, matching, and ranking
-├── tests/                    # Native Node tests for calculations, search, routes, and walkthrough
-├── tsconfig.json               # TypeScript compiler config with bundler module resolution
-└── vite.config.ts              # Vite bundler configuration with Tailwind v4 & path aliases
-
+portfolio/
+├── public/             # Static assets, local IBM Plex font subsets, and responsive WebP previews
+├── scripts/            # Build verification and automated WebP screenshot generation scripts
+├── src/                # Application source code
+│   ├── components/     # Case studies, interactive walkthroughs, engineering labs, and UI views
+│   ├── data/           # Project manifests, engineering notes, screenshot metadata, and search indexes
+│   ├── lib/            # Valuation math, search ranking, route matching, and walkthrough state reducers
+│   ├── App.tsx         # Root application shell, scroll progress, and ambient atmosphere engine
+│   └── index.css       # Tailwind CSS v4 design tokens and theme color variables
+├── tests/              # Native Node.js test suite for valuation formulas, search, and walkthrough states
+├── index.html          # HTML entry point with metadata and local font preload declarations
+├── vite.config.ts      # Vite 8 bundler configuration and static HTML pre-rendering plugin
+└── vercel.json         # Static deployment configuration, pnpm lockfile enforcement, and build gates
 ```
 
 ---
