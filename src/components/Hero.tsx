@@ -302,7 +302,7 @@ export default function Hero() {
             className="flex flex-col min-[400px]:flex-row flex-wrap items-stretch min-[400px]:items-center gap-3 mb-8"
           >
             <motion.a
-              href="#projects"
+              href="/explore/"
               className="text-sm text-center min-h-11 px-6 py-3"
               style={{
                 fontFamily: "var(--font-mono)",

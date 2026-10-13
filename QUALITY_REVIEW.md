@@ -52,3 +52,7 @@ The homepage animation runtime is separated from the shared shell and preloaded 
 
 TypeScript, 46 tests, the production build, static dependency-graph assertions, all 12 route entries, and all 33 image variants passed. Local checks exercised Explorer filters, screenshot and contact panels, mobile-menu Escape and return focus, all four case-study walkthrough fragments, active home navigation after delayed mounting, calculator changes, Lab switching, and notes/search. No console errors or document overflow were observed. The live Explore page confirmed that no animation preload was added. Fresh baseline and retest reports, timing limits, and remaining diagnostics are recorded in `PERFORMANCE_REVIEW.md`.
 
+## Visitor journey follow-up — 13 October 2026
+
+`VISITOR_REVIEW.md` records the task walkthrough, concrete fixes, verification, and human-testing limits. The home primary action now opens Explore; case-study headers expose contact and the written explanation directly. Role labels and screenshot captions are more specific. Zoomed gallery regions preserve arrow-key panning, and gallery position/title changes have explicit status markup. All 12 routes fit 320 pixels in the inspected DOM, with one H1, no duplicate IDs, no missing alt attributes, and no unlabelled fields. Keyboard recovery, 46 tests, build checks, and image verification passed. Actual screen-reader speech, browser zoom, and reduced-motion preference emulation remain untested; this is not a WCAG certification or a human usability study.
+

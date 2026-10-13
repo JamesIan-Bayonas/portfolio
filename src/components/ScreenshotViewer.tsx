@@ -75,6 +75,7 @@ export default function ScreenshotViewer({ images, initialIndex, onClose }: Scre
           return
         }
         if (event.altKey || event.ctrlKey || event.metaKey) return
+        if (zoom > 1 && event.target === stageRef.current && event.key.startsWith("Arrow")) return
         if (event.key === "ArrowRight" && images.length > 1) { event.preventDefault(); select(index + 1) }
         if (event.key === "ArrowLeft" && images.length > 1) { event.preventDefault(); select(index - 1) }
         if (event.key === "+" || event.key === "=") { event.preventDefault(); setZoom(value => Math.min(3, value + 0.5)) }
@@ -84,7 +85,7 @@ export default function ScreenshotViewer({ images, initialIndex, onClose }: Scre
     >
       <header className="screenshot-viewer-header">
         <div>
-          <p className="project-eyebrow font-mono">SCREENSHOT {index + 1} / {images.length}</p>
+          <p className="project-eyebrow font-mono" role="status" aria-atomic="true">SCREENSHOT {index + 1} / {images.length}<span className="sr-only"> — {image.title}</span></p>
           <h2 id="screenshot-viewer-title">{image.title}</h2>
         </div>
         <button type="button" onClick={onClose} autoFocus aria-label="Close screenshot viewer">Close ×</button>
@@ -98,7 +99,7 @@ export default function ScreenshotViewer({ images, initialIndex, onClose }: Scre
         <span className="font-mono" role="status">{Math.round(zoom * 100)}% of fit</span>
         <a href={image.src} target="_blank" rel="noopener noreferrer">Open original ↗</a>
       </div>
-      <div ref={stageRef} className="screenshot-viewer-stage" tabIndex={0} aria-label="Screenshot image; scroll to inspect when zoomed">
+      <div ref={stageRef} className="screenshot-viewer-stage" role="region" tabIndex={0} aria-label="Screenshot image" aria-describedby="screenshot-viewer-pan-help">
         <div className="screenshot-viewer-canvas" style={{ width: Math.max(stage.width, width), height: Math.max(stage.height, height) }}>
           <img
             key={image.id}
@@ -114,8 +115,8 @@ export default function ScreenshotViewer({ images, initialIndex, onClose }: Scre
         {!loaded && <p className="screenshot-viewer-loading" role="status">{failed ? "The screenshot could not load. You can open the original or try another image." : "Loading the original screenshot…"}</p>}
       </div>
       <footer className="screenshot-viewer-footer">
-        <p id="screenshot-viewer-caption" aria-live="polite">{image.caption}</p>
-        <p className="font-mono">← → Browse · + − Zoom · 0 Fit · Esc Close</p>
+        <p id="screenshot-viewer-caption">{image.caption}</p>
+        <p id="screenshot-viewer-pan-help" className="font-mono">{zoom > 1 ? "Focus the image and use arrow keys to pan, or scroll. Use Previous and Next to browse." : "← → Browse"} · + − Zoom · 0 Fit · Esc Close</p>
       </footer>
     </dialog>
   )

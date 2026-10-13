@@ -22,6 +22,8 @@ export interface Project {
   image: string
   screenshot: ScreenshotAsset
   imageAlt: string
+  imageTitle: string
+  imageCaption: string
   caseStudyPath?: string
   caseStudy: {
     problem: string
@@ -48,8 +50,8 @@ export function projectScreenshot(project: Project): GalleryScreenshot {
     width: project.screenshot.width,
     height: project.screenshot.height,
     alt: project.imageAlt,
-    title: `${project.name} / System overview`,
-    caption: `${project.description} Original project capture; displayed records belong to that captured session.`,
+    title: `${project.name} / ${project.imageTitle}`,
+    caption: `${project.imageCaption} Original project capture; records and amounts belong to that session.`,
   }
 }
 
@@ -65,7 +67,7 @@ export const projects: Project[] = [
     context: "Independent project",
     role: "Sole developer",
     description:
-      "I noticed a lack of transparency in my local fisheries trade and built a system connecting catch registration, live auctions, delivery tracking, and wallet settlement.",
+      "I built IsdaLog independently after noticing a lack of transparency in my local fisheries trade. It connects catch listings, live bidding, delivery tracking, and payment settlement.",
     tech: [
       "Laravel 11",
       "React 18",
@@ -84,7 +86,9 @@ export const projects: Project[] = [
     source: "https://github.com/JamesIan-Bayonas/isdalog",
     image: isdaLogImg,
     screenshot: screenshots.isdalog,
-    imageAlt: "IsdaLog maritime marketplace and logistics interface",
+    imageAlt: "IsdaLog harvester dashboard with catch listings and wallet summaries",
+    imageTitle: "Harvester dashboard",
+    imageCaption: "The harvester dashboard places live bids alongside catch records and wallet balances, including funds held for deliveries.",
     caseStudy: {
       problem:
         "Catch registration, price discovery, and cargo handoffs can be difficult to follow at local landing ports. IsdaLog connects those steps in a shared workflow for harvesters, buyers, and riders, with an administrative view for monitoring.",
@@ -141,7 +145,7 @@ export const projects: Project[] = [
     context: "Collaborative capstone",
     role: "Feature developer",
     description:
-      "A dormitory management platform bringing tenant approvals, room assignments, receipt checks, maintenance requests, and messaging into one place.",
+      "I developed the features for this capstone, proposed by my classmate. DormFix connects tenant approvals, room assignments, receipt review, maintenance, and messaging.",
     tech: [
       "React 19",
       "TypeScript",
@@ -160,11 +164,13 @@ export const projects: Project[] = [
     image: dormFixImg,
     screenshot: screenshots.dormfix,
     imageAlt: "DormFix landlord dashboard with property management tools",
+    imageTitle: "Landlord overview",
+    imageCaption: "The landlord overview combines room occupancy, maintenance alerts, and recent tenant and payment activity so the manager can see what needs attention.",
     caseStudy: {
       problem:
         "Manual logbooks and scattered messages make it difficult to track tenant approval, room capacity, submitted payments, and unresolved repairs. Landlords and tenants need a consistent view of those operations.",
       contribution:
-        "My classmate proposed DormFix as our capstone project. I implemented its features as part of the capstone team. This case study describes the shared system and my feature development contribution.",
+        "My classmate proposed the capstone; I implemented its features as part of the team.",
       audience: "Landlords · tenants",
       architecture: [
         { name: "Interface", detail: "React / role-based views" },
@@ -228,6 +234,8 @@ export const projects: Project[] = [
     image: centraLogImg,
     screenshot: screenshots.centralog,
     imageAlt: "CentraLog asset management and valuation dashboard",
+    imageTitle: "Asset register",
+    imageCaption: "The asset register places equipment identity, location, value, and maintenance status alongside each other for inventory review and lifecycle decisions.",
     caseStudy: {
       problem:
         "Institutions need to know where equipment is, who holds it, and whether it is in use or under repair. CentraLog connects physical tracking with a valuation calculation that uses maintenance history.",
@@ -294,7 +302,9 @@ export const projects: Project[] = [
     source: "https://github.com/JamesIan-Bayonas/pharmalink",
     image: pharmaLinkImg,
     screenshot: screenshots.pharmalink,
-    imageAlt: "PharmaLink pharmacy inventory and point-of-sale dashboard",
+    imageAlt: "PharmaLink point-of-sale catalog with stock counts and checkout cart",
+    imageTitle: "Point-of-sale terminal",
+    imageCaption: "The point-of-sale terminal shows product prices and available stock beside the checkout cart, connecting product selection to the sale workflow.",
     caseStudy: {
       problem:
         "Sales and inventory need to remain consistent when stock is deducted or a transaction is reversed. Staff also need visibility into product expiration and permissions appropriate to their role.",

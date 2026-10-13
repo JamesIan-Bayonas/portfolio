@@ -6,6 +6,7 @@ import { engineeringNotes } from "../data/notes"
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
 import ScreenshotPreview from "./ScreenshotPreview"
 import { isdalogScreenshotGallery } from "../data/isdalogWalkthrough"
+import ContactAction from "./ContactAction"
 
 const IsdaLogWalkthrough = lazy(() => import("./IsdaLogWalkthrough"))
 const DormFixWalkthrough = lazy(() => import("./DormFixWalkthrough"))
@@ -69,7 +70,7 @@ export default function DedicatedCaseStudy({
             <p className="dedicated-case-description">{project.description}</p>
             <dl className="project-credits">
               <div>
-                <dt>My contribution</dt>
+                <dt>My role</dt>
                 <dd>{project.role}</dd>
               </div>
               <div>
@@ -77,7 +78,9 @@ export default function DedicatedCaseStudy({
                 <dd>{project.caseStudy.audience}</dd>
               </div>
             </dl>
+            <ContactAction projectId={project.id} className="case-hero-contact font-mono" />
             <div className="project-links font-mono">
+              <a href="#engineering">Read the case study ↓</a>
               <a href="#walkthrough">Follow the walkthrough ↓</a>
               {project.id === "centralog" && <a href="#lab">Explore valuation ↓</a>}
               {project.demoAvailable !== false ? <a href={project.demo} target="_blank" rel="noopener noreferrer">
@@ -96,7 +99,7 @@ export default function DedicatedCaseStudy({
               className="case-copy-link font-mono"
               onClick={copyLink}
             >
-              Copy page link ↗
+              Copy page link
             </button>
             <p className="case-share-status" role="status">
               {shareMessage}
@@ -116,7 +119,7 @@ export default function DedicatedCaseStudy({
             />
             </ScreenshotPreview>
             <figcaption className="font-mono">
-              Original {project.name} interface / {project.context.toLowerCase()}
+              {project.imageCaption}
             </figcaption>
           </figure>
         </header>
