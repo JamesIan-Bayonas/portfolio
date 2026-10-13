@@ -46,3 +46,9 @@ The contact panel preselects its case study and prepares build, improvement, or 
 
 Browser checks covered DormFix preselection, changing the project to CentraLog, inquiry type changes, live draft review, successful clipboard copying, explicit manual text selection, keyboard focus wrapping, Escape and restored opening-button focus, and mobile/light-theme layout without document overflow. The panel has a sticky close control and scrolls within the viewport. The email handoff is implemented as a user-activated mailto action; no actual email client was launched and no message was sent during testing. Clipboard-denial handling was reviewed in source; the explicit manual-copy route was exercised in the browser.
 
+## Loading and motion follow-up — 13 October 2026
+
+The homepage animation runtime is separated from the shared shell and preloaded only on Home. Case studies load their own walkthrough, with a reserved fragment target while loading. Navbar section observation now binds sections after lazy mounting. A native progress indicator batches updates; CSS handles the cursor and mobile menu, decorative typing stops when offscreen/hidden, and the footer pulse pauses offscreen. Loading placeholders use stable reserved areas without an animated shimmer.
+
+TypeScript, 46 tests, the production build, static dependency-graph assertions, all 12 route entries, and all 33 image variants passed. Local checks exercised Explorer filters, screenshot and contact panels, mobile-menu Escape and return focus, all four case-study walkthrough fragments, active home navigation after delayed mounting, calculator changes, Lab switching, and notes/search. No console errors or document overflow were observed. The live Explore page confirmed that no animation preload was added. Fresh baseline and retest reports, timing limits, and remaining diagnostics are recorded in `PERFORMANCE_REVIEW.md`.
+

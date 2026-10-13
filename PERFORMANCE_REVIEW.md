@@ -78,3 +78,35 @@ The [Explore mobile retest](https://pagespeed.web.dev/analysis/https-jamesian-po
 | Speed Index | 3.959 s | 4.225 s |
 
 These are single-run lab comparisons, with no field data available. Speed Index increased while FCP and LCP decreased; the result supports the image-delivery correction but does not establish a sustained timing improvement across all metrics. Remaining diagnostics include 300 ms estimated render-blocking savings and 49 KiB unused JavaScript.
+
+## Page loading and motion follow-up
+
+A fresh mobile baseline was captured after the screenshot viewer and contact panel were published, using the same Moto G Power / Slow 4G / Lighthouse 13.5.0 setup. No field data was available.
+
+| Page | Performance | FCP | LCP | Blocking time | Layout shift | Speed Index |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Home | 95 | 1.876 s | 2.176 s | 0 ms | 0 | 4.133 s |
+| Explore | 99 | 1.651 s | 1.986 s | 0 ms | 0 | 1.651 s |
+| IsdaLog | 98 | 1.668 s | 2.268 s | 0 ms | 0 | 1.668 s |
+
+Baseline reports: [Home](https://pagespeed.web.dev/analysis/https-jamesian-portfolio-vercel-app/nvno4qfsnk?form_factor=mobile), [Explore](https://pagespeed.web.dev/analysis/https-jamesian-portfolio-vercel-app-explore/ry7hveyi13?form_factor=mobile), [IsdaLog](https://pagespeed.web.dev/analysis/https-jamesian-portfolio-vercel-app-projects-isdalog/jbkad3pg7t?form_factor=mobile).
+
+Commit `937ecc2` separates the homepage and animation runtime from the shared application shell. Home alone preloads its homepage chunk and static dependencies. Case studies load their own walkthrough; the valuation section uses a native visibility observer. Header cursor/menu effects use CSS, replacing the repeating React cursor timer. The progress bar batches scroll updates into one pending frame and stops scheduling when the page is hidden. Decorative typing finishes when offscreen or hidden, its line slots reserve space, and the footer pulse pauses offscreen. Consistent static loading placeholders cover pages, sections, demonstrations, and panels.
+
+The shared startup dependency graph now totals 221,754 bytes of minified JavaScript, excluding route-specific chunks, CSS, fonts, and images. The preceding build's main/shared startup files totaled approximately 368 KB. The 131 KB animation chunk is separate and absent from the non-home routes' static dependency graphs. This file-size comparison is distinct from measured total network transfer. Grouping follows the documented [Vite build configuration](https://vite.dev/guide/build) and [Rolldown code-splitting API](https://rolldown.rs/in-depth/manual-code-splitting).
+
+TypeScript, 46 tests, production build, 12 generated routes, and all 33 image variants passed. Build verification now checks the dependency graph and rejects homepage runtime/preload leakage into other routes. Local browser checks covered filters, mobile-menu Escape/focus recovery, search, gallery and contact panels, all four walkthrough deep links, calculator changes, and experiment switching. The home section indicator bound correctly after deferred sections mounted, progress updated, and the offscreen terminal/footer reached their inactive state. No document overflow or console errors were observed. Reduced-motion and page-hidden handling were reviewed in source; those preferences were not emulated in the browser.
+
+### Published loading and motion retest
+
+The deployment succeeded and the same three pages were retested at 17:03 GMT+8 on 13 October 2026.
+
+| Page | Performance before → after | FCP | LCP | Blocking time | Layout shift | Speed Index |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Home | 95 → 96 | 1.876 s | 2.176 s | 0 ms | 0 | 4.027 s |
+| Explore | 99 → 99 | 1.516 s | 1.755 s | 0 ms | 0 | 1.516 s |
+| IsdaLog | 98 → 99 | 1.351 s | 1.811 s | 0 ms | 0 | 1.351 s |
+
+Retest reports: [Home](https://pagespeed.web.dev/analysis/https-jamesian-portfolio-vercel-app/sez5erf7sw?form_factor=mobile), [Explore](https://pagespeed.web.dev/analysis/https-jamesian-portfolio-vercel-app-explore/a2vy0cjare?form_factor=mobile), [IsdaLog](https://pagespeed.web.dev/analysis/https-jamesian-portfolio-vercel-app-projects-isdalog/ig0wvdp5vq?form_factor=mobile).
+
+All three reported 100 for Accessibility, Best Practices, and SEO. Explore and IsdaLog had lower paint timings in this run; Home's FCP and LCP were unchanged. Scores and timing differences are individual lab observations, not evidence of a sustained field improvement. Explore and IsdaLog each still estimate 24 KiB unused JavaScript and 150 ms render-blocking savings. Home estimates 49 KiB unused JavaScript, 300 ms render-blocking savings, and 12 KiB image savings; its document-request-latency diagnostic reported an error and is not treated as a latency measurement. No field data was available.
