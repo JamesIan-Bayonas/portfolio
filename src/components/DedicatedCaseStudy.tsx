@@ -8,6 +8,7 @@ import ScreenshotPreview from "./ScreenshotPreview"
 import { isdalogScreenshotGallery } from "../data/isdalogWalkthrough"
 import ContactAction from "./ContactAction"
 import CaseStudyNavigation from "./CaseStudyNavigation"
+import RelatedProjects from "./RelatedProjects"
 
 const IsdaLogWalkthrough = lazy(() => import("./IsdaLogWalkthrough"))
 const DormFixWalkthrough = lazy(() => import("./DormFixWalkthrough"))
@@ -139,15 +140,7 @@ export default function DedicatedCaseStudy({
           />
         </div>
         {engineeringNotes.filter(note => note.projectId === project.id).map(note => <aside className="project-note-link" key={note.id}><p className="project-eyebrow font-mono">ENGINEERING NOTE</p><h2><a href={note.path}>{note.title} ↗</a></h2><p>{note.summary}</p></aside>)}
-        <footer className="dedicated-case-footer">
-          <div>
-            <p className="project-eyebrow font-mono">CONTINUE EXPLORING</p>
-            <h2>See the other systems I've built.</h2>
-          </div>
-          <a href="/#projects" className="font-mono">
-            Back to selected work ↗
-          </a>
-        </footer>
+        <RelatedProjects project={project} />
       </div>
     </article>
   )

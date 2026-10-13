@@ -71,3 +71,8 @@ All four dedicated case studies now have shared section navigation. Browser chec
 
 The homepage Skills section now begins with four capability cards and eight documented examples, with role and project context resolved from shared project data. Browser checks visited all eight evidence destinations; two workflow headings needed scroll margins to clear the sticky case-study navigator, and the corrected links were checked again. At 1280px the map used two columns; at 320px it stacked with no document overflow. No duplicate homepage IDs were found. Keyboard search opened the transaction-integrity card, and searching from an IsdaLog case study reached the asset-lifecycle card on the homepage. The React technology disclosure retained all four project links. No console errors were observed in the inspected tab. TypeScript, 48 existing tests, production build, and all static-page/image checks passed.
 
+
+## Related-project recommendations — October 13, 2026
+
+All four case-study footers now recommend up to two projects based on shared capability evidence and backend technologies. Common frontend/tooling choices alone do not qualify a project. Each panel shows the connection, shared project role/context, case-study link, and a comparison link with both project IDs. Browser checks inspected all four panels at 320px with no document overflow, opened the IsdaLog/DormFix comparison and restored it on reload, followed a related CentraLog case-study link, and used Enter to open the CentraLog/PharmaLink comparison. No console errors were observed in the inspected tab. TypeScript, 51 tests, production build, and static-page/image checks passed. New tests cover recommendation order, meaningful connections, and exclusion of self or missing case-study destinations.
+
