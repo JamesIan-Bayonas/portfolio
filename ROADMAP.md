@@ -75,7 +75,7 @@ Personal content uses the supplied resume, project documentation, and confirmed 
 | --- | --- | --- |
 | RSS publication updates | One feed for all notes, copyable reader link, article and archive entry points, automatic build generation | Published and verified |
 | Content editor / CMS | Local fields and preview for existing notes and milestones, validated saves, conflict checks, and linked portfolio preview | Local tool verified |
-| Additional languages | A defined audience needs a second language and translations can be maintained | Optional later |
+| Additional languages | English/Filipino switch; Filipino project overview, professional pages, contact controls, and language metadata | Ready locally |
 | Portfolio question assistant | Guided questions and published project records with case-study, source, test, demo, profile, and comparison links | Published and verified |
 | Personal interests or reflections | James wants a broader author profile and has original content to publish | Optional later |
 

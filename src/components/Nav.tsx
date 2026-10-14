@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react"
+import LanguageSwitch from "./LanguageSwitch"
+import { currentLocale, localizeCoreHref } from "../lib/locale"
 
 const resumeUrl = `${import.meta.env.BASE_URL}RESUME.pdf`
 
@@ -71,6 +73,11 @@ function applyTheme(t: "dark" | "light") {
 }
 
 export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = false, labPage = false, notesPage = false, professionalPath }: NavProps) {
+  const locale = currentLocale()
+  const fil = locale === "fil"
+  const shownLinks = fil ? ["about", "now", "projects", "lab", "notes", "contact"] : links
+  const labels: Record<string,string> = {about:"Tungkol",now:"Ngayon",projects:"Mga proyekto",lab:"Lab (EN)",notes:"Mga tala (EN)",contact:"Ugnayan"}
+  const href = (link: string) => fil && link === "projects" ? "/fil/#projects" : localizeCoreHref(pageLinks[link] ?? `${portfolioPage ? "" : "/"}#${link}`, locale)
   const [active, setActive] = useState(professionalPath ? Object.keys(pageLinks).find(link => pageLinks[link] === professionalPath) ?? "" : notesPage ? "notes" : labPage ? "lab" : explorePage ? "explore" : "")
   const [menuOpen, setMenuOpen] = useState(false)
   const [theme, setTheme] = useState<"dark" | "light">("dark")
@@ -188,13 +195,14 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
 
         {/* Desktop Nav */}
         <nav
-          className="hidden xl:flex items-center gap-5"
-          aria-label="Main navigation"
+          className="hidden xl:flex items-center gap-3"
+          aria-label={fil ? "Pangunahing nabigasyon" : "Main navigation"}
         >
-          {links.map((link) => (
+          {shownLinks.map((link) => (
             <a
               key={link}
-              href={pageLinks[link] ?? `${portfolioPage ? "" : "/"}#${link}`}
+              href={href(link)}
+              hrefLang={fil && (link === "lab" || link === "notes") ? "en" : undefined}
               aria-current={(link === "explore" && explorePage) || (link === "lab" && labPage) || (link === "notes" && notesPage) || (professionalPath && pageLinks[link] === professionalPath) ? "page" : undefined}
               onClick={() => setActive(link)}
               className="relative text-sm lowercase transition-colors duration-150 pb-1"
@@ -206,7 +214,7 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
                     : "var(--color-text2)",
               }}
             >
-              {link}
+              {fil ? labels[link] : link}
               {active === link && (
                 <span
                   className="absolute bottom-0 left-0 right-0 h-px"
@@ -220,20 +228,21 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
             type="button"
             onClick={onOpenSearch}
             className="nav-search"
-            aria-label="Search portfolio"
+            aria-label={fil ? "Maghanap sa portfolio (English)" : "Search portfolio"}
             aria-keyshortcuts="Control+k Meta+k"
           >
             <SearchIcon />
             <kbd>⌘/Ctrl K</kbd>
           </button>
 
+          <LanguageSwitch />
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
             aria-label={
               theme === "dark"
-                ? "Switch to light theme"
-                : "Switch to dark theme"
+                ? (fil ? "Gamitin ang light theme" : "Switch to light theme")
+                : (fil ? "Gamitin ang dark theme" : "Switch to dark theme")
             }
             className="transition-colors duration-150 w-9 h-9 flex items-center justify-center"
             style={{ color: "var(--color-text2)" }}
@@ -272,7 +281,7 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
                 "var(--color-text1)"
             }}
           >
-            Resume
+            {fil ? "Resume (EN)" : "Resume"}
           </a>
         </nav>
 
@@ -285,7 +294,7 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
               onOpenSearch()
             }}
             className="nav-search-mobile"
-            aria-label="Search portfolio"
+            aria-label={fil ? "Maghanap sa portfolio (English)" : "Search portfolio"}
           >
             <SearchIcon />
           </button>
@@ -293,8 +302,8 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
             onClick={toggleTheme}
             aria-label={
               theme === "dark"
-                ? "Switch to light theme"
-                : "Switch to dark theme"
+                ? (fil ? "Gamitin ang light theme" : "Switch to light theme")
+                : (fil ? "Gamitin ang dark theme" : "Switch to dark theme")
             }
             className="transition-colors duration-150 w-11 h-11 flex items-center justify-center"
             style={{ color: "var(--color-text2)" }}
@@ -316,7 +325,7 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
             aria-controls="mobile-navigation"
             className="shrink-0 w-11 h-11 flex flex-col justify-center items-center gap-1.5 p-2"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
+            aria-label={fil ? "Buksan o isara ang menu" : "Toggle menu"}
           >
             <span
               className="menu-line block w-5 h-px"
@@ -347,10 +356,12 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
               borderColor: "var(--color-border)",
             }}
           >
-            {links.map((link) => (
+            <LanguageSwitch />
+            {shownLinks.map((link) => (
               <a
                 key={link}
-                href={pageLinks[link] ?? `${portfolioPage ? "" : "/"}#${link}`}
+                href={href(link)}
+                hrefLang={fil && (link === "lab" || link === "notes") ? "en" : undefined}
                 aria-current={(link === "explore" && explorePage) || (link === "lab" && labPage) || (link === "notes" && notesPage) || (professionalPath && pageLinks[link] === professionalPath) ? "page" : undefined}
                 onClick={() => {
                   setActive(link)
@@ -365,7 +376,7 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
                       : "var(--color-text2)",
                 }}
               >
-                {link}
+                {fil ? labels[link] : link}
               </a>
             ))}
 
@@ -380,7 +391,7 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
                 borderColor: "var(--color-border)",
               }}
             >
-              Resume
+              {fil ? "Resume (EN)" : "Resume"}
             </a>
           </div>
         )}

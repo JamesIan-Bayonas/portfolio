@@ -2,6 +2,7 @@ import { projects } from "./projects"
 import type { SearchEntry } from "../lib/search"
 import { engineeringNotes } from "./notes"
 import { engineeringCapabilities } from "./capabilities"
+import filipinoPages from "./filipinoPages.json"
 
 export const portfolioSearchEntries: SearchEntry[] = [
   { id: "portfolio-questions", label: "Ask about the portfolio", description: "Questions about projects, contributions, technologies, demos, and engineering evidence.", category: "Portfolio questions", path: "/ask/", target: "case-study", keywords: ["ask", "questions", "assistant", "answers", "help", "guide"] },
@@ -105,4 +106,5 @@ export const portfolioSearchEntries: SearchEntry[] = [
       "opportunities",
     ],
   },
+  ...filipinoPages.map(page => ({id:`filipino-${page.path.split("/").filter(Boolean).join("-")}`,label:page.title.split(" | ")[0],description:page.description,category:"Filipino",path:page.path,target:"case-study",keywords:["Filipino","Tagalog","wika"],language:"fil"})),
 ]

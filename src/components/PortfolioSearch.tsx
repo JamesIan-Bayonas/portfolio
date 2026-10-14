@@ -73,6 +73,7 @@ export default function PortfolioSearch({
 
   return (
     <dialog
+      lang="en"
       ref={dialogRef}
       className="portfolio-search"
       aria-labelledby="search-title"
@@ -173,6 +174,7 @@ export default function PortfolioSearch({
             id={`search-result-${entry.id}`}
             type="button"
             role="option"
+            lang={entry.language}
             aria-selected={index === activeIndex}
             tabIndex={-1}
             className={

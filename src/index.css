@@ -824,3 +824,13 @@ body:has(.portfolio-search[open]) { overflow: hidden; }
 .questions-page :is(input,button,a):focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 .question-answer h2:focus { outline: 2px solid var(--color-accent); outline-offset: 6px; }
 @media (max-width:767px) { .question-projects { grid-template-columns: 1fr; } .portfolio-question-form, .question-answer, .question-projects article { padding: 20px; } }
+
+.language-switch { display: inline-flex; align-items: center; min-height: 44px; padding: 6px 10px; border: 1px solid var(--color-border); color: var(--color-accent); font-size: 12px; width: fit-content; }
+.language-switch:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.filipino-project-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.filipino-project-grid article { scroll-margin-top: 96px; }
+.filipino-project-grid .filipino-project-version { color: var(--color-text2); font-size: 13px; }
+.filipino-resource-panel { margin-top: 48px; padding: 28px; border: 1px solid var(--color-border); scroll-margin-top: 96px; }
+.filipino-resource-panel h2 { font-size: 28px; margin-bottom: 16px; }
+.filipino-resource-panel p { line-height: 1.8; margin-bottom: 20px; }
+@media (max-width:767px) { .filipino-project-grid { grid-template-columns: 1fr; } .filipino-resource-panel { padding: 20px; } }

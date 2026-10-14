@@ -7,6 +7,7 @@ export interface SearchEntry {
   keywords: string[]
   expandCaseStudy?: boolean
   path?: string
+  language?: string
 }
 
 export function searchDestination(entry: SearchEntry): string {

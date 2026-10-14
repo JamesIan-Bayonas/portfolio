@@ -12,6 +12,7 @@ import { siteMetadata as sitePages } from "./data/siteMetadata"
 import { projects } from "./data/projects"
 
 import { findCaseStudyPage } from "./lib/caseStudyPages"
+import { canonicalContentPath, currentLocale } from "./lib/locale"
 
 const DedicatedCaseStudy = lazy(() => import("./components/DedicatedCaseStudy"))
 
@@ -23,6 +24,7 @@ const Lab = lazy(() => import("./components/Lab"))
 const Notes = lazy(() => import("./components/Notes"))
 
 const ProfessionalPages = lazy(() => import("./components/ProfessionalPages"))
+const FilipinoOverview = lazy(() => import("./components/FilipinoOverview"))
 
 const HomePage = lazy(() => import("./components/HomePage"))
 
@@ -52,10 +54,14 @@ export default function App() {
 
   const notesPage = Boolean(caseStudyPage?.path.startsWith("/notes/"))
 
-  const professionalPath = ["/about/", "/now/", "/work-with-me/"].includes(
-    caseStudyPage?.path ?? "",
+  const contentPath = canonicalContentPath(
+    caseStudyPage?.path ?? window.location.pathname,
   )
-    ? caseStudyPage?.path as "/about/" | "/now/" | "/work-with-me/"
+  const filipinoOverview = caseStudyPage?.path === "/fil/"
+  const professionalPath = ["/about/", "/now/", "/work-with-me/"].includes(
+    contentPath,
+  )
+    ? contentPath as "/about/" | "/now/" | "/work-with-me/"
     : undefined
 
   const dedicatedProject = projects.find(
@@ -138,7 +144,9 @@ export default function App() {
       }}
     >
       <a className="skip-content" href="#main-content">
-        Skip to content
+        {currentLocale() === "fil"
+          ? "Lumaktaw sa nilalaman"
+          : "Skip to content"}
       </a>
       <Nav
         portfolioPage={!caseStudyPage}
@@ -155,7 +163,15 @@ export default function App() {
         className="relative z-10 max-w-none"
         style={{ fontFamily: "var(--font-body)" }}
       >
-        {questionsPage ? (
+        {filipinoOverview ? (
+          <Suspense
+            fallback={
+              <LoadingState label="Binubuksan ang portfolio…" variant="page" />
+            }
+          >
+            <FilipinoOverview />
+          </Suspense>
+        ) : questionsPage ? (
           <Suspense
             fallback={
               <LoadingState
@@ -169,7 +185,14 @@ export default function App() {
         ) : professionalPath ? (
           <Suspense
             fallback={
-              <LoadingState label="Opening the profile…" variant="page" />
+              <LoadingState
+                label={
+                  currentLocale() === "fil"
+                    ? "Binubuksan ang profile…"
+                    : "Opening the profile…"
+                }
+                variant="page"
+              />
             }
           >
             <ProfessionalPages path={professionalPath} />

@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/fil/",
+    "title": "Mga Proyekto at Portfolio | James Ian Bayonas",
+    "description": "Kilalanin ang mga proyekto ni James Ian Bayonas sa Filipino. Tuklasin ang kanyang tungkulin, pag-aaral, kasalukuyang gawain, at mga uri ng proyektong maaaring pag-usapan."
+  },
+  {
+    "path": "/fil/about/",
+    "title": "Tungkol at Paglalakbay | James Ian Bayonas",
+    "description": "Kilalanin si James Ian Bayonas, junior full-stack developer at mag-aaral ng BS Information Technology sa Dipolog City. Alamin ang kanyang pag-aaral at mga proyekto."
+  },
+  {
+    "path": "/fil/now/",
+    "title": "Kasalukuyang Gawain | James Ian Bayonas",
+    "description": "Isang may petsang tala tungkol sa kasalukuyang portfolio at mga aral mula sa mga proyekto ni James Ian Bayonas."
+  },
+  {
+    "path": "/fil/work-with-me/",
+    "title": "Paano Ako Makakatulong | James Ian Bayonas",
+    "description": "Pag-usapan ang isang web application, API workflow, pagpapahusay sa umiiral na system, o oportunidad kasama si James Ian Bayonas."
+  }
+]

@@ -1,4 +1,6 @@
-import { professionalProfile as profile } from "../data/professionalProfile"
+import { professionalProfile as englishProfile } from "../data/professionalProfile"
+import { filipinoProfile, filipinoProfessionalPages } from "../data/filipino"
+import { currentLocale, localizeCoreHref } from "../lib/locale"
 import { projects } from "../data/projects"
 import ContactAction from "./ContactAction"
 
@@ -12,7 +14,7 @@ const pages = {
   "/now/": {
     label: "CURRENT WORK / NOW",
     title: "What I'm focused on now.",
-    summary: profile.currentFocus,
+    summary: englishProfile.currentFocus,
   },
   "/work-with-me/": {
     label: "HOW I CAN HELP",
@@ -23,14 +25,15 @@ const pages = {
 } as const
 
 function ProjectLinks({ ids }: { ids: readonly string[] }) {
+  const fil = currentLocale() === "fil"
   return (
     <div className="professional-project-links font-mono">
       {ids.map((id) => {
         const project = projects.find((project) => project.id === id)
         return (
           project && (
-            <a href={project.caseStudyPath} key={id}>
-              {project.name} case study ↗
+            <a href={project.caseStudyPath} key={id} lang="en">
+              {project.name} case study {fil ? "(English) " : ""}↗
             </a>
           )
         )
@@ -44,38 +47,43 @@ export default function ProfessionalPages({
 }: {
   path: keyof typeof pages
 }) {
-  const page = pages[path]
+  const locale = currentLocale()
+  const fil = locale === "fil"
+  const t = (english: string, filipino: string) => (fil ? filipino : english)
+  const profile = fil ? filipinoProfile : englishProfile
+  const page = fil ? filipinoProfessionalPages[path] : pages[path]
+  const href = (value: string) => localizeCoreHref(value, locale)
   return (
     <div className="explore-page professional-page px-4 sm:px-6 lg:px-10">
       <div className="max-w-[1440px] mx-auto">
         <header className="explore-header">
-          <a className="case-study-breadcrumb font-mono" href="/">
-            ← Portfolio home
+          <a className="case-study-breadcrumb font-mono" href={href("/")}>
+            ← {t("Portfolio home", "Pangunahing pahina")}
           </a>
           <p className="project-eyebrow font-mono">{page.label}</p>
           <h1>{page.title}</h1>
           <p>{page.summary}</p>
           <nav
             className="professional-page-links font-mono"
-            aria-label="Professional profile"
+            aria-label={t("Professional profile", "Propesyonal na profile")}
           >
             <a
-              href="/about/"
+              href={href("/about/")}
               aria-current={path === "/about/" ? "page" : undefined}
             >
-              My journey
+              {t("My journey", "Aking paglalakbay")}
             </a>
             <a
-              href="/now/"
+              href={href("/now/")}
               aria-current={path === "/now/" ? "page" : undefined}
             >
-              Current work
+              {t("Current work", "Kasalukuyang gawain")}
             </a>
             <a
-              href="/work-with-me/"
+              href={href("/work-with-me/")}
               aria-current={path === "/work-with-me/" ? "page" : undefined}
             >
-              How I can help
+              {t("How I can help", "Paano ako makakatulong")}
             </a>
           </nav>
         </header>
@@ -85,24 +93,34 @@ export default function ProfessionalPages({
               className="professional-education"
               aria-labelledby="education-title"
             >
-              <p className="project-eyebrow font-mono">EDUCATION</p>
-              <h2 id="education-title">{profile.education.degree}</h2>
+              <p className="project-eyebrow font-mono">
+                {t("EDUCATION", "PAG-AARAL")}
+              </p>
+              <h2 id="education-title" lang="en">
+                {profile.education.degree}
+              </h2>
               <p>
                 {profile.education.institution} · {profile.location}
               </p>
               <p className="font-mono">
-                Expected completion: {profile.education.expectedCompletion}
+                {t("Expected completion", "Inaasahang pagtatapos")}:{" "}
+                {profile.education.expectedCompletion}
               </p>
             </section>
             <section aria-labelledby="journey-title">
               <div className="explore-section-heading">
-                <h2 id="journey-title">My development journey</h2>
+                <h2 id="journey-title">
+                  {t(
+                    "My development journey",
+                    "Aking paglalakbay bilang developer",
+                  )}
+                </h2>
                 <a
                   className="professional-inline-link font-mono"
                   href="/RESUME.pdf"
                   download="James_Ian_Bayonas_Resume.pdf"
                 >
-                  Download resume ↓
+                  {t("Download resume", "I-download ang resume (English)")} ↓
                 </a>
               </div>
               <ol className="professional-journey">
@@ -123,27 +141,52 @@ export default function ProfessionalPages({
         {path === "/now/" && (
           <>
             <p className="professional-update font-mono">
-              Last updated{" "}
-              <time dateTime={profile.updatedAt}>14 October 2026</time>
+              {t("Last updated", "Huling na-update")}{" "}
+              <time dateTime={profile.updatedAt}>
+                {new Intl.DateTimeFormat(fil ? "fil-PH" : "en-GB", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  timeZone: "Asia/Singapore",
+                }).format(new Date(profile.updatedAt + "T00:00:00+08:00"))}
+              </time>
             </p>
             <section aria-labelledby="current-focus-title">
               <div className="explore-section-heading">
-                <h2 id="current-focus-title">Current focus: this portfolio</h2>
+                <h2 id="current-focus-title">
+                  {t(
+                    "Current focus: this portfolio",
+                    "Kasalukuyang pokus: ang portfolio na ito",
+                  )}
+                </h2>
               </div>
               <p className="professional-lead">
-                I’m connecting case studies, interactive examples, engineering
-                notes, and verified implementation evidence so technical
-                reviewers can follow both the workflow and the reasoning behind
-                it.
+                {t(
+                  "I’m connecting case studies, interactive examples, engineering notes, and verified implementation evidence so technical reviewers can follow both the workflow and the reasoning behind it.",
+                  "Pinag-uugnay ko ang mga case study, interactive na halimbawa, tala sa engineering, at sinuring ebidensiya ng implementasyon upang masundan ng mga reviewer ang workflow at ang pangangatwiran sa likod nito.",
+                )}
               </p>
               <div className="professional-project-links font-mono">
-                <a href="/explore/">Explore the systems ↗</a>
-                <a href="/notes/">Browse the engineering notes ↗</a>
+                <a href={href("/explore/")}>
+                  {t("Explore the systems", "Tuklasin ang mga system")} ↗
+                </a>
+                <a href="/notes/" hrefLang="en">
+                  {t(
+                    "Browse the engineering notes",
+                    "Basahin ang mga tala sa engineering (English)",
+                  )}{" "}
+                  ↗
+                </a>
               </div>
             </section>
             <section aria-labelledby="learning-title">
               <div className="explore-section-heading">
-                <h2 id="learning-title">Learning through project work</h2>
+                <h2 id="learning-title">
+                  {t(
+                    "Learning through project work",
+                    "Pagkatuto mula sa mga proyekto",
+                  )}
+                </h2>
               </div>
               <div className="professional-grid">
                 {profile.learningThemes.map((theme) => (
@@ -152,7 +195,10 @@ export default function ProfessionalPages({
                     <p>{theme.detail}</p>
                     <a
                       className="professional-inline-link font-mono"
-                      href={theme.href}
+                      href={href(theme.href)}
+                      hrefLang={
+                        fil && theme.href !== "/explore/" ? "en" : undefined
+                      }
                     >
                       {theme.label} ↗
                     </a>
@@ -164,14 +210,20 @@ export default function ProfessionalPages({
               className="professional-education"
               aria-labelledby="now-education-title"
             >
-              <h2 id="now-education-title">Alongside my studies</h2>
+              <h2 id="now-education-title">
+                {t("Alongside my studies", "Kasabay ng aking pag-aaral")}
+              </h2>
               <p>
-                {profile.education.degree} at {profile.education.institution},
-                with expected completion in{" "}
+                <span lang="en">{profile.education.degree}</span>{" "}
+                {t("at", "sa")} {profile.education.institution},
+                {t("with expected completion in", "na inaasahang matatapos sa")}{" "}
                 {profile.education.expectedCompletion}.
               </p>
-              <a className="professional-inline-link font-mono" href="/about/">
-                Follow my journey ↗
+              <a
+                className="professional-inline-link font-mono"
+                href={href("/about/")}
+              >
+                {t("Follow my journey", "Sundan ang aking paglalakbay")} ↗
               </a>
             </section>
           </>
@@ -180,7 +232,9 @@ export default function ProfessionalPages({
           <>
             <section aria-labelledby="work-areas-title">
               <div className="explore-section-heading">
-                <h2 id="work-areas-title">Start with the work</h2>
+                <h2 id="work-areas-title">
+                  {t("Start with the work", "Magsimula sa gawain")}
+                </h2>
               </div>
               <div className="professional-grid">
                 {profile.workAreas.map((area) => (
@@ -190,7 +244,10 @@ export default function ProfessionalPages({
                     <ProjectLinks ids={area.projectIds} />
                     <ContactAction
                       projectId={area.projectIds[0]}
-                      label="Discuss this kind of work"
+                      label={t(
+                        "Discuss this kind of work",
+                        "Pag-usapan ang ganitong gawain",
+                      )}
                     />
                   </article>
                 ))}
@@ -198,7 +255,9 @@ export default function ProfessionalPages({
             </section>
             <section aria-labelledby="discussion-process-title">
               <div className="explore-section-heading">
-                <h2 id="discussion-process-title">How we can begin</h2>
+                <h2 id="discussion-process-title">
+                  {t("How we can begin", "Paano tayo magsisimula")}
+                </h2>
               </div>
               <ol className="professional-process">
                 {profile.process.map((step, index) => (
@@ -212,7 +271,10 @@ export default function ProfessionalPages({
                 ))}
               </ol>
               <ContactAction
-                label="Describe your project or opportunity"
+                label={t(
+                  "Describe your project or opportunity",
+                  "Ilarawan ang iyong proyekto o oportunidad",
+                )}
                 className="professional-contact font-mono"
               />
             </section>
@@ -220,11 +282,15 @@ export default function ProfessionalPages({
         )}
         <footer className="dedicated-case-footer">
           <div>
-            <p className="project-eyebrow font-mono">PROJECT EVIDENCE</p>
-            <h2>Explore what I've built.</h2>
+            <p className="project-eyebrow font-mono">
+              {t("PROJECT EVIDENCE", "EBIDENSIYA NG MGA PROYEKTO")}
+            </p>
+            <h2>
+              {t("Explore what I've built.", "Tuklasin ang mga binuo ko.")}
+            </h2>
           </div>
-          <a className="font-mono" href="/explore/">
-            Browse the case studies ↗
+          <a className="font-mono" href={href("/explore/")}>
+            {t("Browse the case studies", "Tuklasin ang mga proyekto")} ↗
           </a>
         </footer>
       </div>

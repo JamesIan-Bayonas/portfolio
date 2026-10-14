@@ -8,7 +8,7 @@ import sharp from "sharp"
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const readJson = async name => JSON.parse(await readFile(path.join(root, "src/data", name), "utf8"))
 const noteContent = await readJson("notesContent.json")
-const pages = [{ path: "/", title: "James Ian Bayonas | Full-Stack Developer" }, ...await readJson("caseStudyPages.json"), ...await readJson("sitePages.json"), ...noteContent.map(note => ({ path: note.path, title: `${note.title} | James Ian Bayonas` }))]
+const pages = [{ path: "/", title: "James Ian Bayonas | Full-Stack Developer" }, ...await readJson("caseStudyPages.json"), ...await readJson("sitePages.json"), ...await readJson("filipinoPages.json"), ...noteContent.map(note => ({ path: note.path, title: `${note.title} | James Ian Bayonas` }))]
 assert.equal(new Set(pages.map(page => page.path)).size, pages.length, "Duplicate static routes")
 const assets = new Set()
 await assert.rejects(access(path.join(root, "dist/editor/index.html")), "Local editor must not be published")
@@ -20,7 +20,7 @@ function staticDependencies(key, visited = new Set()) {
   for (const dependency of manifest[key]?.imports ?? []) staticDependencies(dependency, visited)
   return visited
 }
-for (const route of ["index.html", "src/components/Explore.tsx", "src/components/PortfolioQuestions.tsx", "src/components/DedicatedCaseStudy.tsx", "src/components/Lab.tsx", "src/components/Notes.tsx", "src/components/ProfessionalPages.tsx"]) {
+for (const route of ["index.html", "src/components/Explore.tsx", "src/components/PortfolioQuestions.tsx", "src/components/DedicatedCaseStudy.tsx", "src/components/Lab.tsx", "src/components/Notes.tsx", "src/components/ProfessionalPages.tsx", "src/components/FilipinoOverview.tsx"]) {
   assert.ok(manifest[route], `Missing route chunk: ${route}`)
   for (const key of staticDependencies(route)) {
     assert.ok(!/\/(?:motion|HomePage)-/.test(manifest[key].file), `Homepage runtime eagerly loaded by ${route}`)
@@ -31,6 +31,10 @@ for (const page of pages) {
   const html = await readFile(file, "utf8")
   const escapedTitle = page.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;")
   assert.ok(html.includes(`<title>${escapedTitle}</title>`), `Incorrect title: ${page.path}`)
+  assert.ok(html.includes(`<html lang="${page.path.startsWith("/fil/") ? "fil" : "en"}">`), `Incorrect page language: ${page.path}`)
+  if (["/", "/about/", "/now/", "/work-with-me/", "/fil/", "/fil/about/", "/fil/now/", "/fil/work-with-me/"].includes(page.path)) {
+    assert.ok(html.includes('hreflang="en"') && html.includes('hreflang="tl"') && html.includes('hreflang="x-default"'), `Missing language alternatives: ${page.path}`)
+  }
   assert.equal((html.match(/name="description"/g) ?? []).length, 1, `Description count: ${page.path}`)
   assert.equal((html.match(/property="og:title"/g) ?? []).length, 1, `Sharing title count: ${page.path}`)
   assert.ok(html.includes('name="viewport"'), `Missing viewport: ${page.path}`)
@@ -71,6 +75,10 @@ for (const page of casePages) {
   assert.equal(brief.links[1], `${brief.links[0]}#walkthrough`)
 }
 const fontCss = await readFile(path.join(root, "src/fonts.css"), "utf8")
+const translationSources = await readJson("filipinoTranslationSources.json")
+for (const [source, expectedHash] of Object.entries(translationSources)) {
+  assert.equal(createHash("sha256").update((await readFile(path.join(root, source), "utf8")).replace(/\r\n/g, "\n")).digest("hex"), expectedHash, `Review Filipino translations after changes to ${source}, then update filipinoTranslationSources.json`)
+}
 for (const match of fontCss.matchAll(/url\((\/fonts\/[^)]+)\)/g)) {
   const bytes = await readFile(path.join(root, "dist", match[1]))
   assert.equal(bytes.subarray(0, 4).toString(), "wOF2", `Invalid font: ${match[1]}`)
