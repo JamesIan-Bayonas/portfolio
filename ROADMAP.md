@@ -75,7 +75,7 @@ Personal content uses the supplied resume, project documentation, and confirmed 
 | RSS publication updates | One feed for all notes, copyable reader link, article and archive entry points, automatic build generation | Published and verified |
 | Content editor / CMS | Maintaining notes and milestones through repository files becomes a recurring burden | Optional later |
 | Additional languages | A defined audience needs a second language and translations can be maintained | Optional later |
-| Portfolio question assistant | Guided questions and published project records with case-study, source, test, demo, profile, and comparison links | Ready locally |
+| Portfolio question assistant | Guided questions and published project records with case-study, source, test, demo, profile, and comparison links | Published and verified |
 | Personal interests or reflections | James wants a broader author profile and has original content to publish | Optional later |
 
 ## Tracking each future change
@@ -104,3 +104,10 @@ Review this file before proposing the next feature. Add new items only when they
 - [Notes feed](https://jamesian-portfolio.vercel.app/notes/feed.xml): all four articles, canonical destinations, summaries, categories, and stable identifiers. Future published notes are included automatically at build time.
 - 64 tests, type checks, production build, route/asset verification, and XML parsing passed. Live feed content matched the build; RSS content type, revalidation header, and all article destinations were verified.
 - The published archive displayed its follow controls and copy-success feedback. Local article, mobile, theme, and manual-selection checks are detailed in QUALITY_REVIEW.md.
+
+## Portfolio question assistant release — 14 October 2026
+
+- Implementation: [c5bf36e](https://github.com/JamesIan-Bayonas/portfolio/commit/c5bf36e), Vercel deployment completed successfully.
+- [Ask about the portfolio](https://jamesian-portfolio.vercel.app/ask/): questions select maintained project records and cite the published destinations. Explore and search provide entry points.
+- Scope: project names, technology and domain matches, contribution credits, source/test evidence, sample demos, profile pages, and two-project comparison. Unknown questions offer browsing/contact; rates and availability are not inferred. This bounded guide does not use an external model or store question history.
+- 70 tests, type checks, build, and verification of 16 static routes passed. Live checks confirmed metadata and asset delivery, DormFix contribution/version context, .NET project selection, unknown fallback, and 320px layout without horizontal overflow. RSS remained valid with four articles; the inspected console was empty.
