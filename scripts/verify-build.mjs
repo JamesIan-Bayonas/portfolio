@@ -17,7 +17,7 @@ function staticDependencies(key, visited = new Set()) {
   for (const dependency of manifest[key]?.imports ?? []) staticDependencies(dependency, visited)
   return visited
 }
-for (const route of ["index.html", "src/components/Explore.tsx", "src/components/DedicatedCaseStudy.tsx", "src/components/Lab.tsx", "src/components/Notes.tsx"]) {
+for (const route of ["index.html", "src/components/Explore.tsx", "src/components/DedicatedCaseStudy.tsx", "src/components/Lab.tsx", "src/components/Notes.tsx", "src/components/ProfessionalPages.tsx"]) {
   assert.ok(manifest[route], `Missing route chunk: ${route}`)
   for (const key of staticDependencies(route)) {
     assert.ok(!/\/(?:motion|HomePage)-/.test(manifest[key].file), `Homepage runtime eagerly loaded by ${route}`)
@@ -26,7 +26,8 @@ for (const route of ["index.html", "src/components/Explore.tsx", "src/components
 for (const page of pages) {
   const file = path.join(root, "dist", page.path, "index.html")
   const html = await readFile(file, "utf8")
-  assert.ok(html.includes(`<title>${page.title}</title>`), `Incorrect title: ${page.path}`)
+  const escapedTitle = page.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;")
+  assert.ok(html.includes(`<title>${escapedTitle}</title>`), `Incorrect title: ${page.path}`)
   assert.equal((html.match(/name="description"/g) ?? []).length, 1, `Description count: ${page.path}`)
   assert.equal((html.match(/property="og:title"/g) ?? []).length, 1, `Sharing title count: ${page.path}`)
   assert.ok(html.includes('name="viewport"'), `Missing viewport: ${page.path}`)

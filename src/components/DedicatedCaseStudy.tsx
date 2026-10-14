@@ -71,6 +71,11 @@ export default function DedicatedCaseStudy({
             <h1>{project.name}</h1>
             <p className="dedicated-case-subtitle">{project.title}</p>
             <p className="dedicated-case-description">{project.description}</p>
+            <aside className="case-version-context" aria-label="Case-study version">
+              <strong>{project.versionLabel}</strong>
+              <p>{project.versionSummary}</p>
+              <a className="font-mono" href={`#${project.id}-evolution`}>Follow the project evolution ↓</a>
+            </aside>
             <dl className="project-credits">
               <div>
                 <dt>My role</dt>

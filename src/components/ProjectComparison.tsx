@@ -40,7 +40,8 @@ export default function ProjectComparison({ selected, onChange }: ProjectCompari
         <dl>
           <div><dt>Problem solved</dt><dd>{project.caseStudy.problem}</dd></div>
           <div><dt>My role · {project.context}</dt><dd>{project.role}. {project.caseStudy.contribution}</dd></div>
-          <div><dt>Main technologies</dt><dd><ul className="project-tech" aria-label={`${project.name} comparison technologies`}>{project.tech.map(tech => <li key={tech} className="font-mono">{tech}</li>)}</ul></dd></div>
+          <div><dt>Case-study version</dt><dd>{project.versionLabel}. {project.versionSummary}</dd></div>
+          <div><dt>Case-study technologies</dt><dd><ul className="project-tech" aria-label={`${project.name} comparison technologies`}>{project.tech.map(tech => <li key={tech} className="font-mono">{tech}</li>)}</ul></dd></div>
           <div><dt>Engineering approach</dt><dd>{project.caseStudy.approach}</dd></div>
           <div><dt>Trade-off</dt><dd>{project.caseStudy.tradeoff}</dd></div>
         </dl>

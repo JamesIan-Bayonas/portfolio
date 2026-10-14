@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react"
 
 const resumeUrl = `${import.meta.env.BASE_URL}RESUME.pdf`
 
-const links = ["about", "process", "projects", "explore", "lab", "notes", "skills", "contact"]
+const links = ["about", "now", "process", "projects", "explore", "lab", "notes", "skills", "contact"]
+const pageLinks: Record<string, string> = { about: "/about/", now: "/now/", contact: "/work-with-me/", explore: "/explore/", lab: "/lab/", notes: "/notes/" }
 
 interface NavProps {
   onOpenSearch: () => void
@@ -10,6 +11,7 @@ interface NavProps {
   explorePage?: boolean
   labPage?: boolean
   notesPage?: boolean
+  professionalPath?: "/about/" | "/now/" | "/work-with-me/"
 }
 
 function SearchIcon() {
@@ -68,8 +70,8 @@ function applyTheme(t: "dark" | "light") {
   document.documentElement.setAttribute("data-theme", t)
 }
 
-export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = false, labPage = false, notesPage = false }: NavProps) {
-  const [active, setActive] = useState(notesPage ? "notes" : labPage ? "lab" : explorePage ? "explore" : portfolioPage ? "about" : "")
+export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = false, labPage = false, notesPage = false, professionalPath }: NavProps) {
+  const [active, setActive] = useState(professionalPath ? Object.keys(pageLinks).find(link => pageLinks[link] === professionalPath) ?? "" : notesPage ? "notes" : labPage ? "lab" : explorePage ? "explore" : "")
   const [menuOpen, setMenuOpen] = useState(false)
   const [theme, setTheme] = useState<"dark" | "light">("dark")
   const toggleRef = useRef<HTMLButtonElement>(null)
@@ -113,7 +115,7 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
 
   useEffect(() => {
     if (!portfolioPage) return
-    const sectionIds = links.filter(link => link !== "explore" && link !== "notes")
+    const sectionIds = links.filter(link => !pageLinks[link])
     const observed = new Set<string>()
     const observer = new IntersectionObserver(
       (entries) => {
@@ -192,8 +194,8 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
           {links.map((link) => (
             <a
               key={link}
-              href={link === "explore" ? "/explore/" : link === "lab" ? "/lab/" : link === "notes" ? "/notes/" : `${portfolioPage ? "" : "/"}#${link}`}
-              aria-current={(link === "explore" && explorePage) || (link === "lab" && labPage) || (link === "notes" && notesPage) ? "page" : undefined}
+              href={pageLinks[link] ?? `${portfolioPage ? "" : "/"}#${link}`}
+              aria-current={(link === "explore" && explorePage) || (link === "lab" && labPage) || (link === "notes" && notesPage) || (professionalPath && pageLinks[link] === professionalPath) ? "page" : undefined}
               onClick={() => setActive(link)}
               className="relative text-sm lowercase transition-colors duration-150 pb-1"
               style={{
@@ -348,8 +350,8 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
             {links.map((link) => (
               <a
                 key={link}
-                href={link === "explore" ? "/explore/" : link === "lab" ? "/lab/" : link === "notes" ? "/notes/" : `${portfolioPage ? "" : "/"}#${link}`}
-                aria-current={(link === "explore" && explorePage) || (link === "lab" && labPage) || (link === "notes" && notesPage) ? "page" : undefined}
+                href={pageLinks[link] ?? `${portfolioPage ? "" : "/"}#${link}`}
+                aria-current={(link === "explore" && explorePage) || (link === "lab" && labPage) || (link === "notes" && notesPage) || (professionalPath && pageLinks[link] === professionalPath) ? "page" : undefined}
                 onClick={() => {
                   setActive(link)
                   setMenuOpen(false)

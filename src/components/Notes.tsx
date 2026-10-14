@@ -1,5 +1,7 @@
 import { useEffect } from "react"
 import { engineeringNotes, noteReadingMinutes } from "../data/notes"
+import NotesArchive from "./NotesArchive"
+import RelatedNotes from "./RelatedNotes"
 import { projects } from "../data/projects"
 import { normalizePagePath } from "../lib/caseStudyPages"
 
@@ -24,69 +26,7 @@ export default function Notes() {
     return () => cancelAnimationFrame(frame)
   }, [note])
 
-  if (!note)
-    return (
-      <div className="explore-page notes-page px-4 sm:px-6 lg:px-10">
-        <div className="max-w-[1440px] mx-auto">
-          <header className="explore-header">
-            <a className="case-study-breadcrumb font-mono" href="/explore/">
-              ← Explore the projects
-            </a>
-            <p className="project-eyebrow font-mono">
-              ENGINEERING NOTES / DECISIONS & TRADE-OFFS
-            </p>
-            <h1>
-              Behind the feature.
-              <br />
-              Inside the decision.
-            </h1>
-            <p>
-              Short explanations of the reasoning behind the systems I've built.
-              Each note connects a design decision to its project and an
-              interactive example.
-            </p>
-          </header>
-          <section aria-labelledby="notes-index-title">
-            <div className="explore-section-heading">
-              <h2 id="notes-index-title">The notes</h2>
-              <p className="font-mono">
-                {engineeringNotes.length}{" "}
-                {engineeringNotes.length === 1 ? "note" : "notes"}
-              </p>
-            </div>
-            <div className="notes-list">
-              {engineeringNotes.map((item) => (
-                <article className="note-index-card" key={item.id}>
-                  <p className="project-eyebrow font-mono">
-                    {projects.find((p) => p.id === item.projectId)?.name} /{" "}
-                    {item.topic}
-                  </p>
-                  <h3>
-                    <a href={item.path}>{item.title}</a>
-                  </h3>
-                  <p>{item.summary}</p>
-                  <div className="note-index-meta font-mono">
-                    <span>
-                      James Ian Bayonas · {noteReadingMinutes(item)} min read
-                    </span>
-                    <a href={item.path}>Read the note ↗</a>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-          <footer className="dedicated-case-footer">
-            <div>
-              <p className="project-eyebrow font-mono">TRY THE IDEAS</p>
-              <h2>See the logic in action.</h2>
-            </div>
-            <a className="font-mono" href="/lab/">
-              Open the Engineering Lab ↗
-            </a>
-          </footer>
-        </div>
-      </div>
-    )
+  if (!note) return <NotesArchive />
 
   return (
     <article className="explore-page notes-page px-4 sm:px-6 lg:px-10">
@@ -165,6 +105,7 @@ export default function Notes() {
             </aside>
           </div>
         </div>
+        <RelatedNotes note={note} />
         <footer className="dedicated-case-footer">
           <div>
             <p className="project-eyebrow font-mono">CONTINUE EXPLORING</p>

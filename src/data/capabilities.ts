@@ -19,7 +19,7 @@ export const engineeringCapabilities: EngineeringCapability[] = [
     name: "AI-assisted workflows",
     description: "Connect model output to validation, fallback paths, and human decisions.",
     evidence: [
-      { projectId: "dormfix", summary: "Separate receipt text extraction and model parsing from schema checks, payment rules, and landlord review.", section: "walkthrough", linkLabel: "Try the receipt review" },
+      { projectId: "dormfix", summary: "Explore the historical OCR/local-model design, its requested response shape, explicit payment checks, and landlord review.", section: "walkthrough", linkLabel: "Try the receipt review" },
       { projectId: "isdalog", summary: "Attempt cloud catch classification, then use a reachable local vision model when cloud inference fails.", section: "decision", linkLabel: "Read the fallback decision" },
     ],
   },

@@ -72,6 +72,7 @@ def render(project, output):
     y = paragraph(pdf, f"Built for: {study['audience']}", MARGIN, y + 6, BODY_WIDTH, SMALL) - 20
     y = block(pdf, "My contribution", study["contribution"], MARGIN, y, BODY_WIDTH)
     y = block(pdf, "Main technologies", " / ".join(project["tech"]), MARGIN, y, BODY_WIDTH, SMALL)
+    y = block(pdf, "Version scope", project["versionLabel"] + ". " + project["versionSummary"], MARGIN, y, BODY_WIDTH, SMALL)
     column = (BODY_WIDTH - 26) / 2
     left = label(pdf, "Workflow", MARGIN, y)
     for index, step in enumerate(study["workflow"], 1):
@@ -110,7 +111,7 @@ def render(project, output):
         raise ValueError(f"Expected a one-page brief for {project['name']}")
     text = reader.pages[0].extract_text()
     normalized_text = " ".join(text.split()).casefold()
-    for required in [project["name"], project["role"], project["context"], "My contribution", "Trade-off", study["problem"], study["contribution"], study["approach"], study["tradeoff"], study["audience"]]:
+    for required in [project["name"], project["role"], project["context"], "My contribution", "Trade-off", project["versionLabel"], project["versionSummary"], study["problem"], study["contribution"], study["approach"], study["tradeoff"], study["audience"]]:
         if " ".join(clean(required).split()).casefold() not in normalized_text:
             raise ValueError(f"Missing content: {required}")
     actual_links = [str(item.get_object()["/A"]["/URI"]) for item in reader.pages[0].get("/Annots", [])]

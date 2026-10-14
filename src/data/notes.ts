@@ -28,22 +28,22 @@ export const engineeringNotes: EngineeringNote[] = [
     flow: ["Extract text", "Structure fields", "Validate & compare", "Landlord review"],
     flowCaption: "Each stage answers a different question. None of the first three confirms that funds were received.",
     demoLabel: "Try the receipt-review demo",
-    sourceContext: "Based on DormFix's supplied project documentation and the portfolio's illustrative receipt workflow. This note does not report a security audit or measured model accuracy.",
+    sourceContext: "This note describes DormFix's historical local OCR/Ollama pipeline, including aiService.ts at commit be2d607. Later code uses Gemini and PostgreSQL, as shown in the case-study evolution timeline. The walkthrough is a fixed illustration; no receipt accuracy or security audit is reported.",
     sections: [
       { id: "context", title: "The problem starts with a screenshot", paragraphs: [
         "DormFix is a collaborative capstone proposed by my classmate. I implemented its features as part of the team. One of those workflows accepts a tenant's payment screenshot so a landlord can review the payment claim alongside the expected record.",
         "Screenshots vary in layout and quality. An amount may be blurred, a date may be old, or a submitted amount may differ from the rent due. Turning the image into usable fields helps the reviewer, but it cannot by itself establish that a transfer reached the intended account.",
       ] },
       { id: "extract", title: "OCR answers: what text can be read?", paragraphs: [
-        "The documented pipeline begins with Tesseract.js extracting text from the uploaded image. That gives the next stage something to parse, rather than asking business rules to interpret an entire picture.",
+        "The historical local pipeline begins with Tesseract.js extracting text from the uploaded image. That gives the next stage something to parse before business rules compare the resulting fields.",
         "Extraction is still fallible. A cropped reference number or an unclear digit can produce incomplete or incorrect text. Missing information should remain visible as a review problem; it should not become an invented amount or date just to keep the workflow moving.",
       ] },
       { id: "parse", title: "Parsing answers: how should the text be structured?", paragraphs: [
-        "A local Ollama model maps the extracted text into fields such as amount, date, and reference number. Zod checks the response structure so downstream code can work with the expected shape.",
-        "Structure and truth are separate properties. A numeric amount can satisfy a schema even when OCR read the wrong digit. A reference string can be well formed without proving that it belongs to a genuine transaction. Schema validation helps manage the software boundary; it is not a receipt-authenticity check.",
+        "The historical Ollama model maps text into amount, date, and reference fields. A Zod-defined response format requests a particular shape. The reviewed implementation then uses JSON.parse; it does not independently validate the returned object with the Zod schema at runtime.",
+        "Structure and truth are separate properties. A numeric amount can have the requested shape even when OCR read the wrong digit. A reference string can be well formed without proving that it belongs to a genuine transaction. Runtime schema validation would strengthen the software boundary while still leaving receipt authenticity and payment confirmation for review.",
       ] },
       { id: "check", title: "Rules answer: do these details match the expected record?", paragraphs: [
-        "DormFix's documented checks compare the extracted amount with expected payment details and flag date drift greater than seven days. These checks are explicit business rules applied after parsing, rather than decisions left entirely to the model.",
+        "The reviewed payment controller compares a nonzero extracted amount with the amount submitted in the payment form and flags receipt age greater than seven days. These checks are explicit business rules applied after analysis; they do not independently establish the amount due in the database.",
         "For the portfolio example, the expected rent is ₱3,500. A ₱2,800 receipt raises an amount flag. A ten-day-old receipt raises a date flag. Missing fields require manual review. A matching amount and recent date pass those illustrated checks, while the landlord decision remains pending.",
         "These examples use fixed sample data. The portfolio walkthrough runs no OCR or model inference and makes no live payment update. It demonstrates the boundaries of the process rather than evaluating a visitor's financial document.",
       ] },
@@ -53,7 +53,7 @@ export const engineeringNotes: EngineeringNote[] = [
       ] },
       { id: "tradeoff", title: "The trade-off: local inference still has a cost", paragraphs: [
         "Local OCR and model parsing avoid a hosted inference API fee for this pipeline, but require server memory, compute, and an available local model service. The design moves that operational responsibility into the application environment.",
-        "The useful lesson is to give each stage a clear job: extract text, structure fields, validate the shape, compare against known expectations, then record a review decision. Keeping those responsibilities explicit makes failures and limitations easier to understand.",
+        "The useful lesson is to give each stage a clear job: extract text, request structured fields, independently validate the shape where implemented, compare against known expectations, then record a review decision. The portfolio sample illustrates the intended review boundaries.",
       ] },
     ],
   },
@@ -82,7 +82,7 @@ export const engineeringNotes: EngineeringNote[] = [
         "A code validates a workflow interaction; it is not independent evidence of the condition of a physical crate. Live GPS similarly provides transit visibility without deciding whether the delivered catch meets the buyer's expectations. Those limits are why inspection remains a distinct step.",
       ] },
       { id: "settlement", title: "Inspection precedes the catch-price split", paragraphs: [
-        "After delivery is recorded, the buyer confirms inspection before the settlement step. In the documented example, a ₱1,600 catch price produces a ₱1,552 harvester share and a ₱48 platform share. The rider's delivery fee is handled separately from that 97/3 catch-price split.",
+        "The documented workflow places buyer inspection after delivery. Its example divides a ₱1,600 catch price into ₱1,552 for the harvester and ₱48 for the platform, with a separate delivery fee. The linked OrderController credits harvester and rider balances but does not explicitly credit the platform share; the portfolio uses the documented split as an illustration.",
         "The portfolio simulation shows only catch-price funds so the transition is easy to inspect. Its held balance remains ₱1,600 after the delivery code, then returns to zero after inspection. It performs no live transfer, and repeating the completed sample action cannot release the same amount again.",
       ] },
       { id: "integrity", title: "A database transaction protects the related updates", paragraphs: [
@@ -147,7 +147,7 @@ export const engineeringNotes: EngineeringNote[] = [
       ] },
       { id: "stock", title: "A void restores the current recorded quantities once", paragraphs: [
         "The public void interface describes returning the current recorded quantities to inventory once and leaving the sale visible as voided. This matters when corrections have already changed the effective items: restoration should follow the current recorded state, rather than blindly returning an earlier quantity.",
-        "The portfolio demo uses a simpler sale with no intervening correction. A four-unit sale reduces ten available units to six. Recording a reasoned void returns the available stock to ten, retains the original ₱100 sale total, and sets the effective total to zero. The completed sample cannot restore those units a second time.",
+        "The portfolio demo starts with three units at ₱25 each: a sale reduces ten available units to seven. A reasoned void restores ten units, retains the original ₱75 total, and sets the effective total to zero. Visitors can change the quantity; repeating the completed sample cannot restore stock twice.",
       ] },
       { id: "recovery", title: "An uncertain response needs reconciliation", paragraphs: [
         "The inspected frontend retains an adjustment request key and its inputs when the server outcome is unknown. It offers a way to check that request before retrying, and a retry reuses the same request instead of inventing a new key.",

@@ -12,6 +12,9 @@ export default function CaseStudyNavigation({ projectId }: CaseStudyNavigationPr
     { id: "engineering", label: "Written case study" },
     { id: `${projectId}-contribution`, label: "My contribution" },
     { id: `${projectId}-decision`, label: "Design decisions" },
+    { id: `${projectId}-source-code`, label: "Source code" },
+    { id: `${projectId}-test-evidence`, label: "Test evidence" },
+    { id: `${projectId}-evolution`, label: "Evolution" },
   ]
   const [active, setActive] = useState("overview")
   const [open, setOpen] = useState(false)
@@ -24,7 +27,12 @@ export default function CaseStudyNavigation({ projectId }: CaseStudyNavigationPr
     let frame = 0
     function update() {
       frame = 0
-      const threshold = 160
+      const navigation = nav.current
+      const offset = navigation
+        ? Math.max(156, Math.ceil(parseFloat(getComputedStyle(navigation).top) + navigation.offsetHeight + 16))
+        : 156
+      navigation?.closest<HTMLElement>(".dedicated-case-study")?.style.setProperty("--case-section-offset", `${offset}px`)
+      const threshold = offset + 1
       let current = "overview"
       for (const id of sectionIds.split(",")) {
         const target = document.getElementById(id)
@@ -38,6 +46,7 @@ export default function CaseStudyNavigation({ projectId }: CaseStudyNavigationPr
     const observer = new ResizeObserver(schedule)
     const content = document.getElementById("case-study")
     if (content) observer.observe(content)
+    if (nav.current) observer.observe(nav.current)
     window.addEventListener("scroll", schedule, { passive: true })
     window.addEventListener("resize", schedule)
     window.addEventListener("hashchange", schedule)

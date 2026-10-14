@@ -14,13 +14,13 @@
 
 ### Core Business Problem & Purpose
 
-Modern technical recruiting requires immediate signal clarity: demonstrating full-stack engineering proficiency, architectural rigor, and system-level trade-offs within seconds. This application serves as an interactive systems portfolio, presenting production-grade architectural blueprints (including distributed logistics, clinical POS, and OCR validation engines) through a developer-focused user experience that mirrors high-end IDEs and terminal diff interfaces.
+Modern technical recruiting requires immediate signal clarity: demonstrating full-stack engineering proficiency, architectural rigor, and system-level trade-offs within seconds. This application serves as an interactive systems portfolio, explaining documented system architectures (including distributed logistics, clinical POS, and OCR validation engines) through a developer-focused user experience that mirrors high-end IDEs and terminal diff interfaces.
 
 ### Technical Challenges & Engineering Trade-offs
 
 * **The Challenge:** Coordinating continuous viewport-driven ambient lighting, cursor-tracked radial spotlights, and scroll-linked interpolation without causing CSS transform conflicts, layout recalculation storms, or dropped frames on low-powered devices.
 * **The Solution:** Implemented CSS `left: calc(50% - 450px)` layout math to isolate horizontal centering from the GPU layer, allowing Framer Motion to animate `scale` and `opacity` MotionValues independently. Integrated deep `useReducedMotion` hooks across all component lifecycles to instantly snap rendering states and bypass continuous animation loops for users with motion sensitivities.
-* **The Trade-off:** Selected client-side MotionValue physics and native CSS variables over heavy Canvas/WebGL runtime renderers. This trade-off drastically reduces initial JavaScript bundle weight and memory footprint while maintaining consistent 60fps rendering across desktop and mobile viewports.
+* **The Trade-off:** Selected client-side MotionValue physics and native CSS variables over heavy Canvas/WebGL runtime renderers. This design keeps animation separate from the core content and supports reduced-motion preferences. Performance results and limitations are recorded in PERFORMANCE_REVIEW.md.
 
 ---
 
@@ -39,6 +39,12 @@ Modern technical recruiting requires immediate signal clarity: demonstrating ful
 
 ## Key Features & Engineering Capabilities
 
+* **Professional context:** About (/about/) connects education and dated project milestones; Now (/now/) records current portfolio work and learning themes; How I can help (/work-with-me/) connects supported work discussions to project examples and the existing contact panel.
+* **Reviewable engineering evidence:** Case studies include nine commit-pinned source references, eight scoped test scenarios, and three evolution milestones each. Version labels explain historical and reviewed-code differences across summaries, notes, comparison, walkthroughs, and PDF briefs. External application tests are referenced as inspected evidence rather than claimed executions.
+* **Connected notes discovery:** The Notes archive supports text, topic, and project filters with URL restoration and reset. Each article includes curated related notes with an explanation of the connection.
+
+The approved core feature tracker and optional extensions are recorded in [ROADMAP.md](ROADMAP.md).
+
 * **Measured Mobile Performance:** IBM Plex fonts are served locally with a primary font preload, homepage sections load separately, and walkthrough screenshots reserve their layout dimensions. The [mobile performance review](PERFORMANCE_REVIEW.md) records live before-and-after PageSpeed reports, validation, and remaining image-delivery work.
 
 * **Responsive Project Screenshots:** Explore, the homepage, case-study heroes, and IsdaLog's walkthrough use compressed WebP candidates with browser-selected sizes. Originals remain available. Run `npm run images:generate` after replacing a screenshot; the build verifies source hashes and all 33 generated previews. See [image generation notes](public/screenshots/README.md).
@@ -49,7 +55,7 @@ Modern technical recruiting requires immediate signal clarity: demonstrating ful
 
 The [visitor journey review](VISITOR_REVIEW.md) documents the direct Explore entry, header contact action, written-case-study shortcut, screenshot captions, keyboard panning, and checks still requiring human feedback.
 
-* **Engineering Notes (`/notes/`):** An index and first article, “Why receipt parsing is not payment verification” (`/notes/dormfix-receipt-review/`). The article distinguishes OCR, local structured parsing, schema checks, deterministic business rules, and landlord decisions, while crediting the collaborative capstone accurately. It includes section navigation, a reading-time estimate derived from content, and links to DormFix's case study, sample lab, and documentation. Navigation, search, and the relevant project/demo link back to the note; both pages receive static metadata.
+* **Engineering Notes (`/notes/`):** An index and first article, “Why receipt parsing is not payment verification” (`/notes/dormfix-receipt-review/`). The article distinguishes OCR, local structured parsing, the requested response shape, deterministic business rules, and landlord decisions, while crediting the collaborative capstone accurately. It includes section navigation, a reading-time estimate derived from content, and links to DormFix's case study, sample lab, and documentation. Navigation, search, and the relevant project/demo link back to the note; both pages receive static metadata.
   The collection also includes `/notes/isdalog-delivery-settlement/`, `/notes/centralog-calculated-valuation/`, and `/notes/pharmalink-void-adjustment/`. These explain delivery versus settlement, calculation from source records, and traceable sale adjustments respectively. Shared article rendering uses each note's flow, source context, and project-specific links; related notes appear automatically on the corresponding case study and Lab experiment.
 
 * **Engineering Lab (`/lab/`):** A shared home for four existing demonstrations: CentraLog valuation, DormFix receipt review, IsdaLog custody and settlement, and PharmaLink sale/stock accounting. The page loads one experiment at a time, restores selections from `#demo-<project>` links, and resets sample state when switching. Navigation and search link to the lab; each experiment links back to its case study. The same components and calculation/state logic are reused on the project pages.

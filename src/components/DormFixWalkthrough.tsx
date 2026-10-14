@@ -34,9 +34,9 @@ const stages = [
     title: "Parse structured fields",
     actor: "LOCAL MODEL / SCHEMA",
     description:
-      "Local Ollama parsing turns extracted text into fields, with Zod checking the output structure. Here, those fields are predefined sample data.",
+      "The historical Ollama pipeline requests payment fields using a Zod-defined response format. Here, the fields are predefined sample data; the original parser did not independently validate the parsed JSON.",
     reason:
-      "A valid schema checks the shape of the result. It does not guarantee that the extracted amount, date, or reference is correct.",
+      "A requested output shape does not guarantee accurate receipt details. Independent runtime validation and review have separate roles.",
   },
   {
     title: "Check and review",
@@ -295,7 +295,7 @@ export default function DormFixWalkthrough() {
           </div>
         </div>
         <p className="walkthrough-ledger-note">
-          Illustration of the documented OCR → local parsing → validation →
+          Illustration of the historical OCR → local parsing → business checks →
           review flow. All receipt references and amounts here are sample data.
         </p>
       </div>

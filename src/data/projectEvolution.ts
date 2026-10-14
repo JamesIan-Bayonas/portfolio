@@ -1,0 +1,198 @@
+export interface ProjectMilestone {
+  id: string
+  title: string
+  committedAt: string
+  commit: string
+  change: string
+  reason: string
+  outcome: string
+  evidencePaths: string[]
+}
+
+// Curated from reviewed commit diffs, in chronological order. Dates are
+// committer timestamps, not release dates. Context describes the design
+// implications of the code; it does not claim measured production outcomes.
+export const projectEvolution: Record<string, ProjectMilestone[]> = {
+  dormfix: [
+    {
+      id: "ocr-before-parsing",
+      title: "Extract receipt text before model parsing",
+      committedAt: "2026-02-21T15:50:23Z",
+      commit: "be2d607e6068967ef637fbfc72c876d89b49c428",
+      change:
+        "Replaced direct receipt-image input to the local model with Tesseract text extraction followed by Ollama parsing.",
+      reason:
+        "Give text extraction and structured payment-field parsing separate responsibilities.",
+      outcome:
+        "The model receives OCR text with a Zod-defined response format. OCR and the local model both remain operational dependencies.",
+      evidencePaths: ["server/src/services/aiService.ts"],
+    },
+    {
+      id: "hosted-model-service",
+      title: "Move receipt and maintenance parsing to Gemini",
+      committedAt: "2026-08-16T19:32:22Z",
+      commit: "1f689bd583be9d604c006b767f1e68f8d5ad5db8",
+      change:
+        "Replaced the local Ollama client and response format with Gemini calls and provider response schemas for payment and maintenance analysis.",
+      reason:
+        "Keep structured analysis while changing where model inference runs.",
+      outcome:
+        "At this revision, receipt extraction still uses Tesseract. Parsing now needs a Gemini API key and access to the hosted service; the local pipeline in this case study represents the earlier design.",
+      evidencePaths: ["server/src/services/aiService.ts"],
+    },
+    {
+      id: "postgresql-deployment",
+      title: "Prepare PostgreSQL storage and deployment configuration",
+      committedAt: "2026-09-15T13:36:17Z",
+      commit: "f44568f9c02d66c5a545e6ac5ccc550221c92477",
+      change:
+        "Migrated SQL Server data access to PostgreSQL, added Supabase schema files, and introduced Render deployment configuration and database integration tests.",
+      reason:
+        "Adapt the existing workflows and transaction handling to the new database and hosting configuration.",
+      outcome:
+        "Repositories now use PostgreSQL queries and a shared transaction helper. The migration adds schema and deployment work alongside the database change; this commit does not establish a successful release.",
+      evidencePaths: [
+        "server/src/config/dbConfig.ts",
+        "supabase/migrations/202609150001_dormfix_postgresql_schema.sql",
+        "render.yaml",
+      ],
+    },
+  ],
+  isdalog: [
+    {
+      id: "delivery-payout",
+      title: "Connect delivery completion with a payout",
+      committedAt: "2026-05-17T15:48:33Z",
+      commit: "20a4134c89b1b5cfa86806077c28f47be92b9a64",
+      change:
+        "Added a delivery-completion method that locks a listing, credits the harvester wallet, and completes listing and logistics records inside a database transaction.",
+      reason: "Coordinate the delivery state and its associated wallet update.",
+      outcome:
+        "This earlier design couples completion with payout. Later revisions make the cargo handoff and buyer-confirmed financial step distinct.",
+      evidencePaths: ["app/Http/Controllers/DispatchController.php"],
+    },
+    {
+      id: "separate-handoffs",
+      title: "Introduce separate pickup and delivery codes",
+      committedAt: "2026-08-16T15:22:18Z",
+      commit: "9caded4e228f053ca26c8f9082006beaacf6e5b9",
+      change:
+        "Added pickup and delivery verification fields and dispatch methods that check the appropriate code at each handoff.",
+      reason:
+        "Represent the port pickup and buyer delivery as separate custody transitions.",
+      outcome:
+        "Pickup moves the order into transit; delivery records the destination handoff. Invalid codes return an error instead of completing the corresponding transition.",
+      evidencePaths: [
+        "app/Http/Controllers/DispatchController.php",
+        "database/migrations/2026_08_15_132358_add_verification_otps_to_orders_logistics_table.php",
+      ],
+    },
+    {
+      id: "confirmation-and-reviews",
+      title: "Extend buyer confirmation with payouts and reviews",
+      committedAt: "2026-08-21T17:15:49Z",
+      commit: "34d56b2c6d95c16b0b861fa235df3be0b771f043",
+      change:
+        "Refactored buyer confirmation to credit harvester and rider wallets, record reviews, clear the held balance, and complete the order in a locked-order transaction.",
+      reason:
+        "Group the financial and review records around the buyer's confirmation action.",
+      outcome:
+        "The method checks buyer ownership and rejects already-completed orders. The delivery handoff remains a separate dispatch operation.",
+      evidencePaths: ["app/Http/Controllers/OrderController.php"],
+    },
+  ],
+  centralog: [
+    {
+      id: "valuation-strategies",
+      title: "Add interchangeable valuation strategies",
+      committedAt: "2026-07-08T14:55:49Z",
+      commit: "1ba4bd46a821565fe590b280d2e8480c9e61cc38",
+      change:
+        "Introduced straight-line and double-declining strategy classes, with an enum selecting the algorithm.",
+      reason:
+        "Give each valuation formula its own implementation using asset and maintenance inputs.",
+      outcome:
+        "Both strategies subtract recorded repair time and apply a salvage-value floor. The maintenance adjustment is an explicit application policy.",
+      evidencePaths: [
+        "CentraLog.Infrastructure/Services/Depreciation/StraightLineStrategy.cs",
+        "CentraLog.Infrastructure/Services/Depreciation/DoubleDecliningStrategy.cs",
+      ],
+    },
+    {
+      id: "calendar-day-calculation",
+      title: "Calculate depreciation at calendar-day boundaries",
+      committedAt: "2026-09-23T14:30:42Z",
+      commit: "326f85e4f847571222e76c246f39449a0acf6c4f",
+      change:
+        "Normalized evaluation, asset start, and maintenance timestamps to dates, replacing fractional elapsed days with whole calendar days.",
+      reason:
+        "Avoid second-by-second changes in the displayed valuation for unchanged records.",
+      outcome:
+        "Calculations use day-level precision, trading sub-day changes for a consistent calendar-day result.",
+      evidencePaths: [
+        "CentraLog.Infrastructure/Services/Depreciation/StraightLineStrategy.cs",
+        "CentraLog.Infrastructure/Services/Depreciation/DoubleDecliningStrategy.cs",
+      ],
+    },
+    {
+      id: "recorded-dashboard-value",
+      title: "Separate procurement totals from depreciated value",
+      committedAt: "2026-09-23T14:44:20Z",
+      commit: "d86fe45a82a3f0b8eafe2eebc590d5c8c6714f9a",
+      change:
+        "Changed the inventory dashboard total to sum recorded procurement costs, replacing its sum of calculated depreciated values, and added a unit test.",
+      reason:
+        "Give the inventory summary a total based on recorded purchase values while keeping time-dependent valuation in the financial ledger.",
+      outcome:
+        "The dashboard total depends on procurement records rather than elapsed depreciation time. The two totals answer different reporting questions.",
+      evidencePaths: [
+        "CentraLog.Infrastructure/Services/AssetService.cs",
+        "CentraLog.Tests/UnitTest1.cs",
+      ],
+    },
+  ],
+  pharmalink: [
+    {
+      id: "checkout-receipt",
+      title: "Align checkout receipts with the sale response",
+      committedAt: "2026-01-05T15:23:10Z",
+      commit: "c7731a3a580e0dd11d056c4e6ba689e954bee3fd",
+      change:
+        "Updated checkout to read the returned sale ID and construct receipt details from the cart. Product searches gained a 500-millisecond debounce.",
+      reason:
+        "Connect the receipt to the API response and reduce product lookups while staff type.",
+      outcome:
+        "The client builds the receipt after sale creation returns and clears the cart. Its receipt date and total come from client data at this revision.",
+      evidencePaths: ["src/features/pos/POSTerminalPage.tsx"],
+    },
+    {
+      id: "adjustment-contracts",
+      title: "Represent corrections and voids as adjustments",
+      committedAt: "2026-10-01T15:33:30Z",
+      commit: "ca7d651a0dcadd96491b0eebde46a9ba4ebdd435",
+      change:
+        "Replaced the client's delete-style void call with adjustment requests and added original/effective values, revisions, reasons, and request identifiers to the sale contracts.",
+      reason:
+        "Represent a sale change alongside the original record and provide a way to look up a submitted adjustment.",
+      outcome:
+        "The client can describe a correction or void and query it by request key. These contracts alone do not establish backend stock or transaction guarantees.",
+      evidencePaths: [
+        "src/services/saleService.ts",
+        "src/features/sales/saleAudit.ts",
+      ],
+    },
+    {
+      id: "complete-sale-export",
+      title: "Export paginated sales with consistency checks",
+      committedAt: "2026-10-01T16:37:03Z",
+      commit: "f0dcaed8b5a594b415d31268d7f7834b42c5cdfd",
+      change:
+        "Added a collector that traverses sale pages and rejects observable changes in counts, page metadata, or record IDs. CSV output includes original and current sale values.",
+      reason:
+        "Avoid silently exporting repeated or missing records while preserving adjustment history in the report.",
+      outcome:
+        "Detected inconsistencies stop the export for a deliberate retry. Offset pagination still does not provide a database snapshot.",
+      evidencePaths: ["src/features/sales/exportSalesCsv.ts"],
+    },
+  ],
+}

@@ -50,6 +50,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           </h3>
           <p className="project-title">{project.title}</p>
           <p className="project-description">{project.description}</p>
+          <p className="project-version-label font-mono">{project.versionLabel}</p>
           <dl className="project-credits">
             <div>
               <dt>My role</dt>

@@ -25,6 +25,8 @@ export interface Project {
   imageTitle: string
   imageCaption: string
   caseStudyPath?: string
+  versionLabel: string
+  versionSummary: string
   caseStudy: {
     problem: string
     contribution: string
@@ -62,6 +64,8 @@ export const projects: Project[] = [
     id: "isdalog",
     caseStudyPath: caseStudyPages.find(page => page.projectId === "isdalog")?.path,
     name: "IsdaLog",
+    versionLabel: "Documented workflow and reviewed settlement code",
+    versionSummary: "The walkthrough illustrates the documented 97/3 catch-price split. The linked order controller credits the harvester and rider; it does not explicitly credit the platform share.",
     title: "From the landing port to a verified delivery.",
     category: "Fisheries & logistics",
     context: "Independent project",
@@ -125,7 +129,7 @@ export const projects: Project[] = [
         {
           title: "Inspect and settle",
           detail:
-            "Buyer confirmation releases the settlement: 97% of catch price to the harvester, 3% to the platform, and the delivery fee to the rider.",
+            "Buyer confirmation credits the harvester and rider in the reviewed order controller. The walkthrough illustrates the documented 97/3 catch-price split; explicit platform crediting is outside that controller.",
         },
       ],
       challenge:
@@ -140,6 +144,8 @@ export const projects: Project[] = [
     id: "dormfix",
     caseStudyPath: caseStudyPages.find(page => page.projectId === "dormfix")?.path,
     name: "DormFix",
+    versionLabel: "Historical OCR and local-model design",
+    versionSummary: "This case study follows the earlier Tesseract, Ollama, Zod-defined response format, and SQL Server design. Later revisions use Gemini and PostgreSQL; the evolution timeline traces those changes.",
     title: "A shared workflow for landlords and tenants.",
     category: "Property management",
     context: "Collaborative capstone",
@@ -203,15 +209,17 @@ export const projects: Project[] = [
       challenge:
         "Payment screenshots vary in format and can contain incorrect amounts or old dates.",
       approach:
-        "Separate text extraction and model parsing from deterministic business checks. Validate structured output with Zod and compare extracted fields against expected payment records.",
+        "Separate OCR and local model parsing from business checks. Use a Zod-defined response format, then compare extracted fields with submitted payment details; the reviewed parser does not independently validate its parsed JSON.",
       tradeoff:
-        "Local inference avoids a hosted model API fee but still needs server compute. Schema validation checks output structure; business checks and review are needed to assess the extracted receipt details.",
+        "The historical local pipeline avoids a hosted model API fee but needs server compute. A requested response shape does not guarantee accurate extraction; business checks and landlord review remain necessary.",
     },
   },
   {
     id: "centralog",
     caseStudyPath: caseStudyPages.find(page => page.projectId === "centralog")?.path,
     name: "CentraLog",
+    versionLabel: "Reviewed asset services and valuation strategies",
+    versionSummary: "Code references show the asset service and strategy calculations at fixed commits. The portfolio calculator and lifecycle walkthrough run independently using sample data.",
     title: "Connecting asset custody with maintenance and valuation.",
     category: "Institutional asset management",
     context: "School project",
@@ -282,6 +290,8 @@ export const projects: Project[] = [
     id: "pharmalink",
     caseStudyPath: caseStudyPages.find(page => page.projectId === "pharmalink")?.path,
     name: "PharmaLink",
+    versionLabel: "Documented backend and reviewed client workflows",
+    versionSummary: "The backend architecture is described in the supplied project documentation. Code and test references inspect client contracts and interfaces; the walkthrough simulates sale and stock behavior.",
     title: "Keeping pharmacy sales and inventory in step.",
     category: "Pharmacy inventory & POS",
     context: "School project",
@@ -334,7 +344,7 @@ export const projects: Project[] = [
       challenge:
         "Updating a sale separately from its stock deductions can leave inconsistent records.",
       approach:
-        "Group related sale updates in database transactions and control operations through administrator and pharmacist roles.",
+        "The documented backend groups sale updates in database transactions. Reviewed client contracts keep original records, effective records, and adjustments distinct, with administrator and pharmacist workflows.",
       tradeoff:
         "Coordinating sales and stock in one transaction makes failure handling explicit and requires carefully defined stock and reversal rules.",
     },

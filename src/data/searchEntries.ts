@@ -4,6 +4,9 @@ import { engineeringNotes } from "./notes"
 import { engineeringCapabilities } from "./capabilities"
 
 export const portfolioSearchEntries: SearchEntry[] = [
+  { id: "professional-about", label: "About & my development journey", description: "Education, project periods, and the context behind my work.", category: "Professional profile", path: "/about/", target: "case-study", keywords: ["education", "student", "resume", "career", "journey", "BSIT", "Dipolog"] },
+  { id: "current-work", label: "Current work", description: "A dated update on this portfolio and learning through project work.", category: "Professional profile", path: "/now/", target: "case-study", keywords: ["now", "current", "focus", "learning", "update"] },
+  { id: "work-with-me", label: "How I can help", description: "Discuss a build, an existing-system improvement, or an opportunity.", category: "Professional profile", path: "/work-with-me/", target: "case-study", keywords: ["services", "work", "build", "improve", "opportunity", "contact", "hire"] },
   ...engineeringCapabilities.map(capability => ({
     id: `capability-${capability.id}`,
     label: capability.name,
@@ -12,7 +15,7 @@ export const portfolioSearchEntries: SearchEntry[] = [
     target: `capability-${capability.id}`,
     keywords: ["skills", "capabilities", "evidence", ...capability.evidence.flatMap(evidence => [evidence.projectId, evidence.summary])],
   })),
-  { id: "notes", label: "Engineering Notes", description: "Read the reasoning behind project decisions and trade-offs.", category: "Writing", path: "/notes/", target: "case-study", keywords: ["articles", "publications", "decisions", "writing", "explanations"] },
+  { id: "notes", label: "Engineering Notes", description: "Search and filter the reasoning behind project decisions by topic or project.", category: "Writing", path: "/notes/", target: "case-study", keywords: ["articles", "publications", "decisions", "writing", "explanations", "archive", "topics", "filters"] },
   ...engineeringNotes.map(note => ({ id: note.id, label: note.title, description: note.summary, category: "Engineering note", path: note.path, target: "case-study", keywords: [note.projectId, note.topic, ...note.sections.flatMap(section => [section.title, ...section.paragraphs])] })),
   { id: "explore", label: "Explore all projects", description: "Filter systems by domain and technology, then try a walkthrough.", category: "Project explorer", path: "/explore/", target: "case-study", keywords: ["browse", "filter", "discover", "portfolio", "projects", "technologies"] },
   { id: "engineering-lab", label: "Engineering Lab", description: "Try valuation, receipt review, settlement, and sale-and-stock demos.", category: "Interactive demos", path: "/lab/", target: "case-study", keywords: ["tools", "experiments", "playground", "simulations", "interactive"] },

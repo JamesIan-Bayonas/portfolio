@@ -1,5 +1,20 @@
 [
   {
+    "path": "/about/",
+    "title": "About & Journey | James Ian Bayonas",
+    "description": "Meet James Ian Bayonas, a junior full-stack developer and BS Information Technology student in Dipolog City. Explore his education and project journey."
+  },
+  {
+    "path": "/now/",
+    "title": "Current Work | James Ian Bayonas",
+    "description": "A dated update on James Ian Bayonas's current portfolio work and the engineering ideas explored through his projects."
+  },
+  {
+    "path": "/work-with-me/",
+    "title": "How I Can Help | James Ian Bayonas",
+    "description": "Discuss a business web application, API workflow, existing-system improvement, or opportunity with James Ian Bayonas. Explore relevant project evidence."
+  },
+  {
     "path": "/explore/",
     "title": "Explore Projects | James Ian Bayonas",
     "description": "Explore four full-stack projects by domain and technology. Find case studies, interactive walkthroughs, source code, and live systems built by James Ian Bayonas."
@@ -12,7 +27,7 @@
   {
     "path": "/notes/",
     "title": "Engineering Notes | James Ian Bayonas",
-    "description": "Explore the reasoning behind DormFix receipt review, IsdaLog custody and settlement, CentraLog calculated valuation, and PharmaLink sale adjustments."
+    "description": "Search engineering notes by topic and project. Explore DormFix receipt review, IsdaLog settlement, CentraLog valuation, and PharmaLink sale adjustments."
   },
   {
     "path": "/notes/dormfix-receipt-review/",

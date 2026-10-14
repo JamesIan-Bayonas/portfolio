@@ -174,6 +174,7 @@ export default function Explore() {
                     </p>
                     <h3 id={`explore-${project.id}`}>{project.name}</h3>
                     <p className="explore-card-title">{project.title}</p>
+                    <p className="project-version-label font-mono">{project.versionLabel}</p>
                     <dl className="project-credits">
                       <div>
                         <dt>My role</dt>
