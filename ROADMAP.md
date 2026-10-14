@@ -75,7 +75,7 @@ Personal content uses the supplied resume, project documentation, and confirmed 
 | --- | --- | --- |
 | RSS publication updates | One feed for all notes, copyable reader link, article and archive entry points, automatic build generation | Published and verified |
 | Content editor / CMS | Local fields and preview for existing notes and milestones, validated saves, conflict checks, and linked portfolio preview | Local tool verified |
-| Additional languages | English/Filipino switch; Filipino project overview, professional pages, contact controls, and language metadata | Ready locally |
+| Additional languages | English/Filipino switch; Filipino project overview, professional pages, contact controls, and language metadata | Published and verified |
 | Portfolio question assistant | Guided questions and published project records with case-study, source, test, demo, profile, and comparison links | Published and verified |
 | Personal interests or reflections | James wants a broader author profile and has original content to publish | Optional later |
 
@@ -120,3 +120,11 @@ Review this file before proposing the next feature. Add new items only when they
 - Scope: existing note copy and milestone explanations, draft preview, protected routes/reviewed references, validated collection saves, and version conflict handling. Publishing remains the repository release workflow.
 - Original content values were preserved exactly. All 75 tests and build checks passed; all 16 live route titles and the four-item RSS feed were verified. The public editor and editor API routes returned 404.
 - Browser verification covered saving/restoring both collections, local page/title preview, retained unsaved drafts across saves, required-field validation, and 320px layouts with labelled fields and no horizontal overflow. The inspected console was empty.
+
+## Filipino entry-page release — 14 October 2026
+
+- Language choice: Filipino, confirmed by the user. Implementation: [2c43daf](https://github.com/JamesIan-Bayonas/portfolio/commit/2c43daf), Vercel deployment completed successfully.
+- Published routes: [Overview](https://jamesian-portfolio.vercel.app/fil/), [About](https://jamesian-portfolio.vercel.app/fil/about/), [Now](https://jamesian-portfolio.vercel.app/fil/now/), [How I can help](https://jamesian-portfolio.vercel.app/fil/work-with-me/).
+- Scope: translated project overview and professional content, contact controls, explicit English-resource labels, desktop/mobile language switch, search discovery, and static language metadata. Detailed engineering resources, documents, and email-template labels remain English.
+- TypeScript, 79 tests, build, and verification of 20 static routes passed. Live checks confirmed all four Filipino route titles and language alternatives, reciprocal English About metadata, desktop/mobile counterpart switching, a four-note RSS feed, and an empty inspected console. All four Filipino pages fit 320px in local browser review.
+- Coverage and maintenance are recorded in LOCALIZATION.md. Source changes prompt review of Filipino copy before release.
