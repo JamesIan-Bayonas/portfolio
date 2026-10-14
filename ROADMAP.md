@@ -77,9 +77,11 @@ Personal content uses the supplied resume, project documentation, and confirmed 
 | Content editor / CMS | Local fields and preview for existing notes and milestones, validated saves, conflict checks, and linked portfolio preview | Local tool verified |
 | Additional languages | English/Filipino switch; Filipino project overview, professional pages, contact controls, and language metadata | Published and verified |
 | Portfolio question assistant | Guided questions and published project records with case-study, source, test, demo, profile, and comparison links | Published and verified |
-| Personal interests or reflections | Bilingual reflections on project ownership and reviewing workflow decisions, supporting references, related reading, and RSS | Ready locally |
+| Personal interests or reflections | Bilingual reflections on project ownership and reviewing workflow decisions, supporting references, related reading, and RSS | Published and verified |
 
 ## Tracking each future change
+
+The current core roadmap and listed extensions are complete. The content workspace remains an owner-only local tool. Future additions should address a concrete visitor or maintenance need.
 
 For every feature, record:
 
@@ -128,3 +130,10 @@ Review this file before proposing the next feature. Add new items only when they
 - Scope: translated project overview and professional content, contact controls, explicit English-resource labels, desktop/mobile language switch, search discovery, and static language metadata. Detailed engineering resources, documents, and email-template labels remain English.
 - TypeScript, 79 tests, build, and verification of 20 static routes passed. Live checks confirmed all four Filipino route titles and language alternatives, reciprocal English About metadata, desktop/mobile counterpart switching, a four-note RSS feed, and an empty inspected console. All four Filipino pages fit 320px in local browser review.
 - Coverage and maintenance are recorded in LOCALIZATION.md. Source changes prompt review of Filipino copy before release.
+
+## Reflections release — 14 October 2026
+
+- Implementation: [09b78a2](https://github.com/JamesIan-Bayonas/portfolio/commit/09b78a2), Vercel deployment completed successfully.
+- Published [English reflections](https://jamesian-portfolio.vercel.app/reflections/) and [Filipino reflections](https://jamesian-portfolio.vercel.app/fil/reflections/): two pieces on project context and reviewing workflow decisions, with supporting references, related reading, and an English RSS feed.
+- TypeScript, 83 tests, build, and verification of 26 static pages passed. All six new live routes returned their expected titles, language tags, alternatives, and RSS discovery links.
+- The two-item reflections feed and existing four-item notes feed were valid XML, matched the local build exactly, and served the RSS content type and revalidation headers. Live browser review confirmed article navigation, section-preserving Filipino switching, and an empty inspected console. Local mobile, search, and copy checks are recorded in QUALITY_REVIEW.md.
