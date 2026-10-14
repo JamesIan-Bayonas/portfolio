@@ -12,6 +12,8 @@
 
 ## Overview & Architectural Deep Dive
 
+The [Reflections section](https://jamesian-portfolio.vercel.app/reflections/) adds two personal pieces on project ownership and reviewing workflow decisions, with complete [Filipino versions](https://jamesian-portfolio.vercel.app/fil/reflections/). About, Now, and search provide entry points; articles include supporting reading and an [English RSS feed](https://jamesian-portfolio.vercel.app/reflections/feed.xml). Edit paired copy in `src/data/reflectionsContent.json`; translation maintenance is documented in LOCALIZATION.md.
+
 ### Core Business Problem & Purpose
 
 Modern technical recruiting requires immediate signal clarity: demonstrating full-stack engineering proficiency, architectural rigor, and system-level trade-offs within seconds. This application serves as an interactive systems portfolio, explaining documented system architectures (including distributed logistics, clinical POS, and OCR validation engines) through a developer-focused user experience that mirrors high-end IDEs and terminal diff interfaces.

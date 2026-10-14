@@ -11,7 +11,8 @@ import { mkdir, readFile, writeFile } from "node:fs/promises"
 import caseStudyPages from "./src/data/caseStudyPages.json"
 import { siteMetadata as sitePages } from "./src/data/siteMetadata"
 import { engineeringNotes } from "./src/data/notes"
-import { notesFeedXml } from "./src/lib/notesFeed"
+import { notesFeedXml, reflectionsFeedXml } from "./src/lib/notesFeed"
+import { reflections } from "./src/data/reflections"
 
 import { projectPageHtml } from "./src/lib/caseStudyPages"
 
@@ -30,6 +31,7 @@ function staticCaseStudyPages(): Plugin {
 
     generateBundle(_, bundle) {
       this.emitFile({ type: "asset", fileName: "notes/feed.xml", source: notesFeedXml(engineeringNotes) })
+      this.emitFile({ type: "asset", fileName: "reflections/feed.xml", source: reflectionsFeedXml(reflections) })
       const home = Object.values(bundle).find(chunk => chunk.type === "chunk" && chunk.name === "HomePage")
       function visit(file: string) {
         if (homePreloads.has(file)) return

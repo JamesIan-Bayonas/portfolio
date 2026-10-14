@@ -3,6 +3,7 @@ import type { SearchEntry } from "../lib/search"
 import { engineeringNotes } from "./notes"
 import { engineeringCapabilities } from "./capabilities"
 import filipinoPages from "./filipinoPages.json"
+import { reflectionPages } from "./reflectionPages"
 
 export const portfolioSearchEntries: SearchEntry[] = [
   { id: "portfolio-questions", label: "Ask about the portfolio", description: "Questions about projects, contributions, technologies, demos, and engineering evidence.", category: "Portfolio questions", path: "/ask/", target: "case-study", keywords: ["ask", "questions", "assistant", "answers", "help", "guide"] },
@@ -107,4 +108,5 @@ export const portfolioSearchEntries: SearchEntry[] = [
     ],
   },
   ...filipinoPages.map(page => ({id:`filipino-${page.path.split("/").filter(Boolean).join("-")}`,label:page.title.split(" | ")[0],description:page.description,category:"Filipino",path:page.path,target:"case-study",keywords:["Filipino","Tagalog","wika"],language:"fil"})),
+  ...reflectionPages.map(page => ({ id: `reflection-${page.path.split("/").filter(Boolean).join("-")}`, label: page.title.split(" | ")[0], description: page.description, category: page.path.startsWith("/fil/") ? "Mga pagninilay" : "Reflections", path: page.path, target: "case-study", keywords: ["reflections", "learning", "collaboration", "ownership", "pagninilay", "pagkatuto"], language: page.path.startsWith("/fil/") ? "fil" : "en" })),
 ]

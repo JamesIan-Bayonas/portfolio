@@ -21,6 +21,7 @@ export default function FilipinoOverview() {
           <div className="professional-project-links font-mono">
             <a href="#projects">Tuklasin ang mga proyekto ↓</a>
             <a href="/fil/about/">Kilalanin ako ↗</a>
+            <a href="/fil/reflections/">Mga pagninilay ↗</a>
             <a href="/fil/work-with-me/">Pag-usapan ang iyong proyekto ↗</a>
           </div>
         </header>

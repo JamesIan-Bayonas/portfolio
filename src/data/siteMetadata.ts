@@ -1,11 +1,13 @@
 import pages from "./sitePages.json" with { type: "json" }
 import { engineeringNotes } from "./notes.ts"
 import filipinoPages from "./filipinoPages.json" with { type: "json" }
+import { reflectionPages } from "./reflectionPages.ts"
 
 // Article metadata follows the editable title and summary automatically.
 export const siteMetadata = [
   ...pages,
   ...filipinoPages,
+  ...reflectionPages,
   ...engineeringNotes.map((note) => ({
     path: note.path,
     title: `${note.title} | James Ian Bayonas`,

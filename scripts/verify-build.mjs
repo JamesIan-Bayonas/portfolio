@@ -8,17 +8,25 @@ import sharp from "sharp"
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const readJson = async name => JSON.parse(await readFile(path.join(root, "src/data", name), "utf8"))
 const noteContent = await readJson("notesContent.json")
+const reflections = await readJson("reflectionsContent.json")
+const reflectionPages = [{path:"/reflections/",title:"Reflections | James Ian Bayonas"},{path:"/fil/reflections/",title:"Mga Pagninilay | James Ian Bayonas"}, ...reflections.flatMap(item => [{path:item.path,title:`${item.title} | James Ian Bayonas`},{path:`/fil${item.path}`,title:`${item.filipino.title} | James Ian Bayonas`}])]
 const pages = [{ path: "/", title: "James Ian Bayonas | Full-Stack Developer" }, ...await readJson("caseStudyPages.json"), ...await readJson("sitePages.json"), ...await readJson("filipinoPages.json"), ...noteContent.map(note => ({ path: note.path, title: `${note.title} | James Ian Bayonas` }))]
 assert.equal(new Set(pages.map(page => page.path)).size, pages.length, "Duplicate static routes")
+pages.push(...reflectionPages)
+assert.equal(new Set(pages.map(page => page.path)).size, pages.length, "Duplicate reflection routes")
 const assets = new Set()
 await assert.rejects(access(path.join(root, "dist/editor/index.html")), "Local editor must not be published")
 const manifest = JSON.parse(await readFile(path.join(root, "dist/.vite/manifest.json"), "utf8"))
+assert.ok(manifest["src/components/Reflections.tsx"], "Missing reflections chunk")
 assert.ok(!Object.keys(manifest).some(key => key.includes("/editor/")), "Editor code leaked into public build")
 function staticDependencies(key, visited = new Set()) {
   if (visited.has(key)) return visited
   visited.add(key)
   for (const dependency of manifest[key]?.imports ?? []) staticDependencies(dependency, visited)
   return visited
+}
+for (const key of staticDependencies("src/components/Reflections.tsx")) {
+  assert.ok(!/\/(?:motion|HomePage)-/.test(manifest[key].file), "Homepage runtime eagerly loaded by reflections")
 }
 for (const route of ["index.html", "src/components/Explore.tsx", "src/components/PortfolioQuestions.tsx", "src/components/DedicatedCaseStudy.tsx", "src/components/Lab.tsx", "src/components/Notes.tsx", "src/components/ProfessionalPages.tsx", "src/components/FilipinoOverview.tsx"]) {
   assert.ok(manifest[route], `Missing route chunk: ${route}`)
@@ -32,7 +40,7 @@ for (const page of pages) {
   const escapedTitle = page.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;")
   assert.ok(html.includes(`<title>${escapedTitle}</title>`), `Incorrect title: ${page.path}`)
   assert.ok(html.includes(`<html lang="${page.path.startsWith("/fil/") ? "fil" : "en"}">`), `Incorrect page language: ${page.path}`)
-  if (["/", "/about/", "/now/", "/work-with-me/", "/fil/", "/fil/about/", "/fil/now/", "/fil/work-with-me/"].includes(page.path)) {
+  if (page.path.includes("/reflections/") || ["/", "/about/", "/now/", "/work-with-me/", "/fil/", "/fil/about/", "/fil/now/", "/fil/work-with-me/"].includes(page.path)) {
     assert.ok(html.includes('hreflang="en"') && html.includes('hreflang="tl"') && html.includes('hreflang="x-default"'), `Missing language alternatives: ${page.path}`)
   }
   assert.equal((html.match(/name="description"/g) ?? []).length, 1, `Description count: ${page.path}`)
@@ -56,6 +64,11 @@ const notePages = pages.filter(page => /^\/notes\/[^/]+\/$/.test(page.path))
 const feedGuids = [...feed.matchAll(/<guid isPermaLink="true">([^<]+)<\/guid>/g)].map(match => match[1])
 assert.deepEqual(feedGuids.sort(), notePages.map(page => `https://jamesian-portfolio.vercel.app${page.path}`).sort(), "Feed articles differ from published routes")
 const briefs = JSON.parse(await readFile(path.join(root, "public/briefs/manifest.json"), "utf8"))
+const reflectionFeed = await readFile(path.join(root, "dist/reflections/feed.xml"), "utf8")
+assert.deepEqual([...reflectionFeed.matchAll(/<guid isPermaLink="true">([^<]+)<\/guid>/g)].map(match => match[1]).sort(), reflections.map(item => `https://jamesian-portfolio.vercel.app${item.path}`).sort(), "Reflection feed differs from published articles")
+for (const page of reflectionPages) {
+  assert.ok((await readFile(path.join(root, "dist", page.path, "index.html"), "utf8")).includes('href="/reflections/feed.xml"'), `Missing reflection RSS discovery: ${page.path}`)
+}
 for (const source of ["src/data/projects.ts", "src/data/caseStudyPages.json", "scripts/generate-project-briefs.mjs", "scripts/render-project-briefs.py", "scripts/briefs-requirements.txt"]) {
   assert.equal(createHash("sha256").update((await readFile(path.join(root, source), "utf8")).replace(/\r\n/g, "\n")).digest("hex"), briefs.sourceHashes[source], `Stale project briefs: ${source}; run npm run briefs:generate`)
 }

@@ -85,6 +85,7 @@ export default function ProfessionalPages({
             >
               {t("How I can help", "Paano ako makakatulong")}
             </a>
+            <a href={href("/reflections/")}>{t("Reflections", "Mga pagninilay")}</a>
           </nav>
         </header>
         {path === "/about/" && (

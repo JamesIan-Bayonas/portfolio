@@ -1,0 +1,146 @@
+[
+  {
+    "id": "credit-and-context",
+    "path": "/reflections/credit-and-context/",
+    "writtenAt": "2026-10-14",
+    "title": "Giving each project its proper context",
+    "summary": "My projects have different origins. Explaining those origins helps me describe my contribution clearly and give collaboration its proper credit.",
+    "topic": "Ownership and collaboration",
+    "sourceContext": "This reflection draws on the project origins and contribution roles recorded in the case studies and personal journey.",
+    "sections": [
+      {
+        "id": "collaboration",
+        "title": "A collaborative idea and a development contribution",
+        "paragraphs": [
+          "DormFix is a collaborative capstone proposed by my classmate. I implemented its features as part of the team. That context belongs beside the technical explanation: it tells a reader where the idea came from and what I contributed.",
+          "When I describe that work, I want the contribution to be specific. Tenant approval, room assignment, receipt review, maintenance, and messaging give me concrete workflows to explain. Naming the team context keeps that explanation fair to the people involved."
+        ]
+      },
+      {
+        "id": "origins",
+        "title": "Different origins lead to different stories",
+        "paragraphs": [
+          "PharmaLink and CentraLog are independently built school projects. IsdaLog is an independent project I initiated after noticing a lack of transparency in the fisheries trade in my area. Those labels help a visitor understand the setting in which each system was developed.",
+          "A useful project story connects the setting to the work: the people using the system, the records they rely on, and the decisions the workflow needs to support. That gives the architecture a reason to exist and gives my contribution a clear place in the story."
+        ]
+      },
+      {
+        "id": "habit",
+        "title": "A habit I want to keep",
+        "paragraphs": [
+          "I want to keep explaining a project with its origin, my role, and the implementation evidence close together. A reader should be able to move from the contribution statement to an example of the work.",
+          "That is also how I want to approach conversations about future work: describe the problem, make the responsibilities clear, and use a concrete example to discuss the proposed scope."
+        ]
+      }
+    ],
+    "references": [
+      { "label": "DormFix contribution", "path": "/projects/dormfix/#dormfix-contribution" },
+      { "label": "IsdaLog contribution", "path": "/projects/isdalog/#isdalog-contribution" },
+      { "label": "Education and project journey", "path": "/about/" }
+    ],
+    "filipino": {
+      "title": "Pagbibigay ng tamang konteksto sa bawat proyekto",
+      "summary": "Magkakaiba ang pinagmulan ng aking mga proyekto. Nakakatulong ang pagpapaliwanag nito upang malinaw ang aking ambag at mabigyan ng tamang pagkilala ang pagtutulungan.",
+      "topic": "Ambag at pagtutulungan",
+      "sourceContext": "Nakabatay ang pagninilay na ito sa mga pinagmulan at tungkuling nakatala sa mga case study at personal na paglalakbay.",
+      "sections": [
+        {
+          "id": "collaboration",
+          "title": "Isang pangkatang ideya at ambag sa development",
+          "paragraphs": [
+            "Pangkatang capstone ang DormFix na ipinanukala ng aking kaklase. Nag-implement ako ng mga feature bilang bahagi ng team. Mahalaga ang kontekstong ito sa teknikal na paliwanag: ipinapakita nito kung saan nagmula ang ideya at kung ano ang aking ambag.",
+            "Kapag inilalarawan ko ang gawaing iyon, gusto kong maging tiyak ang aking ambag. Ang pag-apruba sa tenant, pagtatalaga ng kuwarto, pagsusuri ng resibo, maintenance, at messaging ay mga konkretong workflow na maaari kong ipaliwanag. Ang pagkilala sa team ay nagbibigay ng makatarungang konteksto sa mga taong kasama sa proyekto."
+          ]
+        },
+        {
+          "id": "origins",
+          "title": "Magkakaibang pinagmulan, magkakaibang kuwento",
+          "paragraphs": [
+            "Mga sarili kong proyekto sa paaralan ang PharmaLink at CentraLog. Sinimulan ko ang IsdaLog bilang sariling proyekto matapos mapansin ang kakulangan ng transparency sa kalakalan ng pangisdaan sa aming lugar. Nakakatulong ang mga paglalarawang ito upang maunawaan ng bisita ang konteksto ng bawat system.",
+            "Iniuugnay ng isang kapaki-pakinabang na kuwento ng proyekto ang konteksto sa gawain: ang mga taong gagamit ng system, ang mga talang kailangan nila, at ang mga desisyong dapat suportahan ng workflow. Nagbibigay ito ng dahilan sa architecture at malinaw na lugar para sa aking ambag."
+          ]
+        },
+        {
+          "id": "habit",
+          "title": "Isang gawing nais kong ipagpatuloy",
+          "paragraphs": [
+            "Nais kong ipagpatuloy ang pagpapaliwanag ng proyekto nang magkakaugnay ang pinagmulan, aking tungkulin, at ebidensiya ng implementasyon. Dapat madaling makalipat ang mambabasa mula sa paglalarawan ng ambag tungo sa isang halimbawa ng gawain.",
+            "Ganito rin ang nais kong paraan sa pag-uusap tungkol sa susunod na gawain: ilarawan ang problema, linawin ang mga responsibilidad, at gumamit ng konkretong halimbawa upang pag-usapan ang saklaw."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "visible-decisions",
+    "path": "/reflections/visible-decisions/",
+    "writtenAt": "2026-10-14",
+    "title": "Making a workflow easier to review",
+    "summary": "As I refine this portfolio, I keep returning to who owns a decision, which records change, and what evidence helps someone inspect the explanation.",
+    "topic": "Learning through engineering decisions",
+    "sourceContext": "The examples refer to documented workflows and the portfolio's sample demonstrations. Source references identify reviewed versions; referenced application test suites were not executed for this reflection.",
+    "sections": [
+      {
+        "id": "decision-owner",
+        "title": "Name the person who owns the decision",
+        "paragraphs": [
+          "DormFix's receipt workflow gives me a useful example. Extracting text and structuring fields can help a reviewer, while the landlord still records a decision about the payment claim. The case study identifies the historical local pipeline and explains later changes.",
+          "That separation gives me a question to carry into another workflow: who is responsible for the final decision, and what information do they need to make it? I want that responsibility to be visible in both the interface and the explanation."
+        ]
+      },
+      {
+        "id": "record-changes",
+        "title": "Explain what changes in the records",
+        "paragraphs": [
+          "PharmaLink's reviewed client interfaces distinguish the original sale from its effective state and adjustment history. CentraLog connects asset state, repair records, and valuation using its application-specific downtime policy. Both examples make the meaning of a change important to the explanation.",
+          "I find it useful to describe the record before an action, the action itself, and the record afterward. That structure helps me explain a sample workflow and gives a reviewer clear questions to follow into the implementation."
+        ]
+      },
+      {
+        "id": "evidence",
+        "title": "Keep the evidence close to the explanation",
+        "paragraphs": [
+          "This portfolio now links case-study decisions to reviewed code, scoped test scenarios, and selected implementation milestones. Its interactive examples use sample data. Those different kinds of evidence each have a role in helping a visitor understand the work.",
+          "As I continue learning, I want to keep the boundaries clear: which version an explanation describes, what a test actually asserts, and what a demonstration illustrates. Making those details easy to inspect is part of the work I want the portfolio to show."
+        ]
+      }
+    ],
+    "references": [
+      { "label": "DormFix receipt-review note", "path": "/notes/dormfix-receipt-review/" },
+      { "label": "PharmaLink sale-adjustment note", "path": "/notes/pharmalink-void-adjustment/" },
+      { "label": "CentraLog valuation note", "path": "/notes/centralog-calculated-valuation/" }
+    ],
+    "filipino": {
+      "title": "Pagpapadali sa pagsusuri ng isang workflow",
+      "summary": "Habang pinauunlad ko ang portfolio, binabalikan ko kung sino ang may pananagutan sa desisyon, anong mga tala ang nagbabago, at anong ebidensiya ang makakatulong sa pagsusuri.",
+      "topic": "Pagkatuto mula sa mga desisyon sa engineering",
+      "sourceContext": "Tumutukoy ang mga halimbawa sa dokumentadong workflow at mga sample demonstration ng portfolio. Nakasaad sa mga source reference ang sinuring bersiyon; hindi pinatakbo ang mga application test suite para sa pagninilay na ito.",
+      "sections": [
+        {
+          "id": "decision-owner",
+          "title": "Tukuyin kung sino ang may pananagutan sa desisyon",
+          "paragraphs": [
+            "Isang kapaki-pakinabang na halimbawa ang receipt workflow ng DormFix. Nakakatulong sa reviewer ang pagkuha ng teksto at pagbuo ng structured na fields, habang ang landlord pa rin ang nagtatala ng desisyon tungkol sa payment claim. Nililinaw ng case study ang naunang lokal na pipeline at ang mga sumunod na pagbabago.",
+            "Nagbibigay ito sa akin ng tanong para sa ibang workflow: sino ang may pananagutan sa huling desisyon, at anong impormasyon ang kailangan niya? Gusto kong malinaw ang responsibilidad na iyon sa interface at sa paliwanag."
+          ]
+        },
+        {
+          "id": "record-changes",
+          "title": "Ipaliwanag kung ano ang nagbabago sa mga tala",
+          "paragraphs": [
+            "Pinaghihiwalay ng sinuring client interface ng PharmaLink ang orihinal na sale, kasalukuyang effective na estado, at adjustment history. Pinag-uugnay ng CentraLog ang estado ng asset, repair records, at valuation gamit ang sariling downtime policy ng application. Mahalaga sa dalawang halimbawa ang kahulugan ng pagbabago.",
+            "Kapaki-pakinabang para sa akin na ilarawan ang tala bago ang aksiyon, ang aksiyon mismo, at ang tala pagkatapos nito. Nakakatulong ang ganitong ayos sa pagpapaliwanag ng sample workflow at sa pagbuo ng malinaw na mga tanong para sa pagsusuri ng implementasyon."
+          ]
+        },
+        {
+          "id": "evidence",
+          "title": "Ilapit ang ebidensiya sa paliwanag",
+          "paragraphs": [
+            "May mga link na ngayon ang portfolio mula sa mga desisyon sa case study tungo sa sinuring code, mga test scenario na may malinaw na saklaw, at piling milestone ng implementasyon. Gumagamit ng sample data ang mga interactive na halimbawa. May sariling papel ang bawat uri ng ebidensiya sa pag-unawa sa gawain.",
+            "Habang patuloy akong natututo, gusto kong manatiling malinaw ang mga hangganan: anong bersiyon ang inilalarawan, ano ang talagang sinusuri ng test, at ano ang ipinapakita ng demonstration. Bahagi ng gawaing nais kong ipakita sa portfolio ang pagpapadali sa pagsusuri ng mga detalyeng iyon."
+          ]
+        }
+      ]
+    }
+  }
+]

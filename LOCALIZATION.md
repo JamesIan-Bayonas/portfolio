@@ -10,6 +10,9 @@ English remains the default. The user selected Filipino for the first additional
 | `/about/` | `/fil/about/` | Education and project journey |
 | `/now/` | `/fil/now/` | Dated current work and learning themes |
 | `/work-with-me/` | `/fil/work-with-me/` | Supported work discussions, examples, process, and contact controls |
+| `/reflections/` | `/fil/reflections/` | Reflection index, summaries, dates, reading estimates, and follow controls |
+| `/reflections/credit-and-context/` | `/fil/reflections/credit-and-context/` | Project origins, collaboration, and contribution context |
+| `/reflections/visible-decisions/` | `/fil/reflections/visible-decisions/` | Personal learning through workflow decisions and reviewable evidence |
 
 Detailed case studies, the project explorer, notes, labs, question guide, screenshots, source files, resume, and PDF briefs remain in English. Filipino entry points label these English destinations. The prepared email retains its English template labels and the visitor's original description; the Filipino contact panel explains this before review.
 
@@ -41,3 +44,5 @@ Each static page sets its HTML language. The `fil` language tag is registered fo
 4. Run the normal checks and inspect both languages on desktop and mobile before publishing.
 
 The local content workspace currently edits the existing English notes and milestones. It does not edit these Filipino professional translations. Updating an English note keeps its English RSS and metadata in sync; it does not create a translated article.
+
+Reflections are maintained in `src/data/reflectionsContent.json`, with English and Filipino copy together. Review both versions when editing. Keep article routes, paired section IDs, and supporting references stable; `writtenAt` records the reflection's writing date, not a project release date. The local editor does not edit reflections. The reflections RSS feed publishes English articles and labels that coverage explicitly on Filipino pages. Section selection updates the language-switch link so the counterpart retains the current section.

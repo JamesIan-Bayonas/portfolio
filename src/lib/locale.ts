@@ -1,5 +1,14 @@
 export type PortfolioLocale = "en" | "fil"
-const corePaths = ["/", "/about/", "/now/", "/work-with-me/"]
+export const translatedCorePaths = [
+  "/",
+  "/about/",
+  "/now/",
+  "/work-with-me/",
+  "/reflections/",
+  "/reflections/credit-and-context/",
+  "/reflections/visible-decisions/",
+]
+const corePaths = translatedCorePaths
 function normalizedPath(value: string): string {
   if (!value.startsWith("/") || value.startsWith("//")) return "/"
   return value.split(/[?#]/)[0].replace(/\/+$/, "") + "/"

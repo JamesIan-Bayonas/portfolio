@@ -22,6 +22,7 @@ const PortfolioQuestions = lazy(() => import("./components/PortfolioQuestions"))
 const Lab = lazy(() => import("./components/Lab"))
 
 const Notes = lazy(() => import("./components/Notes"))
+const Reflections = lazy(() => import("./components/Reflections"))
 
 const ProfessionalPages = lazy(() => import("./components/ProfessionalPages"))
 const FilipinoOverview = lazy(() => import("./components/FilipinoOverview"))
@@ -58,6 +59,7 @@ export default function App() {
     caseStudyPage?.path ?? window.location.pathname,
   )
   const filipinoOverview = caseStudyPage?.path === "/fil/"
+  const reflectionsPage = contentPath.startsWith("/reflections/")
   const professionalPath = ["/about/", "/now/", "/work-with-me/"].includes(
     contentPath,
   )
@@ -163,7 +165,11 @@ export default function App() {
         className="relative z-10 max-w-none"
         style={{ fontFamily: "var(--font-body)" }}
       >
-        {filipinoOverview ? (
+        {reflectionsPage ? (
+          <Suspense fallback={<LoadingState label={currentLocale() === "fil" ? "Binubuksan ang mga pagninilay…" : "Opening reflections…"} variant="page" />}>
+            <Reflections />
+          </Suspense>
+        ) : filipinoOverview ? (
           <Suspense
             fallback={
               <LoadingState label="Binubuksan ang portfolio…" variant="page" />
