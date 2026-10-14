@@ -17,7 +17,8 @@ The core scope below was approved for implementation. Optional extensions remain
 ## Status definitions
 
 - **Existing:** implemented in the repository before the current enhancement batch. This status does not substitute for a fresh live-site check.
-- **Ready locally:** implemented and checked in the working tree; publishing has not been performed in this chat.
+- **Ready locally:** implemented and checked in the working tree, awaiting publication.
+- **Published and verified:** deployed successfully and checked on the public site.
 - **Proposed:** recommended future work, with implementation scope still to be chosen.
 - **Optional later:** useful if a specific visitor or maintenance need justifies it.
 
@@ -41,29 +42,29 @@ The core scope below was approved for implementation. Optional extensions remain
 | Foundation | Responsive and accessible presentation | Mobile layouts, theme controls, keyboard support, and reduced-motion handling | Existing |
 | Foundation | Delivery and metadata | Responsive images, loading improvements, static page metadata, and build checks | Existing |
 
-## Current enhancement batch
+## Published enhancement batch
 
 | Feature | Implemented scope | Status |
 | --- | --- | --- |
-| Source-code references | Nine references with explanations, commit-pinned file links, and line ranges | Ready locally |
-| Test evidence | Eight scenarios with expected outcomes, scope labels, and commit-pinned test links | Ready locally |
-| Filterable Notes archive | Text search, topic/project filters, counts, reset, copied URLs, reload and Back restoration | Ready locally |
-| Related Engineering Notes | Two curated recommendations per article, summaries, reading times, and connection explanations | Ready locally |
-| Project evolution timelines | Three milestones per project, verified commit timestamps, design context, outcomes, and links | Ready locally |
+| Source-code references | Nine references with explanations, commit-pinned file links, and line ranges | Published and verified |
+| Test evidence | Eight scenarios with expected outcomes, scope labels, and commit-pinned test links | Published and verified |
+| Filterable Notes archive | Text search, topic/project filters, counts, reset, copied URLs, reload and Back restoration | Published and verified |
+| Related Engineering Notes | Two curated recommendations per article, summaries, reading times, and connection explanations | Published and verified |
+| Project evolution timelines | Three milestones per project, verified commit timestamps, design context, outcomes, and links | Published and verified |
 
 Last completed validation for this batch: 61 portfolio tests passed; type checks, production build, and static build verification passed. Timeline dates and commits were verified, and responsive navigation was reviewed. Application test evidence describes inspected source assertions; the external application suites were not executed for this batch.
 
 ## Completed core implementation
 
-Work through these in order. Update status and evidence when each item is implemented or published.
+All five items are implemented. Release 7f8b354 was deployed through the established main-branch Vercel workflow on 14 October 2026.
 
 | Order | Work item | Why it matters | Completion criteria | Status |
 | --- | --- | --- | --- | --- |
-| 1 | Content consistency and version labels | Repository history now exposes differences between historical case-study designs and newer code | Audit project summaries, technologies, notes, source references, timelines, and briefs; clearly identify the version each explanation describes; correct unsupported claims | Ready locally |
-| 2 | Publish and verify the current batch | Visitors need access to the enhancements that currently exist only locally | Review the combined changes, complete relevant checks, publish through the repository's established process, then verify live routes, links, downloads, and mobile layouts | Ready locally |
-| 3 | Current work / Now page | Show what James is actively building or learning and provide a dated professional update | Add a concise page with confirmed current work, learning priorities, an explicit update date, and relevant project links | Ready locally |
-| 4 | Personal journey timeline | Connect the existing project stories to James's education and development experience | Use user-confirmed dates, roles, and milestones; distinguish school, collaborative, and independent work; connect milestones to evidence | Ready locally |
-| 5 | How I can help | Connect demonstrated capabilities to the kinds of work a visitor can discuss | Describe supported project types, relevant examples, engagement process, and contextual contact actions using confirmed offerings | Ready locally |
+| 1 | Content consistency and version labels | Repository history now exposes differences between historical case-study designs and newer code | Audit project summaries, technologies, notes, source references, timelines, and briefs; clearly identify the version each explanation describes; correct unsupported claims | Published and verified |
+| 2 | Publish and verify the current batch | Visitors need access to the enhancements that currently exist only locally | Review the combined changes, complete relevant checks, publish through the repository's established process, then verify live routes, links, downloads, and mobile layouts | Published and verified |
+| 3 | Current work / Now page | Show what James is actively building or learning and provide a dated professional update | Add a concise page with confirmed current work, learning priorities, an explicit update date, and relevant project links | Published and verified |
+| 4 | Personal journey timeline | Connect the existing project stories to James's education and development experience | Use user-confirmed dates, roles, and milestones; distinguish school, collaborative, and independent work; connect milestones to evidence | Published and verified |
+| 5 | How I can help | Connect demonstrated capabilities to the kinds of work a visitor can discuss | Describe supported project types, relevant examples, engagement process, and contextual contact actions using confirmed offerings | Published and verified |
 
 Personal content uses the supplied resume, project documentation, and confirmed project roles. The Now page describes the current portfolio work and project-based learning themes. The contact page invites supported work discussions without claiming employment availability, rates, or client history.
 
@@ -88,3 +89,11 @@ For every feature, record:
 5. Any remaining content dependency or limitation.
 
 Review this file before proposing the next feature. Add new items only when they serve a clear visitor or maintenance need, and mark existing items complete instead of allowing the roadmap to grow indefinitely.
+
+## Release evidence
+
+- Implementation: [7f8b354](https://github.com/JamesIan-Bayonas/portfolio/commit/7f8b354), Vercel deployment completed successfully.
+- New professional pages: [About](https://jamesian-portfolio.vercel.app/about/), [Now](https://jamesian-portfolio.vercel.app/now/), [How I can help](https://jamesian-portfolio.vercel.app/work-with-me/).
+- All 15 public routes returned the expected titles; all four live PDF hashes matched the revised manifest.
+- Live navigation and DormFix contact preselection worked. The three professional pages fit 320px without horizontal overflow, and the inspected browser reported no console errors.
+- Detailed validation and scope limits are recorded in QUALITY_REVIEW.md. The core roadmap is complete; optional extensions remain uncommitted suggestions.
