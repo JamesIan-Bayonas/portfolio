@@ -16,6 +16,7 @@ import { findCaseStudyPage } from "./lib/caseStudyPages"
 const DedicatedCaseStudy = lazy(() => import("./components/DedicatedCaseStudy"))
 
 const Explore = lazy(() => import("./components/Explore"))
+const PortfolioQuestions = lazy(() => import("./components/PortfolioQuestions"))
 
 const Lab = lazy(() => import("./components/Lab"))
 
@@ -45,6 +46,7 @@ export default function App() {
   )
 
   const explorePage = caseStudyPage?.path === "/explore/"
+  const questionsPage = caseStudyPage?.path === "/ask/"
 
   const labPage = caseStudyPage?.path === "/lab/"
 
@@ -153,7 +155,18 @@ export default function App() {
         className="relative z-10 max-w-none"
         style={{ fontFamily: "var(--font-body)" }}
       >
-        {professionalPath ? (
+        {questionsPage ? (
+          <Suspense
+            fallback={
+              <LoadingState
+                label="Opening portfolio questions…"
+                variant="page"
+              />
+            }
+          >
+            <PortfolioQuestions />
+          </Suspense>
+        ) : professionalPath ? (
           <Suspense
             fallback={
               <LoadingState label="Opening the profile…" variant="page" />

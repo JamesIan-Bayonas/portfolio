@@ -17,7 +17,7 @@ function staticDependencies(key, visited = new Set()) {
   for (const dependency of manifest[key]?.imports ?? []) staticDependencies(dependency, visited)
   return visited
 }
-for (const route of ["index.html", "src/components/Explore.tsx", "src/components/DedicatedCaseStudy.tsx", "src/components/Lab.tsx", "src/components/Notes.tsx", "src/components/ProfessionalPages.tsx"]) {
+for (const route of ["index.html", "src/components/Explore.tsx", "src/components/PortfolioQuestions.tsx", "src/components/DedicatedCaseStudy.tsx", "src/components/Lab.tsx", "src/components/Notes.tsx", "src/components/ProfessionalPages.tsx"]) {
   assert.ok(manifest[route], `Missing route chunk: ${route}`)
   for (const key of staticDependencies(route)) {
     assert.ok(!/\/(?:motion|HomePage)-/.test(manifest[key].file), `Homepage runtime eagerly loaded by ${route}`)

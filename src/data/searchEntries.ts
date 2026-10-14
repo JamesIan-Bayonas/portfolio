@@ -4,6 +4,7 @@ import { engineeringNotes } from "./notes"
 import { engineeringCapabilities } from "./capabilities"
 
 export const portfolioSearchEntries: SearchEntry[] = [
+  { id: "portfolio-questions", label: "Ask about the portfolio", description: "Questions about projects, contributions, technologies, demos, and engineering evidence.", category: "Portfolio questions", path: "/ask/", target: "case-study", keywords: ["ask", "questions", "assistant", "answers", "help", "guide"] },
   { id: "professional-about", label: "About & my development journey", description: "Education, project periods, and the context behind my work.", category: "Professional profile", path: "/about/", target: "case-study", keywords: ["education", "student", "resume", "career", "journey", "BSIT", "Dipolog"] },
   { id: "current-work", label: "Current work", description: "A dated update on this portfolio and learning through project work.", category: "Professional profile", path: "/now/", target: "case-study", keywords: ["now", "current", "focus", "learning", "update"] },
   { id: "work-with-me", label: "How I can help", description: "Discuss a build, an existing-system improvement, or an opportunity.", category: "Professional profile", path: "/work-with-me/", target: "case-study", keywords: ["services", "work", "build", "improve", "opportunity", "contact", "hire"] },

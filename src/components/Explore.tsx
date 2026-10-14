@@ -74,6 +74,10 @@ export default function Explore() {
             open the live system.
           </p>
         </header>
+        <aside className="explore-ask-link">
+          <p>Have a question about the work?</p>
+          <a className="font-mono" href="/ask/">Ask about projects and engineering evidence ↗</a>
+        </aside>
         <ProjectComparison selected={comparison} onChange={setComparison} />
         <section aria-labelledby="explore-projects-title">
           <div className="explore-section-heading">

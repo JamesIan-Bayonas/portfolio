@@ -1,5 +1,10 @@
 [
   {
+    "path": "/ask/",
+    "title": "Ask About the Portfolio | James Ian Bayonas",
+    "description": "Ask about James Ian Bayonas's projects, contributions, technologies, demos, and engineering evidence. Follow answers into the published portfolio content."
+  },
+  {
     "path": "/about/",
     "title": "About & Journey | James Ian Bayonas",
     "description": "Meet James Ian Bayonas, a junior full-stack developer and BS Information Technology student in Dipolog City. Explore his education and project journey."
