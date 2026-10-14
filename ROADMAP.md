@@ -112,3 +112,11 @@ Review this file before proposing the next feature. Add new items only when they
 - [Ask about the portfolio](https://jamesian-portfolio.vercel.app/ask/): questions select maintained project records and cite the published destinations. Explore and search provide entry points.
 - Scope: project names, technology and domain matches, contribution credits, source/test evidence, sample demos, profile pages, and two-project comparison. Unknown questions offer browsing/contact; rates and availability are not inferred. This bounded guide does not use an external model or store question history.
 - 70 tests, type checks, build, and verification of 16 static routes passed. Live checks confirmed metadata and asset delivery, DormFix contribution/version context, .NET project selection, unknown fallback, and 320px layout without horizontal overflow. RSS remained valid with four articles; the inspected console was empty.
+
+## Content workspace release — 14 October 2026
+
+- Implementation: [0f8806d](https://github.com/JamesIan-Bayonas/portfolio/commit/0f8806d), source published and Vercel deployment completed successfully.
+- Owner workspace: run `npm run content:edit`, then open [the local editor](http://127.0.0.1:4186/editor/). Instructions and save/recovery behavior are in CONTENT_EDITING.md.
+- Scope: existing note copy and milestone explanations, draft preview, protected routes/reviewed references, validated collection saves, and version conflict handling. Publishing remains the repository release workflow.
+- Original content values were preserved exactly. All 75 tests and build checks passed; all 16 live route titles and the four-item RSS feed were verified. The public editor and editor API routes returned 404.
+- Browser verification covered saving/restoring both collections, local page/title preview, retained unsaved drafts across saves, required-field validation, and 320px layouts with labelled fields and no horizontal overflow. The inspected console was empty.
