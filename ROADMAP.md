@@ -138,3 +138,10 @@ Review this file before proposing the next feature. Add new items only when they
 - Published [English reflections](https://jamesian-portfolio.vercel.app/reflections/) and [Filipino reflections](https://jamesian-portfolio.vercel.app/fil/reflections/): two pieces on project context and reviewing workflow decisions, with supporting references, related reading, and an English RSS feed.
 - TypeScript, 83 tests, build, and verification of 26 static pages passed. All six new live routes returned their expected titles, language tags, alternatives, and RSS discovery links.
 - The two-item reflections feed and existing four-item notes feed were valid XML, matched the local build exactly, and served the RSS content type and revalidation headers. Live browser review confirmed article navigation, section-preserving Filipino switching, and an empty inspected console. Local mobile, search, and copy checks are recorded in QUALITY_REVIEW.md.
+
+## Reflection editing refinement — 14 October 2026
+
+- Visitor/owner need: the new reflections previously required manual file editing for both languages. The local workspace now provides paired fields, previews, and saved-page links while preserving publication identities and supporting references.
+- Implementation: [a410bb8](https://github.com/JamesIan-Bayonas/portfolio/commit/a410bb8), source published and Vercel deployment completed successfully. Status: local tool verified.
+- TypeScript, 86 tests, production build, and 26-route verification passed. Browser checks covered bilingual saves/previews, retained unrelated drafts, required-field validation, both records, and 320px layout. Original content was restored after testing.
+- Public `/editor/`, `/api/content-editor`, and `/api/content-editor/reflections` returned 404; both public RSS feeds retained their exact built content. Owner instructions are in CONTENT_EDITING.md.
