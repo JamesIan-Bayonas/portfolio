@@ -775,7 +775,16 @@ body:has(.portfolio-search[open]) { overflow: hidden; }
 .related-reasons p { font-size: 13px; line-height: 1.8; color: var(--color-text2); margin-bottom: 12px; }
 .related-reasons strong { display: block; font-size: 12px; font-weight: 600; color: var(--color-text1); margin-bottom: 6px; }
 .related-projects a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
-@media(max-width:767px) { .related-projects-grid { grid-template-columns: 1fr; } .related-project-card { padding: 20px; } }
+.follow-notes { margin-block: 28px; padding: 20px 24px; border: 1px solid var(--color-border); background: var(--color-surface); }
+.follow-notes summary { cursor: pointer; font-weight: 600; min-height: 44px; padding-block: 10px; }
+.follow-notes p { color: var(--color-text2); line-height: 1.7; max-width: 720px; margin-block: 16px; }
+.follow-notes label { display: block; font-size: 13px; margin-bottom: 8px; }
+.follow-notes input { width: 100%; max-width: 720px; min-height: 44px; padding: 10px 12px; border: 1px solid var(--color-border); background: var(--color-bg); color: var(--color-text1); font-size: 13px; }
+.follow-notes-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 14px; font-size: 13px; }
+.follow-notes-actions button, .follow-notes-actions a { min-height: 44px; display: inline-flex; align-items: center; color: var(--color-accent); }
+.follow-notes-actions button { padding: 8px 14px; border: 1px solid var(--color-border); cursor: pointer; }
+.follow-notes .follow-notes-status { min-height: 24px; margin-bottom: 0; font-size: 13px; }
+@media(max-width:767px) { .follow-notes { padding: 18px; } .related-projects-grid { grid-template-columns: 1fr; } .related-project-card { padding: 20px; } }
 @media (max-width:1023px) { .dedicated-case-hero { grid-template-columns: 1fr; gap: 32px; } }
 @media (max-width:767px) {
   .walkthrough-layout { grid-template-columns: minmax(0,1fr); }

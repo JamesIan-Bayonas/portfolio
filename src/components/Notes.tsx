@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { engineeringNotes, noteReadingMinutes } from "../data/notes"
 import NotesArchive from "./NotesArchive"
 import RelatedNotes from "./RelatedNotes"
+import FollowNotes from "./FollowNotes"
 import { projects } from "../data/projects"
 import { normalizePagePath } from "../lib/caseStudyPages"
 
@@ -106,6 +107,7 @@ export default function Notes() {
           </div>
         </div>
         <RelatedNotes note={note} />
+        <FollowNotes />
         <footer className="dedicated-case-footer">
           <div>
             <p className="project-eyebrow font-mono">CONTINUE EXPLORING</p>

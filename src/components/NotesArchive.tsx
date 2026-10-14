@@ -9,6 +9,7 @@ import {
   readNotesFilters,
 } from "../lib/notesArchive"
 import type { NotesFilters } from "../lib/notesArchive"
+import FollowNotes from "./FollowNotes"
 
 const topics = [...new Set(engineeringNotes.map((note) => note.topic))].map(
   (label) => ({ id: noteTopicId(label), label }),
@@ -91,6 +92,7 @@ export default function NotesArchive() {
             study and interactive example.
           </p>
         </header>
+        <FollowNotes />
         <section className="notes-archive" aria-labelledby="notes-index-title">
           <div className="explore-section-heading">
             <h2 id="notes-index-title">The notes</h2>

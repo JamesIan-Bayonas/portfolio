@@ -72,7 +72,7 @@ Personal content uses the supplied resume, project documentation, and confirmed 
 
 | Feature | When to consider it | Status |
 | --- | --- | --- |
-| RSS or publication updates | New engineering notes are published regularly and readers need a way to follow them | Optional later |
+| RSS publication updates | One feed for all notes, copyable reader link, article and archive entry points, automatic build generation | Ready locally |
 | Content editor / CMS | Maintaining notes and milestones through repository files becomes a recurring burden | Optional later |
 | Additional languages | A defined audience needs a second language and translations can be maintained | Optional later |
 | Portfolio question assistant | Visitors need conversational discovery and answers can cite maintained portfolio content | Optional later |

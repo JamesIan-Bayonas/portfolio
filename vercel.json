@@ -3,5 +3,12 @@
   "framework": "vite",
   "installCommand": "npx --yes pnpm@10.34.3 install --frozen-lockfile",
   "buildCommand": "npm run check && npm test && npm run build && npm run verify:build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "headers": [{
+    "source": "/notes/feed.xml",
+    "headers": [
+      { "key": "Content-Type", "value": "application/rss+xml; charset=utf-8" },
+      { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+    ]
+  }]
 }

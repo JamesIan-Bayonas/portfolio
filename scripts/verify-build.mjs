@@ -31,6 +31,7 @@ for (const page of pages) {
   assert.equal((html.match(/name="description"/g) ?? []).length, 1, `Description count: ${page.path}`)
   assert.equal((html.match(/property="og:title"/g) ?? []).length, 1, `Sharing title count: ${page.path}`)
   assert.ok(html.includes('name="viewport"'), `Missing viewport: ${page.path}`)
+  assert.ok(html.includes('rel="alternate" type="application/rss+xml"'), `Missing RSS discovery: ${page.path}`)
   const preloadsHome = /rel="modulepreload"[^>]+HomePage-/.test(html)
   assert.equal(preloadsHome, page.path === "/", `Homepage preload leaked or missing: ${page.path}`)
   if (page.path !== "/") assert.ok(!/rel="modulepreload"[^>]+\/motion-/.test(html), `Animation preload leaked: ${page.path}`)
@@ -41,6 +42,12 @@ for (const page of pages) {
   }
 }
 await access(path.join(root, "dist/RESUME.pdf"))
+const feed = await readFile(path.join(root, "dist/notes/feed.xml"), "utf8")
+assert.ok(feed.startsWith('<?xml version="1.0" encoding="UTF-8"?>'))
+assert.ok(feed.includes('<rss version="2.0"'))
+const notePages = pages.filter(page => /^\/notes\/[^/]+\/$/.test(page.path))
+const feedGuids = [...feed.matchAll(/<guid isPermaLink="true">([^<]+)<\/guid>/g)].map(match => match[1])
+assert.deepEqual(feedGuids.sort(), notePages.map(page => `https://jamesian-portfolio.vercel.app${page.path}`).sort(), "Feed articles differ from published routes")
 const briefs = JSON.parse(await readFile(path.join(root, "public/briefs/manifest.json"), "utf8"))
 for (const source of ["src/data/projects.ts", "src/data/caseStudyPages.json", "scripts/generate-project-briefs.mjs", "scripts/render-project-briefs.py", "scripts/briefs-requirements.txt"]) {
   assert.equal(createHash("sha256").update((await readFile(path.join(root, source), "utf8")).replace(/\r\n/g, "\n")).digest("hex"), briefs.sourceHashes[source], `Stale project briefs: ${source}; run npm run briefs:generate`)
