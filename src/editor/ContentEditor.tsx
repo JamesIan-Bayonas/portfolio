@@ -1,6 +1,7 @@
 import { useEffect, useId, useMemo, useState } from "react"
 import { validateEditableContent } from "../lib/contentEditing"
 import type { ContentKind, EditableContent } from "../lib/contentEditing"
+import ReflectionEditor from "./ReflectionEditor"
 
 type Workspace = {
   notes: {
@@ -9,6 +10,10 @@ type Workspace = {
   }
   milestones: {
     value: EditableContent["milestones"]
+    version: string
+  }
+  reflections: {
+    value: EditableContent["reflections"]
     version: string
   }
   token: string
@@ -55,6 +60,7 @@ export default function ContentEditor() {
   const [draft, setDraft] = useState<EditableContent>()
   const [kind, setKind] = useState<ContentKind>("notes")
   const [noteIndex, setNoteIndex] = useState(0)
+  const [reflectionIndex, setReflectionIndex] = useState(0)
   const [projectId, setProjectId] = useState("dormfix")
   const [milestoneIndex, setMilestoneIndex] = useState(0)
   const [busy, setBusy] = useState(false)
@@ -64,7 +70,9 @@ export default function ContentEditor() {
       workspace &&
       (JSON.stringify(draft.notes) !== JSON.stringify(workspace.notes.value) ||
         JSON.stringify(draft.milestones) !==
-          JSON.stringify(workspace.milestones.value)),
+          JSON.stringify(workspace.milestones.value) ||
+        JSON.stringify(draft.reflections) !==
+          JSON.stringify(workspace.reflections.value)),
   )
   const currentDirty = Boolean(
     draft &&
@@ -91,6 +99,7 @@ export default function ContentEditor() {
       setDraft({
         notes: result.notes.value,
         milestones: result.milestones.value,
+        reflections: result.reflections.value,
       })
       setMessage("Loaded repository content.")
     } catch (error) {
@@ -175,6 +184,7 @@ export default function ContentEditor() {
   }
   const note = draft?.notes[noteIndex]
   const milestone = draft?.milestones[projectId]?.[milestoneIndex]
+  const reflection = draft?.reflections[reflectionIndex]
 
   return (
     <main className="content-workspace">
@@ -188,8 +198,9 @@ export default function ContentEditor() {
           Keep the evidence.
         </h1>
         <p>
-          Maintain the existing notes and project milestones. Preview your
-          changes, then save them in the repository for review.
+          Maintain the existing notes, bilingual reflections, and project
+          milestones. Preview your changes, then save them in the repository for
+          review.
         </p>
         <p className="editor-hint">
           Saving updates local content. Publishing follows the portfolio's
@@ -202,7 +213,7 @@ export default function ContentEditor() {
           disabled={busy || !currentDirty || Boolean(issue)}
           onClick={save}
         >
-          Save {kind === "notes" ? "notes" : "milestones"}
+          Save {kind}
         </button>
         <button disabled={busy} onClick={load}>
           {dirty ? "Discard edits and reload" : "Reload from repository"}
@@ -238,6 +249,13 @@ export default function ContentEditor() {
             >
               Project milestones
             </button>
+            <button
+              disabled={busy}
+              aria-pressed={kind === "reflections"}
+              onClick={() => setKind("reflections")}
+            >
+              Reflections · English / Filipino
+            </button>
           </nav>
           <fieldset disabled={busy}>
             <legend className="editor-sr-only">Edit {kind}</legend>
@@ -250,6 +268,23 @@ export default function ContentEditor() {
                   onChange={(event) => setNoteIndex(Number(event.target.value))}
                 >
                   {draft.notes.map((item, index) => (
+                    <option key={item.id} value={index}>
+                      {item.title}
+                    </option>
+                  ))}
+                </select>
+              </>
+            ) : kind === "reflections" ? (
+              <>
+                <label htmlFor="choose-reflection">Choose a reflection</label>
+                <select
+                  id="choose-reflection"
+                  value={reflectionIndex}
+                  onChange={(event) =>
+                    setReflectionIndex(Number(event.target.value))
+                  }
+                >
+                  {draft.reflections.map((item, index) => (
                     <option key={item.id} value={index}>
                       {item.title}
                     </option>
@@ -293,8 +328,33 @@ export default function ContentEditor() {
                 </div>
               </div>
             )}
-            <div className="editor-layout">
+            <div
+              className={
+                kind === "reflections"
+                  ? "editor-reflections-layout"
+                  : "editor-layout"
+              }
+            >
               <section aria-label="Content fields">
+                {kind === "reflections" && reflection && (
+                  <ReflectionEditor
+                    reflection={reflection}
+                    change={(value) => {
+                      setDraft((previous) =>
+                        previous
+                          ? {
+                              ...previous,
+                              reflections: previous.reflections.map(
+                                (item, index) =>
+                                  index === reflectionIndex ? value : item,
+                              ),
+                            }
+                          : previous,
+                      )
+                      setMessage("")
+                    }}
+                  />
+                )}
                 {kind === "notes" && note && (
                   <>
                     <p className="editor-hint">
@@ -409,6 +469,7 @@ export default function ContentEditor() {
                 )}
               </section>
               <section
+                hidden={kind === "reflections"}
                 className="editor-preview"
                 aria-labelledby="draft-preview-title"
               >

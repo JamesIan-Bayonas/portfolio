@@ -23,6 +23,11 @@ label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; }
 input, textarea, select { width: 100%; min-height: 44px; padding: 12px; border: 1px solid #354154; background: #111823; color: #e7edf5; }
 textarea { resize: vertical; line-height: 1.6; }
 .editor-layout { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); align-items: start; gap: 32px; margin-top: 24px; }
+.editor-language-columns { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 32px; margin-bottom: 32px; }
+.editor-reflections-layout { margin-top: 24px; }
+.editor-reflections-layout [hidden] { display: none; }
+.editor-reflections-layout aside a { display: block; }
+@media(max-width:767px) { .editor-language-columns { grid-template-columns: 1fr; } }
 .editor-field { margin-block: 24px; }
 .editor-section { padding-top: 12px; border-top: 1px solid #354154; }
 .editor-preview { padding: 28px; border: 1px solid #354154; background: #101722; overflow-wrap: anywhere; }

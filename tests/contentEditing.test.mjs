@@ -8,8 +8,62 @@ import { projectEvolution } from "../src/data/projectEvolution.ts"
 import { siteMetadata } from "../src/data/siteMetadata.ts"
 import { validateEditableContent } from "../src/lib/contentEditing.ts"
 import { createContentStore } from "../scripts/content-store.mjs"
+import { reflections } from "../src/data/reflections.ts"
+import { reflectionsFeedXml } from "../src/lib/notesFeed.ts"
 
 const clone = (value) => JSON.parse(JSON.stringify(value))
+test("paired reflection copy can be edited while keeping both language routes and supporting evidence", () => {
+  const draft = clone(reflections)
+  draft[0].title = "A revised English title"
+  draft[0].filipino.title = "Binagong pamagat"
+  draft[0].filipino.sections[0].paragraphs.push("Isang talang may ₱75 at Unicode — para sa pagsusuri.")
+  assert.doesNotThrow(() => validateEditableContent("reflections",draft,reflections))
+  assert.deepEqual(draft[0].references,reflections[0].references)
+  assert.ok(reflectionsFeedXml(draft).includes("A revised English title"))
+  assert.ok(!reflectionsFeedXml(draft).includes("Binagong pamagat"))
+})
+test("reflection saves reject missing translations, structural changes, blank paragraphs, and changed references", () => {
+  for (const mutation of [
+    item => {delete item.filipino},
+    item => {item.filipino.title = " "},
+    item => {item.filipino.sections[0].paragraphs = [""]},
+    item => {item.filipino.sections[0].id = "other"},
+    item => {item.sections.pop()},
+    item => {item.references[0].path = "/other/"},
+    item => {item.references[0].label = "Other reference"},
+    item => {item.writtenAt = "2027-01-01"},
+    item => {item.path = "/other/"},
+    item => {item.id = "other"},
+    item => {item.filipino.title = "x".repeat(301)},
+    item => {item.filipino.extra = "unsupported"},
+  ]) {
+    const draft = clone(reflections)
+    mutation(draft[0])
+    assert.throws(() => validateEditableContent("reflections",draft,reflections))
+  }
+  assert.throws(() => validateEditableContent("reflections",clone(reflections).reverse(),reflections))
+})
+test("reflection collection saves both languages atomically and retains the saved file after validation or version conflicts", async () => {
+  const directory = await mkdtemp(path.join(os.tmpdir(),"portfolio-content-"))
+  try {
+    const filename = path.join(directory,"reflectionsContent.json")
+    await writeFile(filename,JSON.stringify(reflections))
+    const store = createContentStore(directory)
+    const original = await store.read("reflections")
+    const draft = clone(original.value)
+    draft[0].summary = "Edited summary — ₱75 & context."
+    draft[0].filipino.summary = "Binagong buod — ₱75 at konteksto."
+    const saved = await store.save("reflections",draft,original.version)
+    assert.deepEqual((await store.read("reflections")).value,draft)
+    const savedBytes = await readFile(filename,"utf8")
+    const invalid = clone(draft)
+    invalid[0].filipino.summary = ""
+    await assert.rejects(store.save("reflections",invalid,saved.version),error => error.status === 400)
+    await assert.rejects(store.save("reflections",original.value,original.version),error => error.status === 409)
+    assert.equal(await readFile(filename,"utf8"),savedBytes)
+    assert.deepEqual(await readdir(directory),["reflectionsContent.json"])
+  } finally { await cleanup(directory) }
+})
 async function cleanup(directory) {
   assert.equal(path.dirname(path.resolve(directory)), path.resolve(os.tmpdir()))
   assert.ok(path.basename(directory).startsWith("portfolio-content-"))

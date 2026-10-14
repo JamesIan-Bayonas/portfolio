@@ -78,6 +78,7 @@ Personal content uses the supplied resume, project documentation, and confirmed 
 | Additional languages | English/Filipino switch; Filipino project overview, professional pages, contact controls, and language metadata | Published and verified |
 | Portfolio question assistant | Guided questions and published project records with case-study, source, test, demo, profile, and comparison links | Published and verified |
 | Personal interests or reflections | Bilingual reflections on project ownership and reviewing workflow decisions, supporting references, related reading, and RSS | Published and verified |
+| Bilingual reflection editing | Paired local fields/previews, protected identities and references, validation, and collection saves | Local tool verified |
 
 ## Tracking each future change
 
