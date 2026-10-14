@@ -1,6 +1,6 @@
 # Local content workspace
 
-The workspace creates Engineering Notes and maintains existing notes, bilingual reflections, and project milestones through labelled fields and previews. It runs on your computer and saves into this repository. It is excluded from the public portfolio build.
+The workspace creates Engineering Notes and maintains existing notes, bilingual professional pages and reflections, and project milestones through labelled fields and previews. It runs on your computer and saves into this repository. It is excluded from the public portfolio build.
 
 ## Open the workspace
 
@@ -14,9 +14,9 @@ Open [the local content workspace](http://127.0.0.1:4186/editor/). Keep the proc
 
 ## Edit and review
 
-1. Choose **Engineering Notes**, **Project milestones**, or **Reflections · English / Filipino**, then choose a record.
+1. Choose **Engineering Notes**, **Project milestones**, **Reflections · English / Filipino**, or **Professional pages · English / Filipino**, then choose a record.
 2. Edit the labelled fields. The draft preview follows your changes. Separate note paragraphs with a blank line and put each workflow step on its own line.
-3. Select **Save notes**, **Save milestones**, or **Save reflections**. This saves the selected collection. Other unsaved drafts remain in the workspace. Reflection saves include both languages together.
+3. Select **Save notes**, **Save milestones**, **Save reflections**, or **Save professional pages**. This saves the selected collection. Other unsaved drafts remain in the workspace. Reflection and professional-page saves include both languages together.
 4. Use **Open saved content in the local portfolio** to inspect the actual page. Reload a previously opened preview to see subsequent saves.
 5. Review the repository changes before publishing. Saved notes automatically feed article metadata, search, reading times, and the RSS output at the next build.
 
@@ -39,6 +39,14 @@ English and Filipino fields appear side by side on desktop and stack on mobile. 
 
 Article routes, writing dates, paired section anchors, and supporting reference labels/links remain fixed. Use the repository review process to add articles or change these structures. Saving updates the maintained copy for both versions; the next portfolio build derives their metadata, search entries, reading estimates, and English reflections RSS from that copy.
 
+## Professional pages
+
+Choose About, Now, or How I can help. Paired fields maintain page introductions, search titles/descriptions, journey explanations, expected-completion wording, current focus, learning themes, work areas, and discussion steps. The shared update date applies to both languages. Editing current focus also updates the Now introduction. Static navigation, section labels outside the editable records, shared identity, record counts/order, page addresses, and project links stay protected or repository-maintained. Review degree/institution changes and resume consistency in the repository.
+
+The embedded preview follows unsaved edits using the public page renderer. Choose its English or Filipino version to review each language; links leave the draft preview for saved local pages. Blank required text or an invalid/mismatched date blocks saving. Incomplete edits can still be recovered. Earlier recovery copies are upgraded with the current saved professional collection, preserving their existing note/reflection/milestone drafts.
+
+Saving both languages is atomic and does not translate automatically. Review both versions and their dates before release. Professional search/share metadata derives from the paired record at build time. Do not update the old sitePages/filipinoPages metadata copies for these six routes.
+
 ## Draft and save behavior
 
 - Unsaved drafts remain when switching records or collections. A navigation warning protects against leaving with unsaved edits. The browser also keeps a recovery copy after edits, including incomplete fields. On reopening, choose **Restore drafts**, **Export recovery copy**, or **Discard recovery copy and reload**. Normal fields are disabled until a pending recovery copy is resolved.
@@ -48,12 +56,13 @@ Article routes, writing dates, paired section anchors, and supporting reference 
 - Empty required text and invalid structures block saving. Save errors preserve the draft for correction.
 - If repository content changed outside the workspace, saving is rejected. Copy your draft, reload, then apply it to the latest content. This also applies when two editor tabs try to save the same collection.
 - Saving uses a temporary file and a rename within the content directory. Git remains the review and recovery mechanism for saved edits.
-- The server accepts only the three named content collections. Saving requires the local origin and a session token; the token changes when the editor process restarts. Reload the editor after restarting it.
+- The server accepts only the four named content collections. Saving requires the local origin and a session token; the token changes when the editor process restarts. Reload the editor after restarting it.
 
 ## Content sources
 
 - `src/data/notesContent.json`: note copy and existing section content.
 - `src/data/projectEvolutionContent.json`: milestone explanations and their fixed reviewed evidence.
+- `src/data/professionalContent.json`: paired English/Filipino professional copy, shared update dates, protected links/identity, and page search metadata.
 - `src/data/reflectionsContent.json`: paired English/Filipino reflection copy with fixed article identities and references.
 - Typed wrappers retain the public components' existing interfaces. Article metadata is derived from the same note title and summary, rather than a second editable copy.
 

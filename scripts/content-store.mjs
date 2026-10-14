@@ -3,7 +3,7 @@ import path from "node:path"
 import { createHash, randomUUID } from "node:crypto"
 import { validateEditableContent } from "../src/lib/contentEditing.ts"
 
-const filenames = { notes: "notesContent.json", milestones: "projectEvolutionContent.json", reflections: "reflectionsContent.json" }
+const filenames = { professional: "professionalContent.json", notes: "notesContent.json", milestones: "projectEvolutionContent.json", reflections: "reflectionsContent.json" }
 const hash = text => createHash("sha256").update(text).digest("hex")
 export function createContentStore(directory) {
   let queue = Promise.resolve()

@@ -115,6 +115,7 @@ for (const route of [
   "/api/content-editor",
   "/api/content-editor/notes",
   "/api/content-editor/reflections",
+  "/api/content-editor/professional",
 ])
   checks.push(async () => {
     assert.equal(
@@ -139,7 +140,7 @@ const result = {
   briefs: briefs.files.length,
   feeds: 2,
   executionDownload: true,
-  ownerRoutes: 4,
+  ownerRoutes: 5,
   failures,
 }
 await writeFile(

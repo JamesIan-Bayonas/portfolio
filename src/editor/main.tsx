@@ -4,7 +4,11 @@ import "../fonts.css"
 import "./editor.css"
 
 const root = createRoot(document.getElementById("root")!)
-if (new URLSearchParams(window.location.search).has("preview")) {
+if (new URLSearchParams(window.location.search).has("professional-preview")) {
+  import("./ProfessionalPreview").then(({ default: Preview }) =>
+    root.render(<Preview />),
+  )
+} else if (new URLSearchParams(window.location.search).has("preview")) {
   import("./NotePreview").then(({ default: NotePreview }) =>
     root.render(<NotePreview />),
   )

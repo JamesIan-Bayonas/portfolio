@@ -24,8 +24,8 @@ const server = await createServer({
         if (request.headers.host !== "127.0.0.1:4186" || (request.headers.origin && request.headers.origin !== origin)) return send(403, { error: "Use the local editor address." })
         const route = request.url.split("?")[0]
         try {
-          if (request.method === "GET" && route === "/api/content-editor") return send(200, { notes: await store.read("notes"), milestones: await store.read("milestones"), reflections: await store.read("reflections"), token })
-          if (request.method !== "POST" || !/^\/api\/content-editor\/(notes|milestones|reflections)$/.test(route)) return send(404, { error: "Unknown editor action." })
+          if (request.method === "GET" && route === "/api/content-editor") return send(200, { notes: await store.read("notes"), milestones: await store.read("milestones"), reflections: await store.read("reflections"), professional: await store.read("professional"), token })
+          if (request.method !== "POST" || !/^\/api\/content-editor\/(notes|milestones|reflections|professional)$/.test(route)) return send(404, { error: "Unknown editor action." })
           if (request.headers.origin !== origin || request.headers["x-editor-token"] !== token || !request.headers["content-type"]?.startsWith("application/json")) return send(403, { error: "Reload the local editor before saving." })
           const chunks = []
           let size = 0

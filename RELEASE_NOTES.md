@@ -31,3 +31,7 @@ TypeScript, 95 tests, build, and 28-page verification passed under Node.js 22.23
 Published through the existing main-branch Vercel workflow: implementation 838bf68, PDF 1.7 header correction cd278d9, and reproducible styling fix [154f4ba](https://github.com/JamesIan-Bayonas/portfolio/commit/154f4ba). Vercel completed successfully. `npm run verify:live` passed for 28 routes, 48 built assets, both RSS feeds, the application execution download, four PDF hashes, and four excluded owner routes.
 
 Tailwind now scans only App.tsx and the component directory. Local untracked exports and documentation no longer change public CSS. A frozen-lockfile clean snapshot produced the same 39 JavaScript/CSS assets byte-for-byte as the working checkout.
+
+## Professional workspace refinement — 15 October 2026
+
+The local editor now maintains About, Now, and How I can help in paired English/Filipino fields with unsaved public-layout previews, validated atomic saves, protected identities/links, and recovery upgrades. Original professional copy and search metadata remain unchanged. TypeScript, 99 tests, build, and 28-page static verification passed. Local browser checks verified save/block/recover/restore behavior and 320px editor reflow. Source publication and direct live verification follow the existing main-branch workflow.

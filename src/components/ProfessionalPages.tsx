@@ -1,31 +1,16 @@
-import { professionalProfile as englishProfile } from "../data/professionalProfile"
-import { filipinoProfile, filipinoProfessionalPages } from "../data/filipino"
+import {
+  professionalContent,
+  type ProfessionalContent,
+  type ProfessionalPath,
+} from "../data/professionalProfile"
 import { currentLocale, localizeCoreHref } from "../lib/locale"
 import { projects } from "../data/projects"
 import ContactAction from "./ContactAction"
 
-const pages = {
-  "/about/": {
-    label: "ABOUT / JOURNEY",
-    title: "Learning through the systems I build.",
-    summary:
-      "I'm James Ian Bayonas, a junior full-stack developer and BS Information Technology student in Dipolog City, Philippines. My projects bring interfaces, APIs, and business records into shared workflows.",
-  },
-  "/now/": {
-    label: "CURRENT WORK / NOW",
-    title: "What I'm focused on now.",
-    summary: englishProfile.currentFocus,
-  },
-  "/work-with-me/": {
-    label: "HOW I CAN HELP",
-    title: "Let's discuss the system you need.",
-    summary:
-      "Explore the kinds of work reflected in my projects, then describe your build, improvement, or opportunity. We can use a relevant case study as a starting point.",
-  },
-} as const
-
-function ProjectLinks({ ids }: { ids: readonly string[] }) {
-  const fil = currentLocale() === "fil"
+function ProjectLinks({ ids, fil }: {
+  ids: readonly string[]
+  fil: boolean
+}) {
   return (
     <div className="professional-project-links font-mono">
       {ids.map((id) => {
@@ -44,14 +29,21 @@ function ProjectLinks({ ids }: { ids: readonly string[] }) {
 
 export default function ProfessionalPages({
   path,
+  content = professionalContent,
+  previewLocale,
 }: {
-  path: keyof typeof pages
+  path: ProfessionalPath
+  content?: ProfessionalContent
+  previewLocale?: "en" | "fil"
 }) {
-  const locale = currentLocale()
+  const locale = previewLocale ?? currentLocale()
   const fil = locale === "fil"
   const t = (english: string, filipino: string) => (fil ? filipino : english)
-  const profile = fil ? filipinoProfile : englishProfile
-  const page = fil ? filipinoProfessionalPages[path] : pages[path]
+  const profile = content[locale].profile
+  const page =
+    path === "/now/"
+      ? { ...content[locale].pages[path], summary: profile.currentFocus }
+      : content[locale].pages[path]
   const href = (value: string) => localizeCoreHref(value, locale)
   return (
     <div className="explore-page professional-page px-4 sm:px-6 lg:px-10">
@@ -85,7 +77,9 @@ export default function ProfessionalPages({
             >
               {t("How I can help", "Paano ako makakatulong")}
             </a>
-            <a href={href("/reflections/")}>{t("Reflections", "Mga pagninilay")}</a>
+            <a href={href("/reflections/")}>
+              {t("Reflections", "Mga pagninilay")}
+            </a>
           </nav>
         </header>
         {path === "/about/" && (
@@ -132,7 +126,7 @@ export default function ProfessionalPages({
                     </p>
                     <h3>{milestone.title}</h3>
                     <p>{milestone.detail}</p>
-                    <ProjectLinks ids={milestone.projectIds} />
+                    <ProjectLinks ids={milestone.projectIds} fil={fil} />
                   </li>
                 ))}
               </ol>
@@ -155,17 +149,11 @@ export default function ProfessionalPages({
             <section aria-labelledby="current-focus-title">
               <div className="explore-section-heading">
                 <h2 id="current-focus-title">
-                  {t(
-                    "Current focus: this portfolio",
-                    "Kasalukuyang pokus: ang portfolio na ito",
-                  )}
+                  {content[locale].pages["/now/"].focusHeading}
                 </h2>
               </div>
               <p className="professional-lead">
-                {t(
-                  "I’m connecting case studies, interactive examples, engineering notes, and verified implementation evidence so technical reviewers can follow both the workflow and the reasoning behind it.",
-                  "Pinag-uugnay ko ang mga case study, interactive na halimbawa, tala sa engineering, at sinuring ebidensiya ng implementasyon upang masundan ng mga reviewer ang workflow at ang pangangatwiran sa likod nito.",
-                )}
+                {content[locale].pages["/now/"].focusDetail}
               </p>
               <div className="professional-project-links font-mono">
                 <a href={href("/explore/")}>
@@ -242,7 +230,7 @@ export default function ProfessionalPages({
                   <article className="professional-card" key={area.id}>
                     <h3>{area.title}</h3>
                     <p>{area.detail}</p>
-                    <ProjectLinks ids={area.projectIds} />
+                    <ProjectLinks ids={area.projectIds} fil={fil} />
                     <ContactAction
                       projectId={area.projectIds[0]}
                       label={t(

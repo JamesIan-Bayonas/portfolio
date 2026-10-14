@@ -1,6 +1,7 @@
 import { useEffect, useId, useMemo, useState } from "react"
 import { createNoteDraft, validateEditableContent } from "../lib/contentEditing"
 import type { ContentKind, EditableContent } from "../lib/contentEditing"
+import ProfessionalEditor from "./ProfessionalEditor"
 import ReflectionEditor from "./ReflectionEditor"
 import {
   parseRecovery,
@@ -11,6 +12,10 @@ import {
 import projectPages from "../data/caseStudyPages.json"
 
 type Workspace = {
+  professional: {
+    value: EditableContent["professional"]
+    version: string
+  }
   notes: {
     value: EditableContent["notes"]
     version: string
@@ -83,7 +88,9 @@ export default function ContentEditor() {
         JSON.stringify(draft.milestones) !==
           JSON.stringify(workspace.milestones.value) ||
         JSON.stringify(draft.reflections) !==
-          JSON.stringify(workspace.reflections.value)),
+          JSON.stringify(workspace.reflections.value) ||
+        JSON.stringify(draft.professional) !==
+          JSON.stringify(workspace.professional.value)),
   )
   const currentDirty = Boolean(
     draft &&
@@ -114,6 +121,7 @@ export default function ContentEditor() {
         notes: result.notes.value,
         milestones: result.milestones.value,
         reflections: result.reflections.value,
+        professional: result.professional.value,
       })
       setMessage("Loaded repository content.")
       if (discard) {
@@ -125,7 +133,7 @@ export default function ContentEditor() {
         try {
           const raw = localStorage.getItem(recoveryKey)
           setRecoveryRaw(raw ?? "")
-          setRecovery(parseRecovery(raw))
+          setRecovery(parseRecovery(raw, result.professional))
         } catch (error) {
           setRecoveryError((error as Error).message)
         }
@@ -162,6 +170,7 @@ export default function ContentEditor() {
               notes: workspace.notes.version,
               milestones: workspace.milestones.version,
               reflections: workspace.reflections.version,
+              professional: workspace.professional.version,
             },
           }),
         )
@@ -280,9 +289,9 @@ export default function ContentEditor() {
           Keep the evidence.
         </h1>
         <p>
-          Create Engineering Notes and maintain bilingual reflections and
-          project milestones. Preview your changes, then save them in the
-          repository for review.
+          Create Engineering Notes and maintain bilingual professional pages,
+          reflections, and project milestones. Preview your changes, then save
+          them in the repository for review.
         </p>
         <p className="editor-hint">
           Saving updates local content. Publishing follows the portfolio's
@@ -298,7 +307,7 @@ export default function ContentEditor() {
           }
           onClick={save}
         >
-          Save {kind}
+          Save {kind === "professional" ? "professional pages" : kind}
         </button>
         <button disabled={busy} onClick={() => void load(true)}>
           {dirty ? "Discard edits and reload" : "Reload from repository"}
@@ -355,6 +364,13 @@ export default function ContentEditor() {
       ) : (
         <>
           <nav className="editor-tabs" aria-label="Content collections">
+            <button
+              disabled={busy}
+              aria-pressed={kind === "professional"}
+              onClick={() => setKind("professional")}
+            >
+              Professional pages · English / Filipino
+            </button>
             <button
               disabled={busy}
               aria-pressed={kind === "notes"}
@@ -430,6 +446,11 @@ export default function ContentEditor() {
                   ))}
                 </select>
               </>
+            ) : kind === "professional" ? (
+              <p className="editor-hint">
+                Maintain both languages together. Page addresses, shared
+                identity, and project links are protected.
+              </p>
             ) : (
               <div className="editor-selection">
                 <div>
@@ -469,12 +490,21 @@ export default function ContentEditor() {
             )}
             <div
               className={
-                kind === "reflections"
+                kind === "reflections" || kind === "professional"
                   ? "editor-reflections-layout"
                   : "editor-layout"
               }
             >
               <section aria-label="Content fields">
+                {kind === "professional" && (
+                  <ProfessionalEditor
+                    content={draft.professional}
+                    change={(professional) => {
+                      setDraft({ ...draft, professional })
+                      setMessage("")
+                    }}
+                  />
+                )}
                 {kind === "reflections" && reflection && (
                   <ReflectionEditor
                     reflection={reflection}
@@ -727,7 +757,7 @@ export default function ContentEditor() {
                 )}
               </section>
               <section
-                hidden={kind === "reflections"}
+                hidden={kind === "reflections" || kind === "professional"}
                 className="editor-preview"
                 aria-labelledby="draft-preview-title"
               >

@@ -166,7 +166,7 @@ Remaining bounded follow-ups:
 
 - Complete actual browser zoom, screen-reader speech, and reduced-motion preference reviews. PDF structure and visual checks were completed in the 15 October batch below; actual PDF assistive-technology behavior remains pending.
 - Extend Filipino coverage to the other case studies and engineering resources when needed; the new translated page retains English interactive demonstrations.
-- Add professional-profile editing if maintaining those pages becomes a repeated owner need.
+- Professional-profile editing is implemented in the 15 October refinement below.
 - A hosted CMS, external-model assistant, and live application sandboxes remain optional later work requiring their own scope and infrastructure. The local editor and current question guide do not depend on them.
 
 ## Accessibility and Filipino DormFix — 15 October 2026
@@ -177,3 +177,10 @@ Remaining bounded follow-ups:
 - Validation: 95 portfolio tests, TypeScript, production build, and 28-page verification passed under Node.js 22.23.3. The verifier also checks public PDF structural markers, manifest integrity, and both translated case-study chunks. A new `npm run verify:live` command compares deployed pages/assets, feeds, execution data, PDFs, and excluded owner routes against the reviewed build.
 - Current status: published and verified through [154f4ba](https://github.com/JamesIan-Bayonas/portfolio/commit/154f4ba). Vercel completed successfully. Direct HTTP checks passed for all 28 public routes, 48 built assets, both RSS feeds, application execution data, all four PDF hashes, and four excluded owner endpoints. Detailed scope is in ACCESSIBILITY_REVIEW.md and QUALITY_REVIEW.md.
 - Native browser review stopped because the control tool could not verify the active Edge URL. No browser input followed that stop. Actual zoom, preference emulation, screen-reader speech, and the new DormFix mobile layout remain unverified; earlier browser results are dated separately.
+
+## Professional-page editing — 15 October 2026
+
+- Owner need: update About, Now, and How I can help without editing code or maintaining language copies in separate files.
+- Implemented: one paired English/Filipino record, labelled editor fields, shared date, protected routes/identity/project links, atomic saves with version checks, automatic Now-summary synchronization, unsaved public-layout preview, and draft recovery including upgrades of earlier recovery copies. Original copy and search metadata were preserved.
+- Validation: TypeScript, 99 tests, production build, and 28-page static verification. Local browser checks covered paired saves, blank-field blocking, incomplete recovery, both preview languages, page selection, and 320px editor reflow. Actual zoom, screen-reader speech, and reduced-motion preference checks remain pending.
+- Status: local tool verified; source publication and live verification pending. Owner instructions are in CONTENT_EDITING.md.

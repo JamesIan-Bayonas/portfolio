@@ -190,3 +190,5 @@ The local quality review is recorded in `QUALITY_REVIEW.md`. IsdaLog's former Ra
 * **Reverse Tabnabbing Protection:** All external anchor tags (`GitHub`, `LinkedIn`, live demo links) enforce `rel="noopener noreferrer"` with `target="_blank"` to eliminate window opener vulnerabilities.
 * **XSS Mitigation:** Static JSX compilation with zero reliance on `dangerouslySetInnerHTML` or unrestricted string evaluation.
 * **Built Asset Verification:** `verify:build` checks the generated static routes, page metadata, entry assets, favicon, and résumé file. Dependency versions are tracked in the package-manager lockfile.
+
+The local content workspace also maintains paired English/Filipino About, Now, and How I can help copy with public-layout previews and draft recovery. See [CONTENT_EDITING.md](CONTENT_EDITING.md) for the editing and publication process.

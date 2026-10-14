@@ -1,0 +1,276 @@
+{
+  "en": {
+    "profile": {
+      "name": "James Ian Bayonas",
+      "title": "Junior full-stack developer",
+      "location": "Dipolog City, Philippines",
+      "updatedAt": "2026-10-14",
+      "education": {
+        "degree": "Bachelor of Science in Information Technology",
+        "institution": "Dipolog Medical Center Incorporated",
+        "expectedCompletion": "August 2027"
+      },
+      "currentFocus": "I'm refining this portfolio into a place where visitors can explore my systems, follow sample workflows, and inspect the code and tests behind engineering decisions.",
+      "learningThemes": [
+        {
+          "title": "Dependable records",
+          "detail": "Transactions, custody changes, calculated values, and adjustment history across my projects.",
+          "href": "/notes/",
+          "label": "Read the engineering notes"
+        },
+        {
+          "title": "Clear interfaces",
+          "detail": "Responsive layouts, accessible interactions, and workflows that make important state changes visible.",
+          "href": "/lab/",
+          "label": "Explore the sample workflows"
+        },
+        {
+          "title": "Reviewable engineering",
+          "detail": "Explaining implementation choices through source references, test scenarios, and project evolution.",
+          "href": "/explore/",
+          "label": "Inspect the case studies"
+        }
+      ],
+      "journey": [
+        {
+          "id": "2025-projects",
+          "period": "2025–present",
+          "title": "Business workflows and a collaborative capstone",
+          "detail": "My project work from 2025 includes PharmaLink and DormFix. PharmaLink is an independent school project; DormFix was proposed by my classmate, and I implemented its features as part of the capstone team.",
+          "projectIds": [
+            "pharmalink",
+            "dormfix"
+          ]
+        },
+        {
+          "id": "2026-systems",
+          "period": "2026–present",
+          "title": "Asset management and local fisheries",
+          "detail": "CentraLog is my independently built school project. I initiated IsdaLog independently after noticing a lack of transparency in the fisheries trade in my area.",
+          "projectIds": [
+            "centralog",
+            "isdalog"
+          ]
+        },
+        {
+          "id": "education",
+          "period": "Expected August 2027",
+          "title": "BS Information Technology",
+          "detail": "I'm studying at Dipolog Medical Center Incorporated in Dipolog City. August 2027 is my expected completion date.",
+          "projectIds": []
+        }
+      ],
+      "workAreas": [
+        {
+          "id": "business-applications",
+          "title": "Full-stack business applications",
+          "detail": "Discuss a web application that connects staff roles, records, dashboards, and a clear operational workflow.",
+          "projectIds": [
+            "dormfix",
+            "pharmalink"
+          ]
+        },
+        {
+          "id": "data-workflows",
+          "title": "APIs and data workflows",
+          "detail": "Discuss how related records, permissions, audit history, and calculations should work together in your system.",
+          "projectIds": [
+            "centralog",
+            "isdalog"
+          ]
+        },
+        {
+          "id": "existing-systems",
+          "title": "Existing-system improvements",
+          "detail": "Discuss a specific interface, workflow, or integration that needs clearer behavior, better validation, or a more useful user experience.",
+          "projectIds": [
+            "pharmalink",
+            "dormfix"
+          ]
+        }
+      ],
+      "process": [
+        {
+          "title": "Describe the problem",
+          "detail": "Share who uses the system, the workflow they need, and the constraints that matter."
+        },
+        {
+          "title": "Define a useful scope",
+          "detail": "Identify the records, roles, interfaces, and failure cases involved in the proposed work."
+        },
+        {
+          "title": "Review an implementation",
+          "detail": "Use working examples, explicit trade-offs, and relevant checks to discuss the result."
+        }
+      ]
+    },
+    "pages": {
+      "/about/": {
+        "label": "ABOUT / JOURNEY",
+        "title": "Learning through the systems I build.",
+        "summary": "I'm James Ian Bayonas, a junior full-stack developer and BS Information Technology student in Dipolog City, Philippines. My projects bring interfaces, APIs, and business records into shared workflows.",
+        "metadata": {
+          "title": "About & Journey | James Ian Bayonas",
+          "description": "Meet James Ian Bayonas, a junior full-stack developer and BS Information Technology student in Dipolog City. Explore his education and project journey."
+        }
+      },
+      "/now/": {
+        "label": "CURRENT WORK / NOW",
+        "title": "What I'm focused on now.",
+        "summary": "I'm refining this portfolio into a place where visitors can explore my systems, follow sample workflows, and inspect the code and tests behind engineering decisions.",
+        "metadata": {
+          "title": "Current Work | James Ian Bayonas",
+          "description": "A dated update on James Ian Bayonas's current portfolio work and the engineering ideas explored through his projects."
+        },
+        "focusHeading": "Current focus: this portfolio",
+        "focusDetail": "I’m connecting case studies, interactive examples, engineering notes, and verified implementation evidence so technical reviewers can follow both the workflow and the reasoning behind it."
+      },
+      "/work-with-me/": {
+        "label": "HOW I CAN HELP",
+        "title": "Let's discuss the system you need.",
+        "summary": "Explore the kinds of work reflected in my projects, then describe your build, improvement, or opportunity. We can use a relevant case study as a starting point.",
+        "metadata": {
+          "title": "How I Can Help | James Ian Bayonas",
+          "description": "Discuss a business web application, API workflow, existing-system improvement, or opportunity with James Ian Bayonas. Explore relevant project evidence."
+        }
+      }
+    }
+  },
+  "fil": {
+    "profile": {
+      "name": "James Ian Bayonas",
+      "title": "Junior full-stack developer",
+      "location": "Dipolog City, Philippines",
+      "updatedAt": "2026-10-14",
+      "education": {
+        "degree": "Bachelor of Science in Information Technology",
+        "institution": "Dipolog Medical Center Incorporated",
+        "expectedCompletion": "Agosto 2027"
+      },
+      "currentFocus": "Pinauunlad ko ang portfolio na ito upang masuri ng mga bisita ang aking mga system, masundan ang mga halimbawang daloy, at makita ang code at mga test na sumusuporta sa mga desisyon sa engineering.",
+      "learningThemes": [
+        {
+          "title": "Maaasahang mga tala",
+          "detail": "Mga transaction, pagbabago sa custody, kinakalkulang halaga, at kasaysayan ng adjustment sa aking mga proyekto.",
+          "href": "/notes/",
+          "label": "Basahin ang mga tala sa engineering (English)"
+        },
+        {
+          "title": "Malinaw na mga interface",
+          "detail": "Responsive na layout, accessible na pakikipag-ugnayan, at mga workflow na malinaw na nagpapakita ng mahahalagang pagbabago sa estado.",
+          "href": "/lab/",
+          "label": "Subukan ang mga halimbawang workflow (English)"
+        },
+        {
+          "title": "Engineering na maaaring suriin",
+          "detail": "Pagpapaliwanag ng mga desisyon gamit ang source reference, mga test scenario, at kasaysayan ng proyekto.",
+          "href": "/explore/",
+          "label": "Tuklasin ang mga proyekto"
+        }
+      ],
+      "journey": [
+        {
+          "id": "2025-projects",
+          "period": "2025–kasalukuyan",
+          "title": "Mga workflow sa negosyo at pangkatang capstone",
+          "detail": "Kasama sa mga proyekto ko mula 2025 ang PharmaLink at DormFix. Sarili kong proyekto sa paaralan ang PharmaLink; ipinanukala ng aking kaklase ang DormFix, at nag-implement ako ng mga feature bilang bahagi ng capstone team.",
+          "projectIds": [
+            "pharmalink",
+            "dormfix"
+          ]
+        },
+        {
+          "id": "2026-systems",
+          "period": "2026–kasalukuyan",
+          "title": "Pamamahala ng asset at lokal na pangisdaan",
+          "detail": "Sarili kong proyekto sa paaralan ang CentraLog. Sinimulan ko ang IsdaLog nang mapansin kong kulang ang transparency sa kalakalan ng pangisdaan sa aming lugar.",
+          "projectIds": [
+            "centralog",
+            "isdalog"
+          ]
+        },
+        {
+          "id": "education",
+          "period": "Inaasahang Agosto 2027",
+          "title": "BS Information Technology",
+          "detail": "Nag-aaral ako sa Dipolog Medical Center Incorporated sa Dipolog City. Inaasahan kong matatapos ang aking pag-aaral sa Agosto 2027.",
+          "projectIds": []
+        }
+      ],
+      "workAreas": [
+        {
+          "id": "business-applications",
+          "title": "Full-stack na application para sa negosyo",
+          "detail": "Pag-usapan ang isang web application na nag-uugnay sa mga tungkulin ng staff, tala, dashboard, at malinaw na workflow.",
+          "projectIds": [
+            "dormfix",
+            "pharmalink"
+          ]
+        },
+        {
+          "id": "data-workflows",
+          "title": "Mga API at daloy ng data",
+          "detail": "Pag-usapan kung paano dapat magkaugnay ang mga tala, pahintulot, audit history, at pagkalkula sa iyong system.",
+          "projectIds": [
+            "centralog",
+            "isdalog"
+          ]
+        },
+        {
+          "id": "existing-systems",
+          "title": "Pagpapahusay sa umiiral na system",
+          "detail": "Pag-usapan ang isang interface, workflow, o integration na nangangailangan ng mas malinaw na kilos, mas mahusay na validation, o mas kapaki-pakinabang na karanasan.",
+          "projectIds": [
+            "pharmalink",
+            "dormfix"
+          ]
+        }
+      ],
+      "process": [
+        {
+          "title": "Ilarawan ang problema",
+          "detail": "Ibahagi kung sino ang gagamit ng system, anong workflow ang kailangan, at anong mga limitasyon ang mahalaga."
+        },
+        {
+          "title": "Tukuyin ang kapaki-pakinabang na saklaw",
+          "detail": "Tukuyin ang mga tala, tungkulin, interface, at mga sitwasyong maaaring magdulot ng pagkabigo."
+        },
+        {
+          "title": "Suriin ang implementasyon",
+          "detail": "Gumamit ng mga gumaganang halimbawa, malinaw na trade-off, at angkop na pagsusuri upang pag-usapan ang resulta."
+        }
+      ]
+    },
+    "pages": {
+      "/about/": {
+        "label": "TUNGKOL / PAGLALAKBAY",
+        "title": "Natututo sa mga system na binubuo ko.",
+        "summary": "Ako si James Ian Bayonas, isang junior full-stack developer at mag-aaral ng BS Information Technology sa Dipolog City, Pilipinas. Pinag-uugnay ng aking mga proyekto ang interface, API, at mga tala sa magkakaugnay na workflow.",
+        "metadata": {
+          "title": "Tungkol at Paglalakbay | James Ian Bayonas",
+          "description": "Kilalanin si James Ian Bayonas, junior full-stack developer at mag-aaral ng BS Information Technology sa Dipolog City. Alamin ang kanyang pag-aaral at mga proyekto."
+        }
+      },
+      "/now/": {
+        "label": "KASALUKUYANG GAWAIN",
+        "title": "Ang pinagtutuunan ko ngayon.",
+        "summary": "Pinauunlad ko ang portfolio na ito upang masuri ng mga bisita ang aking mga system, masundan ang mga halimbawang daloy, at makita ang code at mga test na sumusuporta sa mga desisyon sa engineering.",
+        "metadata": {
+          "title": "Kasalukuyang Gawain | James Ian Bayonas",
+          "description": "Isang may petsang tala tungkol sa kasalukuyang portfolio at mga aral mula sa mga proyekto ni James Ian Bayonas."
+        },
+        "focusHeading": "Kasalukuyang pokus: ang portfolio na ito",
+        "focusDetail": "Pinag-uugnay ko ang mga case study, interactive na halimbawa, tala sa engineering, at sinuring ebidensiya ng implementasyon upang masundan ng mga reviewer ang workflow at ang pangangatwiran sa likod nito."
+      },
+      "/work-with-me/": {
+        "label": "PAANO AKO MAKAKATULONG",
+        "title": "Pag-usapan natin ang system na kailangan mo.",
+        "summary": "Tuklasin ang mga uri ng gawain sa aking mga proyekto, pagkatapos ay ilarawan ang gusto mong buuin, pagbutihin, o pag-usapan na oportunidad. Maaaring magsilbing panimulang halimbawa ang isang kaugnay na case study.",
+        "metadata": {
+          "title": "Paano Ako Makakatulong | James Ian Bayonas",
+          "description": "Pag-usapan ang isang web application, API workflow, pagpapahusay sa umiiral na system, o oportunidad kasama si James Ian Bayonas."
+        }
+      }
+    }
+  }
+}

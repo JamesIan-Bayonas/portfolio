@@ -1,4 +1,5 @@
 import type { EditableContent, ContentKind } from "./contentEditing"
+import { validateProfessionalContent } from "./professionalEditing.ts"
 import projectPages from "../data/caseStudyPages.json" with { type: "json" }
 
 export const recoveryKey = "portfolio-content-drafts-v1"
@@ -8,7 +9,12 @@ export interface Recovery {
   draft: EditableContent
   versions: Record<ContentKind, string>
 }
-const kinds: ContentKind[] = ["notes", "milestones", "reflections"]
+const kinds: ContentKind[] = [
+  "notes",
+  "milestones",
+  "reflections",
+  "professional",
+]
 function record(value: unknown): value is Record<string, unknown> {
   return Boolean(value && typeof value === "object" && !Array.isArray(value))
 }
@@ -34,7 +40,13 @@ function sections(value: unknown): boolean {
 }
 // Recover incomplete text, but never render a malformed collection. Publication
 // validation stays separate so blank unsaved fields can still be restored.
-export function parseRecovery(source: string | null): Recovery | undefined {
+export function parseRecovery(
+  source: string | null,
+  professional?: {
+    value: EditableContent["professional"]
+    version: string
+  },
+): Recovery | undefined {
   if (!source) return
   const value: unknown = JSON.parse(source)
   const invalid = () =>
@@ -42,16 +54,35 @@ export function parseRecovery(source: string | null): Recovery | undefined {
       "The recovery copy is invalid. Export or discard it before editing.",
     )
   if (
+    record(value) &&
+    record(value.draft) &&
+    record(value.versions) &&
+    !Object.prototype.hasOwnProperty.call(value.draft, "professional") &&
+    professional
+  ) {
+    value.draft.professional = structuredClone(professional.value)
+    value.versions.professional = professional.version
+  }
+  if (
     !record(value) ||
     value.schema !== 1 ||
     typeof value.savedAt !== "string" ||
     !Number.isFinite(Date.parse(value.savedAt)) ||
     !record(value.draft) ||
     !record(value.versions) ||
-    !kinds.every(
-      (kind) =>
-        typeof (value.versions as Record<string, unknown>)[kind] === "string",
-    )
+    !kinds
+      .filter(
+        (kind) =>
+          kind !== "professional" ||
+          Object.prototype.hasOwnProperty.call(
+            value.draft as object,
+            "professional",
+          ),
+      )
+      .every(
+        (kind) =>
+          typeof (value.versions as Record<string, unknown>)[kind] === "string",
+      )
   )
     throw invalid()
   const draft = value.draft
@@ -134,6 +165,13 @@ export function parseRecovery(source: string | null): Recovery | undefined {
     )
   )
     throw invalid()
+  if (Object.prototype.hasOwnProperty.call(draft, "professional")) {
+    try {
+      validateProfessionalContent(draft.professional, undefined, true)
+    } catch {
+      throw invalid()
+    }
+  }
   return value as unknown as Recovery
 }
 export function recoveryConflicts(
@@ -145,6 +183,7 @@ export function recoveryConflicts(
 ): ContentKind[] {
   return kinds.filter(
     (kind) =>
+      current[kind] &&
       recovery.versions[kind] !== current[kind].version &&
       JSON.stringify(recovery.draft[kind]) !==
         JSON.stringify(current[kind].value),

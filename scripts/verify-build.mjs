@@ -1,3 +1,4 @@
+import { validateProfessionalContent } from "../src/lib/professionalEditing.ts"
 import assert from "node:assert/strict"
 import { readFile, access } from "node:fs/promises"
 import path from "node:path"
@@ -22,11 +23,18 @@ const reflectionPages = [
     },
   ]),
 ]
+const professional = await readJson("professionalContent.json")
+validateProfessionalContent(professional)
+const professionalPages = [...(await readJson("sitePages.json")), ...(await readJson("filipinoPages.json"))].map(page => {
+  const language = page.path.startsWith("/fil/") ? "fil" : "en"
+  const route = language === "fil" ? page.path.slice(4) : page.path
+  const copy = professional[language].pages[route]
+  return copy ? { ...page, ...copy.metadata } : page
+})
 const pages = [
   { path: "/", title: "James Ian Bayonas | Full-Stack Developer" },
   ...(await readJson("caseStudyPages.json")),
-  ...(await readJson("sitePages.json")),
-  ...(await readJson("filipinoPages.json")),
+  ...professionalPages,
   ...noteContent.map((note) => ({
     path: note.path,
     title: `${note.title} | James Ian Bayonas`,

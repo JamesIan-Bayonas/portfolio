@@ -3,7 +3,11 @@ import type { ProjectMilestone } from "../data/projectEvolution"
 import type { Reflection } from "../data/reflections"
 import projectPages from "../data/caseStudyPages.json" with { type: "json" }
 
+import type { ProfessionalContent } from "../data/professionalProfile"
+import { validateProfessionalContent } from "./professionalEditing.ts"
+
 export type EditableContent = {
+  professional: ProfessionalContent
   notes: EngineeringNote[]
   milestones: Record<string, ProjectMilestone[]>
   reflections: Reflection[]
@@ -63,6 +67,10 @@ export function validateEditableContent(
   value: unknown,
   baseline: EditableContent[ContentKind],
 ): void {
+  if (kind === "professional") {
+    validateProfessionalContent(value, baseline)
+    return
+  }
   if (kind === "reflections") {
     const records = list(value, "Reflections", 100)
     const original = baseline as EditableContent["reflections"]
