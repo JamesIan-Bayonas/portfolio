@@ -100,7 +100,7 @@ Review this file before proposing the next feature. Add new items only when they
 - New professional pages: [About](https://jamesian-portfolio.vercel.app/about/), [Now](https://jamesian-portfolio.vercel.app/now/), [How I can help](https://jamesian-portfolio.vercel.app/work-with-me/).
 - All 15 public routes returned the expected titles; all four live PDF hashes matched the revised manifest.
 - Live navigation and DormFix contact preselection worked. The three professional pages fit 320px without horizontal overflow, and the inspected browser reported no console errors.
-- Detailed validation and scope limits are recorded in QUALITY_REVIEW.md. Later sections record the completed extensions and the current locally implemented maintenance batch.
+- Detailed validation and scope limits are recorded in QUALITY_REVIEW.md. Later sections record the completed extensions and the published maintenance batch.
 
 ## RSS extension release — 14 October 2026
 
@@ -148,17 +148,17 @@ Review this file before proposing the next feature. Add new items only when they
 
 ## Maintenance and evidence batch — 14 October 2026
 
-This batch follows the inspection of the completed roadmap. Public changes are ready locally and have not been deployed or checked on the live site.
+This batch follows the inspection of the completed roadmap. The public changes were published and verified on 15 October 2026. Owner editing remains a local tool; its source is published.
 
 | Work item | Bounded completion criteria | Status |
 | --- | --- | --- |
-| Create Engineering Notes | Create an article with a unique URL, save and reopen incomplete drafts, edit draft sections, preview the actual article layout, require complete content for publication, derive archive/search/metadata/RSS entries, and exclude draft text from public bundles | Local tool verified; source publication pending |
-| Recover unsaved edits | Preserve drafts in browser storage, offer restore/export/discard, retain incomplete text, and block restoration over newer repository collections | Local tool verified; source publication pending |
-| Filipino CentraLog case study | Translate the written case study, source/test explanations, and milestones; retain canonical evidence identities; provide counterpart routes and section links; label English demos, documents, and related resources | Ready locally |
-| Execute referenced application evidence | Run isolated snapshots at the cited commits, show actual results and scope, retain failures, and provide a downloadable execution record | Ready locally |
-| Improve portfolio questions | Recognize common Filipino intents and technology aliases, intersect combined technology criteria, and fall back for unsupported exclusion questions | Ready locally |
+| Create Engineering Notes | Create an article with a unique URL, save and reopen incomplete drafts, edit draft sections, preview the actual article layout, require complete content for publication, derive archive/search/metadata/RSS entries, and exclude draft text from public bundles | Local tool verified; source published |
+| Recover unsaved edits | Preserve drafts in browser storage, offer restore/export/discard, retain incomplete text, and block restoration over newer repository collections | Local tool verified; source published |
+| Filipino CentraLog case study | Translate the written case study, source/test explanations, and milestones; retain canonical evidence identities; provide counterpart routes and section links; label English demos, documents, and related resources | Published and verified |
+| Execute referenced application evidence | Run isolated snapshots at the cited commits, show actual results and scope, retain failures, and provide a downloadable execution record | Published and verified |
+| Improve portfolio questions | Recognize common Filipino intents and technology aliases, intersect combined technology criteria, and fall back for unsupported exclusion questions | Published and verified |
 
-Evidence: `src/editor/ContentEditor.tsx`, `src/editor/NotePreview.tsx`, `src/lib/contentEditing.ts`, `src/lib/editorRecovery.ts`, `src/data/filipinoCentralog.ts`, `src/components/ApplicationTestResults.tsx`, `src/data/applicationTestRuns.json`, and `src/lib/portfolioQuestions.ts`. Instructions and detailed validation are in CONTENT_EDITING.md, LOCALIZATION.md, APPLICATION_TEST_RESULTS.md, and QUALITY_REVIEW.md. No release commit or live verification is claimed for this batch.
+Evidence: `src/editor/ContentEditor.tsx`, `src/editor/NotePreview.tsx`, `src/lib/contentEditing.ts`, `src/lib/editorRecovery.ts`, `src/data/filipinoCentralog.ts`, `src/components/ApplicationTestResults.tsx`, `src/data/applicationTestRuns.json`, and `src/lib/portfolioQuestions.ts`. Instructions and detailed validation are in CONTENT_EDITING.md, LOCALIZATION.md, APPLICATION_TEST_RESULTS.md, and QUALITY_REVIEW.md. The combined release is recorded in the 15 October section below.
 
 Application execution found a failure at historical IsdaLog commit `df1ca46`: order creation calls missing `OrderController::store`. The other four selected IsdaLog tests passed. DormFix's seven selected helper tests, PharmaLink's six export tests, CentraLog's three in-memory tests, and its selected disposed-transfer integration assertion passed. CentraLog used a verified disposable schema, with only the temporary fixture database name changed; the schema was removed afterward.
 
@@ -175,5 +175,5 @@ Remaining bounded follow-ups:
 - Implemented: `/fil/projects/dormfix/`, paired language/section links, translated contribution/source/test/milestone explanations, English-resource labels, search discovery, and static metadata. The original team credit, historical OCR/Ollama design, later Gemini/PostgreSQL context, and pinned evidence identities remain intact.
 - PDF refinement: all four one-page briefs now include English language metadata, title display, H1/H2/paragraph reading-order tags, labelled link annotations, semantic tab order, and decorative artifacts. The authoring process validates structure and original source content; all four files were rendered and visually reviewed. This is not PDF/UA certification or captured screen-reader speech.
 - Validation: 95 portfolio tests, TypeScript, production build, and 28-page verification passed under Node.js 22.23.3. The verifier also checks public PDF structural markers, manifest integrity, and both translated case-study chunks. A new `npm run verify:live` command compares deployed pages/assets, feeds, execution data, PDFs, and excluded owner routes against the reviewed build.
-- Current status: ready locally; publication verification pending. Detailed scope is in ACCESSIBILITY_REVIEW.md and QUALITY_REVIEW.md.
+- Current status: published and verified through [154f4ba](https://github.com/JamesIan-Bayonas/portfolio/commit/154f4ba). Vercel completed successfully. Direct HTTP checks passed for all 28 public routes, 48 built assets, both RSS feeds, application execution data, all four PDF hashes, and four excluded owner endpoints. Detailed scope is in ACCESSIBILITY_REVIEW.md and QUALITY_REVIEW.md.
 - Native browser review stopped because the control tool could not verify the active Edge URL. No browser input followed that stop. Actual zoom, preference emulation, screen-reader speech, and the new DormFix mobile layout remain unverified; earlier browser results are dated separately.

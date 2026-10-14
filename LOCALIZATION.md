@@ -13,8 +13,8 @@ English remains the default. The user selected Filipino for the first additional
 | `/reflections/` | `/fil/reflections/` | Reflection index, summaries, dates, reading estimates, and follow controls |
 | `/reflections/credit-and-context/` | `/fil/reflections/credit-and-context/` | Project origins, collaboration, and contribution context |
 | `/reflections/visible-decisions/` | `/fil/reflections/visible-decisions/` | Personal learning through workflow decisions and reviewable evidence |
-| `/projects/centralog/` | `/fil/projects/centralog/` | Written engineering story, source/test explanations, execution scope, and milestones; ready locally, not deployed |
-| `/projects/dormfix/` | `/fil/projects/dormfix/` | Written story, collaborative credit, historical OCR/model context, source/test scope, and milestones; ready locally, not deployed |
+| `/projects/centralog/` | `/fil/projects/centralog/` | Written engineering story, source/test explanations, execution scope, and milestones; published and verified on 15 October 2026 |
+| `/projects/dormfix/` | `/fil/projects/dormfix/` | Written story, collaborative credit, historical OCR/model context, source/test scope, and milestones; published and verified on 15 October 2026 |
 
 CentraLog and DormFix now have Filipino written case-study counterparts. Other detailed case studies, the project explorer, notes, labs, question guide, screenshots, source files, resume, and PDF briefs remain in English. Filipino entry points label these English destinations. The prepared email retains its English template labels and the visitor's original description; the Filipino contact panel explains this before review.
 
@@ -48,6 +48,6 @@ Each static page sets its HTML language. The `fil` language tag is registered fo
 3. After that review, update the source hashes in `filipinoTranslationSources.json`. Hash UTF-8 source text with SHA-256 after normalizing CRLF to LF. Build verification rejects changed source files until their translations have been reviewed and the recorded hashes updated.
 4. Run the normal checks and inspect both languages on desktop and mobile before publishing.
 
-The local content workspace creates and edits English notes, maintains milestones, and edits paired English/Filipino reflections. It does not edit Filipino professional-profile or CentraLog translations. Review Filipino case-study copy after milestone/source/test changes; build verification tracks those source hashes too. Updating or publishing an English note keeps its English RSS and metadata in sync; it does not create a translated article.
+The local content workspace creates and edits English notes, maintains milestones, and edits paired English/Filipino reflections. It does not edit Filipino professional-profile or CentraLog/DormFix translations. Review Filipino case-study copy after milestone/source/test changes; build verification tracks those source hashes too. Updating or publishing an English note keeps its English RSS and metadata in sync; it does not create a translated article.
 
 Reflections are maintained in `src/data/reflectionsContent.json`, with English and Filipino copy together. The local editor provides paired fields and previews and saves both versions atomically. Review both versions when editing. Article routes, writing dates, paired section IDs, and supporting references are protected by editor validation; `writtenAt` records the reflection's writing date, not a project release date. The reflections RSS feed publishes English articles and labels that coverage explicitly on Filipino pages. Section selection updates the language-switch link so the counterpart retains the current section.

@@ -22,10 +22,12 @@ Unrelated Windows metadata files and the existing repository export are excluded
 
 The local quality-review findings and limitations are documented in `QUALITY_REVIEW.md`. After deployment, verify the existing public address, all project and article routes, Lab deep links, Explore filters, search, page metadata, and the résumé.
 
-## Maintenance release candidate — 15 October 2026
+## Maintenance release — 15 October 2026
 
-The combined candidate adds local Engineering Note creation and browser draft recovery, Filipino CentraLog and DormFix written case studies, recorded historical application test execution, stronger question matching, and tagged English project briefs. Public editor code/API and unpublished article copy remain excluded from delivery. Existing application working trees and unrelated Windows/export files are excluded from this release.
+The combined release adds local Engineering Note creation and browser draft recovery, Filipino CentraLog and DormFix written case studies, recorded historical application test execution, stronger question matching, and tagged English project briefs. Public editor code/API and unpublished article copy remain excluded from delivery. Existing application working trees and unrelated Windows/export files are excluded from this release.
 
 TypeScript, 95 tests, build, and 28-page verification passed under Node.js 22.23.3. PDF content/structure/link validation and four rendered-page inspections passed. Browser zoom, screen-reader speech, reduced-motion emulation, and new DormFix mobile interaction remain unverified after native browser control stopped; ACCESSIBILITY_REVIEW.md preserves those limits. The recorded historical IsdaLog suite remains 4/5 with its failure explained.
 
-Release uses the existing main-branch Vercel workflow. After deployment, run `npm run verify:live` to compare the public site against the reviewed build. No live completion is claimed until that check passes.
+Published through the existing main-branch Vercel workflow: implementation 838bf68, PDF 1.7 header correction cd278d9, and reproducible styling fix [154f4ba](https://github.com/JamesIan-Bayonas/portfolio/commit/154f4ba). Vercel completed successfully. `npm run verify:live` passed for 28 routes, 48 built assets, both RSS feeds, the application execution download, four PDF hashes, and four excluded owner routes.
+
+Tailwind now scans only App.tsx and the component directory. Local untracked exports and documentation no longer change public CSS. A frozen-lockfile clean snapshot produced the same 39 JavaScript/CSS assets byte-for-byte as the working checkout.
