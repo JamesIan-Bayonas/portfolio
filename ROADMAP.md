@@ -68,11 +68,11 @@ All five items are implemented. Release 7f8b354 was deployed through the establi
 
 Personal content uses the supplied resume, project documentation, and confirmed project roles. The Now page describes the current portfolio work and project-based learning themes. The contact page invites supported work discussions without claiming employment availability, rates, or client history.
 
-## Optional later extensions
+## Extensions
 
 | Feature | When to consider it | Status |
 | --- | --- | --- |
-| RSS publication updates | One feed for all notes, copyable reader link, article and archive entry points, automatic build generation | Ready locally |
+| RSS publication updates | One feed for all notes, copyable reader link, article and archive entry points, automatic build generation | Published and verified |
 | Content editor / CMS | Maintaining notes and milestones through repository files becomes a recurring burden | Optional later |
 | Additional languages | A defined audience needs a second language and translations can be maintained | Optional later |
 | Portfolio question assistant | Visitors need conversational discovery and answers can cite maintained portfolio content | Optional later |
@@ -96,4 +96,11 @@ Review this file before proposing the next feature. Add new items only when they
 - New professional pages: [About](https://jamesian-portfolio.vercel.app/about/), [Now](https://jamesian-portfolio.vercel.app/now/), [How I can help](https://jamesian-portfolio.vercel.app/work-with-me/).
 - All 15 public routes returned the expected titles; all four live PDF hashes matched the revised manifest.
 - Live navigation and DormFix contact preselection worked. The three professional pages fit 320px without horizontal overflow, and the inspected browser reported no console errors.
-- Detailed validation and scope limits are recorded in QUALITY_REVIEW.md. The core roadmap is complete; optional extensions remain uncommitted suggestions.
+- Detailed validation and scope limits are recorded in QUALITY_REVIEW.md. The core roadmap is complete; remaining optional extensions are uncommitted suggestions.
+
+## RSS extension release — 14 October 2026
+
+- Implementation: [efad330](https://github.com/JamesIan-Bayonas/portfolio/commit/efad330), Vercel deployment completed successfully.
+- [Notes feed](https://jamesian-portfolio.vercel.app/notes/feed.xml): all four articles, canonical destinations, summaries, categories, and stable identifiers. Future published notes are included automatically at build time.
+- 64 tests, type checks, production build, route/asset verification, and XML parsing passed. Live feed content matched the build; RSS content type, revalidation header, and all article destinations were verified.
+- The published archive displayed its follow controls and copy-success feedback. Local article, mobile, theme, and manual-selection checks are detailed in QUALITY_REVIEW.md.
