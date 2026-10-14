@@ -38,6 +38,7 @@ def end_tag(pdf):
 def tag_document(destination, roles, link_tags):
     """Attach the PDF structure tree and annotation parent-tree entries."""
     writer = PdfWriter(clone_from=str(destination))
+    writer.pdf_header = "%PDF-1.7"
     page = writer.pages[0]
     page_ref = page.indirect_reference
     root = DictionaryObject({NameObject("/Type"): NameObject("/StructTreeRoot")})
@@ -73,6 +74,8 @@ def tag_document(destination, roles, link_tags):
 
 
 def validate_tags(reader, roles, link_tags):
+    if reader.pdf_header != "%PDF-1.7":
+        raise ValueError("Tagged briefs must retain their PDF 1.7 header after rewriting")
     page = reader.pages[0]
     root = reader.trailer["/Root"]
     if root.get("/Lang") != "en" or page.get("/Tabs") != "/S" or not root["/MarkInfo"]["/Marked"]:

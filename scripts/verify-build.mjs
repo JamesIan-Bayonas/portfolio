@@ -273,6 +273,11 @@ for (const page of casePages) {
     `Invalid PDF: ${brief.filename}`,
   )
   assert.equal(bytes.length, brief.bytes)
+  assert.equal(
+    bytes.subarray(0, 8).toString(),
+    "%PDF-1.7",
+    `Incorrect tagged PDF version: ${brief.filename}`,
+  )
   const pdfStructure = bytes.toString("latin1")
   for (const marker of [
     "/StructTreeRoot",

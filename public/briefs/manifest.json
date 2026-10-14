@@ -3,7 +3,7 @@
     "src/data/projects.ts": "b22b1ba15e5abe97d81f7dbd42c9d9e11c858a5d08a7fd993d927a5f3a7dd853",
     "src/data/caseStudyPages.json": "e67acbca7cdadb4170a3821e50cfdabdf839b6bd873fc7a8bda193d6631fab5a",
     "scripts/generate-project-briefs.mjs": "9f22a1536945a321e1ba32b89b7b8f4af1ac7adfd8d410ffa65319158792124e",
-    "scripts/render-project-briefs.py": "4a1f05bc801409c0f09703f7ded560547f94c94f29f9d53764eabd3b729269bb",
+    "scripts/render-project-briefs.py": "f867d56aba955aae1a46dcf69179dbd23972f67cd866d254f08bc3a5a4272834",
     "scripts/briefs-requirements.txt": "aff9e2a7514ab38c61169ff48cd7e414e424068c9216e3a9e277318c38a8dac8"
   },
   "files": [
@@ -21,7 +21,7 @@
       "tagged": true,
       "structureElements": 33,
       "labelledLinks": 4,
-      "sha256": "347cb8532d19c1425745fb20e0b78f9f6d666043149635a2475037021f0385ea",
+      "sha256": "2451340d9d422ba830da4c6f0320c4c38dcd8a4735c8185c2feffff7a4d0c849",
       "bytes": 9414
     },
     {
@@ -38,7 +38,7 @@
       "tagged": true,
       "structureElements": 32,
       "labelledLinks": 4,
-      "sha256": "969109b8f4ce858746488cfc5e1c0d87741aef9c014e7517d00ea41e1c04cc5e",
+      "sha256": "157d15bd8c602ec32a9fc4630180bdb3d4a884abbd104fb4b7295990c72a1876",
       "bytes": 9211
     },
     {
@@ -55,7 +55,7 @@
       "tagged": true,
       "structureElements": 32,
       "labelledLinks": 4,
-      "sha256": "5cb0ad0b8f355386596f3f71b8bff6cf5d0ae01fc527fa22a4f76495e58068b3",
+      "sha256": "e59278769126a9a4b73eb6a649aa3a0e6ac05bec206bc2d038d008927e037da7",
       "bytes": 9142
     },
     {
@@ -72,7 +72,7 @@
       "tagged": true,
       "structureElements": 31,
       "labelledLinks": 4,
-      "sha256": "cd801fc33c24f1be17c29b8b0af6e1469b06d5245f1e055b97515e1a67152a1a",
+      "sha256": "bd590fa50d4f8cac5e03c4e974ef205f4ab1e1a99ea2d763987f90452b8a8f58",
       "bytes": 9003
     }
   ]
