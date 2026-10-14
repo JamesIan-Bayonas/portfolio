@@ -1,6 +1,6 @@
 # Portfolio feature roadmap
 
-Updated: 14 October 2026 (Asia/Singapore)
+Updated: 15 October 2026 (Asia/Singapore)
 
 ## Purpose
 
@@ -82,7 +82,7 @@ Personal content uses the supplied resume, project documentation, and confirmed 
 
 ## Tracking each future change
 
-The current core roadmap and listed extensions are complete. The content workspace remains an owner-only local tool. Future additions should address a concrete visitor or maintenance need.
+The original core roadmap and listed extensions are complete within their recorded scope. The maintenance batch below expands those implementations. The content workspace remains an owner-only local tool. Future additions should address a concrete visitor or maintenance need.
 
 For every feature, record:
 
@@ -100,7 +100,7 @@ Review this file before proposing the next feature. Add new items only when they
 - New professional pages: [About](https://jamesian-portfolio.vercel.app/about/), [Now](https://jamesian-portfolio.vercel.app/now/), [How I can help](https://jamesian-portfolio.vercel.app/work-with-me/).
 - All 15 public routes returned the expected titles; all four live PDF hashes matched the revised manifest.
 - Live navigation and DormFix contact preselection worked. The three professional pages fit 320px without horizontal overflow, and the inspected browser reported no console errors.
-- Detailed validation and scope limits are recorded in QUALITY_REVIEW.md. The core roadmap is complete; remaining optional extensions are uncommitted suggestions.
+- Detailed validation and scope limits are recorded in QUALITY_REVIEW.md. Later sections record the completed extensions and the current locally implemented maintenance batch.
 
 ## RSS extension release — 14 October 2026
 
@@ -145,3 +145,35 @@ Review this file before proposing the next feature. Add new items only when they
 - Implementation: [a410bb8](https://github.com/JamesIan-Bayonas/portfolio/commit/a410bb8), source published and Vercel deployment completed successfully. Status: local tool verified.
 - TypeScript, 86 tests, production build, and 26-route verification passed. Browser checks covered bilingual saves/previews, retained unrelated drafts, required-field validation, both records, and 320px layout. Original content was restored after testing.
 - Public `/editor/`, `/api/content-editor`, and `/api/content-editor/reflections` returned 404; both public RSS feeds retained their exact built content. Owner instructions are in CONTENT_EDITING.md.
+
+## Maintenance and evidence batch — 14 October 2026
+
+This batch follows the inspection of the completed roadmap. Public changes are ready locally and have not been deployed or checked on the live site.
+
+| Work item | Bounded completion criteria | Status |
+| --- | --- | --- |
+| Create Engineering Notes | Create an article with a unique URL, save and reopen incomplete drafts, edit draft sections, preview the actual article layout, require complete content for publication, derive archive/search/metadata/RSS entries, and exclude draft text from public bundles | Local tool verified; source publication pending |
+| Recover unsaved edits | Preserve drafts in browser storage, offer restore/export/discard, retain incomplete text, and block restoration over newer repository collections | Local tool verified; source publication pending |
+| Filipino CentraLog case study | Translate the written case study, source/test explanations, and milestones; retain canonical evidence identities; provide counterpart routes and section links; label English demos, documents, and related resources | Ready locally |
+| Execute referenced application evidence | Run isolated snapshots at the cited commits, show actual results and scope, retain failures, and provide a downloadable execution record | Ready locally |
+| Improve portfolio questions | Recognize common Filipino intents and technology aliases, intersect combined technology criteria, and fall back for unsupported exclusion questions | Ready locally |
+
+Evidence: `src/editor/ContentEditor.tsx`, `src/editor/NotePreview.tsx`, `src/lib/contentEditing.ts`, `src/lib/editorRecovery.ts`, `src/data/filipinoCentralog.ts`, `src/components/ApplicationTestResults.tsx`, `src/data/applicationTestRuns.json`, and `src/lib/portfolioQuestions.ts`. Instructions and detailed validation are in CONTENT_EDITING.md, LOCALIZATION.md, APPLICATION_TEST_RESULTS.md, and QUALITY_REVIEW.md. No release commit or live verification is claimed for this batch.
+
+Application execution found a failure at historical IsdaLog commit `df1ca46`: order creation calls missing `OrderController::store`. The other four selected IsdaLog tests passed. DormFix's seven selected helper tests, PharmaLink's six export tests, CentraLog's three in-memory tests, and its selected disposed-transfer integration assertion passed. CentraLog used a verified disposable schema, with only the temporary fixture database name changed; the schema was removed afterward.
+
+Remaining bounded follow-ups:
+
+- Complete actual browser zoom, screen-reader speech, and reduced-motion preference reviews. PDF structure and visual checks were completed in the 15 October batch below; actual PDF assistive-technology behavior remains pending.
+- Extend Filipino coverage to the other case studies and engineering resources when needed; the new translated page retains English interactive demonstrations.
+- Add professional-profile editing if maintaining those pages becomes a repeated owner need.
+- A hosted CMS, external-model assistant, and live application sandboxes remain optional later work requiring their own scope and infrastructure. The local editor and current question guide do not depend on them.
+
+## Accessibility and Filipino DormFix — 15 October 2026
+
+- Visitor need: read the DormFix engineering story in Filipino and navigate downloaded briefs through explicit document structure.
+- Implemented: `/fil/projects/dormfix/`, paired language/section links, translated contribution/source/test/milestone explanations, English-resource labels, search discovery, and static metadata. The original team credit, historical OCR/Ollama design, later Gemini/PostgreSQL context, and pinned evidence identities remain intact.
+- PDF refinement: all four one-page briefs now include English language metadata, title display, H1/H2/paragraph reading-order tags, labelled link annotations, semantic tab order, and decorative artifacts. The authoring process validates structure and original source content; all four files were rendered and visually reviewed. This is not PDF/UA certification or captured screen-reader speech.
+- Validation: 95 portfolio tests, TypeScript, production build, and 28-page verification passed under Node.js 22.23.3. The verifier also checks public PDF structural markers, manifest integrity, and both translated case-study chunks. A new `npm run verify:live` command compares deployed pages/assets, feeds, execution data, PDFs, and excluded owner routes against the reviewed build.
+- Current status: ready locally; publication verification pending. Detailed scope is in ACCESSIBILITY_REVIEW.md and QUALITY_REVIEW.md.
+- Native browser review stopped because the control tool could not verify the active Edge URL. No browser input followed that stop. Actual zoom, preference emulation, screen-reader speech, and the new DormFix mobile layout remain unverified; earlier browser results are dated separately.

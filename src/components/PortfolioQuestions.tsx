@@ -44,7 +44,8 @@ export default function PortfolioQuestions() {
           <p>
             Ask about the projects, James's contributions, technologies, or
             engineering evidence. Each answer points to the published
-            explanation.
+            explanation. You can ask in English or Filipino; the linked project
+            records and answers are in English.
           </p>
         </header>
         <form

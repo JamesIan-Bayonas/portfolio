@@ -7,6 +7,8 @@ export const translatedCorePaths = [
   "/reflections/",
   "/reflections/credit-and-context/",
   "/reflections/visible-decisions/",
+  "/projects/centralog/",
+  "/projects/dormfix/",
 ]
 const corePaths = translatedCorePaths
 function normalizedPath(value: string): string {

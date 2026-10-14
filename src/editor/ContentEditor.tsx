@@ -1,7 +1,14 @@
 import { useEffect, useId, useMemo, useState } from "react"
-import { validateEditableContent } from "../lib/contentEditing"
+import { createNoteDraft, validateEditableContent } from "../lib/contentEditing"
 import type { ContentKind, EditableContent } from "../lib/contentEditing"
 import ReflectionEditor from "./ReflectionEditor"
+import {
+  parseRecovery,
+  recoveryConflicts,
+  recoveryKey,
+  type Recovery,
+} from "../lib/editorRecovery"
+import projectPages from "../data/caseStudyPages.json"
 
 type Workspace = {
   notes: {
@@ -65,6 +72,10 @@ export default function ContentEditor() {
   const [milestoneIndex, setMilestoneIndex] = useState(0)
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState("")
+  const [recovery, setRecovery] = useState<Recovery>()
+  const [recoveryRaw, setRecoveryRaw] = useState("")
+  const [recoveryChecked, setRecoveryChecked] = useState(false)
+  const [recoveryError, setRecoveryError] = useState("")
   const dirty = Boolean(
     draft &&
       workspace &&
@@ -89,19 +100,37 @@ export default function ContentEditor() {
     }
   }, [draft, kind, workspace])
 
-  async function load() {
+  async function load(discard = false) {
     setBusy(true)
     try {
       const response = await fetch("/api/content-editor", { cache: "no-store" })
       const result = await response.json()
       if (!response.ok) throw new Error(result.error)
       setWorkspace(result)
+      setNoteIndex(0)
+      setReflectionIndex(0)
+      setMilestoneIndex(0)
       setDraft({
         notes: result.notes.value,
         milestones: result.milestones.value,
         reflections: result.reflections.value,
       })
       setMessage("Loaded repository content.")
+      if (discard) {
+        localStorage.removeItem(recoveryKey)
+        setRecovery(undefined)
+        setRecoveryRaw("")
+        setRecoveryError("")
+      } else {
+        try {
+          const raw = localStorage.getItem(recoveryKey)
+          setRecoveryRaw(raw ?? "")
+          setRecovery(parseRecovery(raw))
+        } catch (error) {
+          setRecoveryError((error as Error).message)
+        }
+      }
+      setRecoveryChecked(true)
     } catch (error) {
       setMessage((error as Error).message)
     } finally {
@@ -111,6 +140,46 @@ export default function ContentEditor() {
   useEffect(() => {
     void load()
   }, [])
+  useEffect(() => {
+    if (
+      !draft ||
+      !workspace ||
+      !recoveryChecked ||
+      recovery ||
+      recoveryRaw ||
+      recoveryError
+    )
+      return
+    try {
+      if (dirty)
+        localStorage.setItem(
+          recoveryKey,
+          JSON.stringify({
+            schema: 1,
+            savedAt: new Date().toISOString(),
+            draft,
+            versions: {
+              notes: workspace.notes.version,
+              milestones: workspace.milestones.version,
+              reflections: workspace.reflections.version,
+            },
+          }),
+        )
+      else localStorage.removeItem(recoveryKey)
+    } catch {
+      setRecoveryError(
+        "Automatic draft recovery is unavailable. Keep this page open or export your changes before leaving.",
+      )
+    }
+  }, [
+    draft,
+    workspace,
+    dirty,
+    recoveryChecked,
+    recovery,
+    recoveryRaw,
+    recoveryError,
+  ])
   useEffect(() => {
     if (!dirty) return
     function warn(event: BeforeUnloadEvent) {
@@ -185,6 +254,19 @@ export default function ContentEditor() {
   const note = draft?.notes[noteIndex]
   const milestone = draft?.milestones[projectId]?.[milestoneIndex]
   const reflection = draft?.reflections[reflectionIndex]
+  const conflicts =
+    recovery && workspace ? recoveryConflicts(recovery, workspace) : []
+  function exportDraft() {
+    const blob = new Blob([recoveryRaw || JSON.stringify(draft, null, 2)], {
+      type: "application/json",
+    })
+    const url = URL.createObjectURL(blob)
+    const anchor = document.createElement("a")
+    anchor.href = url
+    anchor.download = "portfolio-draft-recovery.json"
+    anchor.click()
+    URL.revokeObjectURL(url)
+  }
 
   return (
     <main className="content-workspace">
@@ -198,25 +280,31 @@ export default function ContentEditor() {
           Keep the evidence.
         </h1>
         <p>
-          Maintain the existing notes, bilingual reflections, and project
-          milestones. Preview your changes, then save them in the repository for
-          review.
+          Create Engineering Notes and maintain bilingual reflections and
+          project milestones. Preview your changes, then save them in the
+          repository for review.
         </p>
         <p className="editor-hint">
           Saving updates local content. Publishing follows the portfolio's
-          release process. Routes, section anchors, and reviewed commit
-          references remain fixed here.
+          release process. Published routes, section anchors, and reviewed
+          commit references remain fixed. New drafts can have their own
+          sections.
         </p>
       </header>
       <div className="editor-toolbar">
         <button
-          disabled={busy || !currentDirty || Boolean(issue)}
+          disabled={
+            busy || !currentDirty || Boolean(issue) || Boolean(recoveryRaw)
+          }
           onClick={save}
         >
           Save {kind}
         </button>
-        <button disabled={busy} onClick={load}>
+        <button disabled={busy} onClick={() => void load(true)}>
           {dirty ? "Discard edits and reload" : "Reload from repository"}
+        </button>
+        <button disabled={!draft && !recoveryRaw} onClick={exportDraft}>
+          Export drafts
         </button>
         <span>
           {busy ? "Working…" : dirty ? "Unsaved changes" : "No unsaved changes"}
@@ -225,6 +313,38 @@ export default function ContentEditor() {
       <p className="editor-status" role="status">
         {message}
       </p>
+      {(recoveryRaw || recoveryError) && (
+        <aside className="editor-error" aria-label="Draft recovery">
+          <h2>Recover your previous edits</h2>
+          <p>
+            {recoveryError ||
+              `A recovery copy was saved ${new Date(recovery!.savedAt).toLocaleString()}.`}
+          </p>
+          {conflicts.length > 0 && (
+            <p>
+              Repository content changed in {conflicts.join(", ")}. Export the
+              recovery copy, reload the current content, and reapply your
+              changes before saving.
+            </p>
+          )}
+          <button
+            disabled={!recovery || conflicts.length > 0}
+            onClick={() => {
+              setDraft(recovery!.draft)
+              setRecovery(undefined)
+              setRecoveryRaw("")
+              setRecoveryError("")
+              setMessage("Restored previous edits. Review them before saving.")
+            }}
+          >
+            Restore drafts
+          </button>
+          <button onClick={exportDraft}>Export recovery copy</button>
+          <button disabled={busy} onClick={() => void load(true)}>
+            Discard recovery copy and reload
+          </button>
+        </aside>
+      )}
       {issue && (
         <p className="editor-error" role="alert">
           {issue}
@@ -257,7 +377,7 @@ export default function ContentEditor() {
               Reflections · English / Filipino
             </button>
           </nav>
-          <fieldset disabled={busy}>
+          <fieldset disabled={busy || Boolean(recoveryRaw)}>
             <legend className="editor-sr-only">Edit {kind}</legend>
             {kind === "notes" ? (
               <>
@@ -269,10 +389,29 @@ export default function ContentEditor() {
                 >
                   {draft.notes.map((item, index) => (
                     <option key={item.id} value={index}>
-                      {item.title}
+                      {item.title || `Untitled draft (${item.id})`}
                     </option>
                   ))}
                 </select>
+                <button
+                  type="button"
+                  onClick={() => {
+                    let id = "new-note"
+                    let suffix = 2
+                    while (draft.notes.some((item) => item.id === id))
+                      id = `new-note-${suffix++}`
+                    setNoteIndex(draft.notes.length)
+                    setDraft({
+                      ...draft,
+                      notes: [
+                        ...draft.notes,
+                        createNoteDraft(id, projectPages[0].projectId),
+                      ],
+                    })
+                  }}
+                >
+                  Create a note
+                </button>
               </>
             ) : kind === "reflections" ? (
               <>
@@ -360,6 +499,79 @@ export default function ContentEditor() {
                     <p className="editor-hint">
                       Project: {note.projectId} · Route: {note.path}
                     </p>
+                    {note.status === "draft" && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setDraft({
+                              ...draft,
+                              notes: draft.notes.filter(
+                                (_, index) => index !== noteIndex,
+                              ),
+                            })
+                            setNoteIndex(0)
+                            setMessage(
+                              "Draft removed from the workspace. Save notes to update the repository.",
+                            )
+                          }}
+                        >
+                          Remove this draft
+                        </button>
+                        <Field
+                          label="Article slug"
+                          value={note.id}
+                          hint="This becomes the permanent article URL when published."
+                          onChange={(id) => {
+                            setDraft({
+                              ...draft,
+                              notes: draft.notes.map((item, index) =>
+                                index === noteIndex
+                                  ? { ...item, id, path: `/notes/${id}/` }
+                                  : item,
+                              ),
+                            })
+                          }}
+                        />
+                        <label htmlFor="note-project">Project</label>
+                        <select
+                          id="note-project"
+                          value={note.projectId}
+                          onChange={(event) =>
+                            editNote("projectId", event.target.value)
+                          }
+                        >
+                          {projectPages.map((page) => (
+                            <option key={page.projectId} value={page.projectId}>
+                              {page.projectId}
+                            </option>
+                          ))}
+                        </select>
+                      </>
+                    )}
+                    <p className="editor-hint">
+                      Status: {note.status ?? "published"}. Publishing is
+                      included in the next repository release.
+                    </p>
+                    {(workspace?.notes.value.find((item) => item.id === note.id)
+                      ?.status === "draft" ||
+                      !workspace?.notes.value.some(
+                        (item) => item.id === note.id,
+                      )) && (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          editNote(
+                            "status",
+                            note.status === "draft" ? "published" : "draft",
+                          )
+                        }
+                      >
+                        {note.status === "draft"
+                          ? "Mark for publication"
+                          : "Keep as draft"}
+                      </button>
+                    )}
                     <Field
                       label="Title"
                       value={note.title}
@@ -403,6 +615,34 @@ export default function ContentEditor() {
                     {note.sections.map((section, index) => (
                       <div className="editor-section" key={section.id}>
                         <h2>Section {index + 1}</h2>
+                        {note.status === "draft" && (
+                          <>
+                            <Field
+                              label={`Section ${index + 1} anchor`}
+                              value={section.id}
+                              onChange={(id) =>
+                                editNote(
+                                  "sections",
+                                  note.sections.map((item, i) =>
+                                    i === index ? { ...item, id } : item,
+                                  ),
+                                )
+                              }
+                            />
+                            <button
+                              type="button"
+                              disabled={note.sections.length === 1}
+                              onClick={() =>
+                                editNote(
+                                  "sections",
+                                  note.sections.filter((_, i) => i !== index),
+                                )
+                              }
+                            >
+                              Remove section {index + 1}
+                            </button>
+                          </>
+                        )}
                         <Field
                           label={`Section ${index + 1} title`}
                           value={section.title}
@@ -433,6 +673,24 @@ export default function ContentEditor() {
                         />
                       </div>
                     ))}
+                    {note.status === "draft" && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          let id = `section-${note.sections.length + 1}`
+                          while (
+                            note.sections.some((section) => section.id === id)
+                          )
+                            id += "-new"
+                          editNote("sections", [
+                            ...note.sections,
+                            { id, title: "", paragraphs: [""] },
+                          ])
+                        }}
+                      >
+                        Add a section
+                      </button>
+                    )}
                   </>
                 )}
                 {kind === "milestones" && milestone && (
@@ -475,12 +733,14 @@ export default function ContentEditor() {
               >
                 <p className="editor-eyebrow">DRAFT PREVIEW</p>
                 <h2 id="draft-preview-title">
-                  {kind === "notes" ? note?.title : milestone?.title}
+                  {kind === "notes"
+                    ? note?.title || "Untitled draft"
+                    : milestone?.title}
                 </h2>
                 <a
                   href={
                     kind === "notes"
-                      ? note?.path
+                      ? `/editor/?preview=${encodeURIComponent(note?.id ?? "")}`
                       : `/projects/${projectId}/#${projectId}-evolution`
                   }
                   target="_blank"
@@ -500,7 +760,7 @@ export default function ContentEditor() {
                     <p>{note.flowCaption}</p>
                     {note.sections.map((section) => (
                       <section key={section.id}>
-                        <h3>{section.title}</h3>
+                        <h3>{section.title || "Untitled section"}</h3>
                         {section.paragraphs.map((paragraph, index) => (
                           <p key={index}>{paragraph}</p>
                         ))}

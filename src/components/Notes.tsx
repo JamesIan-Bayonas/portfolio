@@ -1,17 +1,25 @@
 import { useEffect } from "react"
-import { engineeringNotes, noteReadingMinutes } from "../data/notes"
+import {
+  engineeringNotes,
+  noteReadingMinutes,
+  type EngineeringNote,
+} from "../data/notes"
 import NotesArchive from "./NotesArchive"
 import RelatedNotes from "./RelatedNotes"
 import FollowNotes from "./FollowNotes"
 import { projects } from "../data/projects"
 import { normalizePagePath } from "../lib/caseStudyPages"
 
-export default function Notes() {
-  const note = engineeringNotes.find(
-    (item) =>
-      normalizePagePath(item.path) ===
-      normalizePagePath(window.location.pathname),
-  )
+export default function Notes({ previewNote }: {
+  previewNote?: EngineeringNote
+} = {}) {
+  const note =
+    previewNote ??
+    engineeringNotes.find(
+      (item) =>
+        normalizePagePath(item.path) ===
+        normalizePagePath(window.location.pathname),
+    )
   const project = projects.find((item) => item.id === note?.projectId)
   useEffect(() => {
     if (!note || !window.location.hash) return
@@ -33,13 +41,19 @@ export default function Notes() {
     <article className="explore-page notes-page px-4 sm:px-6 lg:px-10">
       <div className="max-w-[1440px] mx-auto">
         <header className="note-header">
+          {previewNote && (
+            <p role="status">
+              Local article preview · {previewNote.status ?? "published"}.
+              Saving does not publish this page.
+            </p>
+          )}
           <a className="case-study-breadcrumb font-mono" href="/notes/">
             ← All engineering notes
           </a>
           <p className="project-eyebrow font-mono">
             {project?.name} / {note.topic}
           </p>
-          <h1>{note.title}</h1>
+          <h1>{note.title || "Untitled draft"}</h1>
           <p className="note-summary">{note.summary}</p>
           <p className="note-byline font-mono">
             James Ian Bayonas · {noteReadingMinutes(note)} min read
@@ -57,7 +71,9 @@ export default function Notes() {
             <ol>
               {note.sections.map((section) => (
                 <li key={section.id}>
-                  <a href={`#${section.id}`}>{section.title}</a>
+                  <a href={`#${section.id}`}>
+                    {section.title || "Untitled section"}
+                  </a>
                 </li>
               ))}
             </ol>
@@ -83,7 +99,9 @@ export default function Notes() {
                 key={section.id}
                 aria-labelledby={`note-${section.id}`}
               >
-                <h2 id={`note-${section.id}`}>{section.title}</h2>
+                <h2 id={`note-${section.id}`}>
+                  {section.title || "Untitled section"}
+                </h2>
                 {section.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}

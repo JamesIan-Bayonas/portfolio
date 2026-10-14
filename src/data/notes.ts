@@ -6,6 +6,7 @@ export interface EngineeringNoteSection {
   paragraphs: string[]
 }
 export interface EngineeringNote {
+  status?: "draft" | "published"
   id: string
   path: string
   projectId: string
@@ -19,7 +20,9 @@ export interface EngineeringNote {
   sections: EngineeringNoteSection[]
 }
 
-export const engineeringNotes: EngineeringNote[] = notesContent
+export const engineeringNotes: EngineeringNote[] = notesContent.filter(
+  (note) => !("status" in note) || note.status !== "draft",
+)
 
 export function noteReadingMinutes(note: EngineeringNote): number {
   const words = [

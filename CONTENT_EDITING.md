@@ -1,6 +1,6 @@
 # Local content workspace
 
-The workspace maintains existing Engineering Notes, bilingual reflections, and project milestones through labelled fields and draft previews. It runs on your computer and saves into this repository. It is excluded from the public portfolio build.
+The workspace creates Engineering Notes and maintains existing notes, bilingual reflections, and project milestones through labelled fields and previews. It runs on your computer and saves into this repository. It is excluded from the public portfolio build.
 
 ## Open the workspace
 
@@ -20,7 +20,18 @@ Open [the local content workspace](http://127.0.0.1:4186/editor/). Keep the proc
 4. Use **Open saved content in the local portfolio** to inspect the actual page. Reload a previously opened preview to see subsequent saves.
 5. Review the repository changes before publishing. Saved notes automatically feed article metadata, search, reading times, and the RSS output at the next build.
 
-Routes, project identities, section anchors, and reviewed milestone dates, commits, and evidence paths stay fixed in this editor. New publications, new milestones, reordered sections, or revised evidence should follow the repository review workflow, including related-note curation and source verification.
+Published routes, project identities, section anchors, and reviewed milestone dates, commits, and evidence paths stay fixed in this editor. New milestones and revised evidence still follow repository review. New Engineering Notes can be created as drafts as described below.
+
+## Create an Engineering Note
+
+1. Choose **Engineering Notes → Create a note**. Select the existing project and choose a unique article slug of up to 80 characters. The slug determines `/notes/<slug>/`; `feed` is reserved.
+2. Write the title, summary, topic, workflow, source context, and sections. **Add a section**, its anchor field, and **Remove section** are available while the note is a draft. Anchors must be unique and cannot collide with page controls. **Remove this draft** removes an unpublished note; save the collection to persist that removal.
+3. **Save notes** accepts incomplete draft text. Closing and reopening the editor loads saved drafts from the repository. Drafts have no public route and are excluded from search, RSS, metadata, and public JavaScript, including their text.
+4. Use **Open saved content in the local portfolio** to open `/editor/?preview=<slug>`. This uses the real article layout with saved local content. Save first and reload the preview after further edits.
+5. Choose **Mark for publication** after reviewing the content and evidence. Required fields must be complete before saving. Before the first publication save, **Keep as draft** remains available. After saving as published, the route, project, and section anchors become protected.
+6. Run the release checks below and review the built article. Published records automatically enter the archive, search, case-study links, metadata, and RSS at build time. New notes receive related reading from the same project when available; existing curated recommendations retain their order. Curate cross-project connections in the repository when appropriate.
+
+Marking and saving publication status includes the note in the next build. It does not commit, push, or deploy anything. Withdrawing an already published article requires repository review so existing links are considered.
 
 ## Bilingual reflections
 
@@ -30,7 +41,9 @@ Article routes, writing dates, paired section anchors, and supporting reference 
 
 ## Draft and save behavior
 
-- Unsaved drafts remain in the current page when switching records or collections. A navigation warning protects against leaving with unsaved edits. Closing the page does not preserve drafts.
+- Unsaved drafts remain when switching records or collections. A navigation warning protects against leaving with unsaved edits. The browser also keeps a recovery copy after edits, including incomplete fields. On reopening, choose **Restore drafts**, **Export recovery copy**, or **Discard recovery copy and reload**. Normal fields are disabled until a pending recovery copy is resolved.
+- Recovery uses this browser's local storage at the editor origin. Clearing browser storage, private browsing, storage failure, or switching browser profiles can remove or prevent recovery. **Export drafts** creates an additional JSON copy. The recovery copy is shared across editor tabs; use one active editing tab. Saved content and Git remain the durable recovery mechanism.
+- If repository versions changed since recovery was saved, automatic restoration is blocked for those changed collections. Export the copy, reload the current content, and reapply the edits. Malformed recovery copies can be exported or discarded but are not rendered.
 - **Discard edits and reload** replaces the drafts with repository content. Copy any work you need before using it.
 - Empty required text and invalid structures block saving. Save errors preserve the draft for correction.
 - If repository content changed outside the workspace, saving is rejected. Copy your draft, reload, then apply it to the latest content. This also applies when two editor tabs try to save the same collection.

@@ -34,12 +34,53 @@ export const suggestedQuestions = [
   "What is James working on now?",
 ]
 
-const words = (value: string) =>
-  value
+const words = (value: string) => {
+  const aliases: Record<string, string> = {
+    ambag: "contribution",
+    kontribusyon: "contribution",
+    tungkulin: "role",
+    gumawa: "built",
+    ginawa: "built",
+    pagsubok: "tests",
+    pagsusulit: "tests",
+    ebidensya: "evidence",
+    ebidensiya: "evidence",
+    kodigo: "code",
+    subukan: "try",
+    halimbawa: "demo",
+    ihambing: "compare",
+    pagkakaiba: "difference",
+    kasalukuyan: "now",
+    ngayon: "now",
+    pinagaaralan: "learning",
+    edukasyon: "education",
+    paaralan: "education",
+    sahod: "salary",
+    magkano: "rates",
+    presyo: "pricing",
+    bayad: "pricing",
+    oportunidad: "opportunity",
+    resibo: "receipt",
+    pabahay: "housing",
+    gamot: "medicine",
+    botika: "pharmacy",
+    benta: "sales",
+    kagamitan: "assets",
+    pangingisda: "fisheries",
+    postgres: "postgresql",
+    dotnet: "net",
+    csharp: "net",
+  }
+  return value
     .toLowerCase()
+    .replace(/c\s*#/g, " csharp ")
+    .replace(/sql\s+server/g, " mssql ")
+    .replace(/socket[.\s]+io/g, " socketio ")
     .replace(/[^a-z0-9]+/g, " ")
     .trim()
     .split(/\s+/)
+    .map((term) => aliases[term] ?? term)
+}
 
 // Answers select published records and labelled destinations. There is no
 // generated prose, external model, conversation storage, or inferred biography.
@@ -71,9 +112,26 @@ export function answerPortfolioQuestion(
       "Choose an example or ask a short question about a project, technology, contribution, demo, or engineering evidence.",
       [{ label: "Browse every project", href: "/explore/" }],
     )
+  if (has("not", "without", "except", "hindi", "walang"))
+    return result(
+      "unknown",
+      "Clarify the project criteria",
+      "This guide matches positive project criteria. Use Explore to inspect exclusions, or ask which projects use a specific technology.",
+      [{ label: "Browse and filter projects", href: "/explore/" }],
+    )
   if (
     has("hire", "hiring", "salary", "freelance", "job", "hourly") ||
-    (!named.length && has("rate", "rates", "pricing", "price", "available", "availability", "phone", "email"))
+    (!named.length &&
+      has(
+        "rate",
+        "rates",
+        "pricing",
+        "price",
+        "available",
+        "availability",
+        "phone",
+        "email",
+      ))
   ) {
     return result(
       "contact",
@@ -100,11 +158,30 @@ export function answerPortfolioQuestion(
       [{ label: "Read the personal journey", href: "/about/" }],
     )
 
+  const technologyTerms = new Set(
+    projects
+      .flatMap((project) => words(project.tech.join(" ")))
+      .filter(
+        (term) =>
+          term.length > 2 &&
+          !["core", "css", "vision", "server"].includes(term),
+      ),
+  )
+  const requested = [
+    ...new Set(
+      terms.filter((term) => technologyTerms.has(term) || term === "net"),
+    ),
+  ]
   const selected = named.length
     ? named
     : projects.filter((project) => {
         const technology = words(project.tech.join(" "))
-        if (has("net", "dotnet", "csharp")) return technology.includes("net")
+        if (requested.length)
+          return (
+            requested.every((term) => technology.includes(term)) &&
+            (!has("ai", "ocr") ||
+              project.tech.some((tech) => /Gemini|Ollama|Tesseract/.test(tech)))
+          )
         if (has("ai", "ocr", "gemini", "ollama", "tesseract"))
           return project.tech.some((tech) =>
             /Gemini|Ollama|Tesseract/.test(tech),
@@ -138,7 +215,7 @@ export function answerPortfolioQuestion(
     return result(
       "tests",
       "Inspect what the tests check",
-      "These case studies explain test scenarios, expected outcomes, and scope. Application tests are inspected references; portfolio simulation tests cover sample logic.",
+      "These case studies explain test scenarios, expected outcomes, and recorded execution scope. Results identify their exact suite and commit, including failures and unexecuted checks; portfolio simulation tests cover sample logic.",
       [],
       evidenceProjects,
     )

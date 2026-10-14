@@ -1,5 +1,8 @@
-export function milestoneDate(committedAt: string): string {
-  return new Intl.DateTimeFormat("en-SG", {
+export function milestoneDate(
+  committedAt: string,
+  locale: "en" | "fil" = "en",
+): string {
+  return new Intl.DateTimeFormat(locale === "fil" ? "fil-PH" : "en-SG", {
     day: "numeric",
     month: "short",
     year: "numeric",

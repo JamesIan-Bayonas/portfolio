@@ -1,0 +1,55 @@
+const filipino: Record<string, string> = {
+  "01 / THE PROBLEM": "01 / ANG SULIRANIN",
+  "Who this is built for": "Para kanino ang system",
+  "02 / MY CONTRIBUTION": "02 / AKING AMBAG",
+  "03 / SYSTEM STRUCTURE": "03 / ESTRUKTURA NG SYSTEM",
+  "How the pieces connect": "Paano magkakaugnay ang mga bahagi",
+  "04 / THE WORKFLOW": "04 / DALOY NG GAWAIN",
+  "Follow the system": "Sundan ang system",
+  "05 / ENGINEERING DECISION": "05 / DESISYON SA ENGINEERING",
+  "The reasoning behind the design": "Ang dahilan sa likod ng disenyo",
+  Challenge: "Hamon",
+  Approach: "Paraan",
+  "Trade-off": "Kapalit at limitasyon",
+  "06 / SOURCE CODE": "06 / SOURCE CODE",
+  "Explore the implementation": "Suriin ang implementation",
+  "Follow the engineering decisions into the code. Each link opens the reviewed version at a fixed commit.":
+    "Sundan ang mga desisyon sa engineering patungo sa code. Binubuksan ng bawat link ang sinuring bersiyon sa isang tiyak na commit.",
+  "View implementation": "Tingnan ang implementation (English)",
+  "07 / TEST EVIDENCE": "07 / EBIDENSYA NG TEST",
+  "What the tests check": "Ano ang sinusuri ng mga test",
+  "Explore the scenarios, expected outcomes, and scope of the tests. Each link opens reviewed test code at a fixed commit.":
+    "Suriin ang scenario, inaasahang resulta, at saklaw ng mga test. Binubuksan ng bawat link ang sinuring test code sa isang tiyak na commit.",
+  "Application test": "Test ng application",
+  "Portfolio simulation test": "Test ng simulation sa portfolio",
+  Scenario: "Scenario",
+  "Expected outcome": "Inaasahang resulta",
+  "Test scope": "Saklaw ng test",
+  "View test": "Tingnan ang test (English)",
+  "Simulation tests cover this portfolio's sample logic. Execution results below apply only to the named suite and commit.":
+    "Sample logic ng portfolio ang saklaw ng simulation test. Para lamang sa nakapangalan na suite at commit ang mga execution result sa ibaba.",
+  "08 / PROJECT EVOLUTION": "08 / PAG-UNLAD NG PROYEKTO",
+  "How the system evolved": "Paano umunlad ang system",
+  "Selected changes from the repository's history, with the design context and outcome of each revision. Dates use commit timestamps in Singapore time.":
+    "Mga napiling pagbabago mula sa kasaysayan ng repository, kasama ang konteksto at resulta ng bawat rebisyon. Nasa oras ng Singapore ang petsa ng commit.",
+  "What changed": "Ano ang nagbago",
+  "Design context": "Konteksto ng disenyo",
+  Outcome: "Resulta",
+  "View change": "Tingnan ang pagbabago (English)",
+  Overview: "Pangkalahatang-ideya",
+  Walkthrough: "Walkthrough (English)",
+  "Valuation lab": "Valuation lab (English)",
+  "Written case study": "Nakasulat na case study",
+  "My contribution": "Aking ambag",
+  "Design decisions": "Mga desisyon",
+  "Source code": "Source code (English)",
+  "Test evidence": "Ebidensya ng test",
+  Evolution: "Pag-unlad",
+  "Outcome & trade-off": "Resulta at kapalit",
+  "View commit": "Tingnan ang commit (English)",
+  "These are selected implementation milestones. Commit dates do not establish release dates or production performance.":
+    "Mga napiling milestone sa implementation ang mga ito. Hindi pinatutunayan ng petsa ng commit ang petsa ng release o performance sa production.",
+}
+export function caseStudyText(locale: "en" | "fil", text: string) {
+  return locale === "fil" ? (filipino[text] ?? text) : text
+}

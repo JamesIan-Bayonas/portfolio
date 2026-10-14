@@ -1,5 +1,15 @@
 [
   {
+    "path": "/fil/projects/dormfix/",
+    "title": "DormFix: Tenant, Kuwarto at Receipt Review | James Ian Bayonas",
+    "description": "Suriin sa Filipino ang DormFix: pangkatang capstone, ambag sa mga feature, naunang OCR at lokal na model, business check, test evidence, at pag-unlad ng proyekto."
+  },
+  {
+    "path": "/fil/projects/centralog/",
+    "title": "CentraLog: Custody, Maintenance at Halaga | James Ian Bayonas",
+    "description": "Suriin sa Filipino ang CentraLog: sariling proyekto sa paaralan, lifecycle ng kagamitan, valuation strategy, source reference, saklaw ng test, at kasaysayan ng proyekto."
+  },
+  {
     "path": "/fil/",
     "title": "Mga Proyekto at Portfolio | James Ian Bayonas",
     "description": "Kilalanin ang mga proyekto ni James Ian Bayonas sa Filipino. Tuklasin ang kanyang tungkulin, pag-aaral, kasalukuyang gawain, at mga uri ng proyektong maaaring pag-usapan."

@@ -26,6 +26,8 @@ const Reflections = lazy(() => import("./components/Reflections"))
 
 const ProfessionalPages = lazy(() => import("./components/ProfessionalPages"))
 const FilipinoOverview = lazy(() => import("./components/FilipinoOverview"))
+const FilipinoCentraLog = lazy(() => import("./components/FilipinoCentraLog"))
+const FilipinoDormFix = lazy(() => import("./components/FilipinoDormFix"))
 
 const HomePage = lazy(() => import("./components/HomePage"))
 
@@ -59,6 +61,8 @@ export default function App() {
     caseStudyPage?.path ?? window.location.pathname,
   )
   const filipinoOverview = caseStudyPage?.path === "/fil/"
+  const filipinoCentraLog = caseStudyPage?.path === "/fil/projects/centralog/"
+  const filipinoDormFix = caseStudyPage?.path === "/fil/projects/dormfix/"
   const reflectionsPage = contentPath.startsWith("/reflections/")
   const professionalPath = ["/about/", "/now/", "/work-with-me/"].includes(
     contentPath,
@@ -165,8 +169,35 @@ export default function App() {
         className="relative z-10 max-w-none"
         style={{ fontFamily: "var(--font-body)" }}
       >
-        {reflectionsPage ? (
-          <Suspense fallback={<LoadingState label={currentLocale() === "fil" ? "Binubuksan ang mga pagninilay…" : "Opening reflections…"} variant="page" />}>
+        {filipinoDormFix ? (
+          <Suspense
+            fallback={
+              <LoadingState label="Binubuksan ang case study…" variant="page" />
+            }
+          >
+            <FilipinoDormFix />
+          </Suspense>
+        ) : filipinoCentraLog ? (
+          <Suspense
+            fallback={
+              <LoadingState label="Binubuksan ang case study…" variant="page" />
+            }
+          >
+            <FilipinoCentraLog />
+          </Suspense>
+        ) : reflectionsPage ? (
+          <Suspense
+            fallback={
+              <LoadingState
+                label={
+                  currentLocale() === "fil"
+                    ? "Binubuksan ang mga pagninilay…"
+                    : "Opening reflections…"
+                }
+                variant="page"
+              />
+            }
+          >
             <Reflections />
           </Suspense>
         ) : filipinoOverview ? (

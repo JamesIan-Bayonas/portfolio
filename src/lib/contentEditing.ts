@@ -1,6 +1,7 @@
 import type { EngineeringNote } from "../data/notes"
 import type { ProjectMilestone } from "../data/projectEvolution"
 import type { Reflection } from "../data/reflections"
+import projectPages from "../data/caseStudyPages.json" with { type: "json" }
 
 export type EditableContent = {
   notes: EngineeringNote[]
@@ -18,6 +19,30 @@ function object(value: unknown): Record<string, unknown> {
 function text(value: unknown, label: string, limit = 12000) {
   if (typeof value !== "string" || !value.trim() || value.length > limit)
     throw new Error(`${label} must contain text (up to ${limit} characters).`)
+}
+function draftText(value: unknown, label: string, limit = 12000) {
+  if (typeof value !== "string" || value.length > limit)
+    throw new Error(`${label} must be text (up to ${limit} characters).`)
+}
+
+export function createNoteDraft(
+  id: string,
+  projectId: string,
+): EngineeringNote {
+  return {
+    id,
+    path: `/notes/${id}/`,
+    projectId,
+    status: "draft",
+    title: "",
+    summary: "",
+    topic: "",
+    flow: [""],
+    flowCaption: "",
+    demoLabel: "",
+    sourceContext: "",
+    sections: [{ id: "overview", title: "", paragraphs: [""] }],
+  }
 }
 function list(value: unknown, label: string, limit: number): unknown[] {
   if (!Array.isArray(value) || !value.length || value.length > limit)
@@ -125,16 +150,63 @@ export function validateEditableContent(
   if (kind === "notes") {
     const records = list(value, "Notes", 100)
     const original = baseline as EditableContent["notes"]
+    const published = original.filter((note) => note.status !== "draft")
     unchanged(
-      records.map((record) => {
-        const item = object(record)
-        return [item.id, item.path, item.projectId]
-      }),
-      original.map((item) => [item.id, item.path, item.projectId]),
-      "Note identities",
+      records
+        .filter((record) =>
+          published.some((note) => note.id === object(record).id),
+        )
+        .map((record) => object(record).id),
+      published.map((note) => note.id),
+      "Published note order and identities",
     )
+    const ids = new Set<string>()
     for (const [index, record] of records.entries()) {
       const note = object(record)
+      if (
+        typeof note.id !== "string" ||
+        note.id.length > 80 ||
+        !slug.test(note.id) ||
+        note.id === "feed" ||
+        ids.has(note.id)
+      )
+        throw new Error(
+          "Use a unique article slug of up to 80 characters (letters, numbers, and hyphens; not feed).",
+        )
+      ids.add(note.id)
+      if (note.path !== `/notes/${note.id}/`)
+        throw new Error("The article route must match its slug.")
+      if (!projectPages.some((page) => page.projectId === note.projectId))
+        throw new Error("Choose an existing project.")
+      if (
+        note.status !== undefined &&
+        note.status !== "draft" &&
+        note.status !== "published"
+      )
+        throw new Error("Choose draft or published status.")
+      const source = published.find((item) => item.id === note.id)
+      if (source) {
+        unchanged(
+          [note.id, note.path, note.projectId],
+          [source.id, source.path, source.projectId],
+          "Published note identities",
+        )
+        if (note.status === "draft")
+          throw new Error(
+            "Published notes cannot return to draft in this editor.",
+          )
+      }
+      unchanged(
+        Object.keys(note)
+          .filter((key) => key !== "status")
+          .sort(),
+        Object.keys(original[0])
+          .filter((key) => key !== "status")
+          .sort(),
+        "Note structure",
+      )
+      const isDraft = note.status === "draft"
+      const checkText = isDraft ? draftText : text
       for (const field of [
         "title",
         "summary",
@@ -143,7 +215,7 @@ export function validateEditableContent(
         "demoLabel",
         "sourceContext",
       ])
-        text(
+        checkText(
           note[field],
           `Note ${index + 1}: ${field}`,
           field === "title"
@@ -153,20 +225,42 @@ export function validateEditableContent(
               : 12000,
         )
       for (const step of list(note.flow, "Flow", 12))
-        text(step, "Flow step", 200)
+        checkText(step, "Flow step", 200)
       const sections = list(note.sections, "Sections", 40)
-      unchanged(
-        sections.map((section) => object(section).id),
-        original[index].sections.map((section) => section.id),
-        "Section anchors",
-      )
+      if (source)
+        unchanged(
+          sections.map((section) => object(section).id),
+          source.sections.map((section) => section.id),
+          "Section anchors",
+        )
+      const anchors = new Set<string>()
+      const pageIds = new Set([
+        "main-content",
+        "notes-feed-url",
+        "related-notes-title",
+      ])
       for (const sectionValue of sections) {
         const section = object(sectionValue)
-        if (typeof section.id !== "string" || !slug.test(section.id))
+        unchanged(
+          Object.keys(section).sort(),
+          ["id", "paragraphs", "title"],
+          "Section structure",
+        )
+        if (
+          typeof section.id !== "string" ||
+          section.id.length > 80 ||
+          !slug.test(section.id) ||
+          anchors.has(section.id) ||
+          pageIds.has(section.id) ||
+          pageIds.has(`note-${section.id}`)
+        )
           throw new Error("Invalid section anchor.")
-        text(section.title, "Section title", 300)
+        anchors.add(section.id)
+        pageIds.add(section.id)
+        pageIds.add(`note-${section.id}`)
+        checkText(section.title, "Section title", 300)
         for (const paragraph of list(section.paragraphs, "Paragraphs", 100))
-          text(paragraph, "Paragraph")
+          checkText(paragraph, "Paragraph")
       }
     }
     return

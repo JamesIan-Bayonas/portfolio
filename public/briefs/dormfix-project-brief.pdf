@@ -1,106 +1,534 @@
-%PDF-1.4
-%“Œ‹ž ReportLab Generated PDF document (opensource)
+%PDF-1.3
+%âãÏÓ
 1 0 obj
 <<
-/F1 2 0 R /F2 3 0 R
+/PageMode /UseNone
+/Pages 2 0 R
+/Type /Catalog
+/StructTreeRoot 13 0 R
+/MarkInfo <<
+/Marked true
+>>
+/Lang (en)
+/ViewerPreferences <<
+/DisplayDocTitle true
+>>
 >>
 endobj
 2 0 obj
 <<
-/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+/Count 1
+/Kids [ 3 0 R ]
+/Type /Pages
 >>
 endobj
 3 0 obj
 <<
-/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+/Annots [ 4 0 R 5 0 R 6 0 R 7 0 R ]
+/Contents 8 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Parent 2 0 R
+/Resources <<
+/Font 9 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/StructParents 0
+/Tabs /S
 >>
 endobj
 4 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://jamesian-portfolio.vercel.app/projects/dormfix/)
->> /Border [ 0 0 0 ] /Rect [ 38 94 205.7585 122 ] /Subtype /Link /Type /Annot
+/S /URI
+/Type /Action
+/URI (https\072\057\057jamesian\055portfolio\056vercel\056app\057projects\057dormfix\057)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 38 94 205.7585 122 ]
+/Subtype /Link
+/Type /Annot
+/StructParent 1
+/Contents (Read case study\072 DormFix)
 >>
 endobj
 5 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://jamesian-portfolio.vercel.app/projects/dormfix/#walkthrough)
->> /Border [ 0 0 0 ] /Rect [ 213.7585 94 381.5171 122 ] /Subtype /Link /Type /Annot
+/S /URI
+/Type /Action
+/URI (https\072\057\057jamesian\055portfolio\056vercel\056app\057projects\057dormfix\057\043walkthrough)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 213.7585 94 381.5171 122 ]
+/Subtype /Link
+/Type /Annot
+/StructParent 2
+/Contents (Try sample walkthrough\072 DormFix)
 >>
 endobj
 6 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/JamesIan-Bayonas/dormfix)
->> /Border [ 0 0 0 ] /Rect [ 389.5171 94 557.2756 122 ] /Subtype /Link /Type /Annot
+/S /URI
+/Type /Action
+/URI (https\072\057\057github\056com\057JamesIan\055Bayonas\057dormfix)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 389.5171 94 557.2756 122 ]
+/Subtype /Link
+/Type /Annot
+/StructParent 3
+/Contents (View source code\072 DormFix)
 >>
 endobj
 7 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://jamesian-portfolio.vercel.app/)
->> /Border [ 0 0 0 ] /Rect [ 38 32 338 46 ] /Subtype /Link /Type /Annot
+/S /URI
+/Type /Action
+/URI (https\072\057\057jamesian\055portfolio\056vercel\056app\057)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 38 32 338 46 ]
+/Subtype /Link
+/Type /Annot
+/StructParent 4
+/Contents (James Ian Bayonas portfolio)
 >>
 endobj
 8 0 obj
 <<
-/Annots [ 4 0 R 5 0 R 6 0 R 7 0 R ] /Contents 12 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 11 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 
-  /Trans <<
-
->> /Type /Page
+/Filter [ /ASCII85Decode /FlateDecode ]
+/Length 2589
 >>
+stream
+Gau0ECN%rg')h6*0qT67MaS0M<dIWYELatLA*7$9M_=]2,L\@d4a\R/WIb$<44H=uitT%!"'D9C%Yo*8k6tJp.fPRi2i%IZI5nnc5W%ts5RbU3Ige]ZVl2Z(D&j=C\<cF<eTM@l5^M<LmADsOdNF>:RmA\s6]S<"NoN0.\u)4TV?II*%$lD8LA8_/;oRr=3/UiIY:<^5r95g2q<."e?uuG7kKe*r0bE6*b'DeDgNC[_r<SF$B@ANOJIgqMdI7cDiGq+'T6Pg7n.g\AX3kH;S;ejsrs&KNpjWS@V-Bc8$8Dgk/\F-EmV3cO1fnpu)i@R@F\Nd`LtjRTDr%uqdcckoH8]YRC0G3/mp=V!:.c0cKJ3%G8K'Dp&]1K`Z3mK]gck!j[\>3T^giNk/ApN\Q:VE,N>H#d/i(3]aB;3s4B";Dre5jJgsr7hW`I_Wc-^VHZ.9@ceaS0HgWg1Fp"J"A_PBHqkR3AP"sY&(3Sbu9c/=(ja_8CS.P9;=Kuod[phZ%F+h^NHRe&+`J?H4@M4);)`(b4[>;]^!>56Eug!pK,iZ'LN/*@IpC"akcRqEmhn#,]`ejRiG'#q6--TjR7%r^B50_^;XmrdWW1*eDVI0XbJXZ-c2$I;-^-igfOnV2c0-MM^Unk_(f$YZ+f5pldcU\BRH6m!98*#<q4jM<1e+\s4VC%+sh$Kuf,-<hB06^f9_J;a[ph]5(m\ViH$>LZS7>16cqOG_)tBU^tm=V>Ul\<O*E:GW0o1?LpIn/D^#&na>ELH002H\>o9q'sK'#jrgDnF[_G\"o]tm/rLKI)@[(\,su;'D\hde?!7+j7,?ESh4NFl.@TZDLTB/3q6jXo=7)S:0qS),7BQH]dICUY7kgZ5tJ=5U,`=Oc5I9_W)rA$rraS)d5kfi/GP5M"dW`&5[J!*VJ0@gcS2R[P(EU._s5C^C)EMGp.#ecLP+p7F?I5T%JMDfU.QZ2W<XX(N/<ch>a.a.[q8s.no]tP8[;aHcOB8s^Xa78$r"=Kn[uWVi_t5T$Ra$=:SsM),7<HcrRT$OJ!(!7H:dVAEePn#Hcj5rNpC`DH.]d&4PS+N*tWfDf3_JDkjLISTh&eb#1M>cT#aQ9fWa5;jG>;nrAA2_,io'hdck.?Uoc>eek(P"%oM(:INL)uYBYd)a(1IsS&Gl$7#5TK'c^gB%6:FqK?%tc`N]F%AAOQo/s9bR`Y?H]K#,E),gdsH$:I%CDUD-@j;8\8MS6G\'<)R%f_(+j4Q_?a[n2nCV[PY9._XI]iC5(iaEb]j*4!ZW/?=qMYbEj%_FH.8U.b#7b`7("T?b/WNi1e/5]'&cer56Y09mr)Mdf])Ygbj>H.)@Y.d21aiuZ>r9n@a?O@Q,]9)OEB;CU,_!s_J#@)`PYVGO8l)h-I<^Pi7"b7K+;`<Yl`gTZ`8B&Z?aXm906C@?r@@nl1_Zh_D/ch8Y?<uMq+3KSoQ:hiq1SCndEC3#1_$JENA(%NmuPf9T5hiVZDjrDO[rpApNOg2(7^#9`h\n-$?H9$41B&gb/ILGBLQk3I?dr:*(kujLqiH)-#T1'rR_b[7.BuZkE]V%:(]a&G_YRWg3C4Je25@=M*ZF#YL>.XY`\T]t&E%r>k]Y.mV-;!j;=oAZ2^RHZGpXN7%iRT7hV<S_:LJlsu<Q='G=JiV"\_H%*@c(j>Y[YENDJJ=4Soh`3UB&>O^Ec.`W5u`,!/h2/a]XF(M+=/@g25C3KR1"53EBfr.HbE-G)NQP9N20%.X@QFJ-?os1]3+$E7aa$%3/`2Bo6B3kd#^lhK8<#Ej(mXGbLV&jb5qb?OT`-Q^<'?+;(p5Q=dg#2YN6Ka2"k3K!1ueR]jnTM/EtZG-6AgP/+!V#j/69b"Ka9-@)kiboeP&2$*FuB.2XCg>AhtH&!P;f5*n-X@;Z.K<3"UNM?]oVBBP@(TcOY28*a"6HR30^t%#CU'P'Lb$4SYR*]gDTC/N%s6ciodB2hfMeN+0=j&Tg4Tk;E!DuY1lGb_&;m\l-);*P]78$S(lA^WlO'%qX2?^^j7<!;^G+,r6Z:md\YA=eFK4YtJ#fPrd-LBu7Bj7s_h!32E*pj.p]YWRDi`c.TpH]nE=TlE<Y<"L/]C9@A#`?0M<NhZBNuqPW96U)jNXhGFNVkVjKeaV@04<0$L0.'l07LPn%K5[MCW's3*VF@`.42;k)0an6'k3ZO45D(1RsMfn"1nh0eLKV92VZSY[YgI'_j#.ZHmkbn&Q9jQ>/&OCrZ&c:8HD9//-'Bg2*G\aJifO6^)J(aOf+V5U8sZ)C39C,&,>!'J+^!Xe+qPeqpE6%e_h&49[bCk=+QBGRYn-bU<tO(HIhHc!D^6V$ZOg3*R`Z+#^A-rM,!"r]eWF'9ujE&LAM$`\#"X`L"gPlm'N3-;]-8HlHJnVfLQKl%)YnH_pKE>^5[m)_4/__K0@2_0!/um"&u\;8X_;rO=0GS!,#l7I\bpi^.OU6r@/HcAQumaJmjk;\r0:sd/*=_QAW"(eFf>3q-U^)YPp?A=i=Y@rFmg*q2l)_FV2QYVu'S"_GB]de+dHZ:JsKl$Ws@c^A3&YT.mr7LhRF><`-$#Ta4gKcT4G^rrgo<h#~>
+endstream
 endobj
 9 0 obj
 <<
-/PageMode /UseNone /Pages 11 0 R /Type /Catalog
+/F1 10 0 R
+/F2 11 0 R
 >>
 endobj
 10 0 obj
 <<
-/Author (James Ian Bayonas) /CreationDate (D:20000101000000+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20000101000000+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
-  /Subject (Project contribution, workflow, and engineering decisions) /Title (DormFix - Project Brief) /Trapped /False
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
 >>
 endobj
 11 0 obj
 <<
-/Count 1 /Kids [ 8 0 R ] /Type /Pages
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
 >>
 endobj
 12 0 obj
 <<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 2384
+/Author (James Ian Bayonas)
+/CreationDate (D\07220000101000000\05300\04700\047)
+/Creator (anonymous)
+/Keywords ()
+/ModDate (D\07220000101000000\05300\04700\047)
+/Producer (ReportLab PDF Library \055 \050opensource\051)
+/Subject (Project contribution\054 workflow\054 and engineering decisions)
+/Title (DormFix \055 Project Brief)
+/Trapped /False
 >>
-stream
-Gatm<?#SK-&q0MXR&<AjOf5"gPl_=QNg%%smAqVCk[Im9R?#rkU/mML)Rr$2%eZBgp?d#D"-H-2SDcKG3C=D*nOLb%;$(\O_V6"2`.2e9`6p1BV_AScRVibe2*nR)n)tg!?-b84j:?kWLO,hsH(OJUmG")gg(&@h1K_CP2R'Q"J>_(s0jQSMA,(T(I[M7e^0f,*-?+.;R"#s66F^2m`]*B&DO/c971]r!+(7:DS]o+6`FO/h*sfVIpni)EZDS:m&D+b!VjkEJZZ#W]]P2*:O3KauBDu)qaUS:,S,_qCs':gfmm[UI3,Y1laBK"%UrL(P_c=F@%7+lFc;sE[o#Gl(SmX-jLhXGX7D=q82c-`CVM3NG55g&IkC2Yjh_2l'9H,E8/RLI+K#G1U/%<aBW=g:NP&p>J-;;:0VJnuu,,GqO$TF"[>@`*"Ft=CHbHYt2igAS\S/-Lm+JP8T7*8j2Lkoi<jm':8<sSb1=PR@JTuW13<$!DpgMRa(D-m^f$0'*Iok/8e2'%0uhd@=\(Vq8H*E2tAJr-OR/]4DHC2]A^I\Q(m`Xn&`HQaF\7V+uGJgoCcCIoTZn:Wt\i!$4WHHi4%>X0I*aD(9Ko+*\$Ej;D03TNLP$?7!S@Xel.H_58IDq1rR/>N)q@E=t*f!];<Ukj5./nZ'`\^Y$`UBlL:iB%_tO\.72Z[a'/:E\4bCkQ>lW(4Sln^1a_?oq4>?>V\HJQq->kODm`L/I@/bBWp90k5QJ(Gh\t_Iu+@(R(n2318)&`Jj3^8l@>RLWgg6QqEdnJcV%++neITVV>_O?iiI4@]!hYB,o#t=.9mAQ&sD+W+][s'MVo^FTS'aX,#/C14sO.H9[lpkI6ZF_;/ZAqM?D+_.ZdJnPLIHIE$jek?3@qR9232S&Dr/pC,H2@,q3`+S]HH?H!B_iM`\]R:?Rs-qpQ2o+7C@MA?+$7.eP-N=5DCjma#)*ARs'CgL$mpWL\C_:3f=oGOtK"rd]?q;(fWOI#JG>E%3!6Lm9WFcl8$PLOue..]_UY]Z'NPVM<JaWFCi_@;hKJ!^CMZ!Ha:;oU4eZ4&HWo9c:&[.'[=d%2a]032o6dk^gA%!)YP)]E4ubYE$#;?R.Shr-DOaXP5ZNh^c&Wgj/q*.#d@T(:=Q4!BN;SDh8-PnuLoDcLt4JgW*=P@Xf,ZHce(L8L>Q:VR\s];IGlk)59Ze+o>_bSeu'PD)ag\AP+K6;hO99,2nfhe\1P;qX)d(eR46.Ygp!UW2+'0Ab2d_+Kia:oiGMqppT?D^kR[\,r";b>']]VJ1.g'mpHWXC6^"YoJJ@`PM1SlJ@Bglicu-?fNcMKIZ)t7?V/(EDMiH.HFhgq3`I^G:H+;GE^3.VtZDS;=dQ?r+dP-go[Q.r[GO;Qr4cidWgi'd:J[2i:f]3ITPe%W'Ak4r4/[.`EF#bEiajF>CgS/lbme!h2^a689MW;(gN+lPMfi.e-n:.naWs_ch7le^]4br>a7n,U^J[:_FKce&$X?a?G>=V4]9i<::+HW,F62>PQlG=Vbg[IDOa7:@[*AN8mPEh[H9$[](CgqS$!TXR?#QnXMAR;<a(cT8ZR4hQV-fOb#Bht^g_q-%0*.m]Pki"g!<`7RB"UaLTKE$0V=n>b?CKRda9$eL=bIDq9@0(D@Pc1EpF<T6c<]f'dja&):'dHV`V`FnHDbD(#0PcQmGq_er1d<7<tnq+KO3_Z*u;%C)1jZ2^[mc7sI*0&*4\p89risOC9>$X&65Uj/lo8X,V>jW$]HU$EYd!lXNT43*m6?]3n5cXl'L>hnNXknB%)c:B/\BRfDQ`S.7*o-l+'1"6J7E4^5='Cg$PAj/\K>g[u4!dg^;C*A0a4[RIF_NdFL%kT/DVj6O73@6eTt2'QU;h8BEEYNAk;[?>.+]#T)k!T'K[\@gCA1h4nQC),-(1K_E.!*$^>A?4)I2<T*aHR;q$%2T,j.O06o*aZ`t(lV<`Qe,T:I7u['U-Y:b]OZOIYM$i?'pPSnCW*X(B;S2a-d<:X%_#\Qh5[.7RN3=>>U<('R0q*fLC-k1fG`01lD[(nQ_^uO-+[s"`40S?N&Qs"E9OFs*s6E5Nb7RD$6$^t`E2giS:1n(0BUI4pHK$F-B&`"A74.m(%EU.[V]foBrOS6'q0hu*=D7QVj)FMbm("V.YV;HUk65OTS[$?5ML8F!;9b3kBG-"UA^DO\CYHt]:M]M9Q-d-(iB`-ikFNB/_lsGj"CtfQ]'8-$ILk"8TlKP!fqnW;Jsg7S5j:lM8kUq-5YElNDuN(G'o!a]$4+LeG2ig@J(q*Wim8<H3L@ul)XDYrPA?Lnpef#<=(`5,-Sar@^-'n<%k067FnP.6]Hn(XPlIFk=0A^gEN)eUS--N':ajM?A65q!-UcLkl~>endstream
+endobj
+13 0 obj
+<<
+/Type /StructTreeRoot
+/K [ 14 0 R ]
+/ParentTree 47 0 R
+/ParentTreeNextKey 5
+>>
+endobj
+14 0 obj
+<<
+/Type /StructElem
+/S /Document
+/P 13 0 R
+/Lang (en)
+/K [ 15 0 R 16 0 R 17 0 R 18 0 R 19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 27 0 R 28 0 R 29 0 R 30 0 R 31 0 R 32 0 R 33 0 R 34 0 R 35 0 R 36 0 R 37 0 R 38 0 R 39 0 R 40 0 R 41 0 R 42 0 R 43 0 R 44 0 R 45 0 R 46 0 R ]
+>>
+endobj
+15 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 0
+>>
+endobj
+16 0 obj
+<<
+/Type /StructElem
+/S /H1
+/P 14 0 R
+/Pg 3 0 R
+/K 1
+>>
+endobj
+17 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 2
+>>
+endobj
+18 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 3
+>>
+endobj
+19 0 obj
+<<
+/Type /StructElem
+/S /H2
+/P 14 0 R
+/Pg 3 0 R
+/K 4
+>>
+endobj
+20 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 5
+>>
+endobj
+21 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 6
+>>
+endobj
+22 0 obj
+<<
+/Type /StructElem
+/S /H2
+/P 14 0 R
+/Pg 3 0 R
+/K 7
+>>
+endobj
+23 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 8
+>>
+endobj
+24 0 obj
+<<
+/Type /StructElem
+/S /H2
+/P 14 0 R
+/Pg 3 0 R
+/K 9
+>>
+endobj
+25 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 10
+>>
+endobj
+26 0 obj
+<<
+/Type /StructElem
+/S /H2
+/P 14 0 R
+/Pg 3 0 R
+/K 11
+>>
+endobj
+27 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 12
+>>
+endobj
+28 0 obj
+<<
+/Type /StructElem
+/S /H2
+/P 14 0 R
+/Pg 3 0 R
+/K 13
+>>
+endobj
+29 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 14
+>>
+endobj
+30 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 15
+>>
+endobj
+31 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 16
+>>
+endobj
+32 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 17
+>>
+endobj
+33 0 obj
+<<
+/Type /StructElem
+/S /H2
+/P 14 0 R
+/Pg 3 0 R
+/K 18
+>>
+endobj
+34 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 19
+>>
+endobj
+35 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 20
+>>
+endobj
+36 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 21
+>>
+endobj
+37 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 22
+>>
+endobj
+38 0 obj
+<<
+/Type /StructElem
+/S /H2
+/P 14 0 R
+/Pg 3 0 R
+/K 23
+>>
+endobj
+39 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 24
+>>
+endobj
+40 0 obj
+<<
+/Type /StructElem
+/S /H2
+/P 14 0 R
+/Pg 3 0 R
+/K 25
+>>
+endobj
+41 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 26
+>>
+endobj
+42 0 obj
+<<
+/Type /StructElem
+/S /Link
+/P 14 0 R
+/Pg 3 0 R
+/K [ 27 <<
+/Type /OBJR
+/Obj 4 0 R
+/Pg 3 0 R
+>> ]
+>>
+endobj
+43 0 obj
+<<
+/Type /StructElem
+/S /Link
+/P 14 0 R
+/Pg 3 0 R
+/K [ 28 <<
+/Type /OBJR
+/Obj 5 0 R
+/Pg 3 0 R
+>> ]
+>>
+endobj
+44 0 obj
+<<
+/Type /StructElem
+/S /Link
+/P 14 0 R
+/Pg 3 0 R
+/K [ 29 <<
+/Type /OBJR
+/Obj 6 0 R
+/Pg 3 0 R
+>> ]
+>>
+endobj
+45 0 obj
+<<
+/Type /StructElem
+/S /P
+/P 14 0 R
+/Pg 3 0 R
+/K 30
+>>
+endobj
+46 0 obj
+<<
+/Type /StructElem
+/S /Link
+/P 14 0 R
+/Pg 3 0 R
+/K [ 31 <<
+/Type /OBJR
+/Obj 7 0 R
+/Pg 3 0 R
+>> ]
+>>
+endobj
+47 0 obj
+<<
+/Nums [ 0 [ 15 0 R 16 0 R 17 0 R 18 0 R 19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 27 0 R 28 0 R 29 0 R 30 0 R 31 0 R 32 0 R 33 0 R 34 0 R 35 0 R 36 0 R 37 0 R 38 0 R 39 0 R 40 0 R 41 0 R 42 0 R 43 0 R 44 0 R 45 0 R 46 0 R ] 1 42 0 R 2 43 0 R 3 44 0 R 4 46 0 R ]
+>>
 endobj
 xref
-0 13
+0 48
 0000000000 65535 f 
-0000000061 00000 n 
-0000000102 00000 n 
-0000000209 00000 n 
-0000000321 00000 n 
-0000000511 00000 n 
-0000000719 00000 n 
-0000000903 00000 n 
-0000001070 00000 n 
-0000001311 00000 n 
-0000001380 00000 n 
-0000001711 00000 n 
-0000001771 00000 n 
+0000000015 00000 n 
+0000000193 00000 n 
+0000000252 00000 n 
+0000000513 00000 n 
+0000000786 00000 n 
+0000001087 00000 n 
+0000001349 00000 n 
+0000001593 00000 n 
+0000004274 00000 n 
+0000004317 00000 n 
+0000004425 00000 n 
+0000004538 00000 n 
+0000004906 00000 n 
+0000005004 00000 n 
+0000005309 00000 n 
+0000005380 00000 n 
+0000005452 00000 n 
+0000005523 00000 n 
+0000005594 00000 n 
+0000005666 00000 n 
+0000005737 00000 n 
+0000005808 00000 n 
+0000005880 00000 n 
+0000005951 00000 n 
+0000006023 00000 n 
+0000006095 00000 n 
+0000006168 00000 n 
+0000006240 00000 n 
+0000006313 00000 n 
+0000006385 00000 n 
+0000006457 00000 n 
+0000006529 00000 n 
+0000006601 00000 n 
+0000006674 00000 n 
+0000006746 00000 n 
+0000006818 00000 n 
+0000006890 00000 n 
+0000006962 00000 n 
+0000007035 00000 n 
+0000007107 00000 n 
+0000007180 00000 n 
+0000007252 00000 n 
+0000007370 00000 n 
+0000007488 00000 n 
+0000007606 00000 n 
+0000007678 00000 n 
+0000007796 00000 n 
 trailer
 <<
-/ID 
-[<5c966f8298aba3313218600f13b7f15a><5c966f8298aba3313218600f13b7f15a>]
-% ReportLab generated PDF document -- digest (opensource)
-
-/Info 10 0 R
-/Root 9 0 R
-/Size 13
+/Size 48
+/Root 1 0 R
+/Info 12 0 R
+/ID [ <5c966f8298aba3313218600f13b7f15a> <5c966f8298aba3313218600f13b7f15a> ]
 >>
 startxref
-4247
+8094
 %%EOF

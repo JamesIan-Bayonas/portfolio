@@ -57,8 +57,23 @@ export default function FilipinoOverview() {
                   {filipinoProjectCopy[project.id].version}
                 </p>
                 <div className="professional-project-links font-mono">
-                  <a href={project.caseStudyPath} lang="en">
-                    Case study (English) ↗
+                  <a
+                    href={
+                      ["centralog", "dormfix"].includes(project.id)
+                        ? `/fil/projects/${project.id}/`
+                        : project.caseStudyPath
+                    }
+                    lang={
+                      ["centralog", "dormfix"].includes(project.id)
+                        ? "fil"
+                        : "en"
+                    }
+                  >
+                    Case study (
+                    {["centralog", "dormfix"].includes(project.id)
+                      ? "Filipino"
+                      : "English"}
+                    ) ↗
                   </a>
                   <a href={`${project.caseStudyPath}#walkthrough`} lang="en">
                     Walkthrough (English) ↗
@@ -79,8 +94,9 @@ export default function FilipinoOverview() {
         >
           <h2 id="filipino-resources-title">Suriin ang mga detalye.</h2>
           <p>
-            Nasa English ang mga detalyadong case study, tala sa engineering,
-            sample demo, at mga source reference. May Filipino na bersiyon ang
+            May detalyadong Filipino case study ang CentraLog at DormFix. Nasa
+            English ang iba pang case study, tala sa engineering, sample demo,
+            at mga source reference. May Filipino na bersiyon ang
             pangkalahatang-ideya at mga pahinang Tungkol, Kasalukuyang Gawain,
             at Paano Ako Makakatulong.
           </p>

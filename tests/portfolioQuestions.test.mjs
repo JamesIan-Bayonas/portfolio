@@ -160,8 +160,68 @@ test("profile and comparison answers cite maintained destinations", () => {
 })
 
 test("named project price questions remain on documented project context", () => {
-  const answer = answerPortfolioQuestion("How does DormFix receipt pricing work?", projects)
+  const answer = answerPortfolioQuestion(
+    "How does DormFix receipt pricing work?",
+    projects,
+  )
   assert.equal(answer.kind, "projects")
   assert.deepEqual(answer.projects, [projects[0]])
-  assert.equal(answerPortfolioQuestion("What are James's hourly rates for DormFix?", projects).kind, "contact")
+  assert.equal(
+    answerPortfolioQuestion(
+      "What are James's hourly rates for DormFix?",
+      projects,
+    ).kind,
+    "contact",
+  )
+})
+
+test("Filipino intents and common technology aliases preserve evidence and contribution scope", () => {
+  assert.equal(
+    answerPortfolioQuestion("Ano ang ambag ni James sa DormFix?", projects)
+      .kind,
+    "contribution",
+  )
+  assert.equal(
+    answerPortfolioQuestion(
+      "Saan ang ebidensya ng pagsubok sa CentraLog?",
+      projects,
+    ).kind,
+    "tests",
+  )
+  assert.equal(
+    answerPortfolioQuestion("Ano ang ginagawa ngayon?", projects).links[0].href,
+    "/now/",
+  )
+  assert.equal(
+    answerPortfolioQuestion("Magkano ang bayad kay James?", projects).kind,
+    "contact",
+  )
+  assert.equal(
+    answerPortfolioQuestion("Ihambing ang DormFix at CentraLog", projects)
+      .links[0].href,
+    "/explore/?compare=dormfix&compare=centralog",
+  )
+  assert.deepEqual(
+    answerPortfolioQuestion("C# projects", projects).projects.map(
+      (project) => project.id,
+    ),
+    ["centralog", "pharmalink"],
+  )
+})
+test("combined technology criteria intersect and exclusion questions cannot imply unsupported answers", () => {
+  const varied = [
+    ...projects,
+    { ...projects[1], id: "other", name: "Other", tech: ["ASP.NET Core 8"] },
+  ]
+  assert.deepEqual(
+    answerPortfolioQuestion("React and .NET", varied).projects.map(
+      (project) => project.id,
+    ),
+    ["centralog", "pharmalink"],
+  )
+  for (const question of [
+    "Projects without .NET",
+    "Alin ang hindi gumagamit ng React?",
+  ])
+    assert.equal(answerPortfolioQuestion(question, varied).kind, "unknown")
 })

@@ -12,7 +12,9 @@ test("every published article recommends two other published notes with specific
       engineeringNotes,
       relatedNoteConnections,
     )
-    assert.equal(results.length, 2, current.id)
+    if (relatedNoteConnections[current.id])
+      assert.equal(results.length, 2, current.id)
+    else assert.ok(results.length <= 2)
     assert.equal(
       new Set(results.map((result) => result.note.id)).size,
       results.length,
@@ -72,4 +74,28 @@ test("missing, self, duplicate and unexplained connections cannot produce unusab
     ],
   )
   assert.deepEqual(relatedNotes(current, [current, next], {}), [])
+})
+
+test("new articles receive shared-project reading without overriding curated connections", () => {
+  const current = { id: "new", path: "/notes/new/", projectId: "centralog" }
+  const shared = {
+    id: "shared",
+    path: "/notes/shared/",
+    projectId: "centralog",
+  }
+  const other = { id: "other", path: "/notes/other/", projectId: "dormfix" }
+  assert.deepEqual(
+    relatedNotes(current, [current, shared, other], {}).map(
+      (result) => result.note.id,
+    ),
+    ["shared"],
+  )
+  assert.deepEqual(
+    relatedNotes(current, [current, shared, other], {
+      new: [
+        { noteId: "other", reason: "A reviewed cross-project connection." },
+      ],
+    }).map((result) => result.note.id),
+    ["other"],
+  )
 })

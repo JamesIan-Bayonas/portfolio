@@ -13,6 +13,7 @@ import { siteMetadata as sitePages } from "./src/data/siteMetadata"
 import { engineeringNotes } from "./src/data/notes"
 import { notesFeedXml, reflectionsFeedXml } from "./src/lib/notesFeed"
 import { reflections } from "./src/data/reflections"
+import applicationTestRuns from "./src/data/applicationTestRuns.json"
 
 import { projectPageHtml } from "./src/lib/caseStudyPages"
 
@@ -30,9 +31,24 @@ function staticCaseStudyPages(): Plugin {
     },
 
     generateBundle(_, bundle) {
-      this.emitFile({ type: "asset", fileName: "notes/feed.xml", source: notesFeedXml(engineeringNotes) })
-      this.emitFile({ type: "asset", fileName: "reflections/feed.xml", source: reflectionsFeedXml(reflections) })
-      const home = Object.values(bundle).find(chunk => chunk.type === "chunk" && chunk.name === "HomePage")
+      this.emitFile({
+        type: "asset",
+        fileName: "verification/application-tests-2026-10-14.json",
+        source: JSON.stringify(applicationTestRuns, null, 2) + "\n",
+      })
+      this.emitFile({
+        type: "asset",
+        fileName: "notes/feed.xml",
+        source: notesFeedXml(engineeringNotes),
+      })
+      this.emitFile({
+        type: "asset",
+        fileName: "reflections/feed.xml",
+        source: reflectionsFeedXml(reflections),
+      })
+      const home = Object.values(bundle).find(
+        (chunk) => chunk.type === "chunk" && chunk.name === "HomePage",
+      )
       function visit(file: string) {
         if (homePreloads.has(file)) return
         homePreloads.add(file)
@@ -47,12 +63,19 @@ function staticCaseStudyPages(): Plugin {
         path.join(outputDirectory, "index.html"),
         "utf8",
       )
-      const homeTemplate = template.replace("</head>", `${[...homePreloads].map(file => `<link rel="modulepreload" crossorigin href="/${file}">`).join("\n")}\n</head>`)
-      await writeFile(path.join(outputDirectory, "index.html"), projectPageHtml(homeTemplate, {
-        path: "/",
-        title: "James Ian Bayonas | Full-Stack Developer",
-        description: "James Ian Bayonas builds full-stack systems for fisheries, housing, asset management, and pharmacy operations. Explore project case studies and an interactive engineering lab.",
-      }))
+      const homeTemplate = template.replace(
+        "</head>",
+        `${[...homePreloads].map((file) => `<link rel="modulepreload" crossorigin href="/${file}">`).join("\n")}\n</head>`,
+      )
+      await writeFile(
+        path.join(outputDirectory, "index.html"),
+        projectPageHtml(homeTemplate, {
+          path: "/",
+          title: "James Ian Bayonas | Full-Stack Developer",
+          description:
+            "James Ian Bayonas builds full-stack systems for fisheries, housing, asset management, and pharmacy operations. Explore project case studies and an interactive engineering lab.",
+        }),
+      )
 
       for (const page of [...caseStudyPages, ...sitePages]) {
         const directory = path.join(
@@ -80,14 +103,40 @@ export default defineConfig({
       output: {
         codeSplitting: {
           groups: [
-            { name: "react-core", test: /[\\/]node_modules[\\/](?:react|react-dom|scheduler)[\\/]/, priority: 30 },
-            { name: "motion", test: /[\\/]node_modules[\\/](?:motion|framer-motion|motion-dom|motion-utils)[\\/]/, priority: 20 },
+            {
+              name: "react-core",
+              test: /[\\/]node_modules[\\/](?:react|react-dom|scheduler)[\\/]/,
+              priority: 30,
+            },
+            {
+              name: "motion",
+              test: /[\\/]node_modules[\\/](?:motion|framer-motion|motion-dom|motion-utils)[\\/]/,
+              priority: 20,
+            },
           ],
         },
       },
     },
   },
   plugins: [
+    {
+      name: "exclude-unpublished-notes",
+      enforce: "pre",
+      transform(source, id) {
+        if (
+          id
+            .split("?")[0]
+            .replace(/\\/g, "/")
+            .endsWith("/src/data/notesContent.json")
+        ) {
+          return JSON.stringify(
+            JSON.parse(source).filter(
+              (note: { status?: string }) => note.status !== "draft",
+            ),
+          )
+        }
+      },
+    },
     react(),
 
     tailwindcss(),

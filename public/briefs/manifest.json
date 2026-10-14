@@ -3,7 +3,7 @@
     "src/data/projects.ts": "b22b1ba15e5abe97d81f7dbd42c9d9e11c858a5d08a7fd993d927a5f3a7dd853",
     "src/data/caseStudyPages.json": "e67acbca7cdadb4170a3821e50cfdabdf839b6bd873fc7a8bda193d6631fab5a",
     "scripts/generate-project-briefs.mjs": "9f22a1536945a321e1ba32b89b7b8f4af1ac7adfd8d410ffa65319158792124e",
-    "scripts/render-project-briefs.py": "0724e18ba3c592731558e38d374f29e95a16f9ce1f6de2a08e6fc4e4e68170b6",
+    "scripts/render-project-briefs.py": "4a1f05bc801409c0f09703f7ded560547f94c94f29f9d53764eabd3b729269bb",
     "scripts/briefs-requirements.txt": "aff9e2a7514ab38c61169ff48cd7e414e424068c9216e3a9e277318c38a8dac8"
   },
   "files": [
@@ -17,8 +17,12 @@
         "https://github.com/JamesIan-Bayonas/isdalog",
         "https://jamesian-portfolio.vercel.app/"
       ],
-      "sha256": "eeda211c9263e23c19daa088c90c59c0e0c2dc40cde77c06bcbc44942a46f70d",
-      "bytes": 4806
+      "language": "en",
+      "tagged": true,
+      "structureElements": 33,
+      "labelledLinks": 4,
+      "sha256": "347cb8532d19c1425745fb20e0b78f9f6d666043149635a2475037021f0385ea",
+      "bytes": 9414
     },
     {
       "projectId": "dormfix",
@@ -30,8 +34,12 @@
         "https://github.com/JamesIan-Bayonas/dormfix",
         "https://jamesian-portfolio.vercel.app/"
       ],
-      "sha256": "164dafbfb30015e4b63d2b2be32dbdb3a6eca1b0a86cd427073c2c70e66fb1ca",
-      "bytes": 4721
+      "language": "en",
+      "tagged": true,
+      "structureElements": 32,
+      "labelledLinks": 4,
+      "sha256": "969109b8f4ce858746488cfc5e1c0d87741aef9c014e7517d00ea41e1c04cc5e",
+      "bytes": 9211
     },
     {
       "projectId": "centralog",
@@ -43,8 +51,12 @@
         "https://github.com/JamesIan-Bayonas/centralog",
         "https://jamesian-portfolio.vercel.app/"
       ],
-      "sha256": "0c602833bc83d21b9787d3e1c75d8bd52bd044e3953023c9dd446979469f8d8d",
-      "bytes": 4640
+      "language": "en",
+      "tagged": true,
+      "structureElements": 32,
+      "labelledLinks": 4,
+      "sha256": "5cb0ad0b8f355386596f3f71b8bff6cf5d0ae01fc527fa22a4f76495e58068b3",
+      "bytes": 9142
     },
     {
       "projectId": "pharmalink",
@@ -56,8 +68,12 @@
         "https://github.com/JamesIan-Bayonas/pharmalink",
         "https://jamesian-portfolio.vercel.app/"
       ],
-      "sha256": "d48b0870bfe16e1cfed3c0642f80bd32cfcfaa78e27a55bff4273a490c42b3a0",
-      "bytes": 4608
+      "language": "en",
+      "tagged": true,
+      "structureElements": 31,
+      "labelledLinks": 4,
+      "sha256": "cd801fc33c24f1be17c29b8b0af6e1469b06d5245f1e055b97515e1a67152a1a",
+      "bytes": 9003
     }
   ]
 }

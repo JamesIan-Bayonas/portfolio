@@ -110,7 +110,9 @@ portfolio/
 
 ### Maintain portfolio content
 
-Run `npm run content:edit` and open `http://127.0.0.1:4186/editor/` to edit existing Engineering Notes and milestone explanations. The local workspace provides labelled fields, preview, validated repository saves, and stale-draft checks. It preserves routes, section anchors, and reviewed evidence. Saving keeps other unsaved drafts in the workspace; publishing remains a separate repository release. See [CONTENT_EDITING.md](CONTENT_EDITING.md) for editing, recovery, and verification steps. The editor and its write API are excluded from the public build.
+Run `npm run content:edit` and open `http://127.0.0.1:4186/editor/` to create Engineering Notes, edit existing copy, maintain milestone explanations, and revise paired reflections. The workspace provides draft/page previews, validated saves, conflict checks, and browser recovery. Unpublished notes stay out of public pages, search, RSS, and delivered JavaScript. Existing published identities and reviewed evidence remain protected. See [CONTENT_EDITING.md](CONTENT_EDITING.md) for editing and recovery. Saving does not deploy; the editor and its API remain excluded from the public build.
+
+The written [CentraLog](https://jamesian-portfolio.vercel.app/fil/projects/centralog/) and [DormFix](https://jamesian-portfolio.vercel.app/fil/projects/dormfix/) stories have Filipino counterparts with translated evidence explanations and preserved commit references. Interactive demos and documents remain labelled English resources. [APPLICATION_TEST_RESULTS.md](APPLICATION_TEST_RESULTS.md) records executed historical application checks, including an IsdaLog failure. [ACCESSIBILITY_REVIEW.md](ACCESSIBILITY_REVIEW.md) distinguishes verified source/PDF structure from pending browser zoom and screen-reader review.
 
 ### Prerequisites
 
