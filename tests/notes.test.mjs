@@ -6,7 +6,7 @@ import { findCaseStudyPage } from "../src/lib/caseStudyPages.ts"
 import { searchDestination } from "../src/lib/search.ts"
 import { labDemos } from "../src/data/labDemos.ts"
 
-const pages = JSON.parse(readFileSync(new URL("../src/data/sitePages.json", import.meta.url), "utf8"))
+import { siteMetadata as pages } from "../src/data/siteMetadata.ts"
 test("every note has a static page and stable route with or without a trailing slash", () => {
   assert.ok(findCaseStudyPage(pages, "/notes/"))
   for (const note of engineeringNotes) {

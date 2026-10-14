@@ -8,6 +8,7 @@
     "node": "22.x"
   },
   "scripts": {
+    "content:edit": "node --experimental-strip-types scripts/content-editor.mjs",
     "images:generate": "node scripts/generate-screenshots.mjs",
     "briefs:generate": "node scripts/generate-project-briefs.mjs",
     "dev": "vite --host 0.0.0.0",

@@ -1,13 +1,9 @@
 import test from "node:test"
 import assert from "node:assert/strict"
-import { readFileSync } from "node:fs"
+import { siteMetadata as pages } from "../src/data/siteMetadata.ts"
 import { engineeringNotes } from "../src/data/notes.ts"
 import { relatedNoteConnections } from "../src/data/relatedNotes.ts"
 import { relatedNotes } from "../src/lib/relatedNotes.ts"
-
-const pages = JSON.parse(
-  readFileSync(new URL("../src/data/sitePages.json", import.meta.url), "utf8"),
-)
 
 test("every published article recommends two other published notes with specific connections", () => {
   for (const current of engineeringNotes) {

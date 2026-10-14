@@ -7,7 +7,7 @@ import LoadingState from "./components/LoadingState"
 
 import caseStudyPages from "./data/caseStudyPages.json"
 
-import sitePages from "./data/sitePages.json"
+import { siteMetadata as sitePages } from "./data/siteMetadata"
 
 import { projects } from "./data/projects"
 

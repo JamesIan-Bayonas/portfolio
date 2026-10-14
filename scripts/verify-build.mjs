@@ -7,10 +7,13 @@ import sharp from "sharp"
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const readJson = async name => JSON.parse(await readFile(path.join(root, "src/data", name), "utf8"))
-const pages = [{ path: "/", title: "James Ian Bayonas | Full-Stack Developer" }, ...await readJson("caseStudyPages.json"), ...await readJson("sitePages.json")]
+const noteContent = await readJson("notesContent.json")
+const pages = [{ path: "/", title: "James Ian Bayonas | Full-Stack Developer" }, ...await readJson("caseStudyPages.json"), ...await readJson("sitePages.json"), ...noteContent.map(note => ({ path: note.path, title: `${note.title} | James Ian Bayonas` }))]
 assert.equal(new Set(pages.map(page => page.path)).size, pages.length, "Duplicate static routes")
 const assets = new Set()
+await assert.rejects(access(path.join(root, "dist/editor/index.html")), "Local editor must not be published")
 const manifest = JSON.parse(await readFile(path.join(root, "dist/.vite/manifest.json"), "utf8"))
+assert.ok(!Object.keys(manifest).some(key => key.includes("/editor/")), "Editor code leaked into public build")
 function staticDependencies(key, visited = new Set()) {
   if (visited.has(key)) return visited
   visited.add(key)

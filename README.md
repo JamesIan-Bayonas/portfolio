@@ -105,6 +105,10 @@ portfolio/
 
 ## Getting Started & Local Setup
 
+### Maintain portfolio content
+
+Run `npm run content:edit` and open `http://127.0.0.1:4186/editor/` to edit existing Engineering Notes and milestone explanations. The local workspace provides labelled fields, preview, validated repository saves, and stale-draft checks. It preserves routes, section anchors, and reviewed evidence. Saving keeps other unsaved drafts in the workspace; publishing remains a separate repository release. See [CONTENT_EDITING.md](CONTENT_EDITING.md) for editing, recovery, and verification steps. The editor and its write API are excluded from the public build.
+
 ### Prerequisites
 
 * **Runtime:** Node.js 22.12 or later within the 22.x release line

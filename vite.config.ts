@@ -9,7 +9,7 @@ import path from "node:path"
 import { mkdir, readFile, writeFile } from "node:fs/promises"
 
 import caseStudyPages from "./src/data/caseStudyPages.json"
-import sitePages from "./src/data/sitePages.json"
+import { siteMetadata as sitePages } from "./src/data/siteMetadata"
 import { engineeringNotes } from "./src/data/notes"
 import { notesFeedXml } from "./src/lib/notesFeed"
 
