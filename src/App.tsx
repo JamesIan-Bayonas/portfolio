@@ -1,3 +1,4 @@
+import { useInteractiveSurfaces } from "./lib/useInteractiveSurfaces"
 import { lazy, Suspense, useEffect, useState } from "react"
 
 import Nav from "./components/Nav"
@@ -36,6 +37,7 @@ const PortfolioSearch = lazy(() => import("./components/PortfolioSearch"))
 // ─── App ───────────────────────────────────────────────────────────────────
 
 export default function App() {
+  useInteractiveSurfaces()
   const [searchOpen, setSearchOpen] = useState(false)
 
   const [searchUsed, setSearchUsed] = useState(false)

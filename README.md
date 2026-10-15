@@ -194,3 +194,5 @@ The local quality review is recorded in `QUALITY_REVIEW.md`. IsdaLog's former Ra
 The local content workspace also maintains paired English/Filipino About, Now, and How I can help copy with public-layout previews and draft recovery. See [CONTENT_EDITING.md](CONTENT_EDITING.md) for the editing and publication process.
 
 The homepage and Explore include an interactive project atlas. Select a system to follow its workflow and case study, or choose a technology to filter the collection. Particle motion can be paused and follows reduced-motion preferences.
+
+Interactive refinements include removable Explore filter chips, terminal-style search, Lab reset and expandable explanations, and morphing project symbols. About, Now, and How I can help also offer an optional profile terminal with shortcuts such as `ls --skills`, `projects`, and `./now`; these display the maintained profile data and link to real project evidence. The terminal loads only after opening it.

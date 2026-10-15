@@ -13,6 +13,7 @@ export default function Lab() {
   const [selected, setSelected] = useState<LabDemoId>(() =>
     labDemoFromHash(window.location.hash),
   )
+  const [revision, setRevision] = useState(0)
   const demo = labDemos.find((item) => item.id === selected)!
   const project = projects.find((item) => item.id === selected)!
   useEffect(() => {
@@ -32,6 +33,7 @@ export default function Lab() {
     }
   }, [])
   function choose(id: LabDemoId) {
+    setRevision(0)
     setSelected(id)
     window.history.replaceState(
       null,
@@ -69,6 +71,7 @@ export default function Lab() {
             {labDemos.map((item) => (
               <button
                 key={item.id}
+                className="interactive-surface"
                 id={`demo-${item.id}`}
                 type="button"
                 aria-pressed={selected === item.id}
@@ -89,6 +92,22 @@ export default function Lab() {
           id="lab-demo-panel"
           aria-labelledby="lab-demo-title"
         >
+          <div className="lab-workbench-bar font-mono">
+            <span>
+              <i aria-hidden="true" /> EXPERIMENT{" "}
+              {String(
+                labDemos.findIndex((item) => item.id === selected) + 1,
+              ).padStart(2, "0")}{" "}
+              / {String(labDemos.length).padStart(2, "0")}
+            </span>
+            <span>SAMPLE DATA</span>
+            <button
+              type="button"
+              onClick={() => setRevision((value) => value + 1)}
+            >
+              Reset experiment ↺
+            </button>
+          </div>
           <div className="lab-demo-intro">
             <div>
               <p className="project-eyebrow font-mono">
@@ -109,11 +128,23 @@ export default function Lab() {
             live inference, transactions, inventory updates, payments, or
             refunds. Switching experiments starts a fresh example.
           </p>
+          <details className="lab-guide">
+            <summary>How to explore this experiment</summary>
+            <ol>
+              <li>Change the labelled inputs or choose a scenario.</li>
+              <li>Follow the displayed result and any validation messages.</li>
+              <li>
+                Open the case study or engineering note for the implementation
+                and its limits.
+              </li>
+            </ol>
+          </details>
           <div role="status" className="sr-only">
             Selected experiment: {demo.title}
+            {revision > 0 ? `. Example reset ${revision} times.` : ""}
           </div>
           <Suspense
-            key={selected}
+            key={`${selected}-${revision}`}
             fallback={
               <LoadingState label={`Preparing ${demo.title.toLowerCase()}…`} />
             }
@@ -130,7 +161,17 @@ export default function Lab() {
               <PharmaLinkWalkthrough />
             )}
           </Suspense>
-          {engineeringNotes.filter(note => note.projectId === selected).map(note => <aside className="project-note-link" key={note.id}><p className="project-eyebrow font-mono">READ THE REASONING</p><h3><a href={note.path}>{note.title} ↗</a></h3><p>{note.summary}</p></aside>)}
+          {engineeringNotes
+            .filter((note) => note.projectId === selected)
+            .map((note) => (
+              <aside className="project-note-link" key={note.id}>
+                <p className="project-eyebrow font-mono">READ THE REASONING</p>
+                <h3>
+                  <a href={note.path}>{note.title} ↗</a>
+                </h3>
+                <p>{note.summary}</p>
+              </aside>
+            ))}
         </section>
         <footer className="dedicated-case-footer">
           <div>

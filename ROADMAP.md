@@ -192,3 +192,14 @@ Remaining bounded follow-ups:
 - Motion: pause/play with a remembered choice, reduced-motion handling, and offscreen/background suspension. The canvas uses bounded point counts, capped pixel density, and a roughly 30fps update ceiling. No new animation dependency or external service was added.
 - Validation: 99 existing tests, TypeScript, build, and 28-page static verification; local browser checks for selection, keyboard Enter, project/workflow destinations, technology filtering, light/dark appearance, 320px layouts, pause/resume frames, and empty inspected console logs. Real reduced-motion preference emulation and screen-reader speech remain outside this review.
 - Status: published through [d8156c7](https://github.com/JamesIan-Bayonas/portfolio/commit/d8156c7); Vercel completed successfully. Live verification passed for 28 routes, 49 built assets, both feeds, application evidence, four PDF hashes, and five excluded owner/API endpoints. The live homepage also passed a DormFix selection check with its team credit and destinations intact.
+
+## Delivered: reference-inspired interaction refinement — 15 October 2026
+
+- [x] Shared project/experiment card spotlights, corner accents, keyboard focus feedback, and restrained fine-pointer tilt.
+- [x] Expandable Explore search/filter panel with individually removable active filters and existing shareable URLs.
+- [x] Terminal-style portfolio search, preserving keyboard selection and navigation.
+- [x] Lab workbench reset, expandable guidance, and calculation assumptions/source disclosure.
+- [x] Four normalized project symbols with 2D canvas particle morphing and the existing pause/reduced-motion controls.
+- [x] Optional, lazy-loaded profile command explorer using maintained English/Filipino professional content and real project/technology links.
+
+Validation: 102 tests, TypeScript, production build, and 28 static pages passed. Browser review included 320px reflow, search navigation, filter removal, Lab reset, and localized profile commands. Manual pointer-motion, actual zoom, screen-reader, and reduced-motion preference checks remain listed in QUALITY_REVIEW.md. Accent customization, reading modes, and a full 3D scene are future options, not part of this release.

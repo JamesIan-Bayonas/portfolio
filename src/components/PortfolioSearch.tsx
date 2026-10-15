@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { Fragment, useEffect, useRef, useState } from "react"
 import { portfolioSearchEntries } from "../data/searchEntries"
 import {
   searchEntries,
@@ -52,19 +52,28 @@ export default function PortfolioSearch({
     )
     if (
       destination.pathname.replace(/\/$/, "") !==
-      window.location.pathname.replace(/\/$/, "") ||
+        window.location.pathname.replace(/\/$/, "") ||
       destination.search !== window.location.search
     ) {
-      window.location.assign(destination.pathname + destination.search + destination.hash)
+      window.location.assign(
+        destination.pathname + destination.search + destination.hash,
+      )
       return
     }
-    const target = document.getElementById(entry.target === "case-study" ? "main-content" : entry.target)
+    const target = document.getElementById(
+      entry.target === "case-study" ? "main-content" : entry.target,
+    )
     if (!target) return
     if (entry.expandCaseStudy) {
       const study = target.querySelector("details")
       if (study) study.open = true
     }
-    if (entry.target === "case-study") window.history.replaceState(null, "", destination.pathname + destination.search)
+    if (entry.target === "case-study")
+      window.history.replaceState(
+        null,
+        "",
+        destination.pathname + destination.search,
+      )
     else window.location.hash = entry.target
     target.scrollIntoView({ behavior: "auto", block: "start" })
     target.setAttribute("tabindex", "-1")
@@ -99,10 +108,23 @@ export default function PortfolioSearch({
         if (event.target === event.currentTarget) onClose()
       }}
     >
+      <div className="search-terminal-bar font-mono">
+        <span className="terminal-dots" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </span>
+        <span>
+          james@portfolio <span className="search-terminal-path">/ find</span>
+        </span>
+        <span className="search-terminal-shortcut">Ctrl / ⌘ K</span>
+      </div>
       <div className="search-heading">
         <div>
-          <p className="project-eyebrow font-mono">EXPLORE THE PORTFOLIO</p>
-          <h2 id="search-title">Find a project or jump to a section.</h2>
+          <p className="project-eyebrow font-mono">
+            SEARCH / PROJECTS / ENGINEERING
+          </p>
+          <h2 id="search-title">Where would you like to explore?</h2>
         </div>
         <button
           ref={closeButtonRef}
@@ -114,7 +136,7 @@ export default function PortfolioSearch({
         </button>
       </div>
       <div className="search-input-wrap">
-        <span aria-hidden="true">⌕</span>
+        <span aria-hidden="true">❯</span>
         <input
           ref={inputRef}
           role="combobox"
@@ -169,32 +191,39 @@ export default function PortfolioSearch({
         className="search-results"
       >
         {results.map((entry, index) => (
-          <button
-            key={entry.id}
-            id={`search-result-${entry.id}`}
-            type="button"
-            role="option"
-            lang={entry.language}
-            aria-selected={index === activeIndex}
-            tabIndex={-1}
-            className={
-              index === activeIndex
-                ? "search-result search-result-active"
-                : "search-result"
-            }
-            onClick={() => navigate(entry)}
-          >
-            <span>
-              <span className="search-result-category font-mono">
+          <Fragment key={entry.id}>
+            {(index === 0 ||
+              results[index - 1].category !== entry.category) && (
+              <div role="presentation" className="search-group-label font-mono">
                 {entry.category}
+              </div>
+            )}
+            <button
+              id={`search-result-${entry.id}`}
+              type="button"
+              role="option"
+              lang={entry.language}
+              aria-selected={index === activeIndex}
+              tabIndex={-1}
+              className={
+                index === activeIndex
+                  ? "search-result search-result-active"
+                  : "search-result"
+              }
+              onClick={() => navigate(entry)}
+            >
+              <span>
+                <span className="search-result-category font-mono">
+                  {entry.category}
+                </span>
+                <strong>{entry.label}</strong>
+                <span className="search-result-description">
+                  {entry.description}
+                </span>
               </span>
-              <strong>{entry.label}</strong>
-              <span className="search-result-description">
-                {entry.description}
-              </span>
-            </span>
-            <span aria-hidden="true">↗</span>
-          </button>
+              <span aria-hidden="true">↗</span>
+            </button>
+          </Fragment>
         ))}
       </div>
       {results.length === 0 && (
@@ -203,8 +232,13 @@ export default function PortfolioSearch({
         </p>
       )}
       <div className="search-footer font-mono">
-        <span>↑↓ Browse · Enter Open</span>
-        <span>Esc Close</span>
+        <span>
+          <kbd>↑</kbd>
+          <kbd>↓</kbd> Browse <kbd>↵</kbd> Open
+        </span>
+        <span>
+          <kbd>Esc</kbd> Close
+        </span>
       </div>
     </dialog>
   )

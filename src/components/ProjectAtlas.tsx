@@ -1,3 +1,4 @@
+import { atlasSymbolPoints } from "../lib/atlasSymbols"
 import { useEffect, useId, useRef, useState, type CSSProperties } from "react"
 import { projects } from "../data/projects"
 import "./ProjectAtlas.css"
@@ -9,6 +10,7 @@ const positions = [
   [23, 76],
 ]
 const colors = ["#37cbd6", "#b28aff", "#f3b453", "#f184ab"]
+const symbols = projects.map((project) => atlasSymbolPoints(project.id))
 const names = ["FISHERIES", "HOUSING", "ASSETS", "PHARMACY"]
 
 interface StarFieldProps {
@@ -17,6 +19,7 @@ interface StarFieldProps {
 }
 
 function StarField({ active, stopped }: StarFieldProps) {
+  const morph = useRef(symbols[active].map((point) => ({ ...point })))
   const canvas = useRef<HTMLCanvasElement>(null)
   const selected = useRef(active)
   const clock = useRef(0)
@@ -55,7 +58,8 @@ function StarField({ active, stopped }: StarFieldProps) {
         schedule()
         return
       }
-      time += stopped ? 0 : Math.min(now - previous, 50) / 1000
+      const delta = Math.min(now - previous, 50) / 1000
+      time += stopped ? 0 : delta
       clock.current = time
       previous = now
       context!.clearRect(0, 0, width, height)
@@ -93,6 +97,23 @@ function StarField({ active, stopped }: StarFieldProps) {
         context!.fill()
       })
       context!.globalAlpha = 1
+      context!.fillStyle = colors[selected.current]
+      const scale = Math.min(width * 0.14, height * 0.17)
+      const blend = stopped ? 1 : 1 - Math.exp(-delta * 6)
+      morph.current.forEach((point, index) => {
+        const target = symbols[selected.current][index]
+        point.x += (target.x - point.x) * blend
+        point.y += (target.y - point.y) * blend
+        context!.beginPath()
+        context!.arc(
+          width / 2 + point.x * scale,
+          height / 2 + point.y * scale,
+          1.25,
+          0,
+          Math.PI * 2,
+        )
+        context!.fill()
+      })
       if (!stopped) schedule()
     }
     function schedule() {
@@ -275,13 +296,7 @@ export default function ProjectAtlas({
           <div className="atlas-hub" aria-hidden="true">
             <span className="atlas-orbit" />
             <span className="atlas-orbit atlas-orbit-inner" />
-            <svg width="27" height="27" viewBox="0 0 32 32" fill="none">
-              <path
-                d="m10 9-7 7 7 7m12-14 7 7-7 7M19 5l-6 22"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              />
-            </svg>
+
             <span className="font-mono">JIB / SYSTEMS</span>
           </div>
           <div

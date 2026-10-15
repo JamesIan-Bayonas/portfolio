@@ -1,3 +1,4 @@
+import { lazy, Suspense, useState } from "react"
 import {
   professionalContent,
   type ProfessionalContent,
@@ -6,6 +7,8 @@ import {
 import { currentLocale, localizeCoreHref } from "../lib/locale"
 import { projects } from "../data/projects"
 import ContactAction from "./ContactAction"
+
+const ProfileExplorer = lazy(() => import("./ProfileExplorer"))
 
 function ProjectLinks({ ids, fil }: {
   ids: readonly string[]
@@ -36,6 +39,7 @@ export default function ProfessionalPages({
   content?: ProfessionalContent
   previewLocale?: "en" | "fil"
 }) {
+  const [explorerUsed, setExplorerUsed] = useState(false)
   const locale = previewLocale ?? currentLocale()
   const fil = locale === "fil"
   const t = (english: string, filipino: string) => (fil ? filipino : english)
@@ -269,6 +273,22 @@ export default function ProfessionalPages({
             </section>
           </>
         )}
+        <details
+          className="profile-explorer-panel"
+          onToggle={event => {
+            if (event.currentTarget.open) setExplorerUsed(true)
+          }}
+        >
+          <summary>
+            <h2>{fil ? "Tuklasin ang profile bilang terminal (English controls)" : "Explore my profile as a terminal"}</h2>
+            <span aria-hidden="true">↗</span>
+          </summary>
+          {explorerUsed && (
+            <Suspense fallback={<p lang="en">Opening profile explorer…</p>}>
+              <ProfileExplorer content={content} locale={locale} />
+            </Suspense>
+          )}
+        </details>
         <footer className="dedicated-case-footer">
           <div>
             <p className="project-eyebrow font-mono">

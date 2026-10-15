@@ -90,6 +90,11 @@ function staticDependencies(key, visited = new Set()) {
     staticDependencies(dependency, visited)
   return visited
 }
+assert.ok(manifest["src/components/ProfileExplorer.tsx"], "Missing optional profile explorer chunk")
+assert.ok(
+  !staticDependencies("src/components/ProfessionalPages.tsx").has("src/components/ProfileExplorer.tsx"),
+  "Optional profile explorer eagerly loaded by professional pages",
+)
 for (const key of staticDependencies("src/components/Reflections.tsx")) {
   assert.ok(
     !/\/(?:motion|HomePage)-/.test(manifest[key].file),

@@ -1,5 +1,5 @@
 import ProjectAtlas from "./ProjectAtlas"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
 import { projects, projectScreenshot } from "../data/projects"
 
@@ -42,6 +42,8 @@ export default function Explore() {
     readExploreFilters(window.location.search, domains, technologies),
   )
 
+  const [filtersOpen, setFiltersOpen] = useState(false)
+  const filterSummary = useRef<HTMLElement>(null)
   const results = filterProjects(searchableProjects, filters)
 
   const [comparison, setComparison] = useState(() =>
@@ -139,64 +141,122 @@ export default function Explore() {
               {projects.length} projects · {projects.length} guided walkthroughs
             </p>
           </div>
-          <form
-            className="explore-filters"
-            onSubmit={(event) => event.preventDefault()}
-            role="search"
-            aria-label="Filter projects"
+          <details
+            className="filter-console"
+            open={filtersOpen}
+            onToggle={(event) => setFiltersOpen(event.currentTarget.open)}
           >
-            <div>
-              <label htmlFor="explore-query">
-                Search projects and technologies
-              </label>
-              <input
-                id="explore-query"
-                type="search"
-                placeholder="Try OCR, React, or inventory"
-                value={filters.query}
-                onChange={(event) =>
-                  setFilters({ ...filters, query: event.target.value })
-                }
-              />
-            </div>
-            <div>
-              <label htmlFor="explore-domain">Domain</label>
-              <select
-                id="explore-domain"
-                value={filters.domain}
-                onChange={(event) =>
-                  setFilters({ ...filters, domain: event.target.value })
-                }
-              >
-                <option value="">All domains</option>
-                {domains.map((domain) => (
-                  <option key={domain}>{domain}</option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label htmlFor="explore-technology">Technology</label>
-              <select
-                id="explore-technology"
-                value={filters.technology}
-                onChange={(event) =>
-                  setFilters({ ...filters, technology: event.target.value })
-                }
-              >
-                <option value="">All technologies</option>
-                {technologies.map((tech) => (
-                  <option key={tech}>{tech}</option>
-                ))}
-              </select>
-            </div>
-            <button
-              type="button"
-              onClick={() => setFilters({ ...emptyExploreFilters })}
-              disabled={!filtered}
+            <summary ref={filterSummary}>
+              <span className="filter-console-icon" aria-hidden="true">
+                ⌕
+              </span>
+              <span>
+                <strong>Search and filter</strong>
+                <small>Find a project by topic, domain, or technology</small>
+              </span>
+              <span className="filter-result-badge font-mono">
+                {results.length} results
+              </span>
+              <span className="filter-toggle" aria-hidden="true">
+                ⌄
+              </span>
+            </summary>
+            <form
+              className="explore-filters"
+              onSubmit={(event) => event.preventDefault()}
+              role="search"
+              aria-label="Filter projects"
             >
-              Clear filters
-            </button>
-          </form>
+              <div>
+                <label htmlFor="explore-query">
+                  Search projects and technologies
+                </label>
+                <input
+                  id="explore-query"
+                  type="search"
+                  placeholder="Try OCR, React, or inventory"
+                  value={filters.query}
+                  onChange={(event) =>
+                    setFilters({ ...filters, query: event.target.value })
+                  }
+                />
+              </div>
+              <div>
+                <label htmlFor="explore-domain">Domain</label>
+                <select
+                  id="explore-domain"
+                  value={filters.domain}
+                  onChange={(event) =>
+                    setFilters({ ...filters, domain: event.target.value })
+                  }
+                >
+                  <option value="">All domains</option>
+                  {domains.map((domain) => (
+                    <option key={domain}>{domain}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="explore-technology">Technology</label>
+                <select
+                  id="explore-technology"
+                  value={filters.technology}
+                  onChange={(event) =>
+                    setFilters({ ...filters, technology: event.target.value })
+                  }
+                >
+                  <option value="">All technologies</option>
+                  {technologies.map((tech) => (
+                    <option key={tech}>{tech}</option>
+                  ))}
+                </select>
+              </div>
+              <button
+                type="button"
+                onClick={() => setFilters({ ...emptyExploreFilters })}
+                disabled={!filtered}
+              >
+                Clear filters
+              </button>
+            </form>
+          </details>
+          {filtered && (
+            <div className="active-filter-chips" aria-label="Active filters">
+              {(["query", "domain", "technology"] as const)
+                .filter((key) => filters[key])
+                .map((key) => (
+                  <button
+                    type="button"
+                    key={key}
+                    aria-label={`Remove ${key} filter: ${filters[key]}`}
+                    onClick={() => {
+                      setFilters({ ...filters, [key]: "" })
+                      filterSummary.current?.focus()
+                    }}
+                  >
+                    <span>
+                      {key === "query"
+                        ? "Search"
+                        : key === "domain"
+                          ? "Domain"
+                          : "Technology"}
+                      :
+                    </span>{" "}
+                    {filters[key]} <span aria-hidden="true">×</span>
+                  </button>
+                ))}
+              <button
+                type="button"
+                className="clear-all-filters"
+                onClick={() => {
+                  setFilters({ ...emptyExploreFilters })
+                  filterSummary.current?.focus()
+                }}
+              >
+                Clear all
+              </button>
+            </div>
+          )}
           <p
             className="explore-results-status"
             role="status"
@@ -210,7 +270,7 @@ export default function Explore() {
               {results.map((project) => (
                 <article
                   key={project.id}
-                  className="explore-card"
+                  className="explore-card interactive-surface"
                   aria-labelledby={`explore-${project.id}`}
                 >
                   <ScreenshotPreview

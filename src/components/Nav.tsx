@@ -205,7 +205,7 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
               hrefLang={fil && (link === "lab" || link === "notes") ? "en" : undefined}
               aria-current={(link === "explore" && explorePage) || (link === "lab" && labPage) || (link === "notes" && notesPage) || (professionalPath && pageLinks[link] === professionalPath) ? "page" : undefined}
               onClick={() => setActive(link)}
-              className="relative text-sm lowercase transition-colors duration-150 pb-1"
+              className="nav-interactive-link relative text-sm lowercase transition-colors duration-150 pb-1"
               style={{
                 fontFamily: "var(--font-mono)",
                 color:

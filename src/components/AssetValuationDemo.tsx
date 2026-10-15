@@ -380,6 +380,7 @@ export default function AssetValuationDemo({ caseStudyHref = "/#project-centralo
           )}
         </div>
         <div className="valuation-results">
+          <h3 className="workbench-output-title">Calculated result</h3>
           {valid ? (
             <>
               <p className="project-eyebrow font-mono">
@@ -423,7 +424,8 @@ export default function AssetValuationDemo({ caseStudyHref = "/#project-centralo
           )}
         </div>
       </div>
-      <div className="valuation-explanation">
+      <details className="valuation-explanation">
+        <summary>Calculation assumptions and source</summary>
         <p>
           <strong>How this example works</strong> Repair time is excluded from
           active use. The formulas use a 30.4375-day month and retain the
@@ -442,7 +444,7 @@ export default function AssetValuationDemo({ caseStudyHref = "/#project-centralo
             View the calculation source ↗
           </a>
         </div>
-      </div>
+      </details>
     </div>
   )
 }

@@ -16,7 +16,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <motion.article
       id={`project-${project.id}`}
-      className={`project-card${featured ? " project-card-featured" : ""}`}
+      className={`interactive-surface project-card${featured ? " project-card-featured" : ""}`}
       aria-labelledby={`${project.id}-title`}
       initial={reduced ? false : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
