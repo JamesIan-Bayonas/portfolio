@@ -192,3 +192,5 @@ The local quality review is recorded in `QUALITY_REVIEW.md`. IsdaLog's former Ra
 * **Built Asset Verification:** `verify:build` checks the generated static routes, page metadata, entry assets, favicon, and résumé file. Dependency versions are tracked in the package-manager lockfile.
 
 The local content workspace also maintains paired English/Filipino About, Now, and How I can help copy with public-layout previews and draft recovery. See [CONTENT_EDITING.md](CONTENT_EDITING.md) for the editing and publication process.
+
+The homepage and Explore include an interactive project atlas. Select a system to follow its workflow and case study, or choose a technology to filter the collection. Particle motion can be paused and follows reduced-motion preferences.

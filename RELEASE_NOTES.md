@@ -35,3 +35,7 @@ Tailwind now scans only App.tsx and the component directory. Local untracked exp
 ## Professional workspace refinement — 15 October 2026
 
 The local editor now maintains About, Now, and How I can help in paired English/Filipino fields with unsaved public-layout previews, validated atomic saves, protected identities/links, and recovery upgrades. Original professional copy and search metadata remain unchanged. TypeScript, 99 tests, build, and 28-page static verification passed. Local browser checks verified save/block/recover/restore behavior and 320px editor reflow. Source [da038b8](https://github.com/JamesIan-Bayonas/portfolio/commit/da038b8) was published through the existing main-branch workflow and Vercel completed successfully. Direct live verification passed for 28 routes, 47 exact built assets, both feeds, application evidence, four PDF hashes, and five excluded editor/API endpoints.
+
+## Interactive visual design — 15 October 2026
+
+Homepage and Explore now feature a selectable project atlas: moving constellations, pointer response, connection signals, project/workflow detail, and real technology navigation. Explore includes an editorial heading and animated result entry. Motion can be paused and respects reduced-motion preferences; decorative processing suspends offscreen/backgrounded. Original project credit and evidence are retained. Local browser checks covered keyboard selection, pause/resume, filter integration, themes, and 320px reflow. TypeScript, 99 tests, build, and static verification passed; live publication verification follows.

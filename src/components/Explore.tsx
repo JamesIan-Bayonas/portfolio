@@ -1,8 +1,14 @@
+import ProjectAtlas from "./ProjectAtlas"
 import { useEffect, useState } from "react"
+
 import { projects, projectScreenshot } from "../data/projects"
+
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
+
 import ScreenshotPreview from "./ScreenshotPreview"
+
 import ProjectComparison from "./ProjectComparison"
+
 import {
   emptyExploreFilters,
   exploreFilterSearch,
@@ -12,15 +18,21 @@ import {
 } from "../lib/explore"
 
 const domains = [...new Set(projects.map((project) => project.category))]
-const projectIds = projects.map(project => project.id)
+
+const projectIds = projects.map((project) => project.id)
+
 const searchableProjects = projects.map((project) => ({
   ...project,
+
   searchText: [
     project.caseStudy.problem,
+
     project.caseStudy.approach,
+
     ...project.caseStudy.workflow.map((step) => step.detail),
   ].join(" "),
 }))
+
 const technologies = [
   ...new Set(projects.flatMap((project) => project.tech)),
 ].sort((a, b) => a.localeCompare(b))
@@ -29,54 +41,95 @@ export default function Explore() {
   const [filters, setFilters] = useState(() =>
     readExploreFilters(window.location.search, domains, technologies),
   )
+
   const results = filterProjects(searchableProjects, filters)
-  const [comparison, setComparison] = useState(() => readComparison(window.location.search, projectIds))
+
+  const [comparison, setComparison] = useState(() =>
+    readComparison(window.location.search, projectIds),
+  )
+
   const filtered = Boolean(
     filters.query || filters.domain || filters.technology,
   )
+
   useEffect(() => {
     const search = exploreFilterSearch(filters, comparison.filter(Boolean))
+
     window.history.replaceState(
       null,
+
       "",
+
       `${window.location.pathname}${search}${window.location.hash}`,
     )
   }, [filters, comparison])
+
   useEffect(() => {
     function restoreFilters() {
       setComparison(readComparison(window.location.search, projectIds))
+
       setFilters(
         readExploreFilters(window.location.search, domains, technologies),
       )
     }
+
     window.addEventListener("popstate", restoreFilters)
+
     return () => window.removeEventListener("popstate", restoreFilters)
   }, [])
 
   return (
     <div className="explore-page px-4 sm:px-6 lg:px-10">
       <div className="max-w-[1440px] mx-auto">
-        <header className="explore-header">
+        <header className="explore-header atlas-explore-header">
           <a href="/" className="case-study-breadcrumb font-mono">
             ← Portfolio home
           </a>
           <p className="project-eyebrow font-mono">
-            PROJECTS / WALKTHROUGHS / WORKING SYSTEMS
+            THE PROJECT COLLECTION / JAMES IAN BAYONAS
           </p>
           <h1>
-            Find a system.
-            <br />
-            Explore how it works.
+            The work, <em>connected.</em>
           </h1>
-          <p>
-            Four projects across fisheries, housing, institutional assets, and
-            pharmacy operations. Browse the work, follow a sample workflow, or
-            open the live system.
+          <p className="atlas-introduction">
+            Four systems. Real workflows. Follow the connections from a problem
+            to the engineering behind it. Select a node to begin.
           </p>
+          <ProjectAtlas
+            onTechnology={(technology) => {
+              setFilters({ ...emptyExploreFilters, technology })
+              document
+                .getElementById("explore-projects-title")
+                ?.scrollIntoView({
+                  behavior: window.matchMedia(
+                    "(prefers-reduced-motion: reduce)",
+                  ).matches
+                    ? "instant"
+                    : "smooth",
+                  block: "start",
+                })
+            }}
+          />
+          <div className="atlas-explore-index">
+            <p>
+              <strong>{projects.length.toString().padStart(2, "0")}</strong>{" "}
+              systems
+            </p>
+            <p>
+              <strong>{domains.length.toString().padStart(2, "0")}</strong>{" "}
+              domains
+            </p>
+            <p>
+              <strong>{technologies.length.toString().padStart(2, "0")}</strong>{" "}
+              technologies
+            </p>
+          </div>
         </header>
         <aside className="explore-ask-link">
           <p>Have a question about the work?</p>
-          <a className="font-mono" href="/ask/">Ask about projects and engineering evidence ↗</a>
+          <a className="font-mono" href="/ask/">
+            Ask about projects and engineering evidence ↗
+          </a>
         </aside>
         <ProjectComparison selected={comparison} onChange={setComparison} />
         <section aria-labelledby="explore-projects-title">
@@ -153,7 +206,7 @@ export default function Explore() {
             found{filtered ? " with your filters" : ""}.
           </p>
           {results.length ? (
-            <div className="explore-grid">
+            <div className="explore-grid" key={JSON.stringify(filters)}>
               {results.map((project) => (
                 <article
                   key={project.id}
@@ -178,7 +231,9 @@ export default function Explore() {
                     </p>
                     <h3 id={`explore-${project.id}`}>{project.name}</h3>
                     <p className="explore-card-title">{project.title}</p>
-                    <p className="project-version-label font-mono">{project.versionLabel}</p>
+                    <p className="project-version-label font-mono">
+                      {project.versionLabel}
+                    </p>
                     <dl className="project-credits">
                       <div>
                         <dt>My role</dt>

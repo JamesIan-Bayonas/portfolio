@@ -1,240 +1,6 @@
-import { useEffect, useRef, useState, type ReactNode } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { projects } from "../data/projects"
-
-const linePairs = [
-  {
-    old: '  catch: "paper records",',
-    next: '  catch: "photo → listing → auction",',
-  },
-  {
-    old: '  delivery: "untracked handoffs",',
-    next: '  delivery: "pickup → transit → verification",',
-  },
-  {
-    old: '  settlement: "manual reconciliation",',
-    next: '  settlement: "inspection → wallet ledger",',
-  },
-]
-
-const CHAR_DELAY = 28
-const LINE_STAGGER = 280
-const INITIAL_PAUSE = 600
-
-function DiffPanel() {
-  const panelRef = useRef<HTMLDivElement>(null)
-  const reduced = useReducedMotion()
-  const [typedLines, setTypedLines] = useState<string[]>(["", "", ""])
-  const [visibleLines, setVisibleLines] = useState<boolean[]>([
-    false,
-    false,
-    false,
-  ])
-
-  useEffect(() => {
-    if (reduced) {
-      setTypedLines(linePairs.map((pair) => pair.next))
-      setVisibleLines([true, true, true])
-      return
-    }
-    let cancelled = false
-    const timers: ReturnType<typeof setTimeout>[] = []
-
-    function sleep(ms: number) {
-      return new Promise<void>((resolve) => {
-        const id = setTimeout(resolve, ms)
-        timers.push(id)
-      })
-    }
-
-    async function run() {
-      // Reset cleanly on each mount (handles Strict Mode double-invoke)
-      setTypedLines(["", "", ""])
-      setVisibleLines([false, false, false])
-
-      await sleep(INITIAL_PAUSE)
-
-      for (let i = 0; i < linePairs.length; i++) {
-        if (cancelled) return
-        if (i > 0) {
-          await sleep(LINE_STAGGER)
-          if (cancelled) return
-        }
-
-        const target = linePairs[i].next
-        setVisibleLines((prev) => prev.map((v, j) => (j === i ? true : v)))
-
-        for (let c = 1; c <= target.length; c++) {
-          if (cancelled) return
-          const lineIdx = i
-          setTypedLines((prev) =>
-            prev.map((l, j) => (j === lineIdx ? target.slice(0, c) : l)),
-          )
-          await sleep(CHAR_DELAY)
-        }
-      }
-    }
-
-    function finish() {
-      if (cancelled) return
-      cancelled = true
-      timers.forEach(clearTimeout)
-      setTypedLines(linePairs.map(pair => pair.next))
-      setVisibleLines([true, true, true])
-    }
-    const observer = new IntersectionObserver(entries => { if (!entries[0].isIntersecting) finish() })
-    if (panelRef.current) observer.observe(panelRef.current)
-    const onVisibility = () => { if (document.hidden) finish() }
-    document.addEventListener("visibilitychange", onVisibility)
-    if (document.hidden) finish()
-    else run()
-
-    return () => {
-      cancelled = true
-      timers.forEach(clearTimeout)
-      observer.disconnect()
-      document.removeEventListener("visibilitychange", onVisibility)
-    }
-  }, [reduced])
-
-  return (
-    <div
-      ref={panelRef}
-      className="border"
-      style={{
-        backgroundColor: "var(--color-surface)",
-        borderColor: "var(--color-border)",
-        borderRadius: "4px",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        className="flex flex-wrap items-center gap-2 sm:gap-3 px-3 sm:px-4 py-3 border-b"
-        style={{ borderColor: "var(--color-border)" }}
-      >
-        <div className="flex items-center gap-1.5">
-          <span
-            className="w-3 h-3 rounded-full"
-            style={{ backgroundColor: "#FF5F57" }}
-          />
-          <span
-            className="w-3 h-3 rounded-full"
-            style={{ backgroundColor: "#FFBD2E" }}
-          />
-          <span
-            className="w-3 h-3 rounded-full"
-            style={{ backgroundColor: "#28C840" }}
-          />
-        </div>
-        <span
-          className="text-xs"
-          style={{
-            fontFamily: "var(--font-mono)",
-            color: "var(--color-text2)",
-          }}
-        >
-          isdalog.workflow.ts
-        </span>
-        <span
-          className="ml-auto text-xs px-2 py-0.5 border"
-          style={{
-            fontFamily: "var(--font-mono)",
-            color: "var(--color-diff-add)",
-            borderColor: "var(--color-border)",
-            borderRadius: "4px",
-          }}
-        >
-          +3 −3
-        </span>
-      </div>
-
-      <div
-        className="p-0 text-xs sm:text-sm leading-6 sm:leading-7"
-        style={{ fontFamily: "var(--font-mono)" }}
-      >
-        <DiffLine type="ctx">{"const workflow = {"}</DiffLine>
-        <DiffLine type="ctx">{'  project: "IsdaLog",'}</DiffLine>
-
-        {linePairs.map((pair, i) => (
-          <div key={i}>
-            <DiffLine type="remove">{pair.old}</DiffLine>
-              <DiffLine type="add">
-                {visibleLines[i] ? typedLines[i] : ""}
-                {visibleLines[i] && typedLines[i].length < pair.next.length && (
-                  <span
-                    className="inline-block w-1.5 h-4 align-middle animate-pulse"
-                    style={{
-                      backgroundColor: "var(--color-accent)",
-                      marginLeft: "1px",
-                    }}
-                  />
-                )}
-              </DiffLine>
-          </div>
-        ))}
-
-        <DiffLine type="ctx">{"}"}</DiffLine>
-
-        <div
-          className="px-4 pt-4 pb-4 border-t text-xs italic"
-          style={{
-            borderColor: "var(--color-border)",
-            fontFamily: "var(--font-serif)",
-            color: "var(--color-text2)",
-          }}
-        >
-          A system I built independently for transparency in local fisheries.
-        </div>
-      </div>
-    </div>
-  )
-}
-
-interface DiffLineProps {
-  type: "add" | "remove" | "ctx"
-  children: ReactNode
-}
-
-function DiffLine({ type, children }: DiffLineProps) {
-  const prefix = type === "add" ? "+" : type === "remove" ? "−" : " "
-  const color =
-    type === "add"
-      ? "var(--color-diff-add)"
-      : type === "remove"
-        ? "var(--color-diff-remove)"
-        : "var(--color-text2)"
-  const bg =
-    type === "add"
-      ? "var(--color-diff-add-bg)"
-      : type === "remove"
-        ? "var(--color-diff-remove-bg)"
-        : "transparent"
-
-  return (
-    <div
-      className="flex min-w-0 items-baseline gap-2 sm:gap-3 px-3 sm:px-4"
-      style={{ backgroundColor: bg, minHeight: "28px" }}
-    >
-      <span
-        className="text-xs w-3 shrink-0 select-none"
-        style={{ color }}
-      >
-        {prefix}
-      </span>
-      <span
-        style={{
-          color,
-          textDecoration: type === "remove" ? "line-through" : "none",
-          overflowWrap: "anywhere",
-          minWidth: 0,
-          whiteSpace: "pre-wrap",
-        }}
-      >
-        {children}
-      </span>
-    </div>
-  )
-}
+import ProjectAtlas from "./ProjectAtlas"
 
 export default function Hero() {
   const reduced = useReducedMotion()
@@ -324,7 +90,7 @@ export default function Hero() {
               Explore case studies →
             </motion.a>
             <a
-               href="/lab/"
+              href="/lab/"
               className="text-sm text-center min-h-11 px-6 py-3 border transition-colors duration-150"
               style={{
                 fontFamily: "var(--font-mono)",
@@ -410,16 +176,13 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right — diff panel */}
+        {/* Interactive project discovery */}
         <motion.div
           initial={reduced ? { opacity: 0 } : { opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
         >
-          <DiffPanel />
-          <a href={projects.find(project => project.id === "isdalog")?.caseStudyPath ?? "#project-isdalog"} className="hero-feature-link font-mono">
-            Explore IsdaLog <span aria-hidden="true">↗</span>
-          </a>
+          <ProjectAtlas compact />
         </motion.div>
       </div>
     </section>
