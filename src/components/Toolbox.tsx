@@ -5,6 +5,7 @@ import "./Toolbox.css"
 import StackFlow from "./StackFlow"
 import DecodeText from "./DecodeText"
 import ResizingPanel from "./ResizingPanel"
+import ToolPreview from "./ToolPreview"
 
 const accents = ["#59cbd6", "#b59aff", "#e9b65d", "#74cda4"]
 const marks = [
@@ -167,6 +168,7 @@ export default function Toolbox() {
               ))}
             </ul>
           </div>
+          <ToolPreview key={`preview-${demo.id}`} projectId={demo.id} />
         </div>
       </ResizingPanel>
       <p className="toolbox-footnote">

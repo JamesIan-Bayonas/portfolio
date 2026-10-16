@@ -287,3 +287,12 @@ Ready locally; standard type/test/build/static checks and local browser review p
 - [x] Single-column narrow layout, non-sticky introduction on short screens, and static reduced-motion rendering with all content immediately visible.
 
 Ready locally with type checking, 102 tests, production build, and 28-page static verification passing. Browser review covered all five stages, reverse progression, keyboard links, the DormFix walkthrough destination, both themes, and 320 CSS-pixel reflow without horizontal overflow. Actual reduced-motion preference emulation, screen-reader speech, and native phone gestures remain manual checks. This completes Process progression in the discussed animation sequence.
+
+## Transforming tool previews — 16 October 2026
+
+- Visitor need: see what each selected tool takes in and what it produces before opening a full Lab example.
+- [x] Full-width input → result preview in the selected Toolbox panel, with a finite scan, connector signal, staggered fields, and a drawn valuation curve.
+- [x] Four maintained sample paths: CentraLog valuation, DormFix structured receipt fields awaiting review, IsdaLog buyer-inspection settlement, and PharmaLink successful sale/stock deduction.
+- [x] Replay and Show result controls, stable accessible summaries, offscreen/background suspension, responsive stacking, and static reduced-motion rendering.
+
+Ready locally with type checking, 102 existing tests, production build, and 28-page static verification passing. Browser checks covered all four exact results, keyboard replay/tool selection, immediate result display, offscreen pause/resume, finite playback, both themes, and 320px layouts. Actual reduced-motion preference emulation and spoken screen-reader output remain manual checks. Previews illustrate fixed browser samples; the full Lab workflows remain independently user-controlled.
