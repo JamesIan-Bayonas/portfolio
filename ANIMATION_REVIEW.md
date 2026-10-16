@@ -96,3 +96,7 @@ Added a selected-tool source → result illustration for all four Toolbox tools.
 ## Richer particle hero stage 1 — 16 October 2026
 
 Scope/baseline stage completed in docs/particle-hero/README.md. Twelve paused stills document the current two Atlas variants across desktop/phone and light/dark themes. The preservation checklist covers maintained project information, keyboard selection, destinations/filtering, pause persistence, static reduced motion, suspension, and cleanup. Source cadence/particle limits are recorded as implementation constraints, not measured performance. No richer-scene effects or runtime changes were introduced. Next: prepare project scene data, then review a static composition before adding depth and transitions.
+
+## Particle hero scene data — 16 October 2026
+
+Prepared the richer hero's identity-keyed scene model and connected the existing Atlas to it. Project selection no longer depends on project-array indices. Symbols, accents, node positions, maintained text/routes, and technology controls keep their current behavior. Future workflow-label anchors are data only at this stage. All 105 tests and type/build/static checks passed, with browser coverage of both Atlas variants, keyboard identity selection, pause persistence/paused selection, workflows/filtering, and phone reflow. No new motion, geometry, or style changes were introduced. Next: review a static layered composition.

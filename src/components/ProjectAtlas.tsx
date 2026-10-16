@@ -1,25 +1,20 @@
-import { atlasSymbolPoints } from "../lib/atlasSymbols"
+import { buildAtlasScenes, type AtlasProjectId } from "../data/atlasScenes"
 import { useEffect, useId, useRef, useState, type CSSProperties } from "react"
 import { projects } from "../data/projects"
 import "./ProjectAtlas.css"
 
-const positions = [
-  [23, 24],
-  [77, 24],
-  [77, 76],
-  [23, 76],
-]
-const colors = ["#37cbd6", "#b28aff", "#f3b453", "#f184ab"]
-const symbols = projects.map((project) => atlasSymbolPoints(project.id))
-const names = ["FISHERIES", "HOUSING", "ASSETS", "PHARMACY"]
+const scenes = buildAtlasScenes(projects)
+const scenesById = new Map(scenes.map((scene) => [scene.id, scene]))
 
 interface StarFieldProps {
-  active: number
+  active: AtlasProjectId
   stopped: boolean
 }
 
 function StarField({ active, stopped }: StarFieldProps) {
-  const morph = useRef(symbols[active].map((point) => ({ ...point })))
+  const morph = useRef(
+    scenesById.get(active)!.symbol.map((point) => ({ ...point })),
+  )
   const canvas = useRef<HTMLCanvasElement>(null)
   const selected = useRef(active)
   const clock = useRef(0)
@@ -41,13 +36,14 @@ function StarField({ active, stopped }: StarFieldProps) {
       time = clock.current,
       previous = 0
     let dark = document.documentElement.dataset.theme !== "light"
-    const points = positions.flatMap(([x, y], group) =>
+    const points = scenes.flatMap((scene, group) =>
       Array.from({ length: 15 }, (_, index) => {
         const angle = index * 2.399 + group
         return {
-          group,
-          x: x / 100 + Math.cos(angle) * (0.035 + index * 0.008),
-          y: y / 100 + Math.sin(angle) * (0.03 + index * 0.009),
+          group: scene.id,
+          accent: scene.accent,
+          x: scene.position.x / 100 + Math.cos(angle) * (0.035 + index * 0.008),
+          y: scene.position.y / 100 + Math.sin(angle) * (0.03 + index * 0.009),
           phase: index * 1.7 + group,
         }
       }),
@@ -76,7 +72,7 @@ function StarField({ active, stopped }: StarFieldProps) {
         return { ...point, x, y }
       })
       plotted.forEach((point, i) => {
-        context!.strokeStyle = colors[point.group]
+        context!.strokeStyle = point.accent
         for (let j = i + 1; j < plotted.length; j++) {
           const other = plotted[j]
           const distance = Math.hypot(point.x - other.x, point.y - other.y)
@@ -91,17 +87,18 @@ function StarField({ active, stopped }: StarFieldProps) {
           context!.stroke()
         }
         context!.globalAlpha = point.group === selected.current ? 0.85 : 0.4
-        context!.fillStyle = colors[point.group]
+        context!.fillStyle = point.accent
         context!.beginPath()
         context!.arc(point.x, point.y, i % 4 === 0 ? 2.1 : 1.2, 0, Math.PI * 2)
         context!.fill()
       })
       context!.globalAlpha = 1
-      context!.fillStyle = colors[selected.current]
+      const selectedScene = scenesById.get(selected.current)!
+      context!.fillStyle = selectedScene.accent
       const scale = Math.min(width * 0.14, height * 0.17)
       const blend = stopped ? 1 : 1 - Math.exp(-delta * 6)
       morph.current.forEach((point, index) => {
-        const target = symbols[selected.current][index]
+        const target = selectedScene.symbol[index]
         point.x += (target.x - point.x) * blend
         point.y += (target.y - point.y) * blend
         context!.beginPath()
@@ -204,7 +201,7 @@ export default function ProjectAtlas({
   onTechnology?: (technology: string) => void
 }) {
   const root = useRef<HTMLElement>(null)
-  const [selected, setSelected] = useState(0)
+  const [selected, setSelected] = useState<AtlasProjectId>(scenes[0].id)
   const [paused, setPaused] = useState(() => {
     try {
       return localStorage.getItem("portfolio-atlas-paused") === "true"
@@ -240,14 +237,15 @@ export default function ProjectAtlas({
     query.addEventListener("change", update)
     return () => query.removeEventListener("change", update)
   }, [])
-  const project = projects[selected]
+  const scene = scenesById.get(selected)!
+  const project = scene.project
   const stopped = paused || reduced
   return (
     <section
       ref={root}
       className={`project-atlas${compact ? " project-atlas-compact" : ""}`}
       data-stopped={stopped}
-      style={{ "--atlas-color": colors[selected] } as CSSProperties}
+      style={{ "--atlas-color": scene.accent } as CSSProperties}
       aria-label="Interactive project atlas"
     >
       <div className="atlas-topline font-mono">
@@ -284,12 +282,12 @@ export default function ProjectAtlas({
             preserveAspectRatio="none"
             aria-hidden="true"
           >
-            {positions.map(([x, y], index) => (
+            {scenes.map((item) => (
               <path
-                key={index}
-                className={index === selected ? "is-selected" : ""}
-                d={`M 50 50 Q ${x} 50 ${x} ${y}`}
-                style={{ "--node-color": colors[index] } as CSSProperties}
+                key={item.id}
+                className={item.id === selected ? "is-selected" : ""}
+                d={`M 50 50 Q ${item.position.x} 50 ${item.position.x} ${item.position.y}`}
+                style={{ "--node-color": item.accent } as CSSProperties}
               />
             ))}
           </svg>
@@ -304,27 +302,27 @@ export default function ProjectAtlas({
             role="group"
             aria-label="Select a system"
           >
-            {projects.map((item, index) => (
+            {scenes.map((item, index) => (
               <button
                 key={item.id}
                 type="button"
                 className="atlas-node"
                 style={
                   {
-                    left: `${positions[index][0]}%`,
-                    top: `${positions[index][1]}%`,
-                    "--node-color": colors[index],
+                    left: `${item.position.x}%`,
+                    top: `${item.position.y}%`,
+                    "--node-color": item.accent,
                   } as CSSProperties
                 }
-                aria-pressed={selected === index}
+                aria-pressed={selected === item.id}
                 aria-controls={`${id}-detail`}
-                onClick={() => setSelected(index)}
+                onClick={() => setSelected(item.id)}
               >
                 <span className="atlas-node-mark" aria-hidden="true">
                   0{index + 1}
                 </span>
-                <strong>{item.name}</strong>
-                <span className="font-mono">{names[index]}</span>
+                <strong>{item.project.name}</strong>
+                <span className="font-mono">{item.label}</span>
               </button>
             ))}
           </div>
@@ -340,7 +338,7 @@ export default function ProjectAtlas({
         >
           <div className="atlas-detail-copy" key={project.id}>
             <p className="atlas-kicker font-mono">
-              0{selected + 1} / {project.category}
+              0{scenes.indexOf(scene) + 1} / {project.category}
             </p>
             <h2>
               {project.name}
@@ -351,7 +349,7 @@ export default function ProjectAtlas({
               {project.context} · {project.role}
             </p>
             <ol className="atlas-workflow">
-              {project.caseStudy.workflow.slice(0, 3).map((step, index) => (
+              {scene.workflow.map((step, index) => (
                 <li key={step.title}>
                   <span className="font-mono">0{index + 1}</span>
                   {step.title}
@@ -359,12 +357,10 @@ export default function ProjectAtlas({
               ))}
             </ol>
             <div className="atlas-project-actions font-mono">
-              <a href={project.caseStudyPath}>
+              <a href={scene.caseStudyHref}>
                 Read the case study <span aria-hidden="true">↗</span>
               </a>
-              <a href={`${project.caseStudyPath}#walkthrough`}>
-                Try the workflow →
-              </a>
+              <a href={scene.walkthroughHref}>Try the workflow →</a>
             </div>
           </div>
         </div>
@@ -374,7 +370,7 @@ export default function ProjectAtlas({
           CONNECTED THROUGH <span aria-hidden="true">↳</span>
         </p>
         <div className="atlas-technologies">
-          {project.tech.slice(0, 4).map((technology) =>
+          {scene.technologies.map((technology) =>
             onTechnology ? (
               <button
                 type="button"

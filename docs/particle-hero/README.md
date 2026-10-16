@@ -76,8 +76,8 @@ Not established by this stage: measured frame rate or CPU/GPU cost, physical-pho
 | Stage | Status | Required outcome |
 | --- | --- | --- |
 | 1. Scope and baseline | Complete | Bounded first release, preservation checklist, source revision, 12 captures, and recorded checks |
-| 2. Project scene data | Next | Define symbols, accents, label positions, and destinations by project identity; derive copy from maintained records; preserve current rendering while preparing data |
-| 3. Static composition | Planned | Recognizable symbols and readable labels in both variants/themes; no collisions; useful appearance with animation disabled |
+| 2. Project scene data | Complete | Identity-keyed scenes supply symbols, accents, existing positions/labels, maintained workflow copy, destinations, and provisional future label anchors; existing rendering preserved |
+| 3. Static composition | Next | Recognizable symbols and readable labels in both variants/themes; no collisions; useful appearance with animation disabled |
 | 4. Subtle depth | Planned | Three restrained layers and bounded fine-pointer movement; no required hover/touch gesture or second continuous loop |
 | 5. Selection transitions | Planned | Immediate text/control updates, finite decoration, latest-selection interruption, stable keyboard focus, no automatic cycling |
 | 6. Workflow connections | Planned | At most three meaningful labels, valid destinations, no unsupported live-activity implications |
@@ -87,3 +87,11 @@ Not established by this stage: measured frame rate or CPU/GPU cost, physical-pho
 | 10. Release verification | Planned | Relevant tests, type/build/static checks, keyboard/theme/device review, scoped commits, deployment and live-route verification |
 
 The static composition is the first visual review milestone. A full 3D engine or drawing playground requires a separate scope decision; it is not an automatic continuation of this plan.
+
+## Stage 2: project scene data — 16 October 2026
+
+[atlasScenes.ts](../../src/data/atlasScenes.ts) now defines the four visual identities and builds scene records from the maintained projects. Each scene contains its project reference, normalized symbol points, accent, domain label, existing percentage node position, case-study/walkthrough destinations, first four technologies, and up to three workflow entries. Workflow titles/details are derived from the project record; each entry has a link to that project's workflow explanation and a provisional percentage anchor for the next design stage. These anchors are not rendered or visually approved yet.
+
+[ProjectAtlas.tsx](../../src/components/ProjectAtlas.tsx) uses the model for canvas targets/colors, connections, controls, selection, and displayed content. Selection now stores the project ID rather than an array index. Scene order remains IsdaLog, DormFix, CentraLog, PharmaLink regardless of the input record order. A missing/duplicate project or missing case-study destination fails explicitly rather than silently pairing the wrong identity with a symbol. No CSS, symbol geometry, particle count, cadence, motion preference, or suspension behavior was changed.
+
+Validation: 105 tests, TypeScript, production build, and 28-page static verification passed. Three new model tests cover record reordering, derived content/routes without source mutation, and invalid identity/destination inputs. Browser checks covered all four keyboard selections with matching accents/positions/credits/destinations, paused selection and pause persistence between variants, all maintained workflow labels, the Laravel 11 Explore filter, baseline desktop appearance, light-theme phone appearance, and 320px reflow (310px document and scroll width). Inspected Explore warning/error logs were empty. Actual reduced-motion preference emulation, screen-reader speech, and physical-device performance remain pending as recorded above. The original baseline captures remain unchanged.
