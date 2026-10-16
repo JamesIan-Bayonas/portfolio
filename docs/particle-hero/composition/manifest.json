@@ -1,0 +1,533 @@
+{
+  "date": "2026-10-16",
+  "timezone": "Asia/Singapore",
+  "baseRevision": "39a3d81c11ead92db8f0685ac71ef6c940b72502",
+  "stage": "Static composition",
+  "conditions": "Current composition with IsdaLog selected and motion paused; phone captures show the scene and workflow area rather than the complete taller widget.",
+  "images": [
+    {
+      "file": "explore-desktop-light.jpg",
+      "surface": "explore",
+      "theme": "light",
+      "selected": "isdalog",
+      "viewport": {
+        "documentWidth": 1430,
+        "height": 1000,
+        "scrollWidth": 1430,
+        "width": 1440
+      },
+      "image": {
+        "width": 1430,
+        "height": 993,
+        "bytes": 75776,
+        "sha256": "e36b437bfbfe52dc99948569b0845d77e710911dcd5b12412121181464381766"
+      }
+    },
+    {
+      "file": "explore-desktop-dark.jpg",
+      "surface": "explore",
+      "theme": "dark",
+      "selected": "isdalog",
+      "viewport": {
+        "documentWidth": 1430,
+        "height": 1000,
+        "scrollWidth": 1430,
+        "width": 1440
+      },
+      "image": {
+        "width": 1430,
+        "height": 993,
+        "bytes": 75893,
+        "sha256": "376cdc4fd7aa336e702ea17bfbef0f845e43ba4aaf7631549ced59e2a910527d"
+      }
+    },
+    {
+      "file": "explore-phone-dark.jpg",
+      "surface": "explore",
+      "theme": "dark",
+      "selected": "isdalog",
+      "viewport": {
+        "documentWidth": 310,
+        "height": 800,
+        "scrollWidth": 310,
+        "width": 320
+      },
+      "image": {
+        "width": 310,
+        "height": 775,
+        "bytes": 27044,
+        "sha256": "9a63b11a4a85fe840eefb65ad9754163e724215ea1d5dc163d7362422f6dae00"
+      }
+    },
+    {
+      "file": "explore-phone-light.jpg",
+      "surface": "explore",
+      "theme": "light",
+      "selected": "isdalog",
+      "viewport": {
+        "documentWidth": 310,
+        "height": 800,
+        "scrollWidth": 310,
+        "width": 320
+      },
+      "image": {
+        "width": 310,
+        "height": 775,
+        "bytes": 27091,
+        "sha256": "adaf14d4dd2b2694c6b83f6cf7e83f13966f623f0a7af967b71896f51edcd1e1"
+      }
+    },
+    {
+      "file": "home-phone-light.jpg",
+      "surface": "home",
+      "theme": "light",
+      "selected": "isdalog",
+      "viewport": {
+        "documentWidth": 310,
+        "height": 800,
+        "scrollWidth": 310,
+        "width": 320
+      },
+      "image": {
+        "width": 310,
+        "height": 775,
+        "bytes": 26324,
+        "sha256": "f0c75269458b8fbcd7fde0006ae84abd80ec034c9d2048ec90bcd28f4142840b"
+      }
+    },
+    {
+      "file": "home-phone-dark.jpg",
+      "surface": "home",
+      "theme": "dark",
+      "selected": "isdalog",
+      "viewport": {
+        "documentWidth": 310,
+        "height": 800,
+        "scrollWidth": 310,
+        "width": 320
+      },
+      "image": {
+        "width": 310,
+        "height": 775,
+        "bytes": 26258,
+        "sha256": "ab4e6b5fc55f29fefd9ca8aeb0d59bfc47c3820521c3da8f294406bba9e98204"
+      }
+    },
+    {
+      "file": "home-desktop-dark.jpg",
+      "surface": "home",
+      "theme": "dark",
+      "selected": "isdalog",
+      "viewport": {
+        "documentWidth": 1430,
+        "height": 1000,
+        "scrollWidth": 1430,
+        "width": 1440
+      },
+      "image": {
+        "width": 1430,
+        "height": 993,
+        "bytes": 94315,
+        "sha256": "28cf85315cc8d64548fab589eb9c797657f01b4077f36cf55c41128868b9f9ad"
+      }
+    },
+    {
+      "file": "home-desktop-light.jpg",
+      "surface": "home",
+      "theme": "light",
+      "selected": "isdalog",
+      "viewport": {
+        "documentWidth": 1430,
+        "height": 1000,
+        "scrollWidth": 1430,
+        "width": 1440
+      },
+      "image": {
+        "width": 1430,
+        "height": 993,
+        "bytes": 96306,
+        "sha256": "027a82472d659067423caa0a46d1058aa0bc24511c2acad89ad0de5d69dedfc0"
+      }
+    }
+  ],
+  "contrastChecks": [
+    {
+      "theme": "dark",
+      "background": "rgb(22, 27, 34)",
+      "controlsValid": true,
+      "focus": "01IsdaLogFISHERIES",
+      "foreground": "rgb(55, 203, 214)",
+      "project": "IsdaLog.",
+      "workflow": [
+        {
+          "fits": true,
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "text": "01Register the catch↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "text": "02Publish and bid↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "text": "03Hold funds and dispatch↗"
+        }
+      ],
+      "contrast": 8.794025087701048
+    },
+    {
+      "theme": "dark",
+      "background": "rgb(22, 27, 34)",
+      "controlsValid": true,
+      "focus": "02DormFixHOUSING",
+      "foreground": "rgb(178, 138, 255)",
+      "project": "DormFix.",
+      "workflow": [
+        {
+          "fits": true,
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "text": "01Pair and approve↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "text": "02Assign a room↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "text": "03Review a payment↗"
+        }
+      ],
+      "contrast": 6.567113697077505
+    },
+    {
+      "theme": "dark",
+      "background": "rgb(22, 27, 34)",
+      "controlsValid": true,
+      "focus": "03CentraLogASSETS",
+      "foreground": "rgb(243, 180, 83)",
+      "project": "CentraLog.",
+      "workflow": [
+        {
+          "fits": true,
+          "href": "/projects/centralog/#centralog-workflow",
+          "text": "01Register and activate↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/centralog/#centralog-workflow",
+          "text": "02Move with a record↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/centralog/#centralog-workflow",
+          "text": "03Track maintenance↗"
+        }
+      ],
+      "contrast": 9.443554533943177
+    },
+    {
+      "theme": "dark",
+      "background": "rgb(22, 27, 34)",
+      "controlsValid": true,
+      "focus": "04PharmaLinkPHARMACY",
+      "foreground": "rgb(241, 132, 171)",
+      "project": "PharmaLink.",
+      "workflow": [
+        {
+          "fits": true,
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "text": "01Review inventory↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "text": "02Record a sale↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "text": "03Reverse when needed↗"
+        }
+      ],
+      "contrast": 7.107752281527365
+    },
+    {
+      "theme": "light",
+      "background": "rgb(255, 255, 255)",
+      "controlsValid": true,
+      "focus": "01IsdaLogFISHERIES",
+      "foreground": "rgb(13, 105, 115)",
+      "project": "IsdaLog.",
+      "workflow": [
+        {
+          "fits": true,
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "text": "01Register the catch↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "text": "02Publish and bid↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "text": "03Hold funds and dispatch↗"
+        }
+      ],
+      "contrast": 6.392102210346642
+    },
+    {
+      "theme": "light",
+      "background": "rgb(255, 255, 255)",
+      "controlsValid": true,
+      "focus": "02DormFixHOUSING",
+      "foreground": "rgb(113, 68, 165)",
+      "project": "DormFix.",
+      "workflow": [
+        {
+          "fits": true,
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "text": "01Pair and approve↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "text": "02Assign a room↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "text": "03Review a payment↗"
+        }
+      ],
+      "contrast": 6.835240025003416
+    },
+    {
+      "theme": "light",
+      "background": "rgb(255, 255, 255)",
+      "controlsValid": true,
+      "focus": "03CentraLogASSETS",
+      "foreground": "rgb(128, 82, 13)",
+      "project": "CentraLog.",
+      "workflow": [
+        {
+          "fits": true,
+          "href": "/projects/centralog/#centralog-workflow",
+          "text": "01Register and activate↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/centralog/#centralog-workflow",
+          "text": "02Move with a record↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/centralog/#centralog-workflow",
+          "text": "03Track maintenance↗"
+        }
+      ],
+      "contrast": 6.708048151931035
+    },
+    {
+      "theme": "light",
+      "background": "rgb(255, 255, 255)",
+      "controlsValid": true,
+      "focus": "04PharmaLinkPHARMACY",
+      "foreground": "rgb(163, 52, 92)",
+      "project": "PharmaLink.",
+      "workflow": [
+        {
+          "fits": true,
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "text": "01Review inventory↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "text": "02Record a sale↗"
+        },
+        {
+          "fits": true,
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "text": "03Reverse when needed↗"
+        }
+      ],
+      "contrast": 6.5562633672192066
+    }
+  ],
+  "layoutChecks": [
+    {
+      "controlsFit": true,
+      "documentWidth": 310,
+      "linksFit": true,
+      "nodeColumns": "123px 123px",
+      "project": "IsdaLog.",
+      "scrollWidth": 310,
+      "separateLabels": true,
+      "viewport": 320,
+      "labelBoundaryGapCssPixels": -0.000030517578125
+    },
+    {
+      "controlsFit": true,
+      "documentWidth": 310,
+      "linksFit": true,
+      "nodeColumns": "123px 123px",
+      "project": "DormFix.",
+      "scrollWidth": 310,
+      "separateLabels": true,
+      "viewport": 320,
+      "labelBoundaryGapCssPixels": -0.000030517578125
+    },
+    {
+      "controlsFit": true,
+      "documentWidth": 310,
+      "linksFit": true,
+      "nodeColumns": "123px 123px",
+      "project": "CentraLog.",
+      "scrollWidth": 310,
+      "separateLabels": true,
+      "viewport": 320,
+      "labelBoundaryGapCssPixels": 0.000030517578125
+    },
+    {
+      "controlsFit": true,
+      "documentWidth": 310,
+      "linksFit": true,
+      "nodeColumns": "123px 123px",
+      "project": "PharmaLink.",
+      "scrollWidth": 310,
+      "separateLabels": true,
+      "viewport": 320,
+      "labelBoundaryGapCssPixels": 0.000030517578125
+    },
+    {
+      "controlsFit": true,
+      "documentWidth": 1030,
+      "linksFit": true,
+      "nodeColumns": "180.45px 180.462px",
+      "project": "IsdaLog.",
+      "scrollWidth": 1030,
+      "separateLabels": true,
+      "viewport": 1040,
+      "labelBoundaryGapCssPixels": 0.000030517578125
+    },
+    {
+      "controlsFit": true,
+      "documentWidth": 1030,
+      "linksFit": true,
+      "nodeColumns": "180.45px 180.462px",
+      "project": "DormFix.",
+      "scrollWidth": 1030,
+      "separateLabels": true,
+      "viewport": 1040,
+      "labelBoundaryGapCssPixels": 0.000030517578125
+    },
+    {
+      "controlsFit": true,
+      "documentWidth": 1030,
+      "linksFit": true,
+      "nodeColumns": "180.45px 180.462px",
+      "project": "CentraLog.",
+      "scrollWidth": 1030,
+      "separateLabels": true,
+      "viewport": 1040,
+      "labelBoundaryGapCssPixels": 0.000030517578125
+    },
+    {
+      "controlsFit": true,
+      "documentWidth": 1030,
+      "linksFit": true,
+      "nodeColumns": "180.45px 180.462px",
+      "project": "PharmaLink.",
+      "scrollWidth": 1030,
+      "separateLabels": true,
+      "viewport": 1040,
+      "labelBoundaryGapCssPixels": 0.000030517578125
+    }
+  ],
+  "labelBoundaryChecks": [
+    {
+      "gap": -0.000030517578125,
+      "viewport": 320
+    },
+    {
+      "gap": -0.000030517578125,
+      "viewport": 320
+    },
+    {
+      "gap": 0.000030517578125,
+      "viewport": 320
+    },
+    {
+      "gap": 0.000030517578125,
+      "viewport": 320
+    },
+    {
+      "gap": 0.000030517578125,
+      "viewport": 1040
+    },
+    {
+      "gap": 0.000030517578125,
+      "viewport": 1040
+    },
+    {
+      "gap": 0.000030517578125,
+      "viewport": 1040
+    },
+    {
+      "gap": 0.000030517578125,
+      "viewport": 1040
+    }
+  ],
+  "labelBoundaryToleranceCssPixels": 0.01,
+  "exploreChecks": [
+    {
+      "credit": "Independent project · Sole developer",
+      "fits": true,
+      "gap": 0,
+      "links": [
+        "/projects/isdalog/",
+        "/projects/isdalog/#walkthrough"
+      ],
+      "project": "IsdaLog."
+    },
+    {
+      "credit": "Collaborative capstone · Feature developer",
+      "fits": true,
+      "gap": 0,
+      "links": [
+        "/projects/dormfix/",
+        "/projects/dormfix/#walkthrough"
+      ],
+      "project": "DormFix."
+    },
+    {
+      "credit": "School project · Sole developer",
+      "fits": true,
+      "gap": 0,
+      "links": [
+        "/projects/centralog/",
+        "/projects/centralog/#walkthrough"
+      ],
+      "project": "CentraLog."
+    },
+    {
+      "credit": "School project · Sole developer",
+      "fits": true,
+      "gap": 0,
+      "links": [
+        "/projects/pharmalink/",
+        "/projects/pharmalink/#walkthrough"
+      ],
+      "project": "PharmaLink."
+    }
+  ],
+  "workflowDestinationChecked": "/projects/centralog/#centralog-workflow",
+  "technologyFilterChecked": "/explore/?tech=Laravel+11",
+  "console": []
+}

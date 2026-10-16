@@ -79,14 +79,14 @@ function StarField({ active, stopped }: StarFieldProps) {
           if (point.group !== other.group || distance > width * 0.15) continue
           context!.globalAlpha =
             (1 - distance / (width * 0.15)) *
-            (point.group === selected.current ? 0.42 : 0.16) *
+            (point.group === selected.current ? 0.16 : 0.06) *
             (dark ? 1 : 1.4)
           context!.beginPath()
           context!.moveTo(point.x, point.y)
           context!.lineTo(other.x, other.y)
           context!.stroke()
         }
-        context!.globalAlpha = point.group === selected.current ? 0.85 : 0.4
+        context!.globalAlpha = point.group === selected.current ? 0.32 : 0.15
         context!.fillStyle = point.accent
         context!.beginPath()
         context!.arc(point.x, point.y, i % 4 === 0 ? 2.1 : 1.2, 0, Math.PI * 2)
@@ -94,8 +94,10 @@ function StarField({ active, stopped }: StarFieldProps) {
       })
       context!.globalAlpha = 1
       const selectedScene = scenesById.get(selected.current)!
-      context!.fillStyle = selectedScene.accent
-      const scale = Math.min(width * 0.14, height * 0.17)
+      context!.fillStyle = dark
+        ? selectedScene.accent
+        : selectedScene.lightAccent
+      const scale = Math.min(width * 0.32, height * 0.36)
       const blend = stopped ? 1 : 1 - Math.exp(-delta * 6)
       morph.current.forEach((point, index) => {
         const target = selectedScene.symbol[index]
@@ -105,7 +107,7 @@ function StarField({ active, stopped }: StarFieldProps) {
         context!.arc(
           width / 2 + point.x * scale,
           height / 2 + point.y * scale,
-          1.25,
+          1.7,
           0,
           Math.PI * 2,
         )
@@ -245,7 +247,12 @@ export default function ProjectAtlas({
       ref={root}
       className={`project-atlas${compact ? " project-atlas-compact" : ""}`}
       data-stopped={stopped}
-      style={{ "--atlas-color": scene.accent } as CSSProperties}
+      style={
+        {
+          "--atlas-color": scene.accent,
+          "--atlas-light-color": scene.lightAccent,
+        } as CSSProperties
+      }
       aria-label="Interactive project atlas"
     >
       <div className="atlas-topline font-mono">
@@ -273,62 +280,60 @@ export default function ProjectAtlas({
               : "Pause motion Ⅱ"}
         </button>
       </div>
+      <div className="atlas-nodes" role="group" aria-label="Select a system">
+        {scenes.map((item, index) => (
+          <button
+            key={item.id}
+            type="button"
+            className="atlas-node"
+            style={
+              {
+                "--node-color": item.accent,
+                "--node-light-color": item.lightAccent,
+              } as CSSProperties
+            }
+            aria-pressed={selected === item.id}
+            aria-controls={`${id}-detail ${id}-workflow`}
+            onClick={() => setSelected(item.id)}
+          >
+            <span className="atlas-node-mark" aria-hidden="true">
+              0{index + 1}
+            </span>
+            <strong>{item.project.name}</strong>
+            <span className="font-mono">{item.label}</span>
+          </button>
+        ))}
+      </div>
       <div className="atlas-layout">
-        <div className="atlas-scene">
-          <StarField active={selected} stopped={stopped} />
-          <svg
-            className="atlas-connections"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            {scenes.map((item) => (
-              <path
-                key={item.id}
-                className={item.id === selected ? "is-selected" : ""}
-                d={`M 50 50 Q ${item.position.x} 50 ${item.position.x} ${item.position.y}`}
-                style={{ "--node-color": item.accent } as CSSProperties}
-              />
-            ))}
-          </svg>
-          <div className="atlas-hub" aria-hidden="true">
-            <span className="atlas-orbit" />
-            <span className="atlas-orbit atlas-orbit-inner" />
-
-            <span className="font-mono">JIB / SYSTEMS</span>
+        <div className="atlas-visual">
+          <div className="atlas-scene" aria-hidden="true">
+            <StarField active={selected} stopped={stopped} />
+            <div className="atlas-symbol-halo" />
+            <div className="atlas-scene-caption font-mono">
+              <span>PROJECT / 0{scenes.indexOf(scene) + 1}</span>
+              <span>{scene.label}</span>
+            </div>
+            <p className="atlas-symbol-caption font-mono">
+              EXPLORE THE WORKFLOW BELOW ↓
+            </p>
           </div>
-          <div
-            className="atlas-nodes"
-            role="group"
-            aria-label="Select a system"
+          <ol
+            id={`${id}-workflow`}
+            className="atlas-workflow"
+            aria-label={`${project.name} workflow overview`}
           >
-            {scenes.map((item, index) => (
-              <button
-                key={item.id}
-                type="button"
-                className="atlas-node"
-                style={
-                  {
-                    left: `${item.position.x}%`,
-                    top: `${item.position.y}%`,
-                    "--node-color": item.accent,
-                  } as CSSProperties
-                }
-                aria-pressed={selected === item.id}
-                aria-controls={`${id}-detail`}
-                onClick={() => setSelected(item.id)}
-              >
-                <span className="atlas-node-mark" aria-hidden="true">
-                  0{index + 1}
-                </span>
-                <strong>{item.project.name}</strong>
-                <span className="font-mono">{item.label}</span>
-              </button>
+            {scene.workflow.map((step, index) => (
+              <li key={step.title}>
+                <a href={step.href}>
+                  <span className="font-mono" aria-hidden="true">
+                    0{index + 1}
+                  </span>
+                  <span>{step.title}</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </li>
             ))}
-          </div>
-          <p className="atlas-instruction font-mono">
-            SELECT A SYSTEM <span aria-hidden="true">↗</span>
-          </p>
+          </ol>
         </div>
         <div
           id={`${id}-detail`}
@@ -348,14 +353,6 @@ export default function ProjectAtlas({
             <p className="atlas-credit">
               {project.context} · {project.role}
             </p>
-            <ol className="atlas-workflow">
-              {scene.workflow.map((step, index) => (
-                <li key={step.title}>
-                  <span className="font-mono">0{index + 1}</span>
-                  {step.title}
-                </li>
-              ))}
-            </ol>
             <div className="atlas-project-actions font-mono">
               <a href={scene.caseStudyHref}>
                 Read the case study <span aria-hidden="true">↗</span>

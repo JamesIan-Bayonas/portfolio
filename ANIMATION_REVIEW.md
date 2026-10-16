@@ -100,3 +100,7 @@ Scope/baseline stage completed in docs/particle-hero/README.md. Twelve paused st
 ## Particle hero scene data — 16 October 2026
 
 Prepared the richer hero's identity-keyed scene model and connected the existing Atlas to it. Project selection no longer depends on project-array indices. Symbols, accents, node positions, maintained text/routes, and technology controls keep their current behavior. Future workflow-label anchors are data only at this stage. All 105 tests and type/build/static checks passed, with browser coverage of both Atlas variants, keyboard identity selection, pause persistence/paused selection, workflows/filtering, and phone reflow. No new motion, geometry, or style changes were introduced. Next: review a static layered composition.
+
+## Particle hero static composition — 16 October 2026
+
+Completed the first visible redesign stage: larger foreground symbols, subdued background particles, fixed halo, separate project controls, and linked workflow labels outside the illustration. Removed the old orbit and connection-signal animations. Both variants support responsive button/link layouts and darker light-theme accent text. The paused view was reviewed across projects and themes; existing canvas motion remains available without a new loop. All 105 tests and type/build/static checks passed. Keyboard destinations, technology filtering, phone/narrow-column reflow, and computed accent-label contrast were checked. Evidence is in docs/particle-hero/composition/. New depth/parallax effects remain the next stage.

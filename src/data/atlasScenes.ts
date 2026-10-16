@@ -5,13 +5,25 @@ import { atlasSymbolPoints } from "../lib/atlasSymbols.ts"
 const definitions = {
   isdalog: {
     accent: "#37cbd6",
+    lightAccent: "#0d6973",
     label: "FISHERIES",
     position: { x: 23, y: 24 },
   },
-  dormfix: { accent: "#b28aff", label: "HOUSING", position: { x: 77, y: 24 } },
-  centralog: { accent: "#f3b453", label: "ASSETS", position: { x: 77, y: 76 } },
+  dormfix: {
+    accent: "#b28aff",
+    lightAccent: "#7144a5",
+    label: "HOUSING",
+    position: { x: 77, y: 24 },
+  },
+  centralog: {
+    accent: "#f3b453",
+    lightAccent: "#80520d",
+    label: "ASSETS",
+    position: { x: 77, y: 76 },
+  },
   pharmalink: {
     accent: "#f184ab",
+    lightAccent: "#a3345c",
     label: "PHARMACY",
     position: { x: 23, y: 76 },
   },
@@ -28,6 +40,7 @@ export interface AtlasScene {
   readonly id: AtlasProjectId
   readonly project: Project
   readonly accent: string
+  readonly lightAccent: string
   readonly label: string
   readonly position: ScenePosition
   readonly symbol: readonly ScenePosition[]

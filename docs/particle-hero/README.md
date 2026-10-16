@@ -77,8 +77,8 @@ Not established by this stage: measured frame rate or CPU/GPU cost, physical-pho
 | --- | --- | --- |
 | 1. Scope and baseline | Complete | Bounded first release, preservation checklist, source revision, 12 captures, and recorded checks |
 | 2. Project scene data | Complete | Identity-keyed scenes supply symbols, accents, existing positions/labels, maintained workflow copy, destinations, and provisional future label anchors; existing rendering preserved |
-| 3. Static composition | Next | Recognizable symbols and readable labels in both variants/themes; no collisions; useful appearance with animation disabled |
-| 4. Subtle depth | Planned | Three restrained layers and bounded fine-pointer movement; no required hover/touch gesture or second continuous loop |
+| 3. Static composition | Complete | Larger symbols, quieter surroundings, separate project controls, linked workflow labels, theme-aware accent text, and responsive compact/full layouts |
+| 4. Subtle depth | Next | Three restrained layers and bounded fine-pointer movement; no required hover/touch gesture or second continuous loop |
 | 5. Selection transitions | Planned | Immediate text/control updates, finite decoration, latest-selection interruption, stable keyboard focus, no automatic cycling |
 | 6. Workflow connections | Planned | At most three meaningful labels, valid destinations, no unsupported live-activity implications |
 | 7. Motion/accessibility | Planned | Paused/static operation, preference-change handling, suspension/cleanup, accessible content and controls |
@@ -95,3 +95,22 @@ The static composition is the first visual review milestone. A full 3D engine or
 [ProjectAtlas.tsx](../../src/components/ProjectAtlas.tsx) uses the model for canvas targets/colors, connections, controls, selection, and displayed content. Selection now stores the project ID rather than an array index. Scene order remains IsdaLog, DormFix, CentraLog, PharmaLink regardless of the input record order. A missing/duplicate project or missing case-study destination fails explicitly rather than silently pairing the wrong identity with a symbol. No CSS, symbol geometry, particle count, cadence, motion preference, or suspension behavior was changed.
 
 Validation: 105 tests, TypeScript, production build, and 28-page static verification passed. Three new model tests cover record reordering, derived content/routes without source mutation, and invalid identity/destination inputs. Browser checks covered all four keyboard selections with matching accents/positions/credits/destinations, paused selection and pause persistence between variants, all maintained workflow labels, the Laravel 11 Explore filter, baseline desktop appearance, light-theme phone appearance, and 320px reflow (310px document and scroll width). Inspected Explore warning/error logs were empty. Actual reduced-motion preference emulation, screen-reader speech, and physical-device performance remain pending as recorded above. The original baseline captures remain unchanged.
+
+## Stage 3: static composition — 16 October 2026
+
+The Atlas now separates project selection, the illustration, workflow explanations, and selected-project information. Project buttons sit above the scene. Larger symbols sit in front of quieter surrounding particles and a fixed halo; the old orbit animations and hub-to-button signal paths have been removed. Up to three maintained workflow labels are accessible links below the illustration, visible in both variants. Normal-flow labels replace the provisional floating-label layout to avoid collisions. Project metadata, case-study/walkthrough destinations, technology filtering, and pause persistence remain available.
+
+Light-theme accent colors now have darker equivalents. Measured project-kicker contrast against the actual flat detail backgrounds ranged from 6.39:1 to 9.44:1 across all four projects and both themes. This is a check of those labels, not a whole-site accessibility certification. Container-based layout switches keep buttons and links readable when the compact Atlas occupies a narrow desktop column as well as on phones.
+
+The composition was reviewed with motion paused. Existing canvas motion and selection morphing remain available; no new depth movement or animation loop was added. Particle counts, pixel-density cap, and frame gate remain unchanged. Normalized symbol geometry is unchanged; rendering scale and foreground dot size increased.
+
+| Surface | Dark | Light |
+| --- | --- | --- |
+| Homepage desktop | [View](composition/home-desktop-dark.jpg) | [View](composition/home-desktop-light.jpg) |
+| Homepage phone | [View](composition/home-phone-dark.jpg) | [View](composition/home-phone-light.jpg) |
+| Explore desktop | [View](composition/explore-desktop-dark.jpg) | [View](composition/explore-desktop-light.jpg) |
+| Explore phone | [View](composition/explore-phone-dark.jpg) | [View](composition/explore-phone-light.jpg) |
+
+[Composition manifest](composition/manifest.json) records the eight captures, computed accent contrast, keyboard/control references, project destinations, and layout measurements. Phone captures show the scene/workflow area of the taller widget. Boundary checks allow 0.01 CSS pixels for floating-point rounding between adjacent rectangles; measured differences were approximately ±0.00003px.
+
+Validation: all 105 tests, TypeScript, production build, and 28-page static verification passed. Browser checks covered all project identities in both themes, compact/full variants, workflow-link fitting, 320px phone and 1040px narrow-column layouts, valid control references, and keyboard order from the final project button into the workflow links. Enter opened the CentraLog workflow explanation at its existing heading; Laravel 11 filtering still returned IsdaLog. Document/scroll widths matched at 310px for a 320px viewport and at 1030px for a 1040px viewport. Inspected console logs were empty. Actual reduced-motion emulation, screen-reader speech, physical-device performance, and wider zoom review remain pending. Next: subtle depth.
