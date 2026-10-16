@@ -260,3 +260,11 @@ The owner has now authorized scoped commits and a GitHub push for the completed 
 - [x] Keep existing reducer/validation, history, responsive layout, and reduced-motion support.
 
 Validated with 102 tests, type checking, build/static verification, and local browser interactions. CentraLog's asset-lifecycle illustration remains a follow-up.
+
+## CentraLog asset-lifecycle illustration — 16 October 2026
+
+- [x] Connect the sample laptop's procurement, activation, repair, and restoration milestones.
+- [x] Show location and custodian changing together on transfer, then remaining assigned through maintenance.
+- [x] Retain completed repair days and history during report review; support reset, responsive cards, and reduced motion.
+
+This completes the queued project-specific Lab illustrations. Verified all six walkthrough stages, keyboard activation, reset, report history preservation, both themes, and 320px reflow. All 102 tests, type checking, production build, and 28-page static verification passed. Actual screen-reader speech and reduced-motion preference emulation remain manual checks.

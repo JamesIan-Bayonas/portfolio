@@ -1,5 +1,6 @@
 import { useReducer } from "react"
 import WalkthroughCompletion from "./WalkthroughCompletion"
+import AssetLifecycle from "./AssetLifecycle"
 import { useWorkflowMotion } from "./useWorkflowMotion"
 import {
   advanceAssetWalkthrough,
@@ -116,7 +117,16 @@ export default function CentraLogWalkthrough() {
             </p>
             <ol>
               {stages.map((item, index) => (
-                <li key={item.title} data-flow-state={index < state.step ? "completed" : index === state.step ? "current" : "upcoming"}>
+                <li
+                  key={item.title}
+                  data-flow-state={
+                    index < state.step
+                      ? "completed"
+                      : index === state.step
+                        ? "current"
+                        : "upcoming"
+                  }
+                >
                   <div
                     className={`receipt-stage ${
                       index === state.step ? "receipt-stage-current" : ""
@@ -147,27 +157,7 @@ export default function CentraLogWalkthrough() {
               <h3>{stage.title}</h3>
               <p>{stage.description}</p>
             </div>
-            <div className="receipt-fields">
-              <h4>Current sample asset record</h4>
-              <dl>
-                <div>
-                  <dt>Lifecycle</dt>
-                  <dd>{state.lifecycle}</dd>
-                </div>
-                <div>
-                  <dt>Location</dt>
-                  <dd>{state.location}</dd>
-                </div>
-                <div>
-                  <dt>Custodian</dt>
-                  <dd>{state.custodian}</dd>
-                </div>
-                <div>
-                  <dt>Completed repair time</dt>
-                  <dd>{state.repairDays} days</dd>
-                </div>
-              </dl>
-            </div>
+            <AssetLifecycle state={state} />
             <div className="walkthrough-controls">
               {state.step < 5 ? (
                 <button
@@ -207,7 +197,13 @@ export default function CentraLogWalkthrough() {
           </div>
         </div>
       </div>
-      {state.step === 5 && <WalkthroughCompletion projectId="centralog" outcome={`The sample laptop is active in ${state.location}, assigned to ${state.custodian}. Its transfer history and ${state.repairDays}-day repair window remain in the record after reporting.`} onReplay={() => dispatch({ type: "reset" })} />}
+      {state.step === 5 && (
+        <WalkthroughCompletion
+          projectId="centralog"
+          outcome={`The sample laptop is active in ${state.location}, assigned to ${state.custodian}. Its transfer history and ${state.repairDays}-day repair window remain in the record after reporting.`}
+          onReplay={() => dispatch({ type: "reset" })}
+        />
+      )}
     </section>
   )
 }

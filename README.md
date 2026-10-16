@@ -210,3 +210,5 @@ Lab walkthroughs now accent the current stage, connect completed stages, and bri
 The valuation chart supports pointer and keyboard day exploration with an independent evaluation marker and exact values. DormFix illustrates receipt text becoming structured fields. IsdaLog displays a moving delivery marker alongside separate custody and catch-price fund states; delivery does not release held funds before buyer inspection.
 
 PharmaLink's Lab now connects the cart, recorded sale, and exact remaining stock in one illustration. A failed checkout leaves them unchanged; a reasoned void restores the sample units while preserving the original receipt and a separate adjustment. Motion is finite and respects reduced-motion preferences.
+
+CentraLog's asset walkthrough now illustrates the sample laptop's lifecycle with connected equipment, custody, and repair records. Transfer updates location and custodian together; maintenance preserves that assignment, resolution retains the 30-day repair window, and reporting keeps the existing history. Finite motion respects reduced-motion preferences, and cards stack on narrow screens.
