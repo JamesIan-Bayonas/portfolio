@@ -403,9 +403,6 @@ export default function ProjectAtlas({
               <span>PROJECT / 0{scenes.indexOf(scene) + 1}</span>
               <span>{scene.label}</span>
             </div>
-            <p className="atlas-symbol-caption font-mono">
-              EXPLORE THE WORKFLOW BELOW ↓
-            </p>
           </div>
           <ol
             id={`${id}-workflow`}

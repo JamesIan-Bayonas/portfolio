@@ -316,3 +316,7 @@ Stage 4 is implemented: three restrained depths, bounded fine-pointer parallax, 
 ## Particle hero selection transitions — 17 October 2026
 
 Stage 5 is implemented: finite symbol morphs, a brief selection ring, and interruption from the displayed shape toward the latest choice. Text, links, and controls update immediately with stable keyboard focus. Paused/reduced-motion selections settle directly, and Play does not replay settled transitions. No automatic cycling, new dependency, or extra animation loop. All 109 tests and type/build/static checks passed; browser coverage included rapid selection, pause mid-morph, immediate copy/routes, keyboard order, both themes/variants, and 320px reflow. Full notes and remaining manual checks: docs/particle-hero/README.md. Next: workflow connections.
+
+## Particle hero workflow connections — 17 October 2026
+
+Stage 6 is implemented: the selected symbol connects to up to three maintained workflow links, using a desktop branch or narrow-layout side rail. Native links retain immediate text, keyboard focus, and project destinations. Finite decorative reveals respect pause/reduced-motion and offscreen state; no live-activity signals or new rendering loop. All 109 existing tests and type/build/static checks passed. Browser review covered all workflow destinations, keyboard activation/highlight, both themes/variants, 320px phone and 1040px narrow-column reflow, finite playback, and offscreen suspension. Full notes: docs/particle-hero/README.md. Next: motion/accessibility review.
