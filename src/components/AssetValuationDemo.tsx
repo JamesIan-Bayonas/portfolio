@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useId, useState, type PointerEvent } from "react"
+import "./ValuationChart.css"
+import { useWorkflowMotion } from "./useWorkflowMotion"
 import {
   bookValueAt,
   DAYS_PER_MONTH,
@@ -90,6 +92,9 @@ interface ValueChartProps {
 }
 
 function ValueChart({ scenario, method }: ValueChartProps) {
+  const chartId = useId()
+  const revision = JSON.stringify([scenario, method])
+  const [inspection, setInspection] = useState({ revision, day: scenario.elapsedDays })
   const horizon = Math.ceil(
     Math.max(
       scenario.elapsedDays,
@@ -104,6 +109,19 @@ function ValueChart({ scenario, method }: ValueChartProps) {
     bottom = 54
   const chartWidth = width - left - right,
     chartHeight = height - top - bottom
+  const inspectedDay = inspection.revision === revision
+    ? Math.min(horizon, inspection.day)
+    : scenario.elapsedDays
+  const inspect = (day: number) => setInspection({
+    revision,
+    day: Math.max(0, Math.min(horizon, Math.round(day))),
+  })
+  const inspectPointer = (event: PointerEvent<SVGSVGElement>) => {
+    const matrix = event.currentTarget.getScreenCTM()
+    if (!matrix) return
+    const point = new DOMPoint(event.clientX, event.clientY).matrixTransform(matrix.inverse())
+    inspect(((point.x - left) / chartWidth) * horizon)
+  }
   const x = (day: number) => left + (day / horizon) * chartWidth
   const y = (value: number) => top + (1 - value / scenario.cost) * chartHeight
   const days = [
@@ -125,6 +143,9 @@ function ValueChart({ scenario, method }: ValueChartProps) {
       .join(" ")
   const current = bookValueAt(scenario, method, scenario.elapsedDays)
   const baseline = bookValueAt(scenario, method, scenario.elapsedDays, false)
+  const inspectedValue = bookValueAt(scenario, method, inspectedDay)
+  const inspectedBaseline = bookValueAt(scenario, method, inspectedDay, false)
+  const inspectedRepairDays = repairDaysAt(scenario, inspectedDay)
   const ticks = [
     ...new Set([
       0,
@@ -133,6 +154,7 @@ function ValueChart({ scenario, method }: ValueChartProps) {
         (_, i) => (i + 1) * 365,
       ),
       scenario.elapsedDays,
+      inspectedDay,
       horizon,
     ]),
   ].sort((a, b) => a - b)
@@ -152,10 +174,26 @@ function ValueChart({ scenario, method }: ValueChartProps) {
       <svg
         viewBox={`0 0 ${width} ${height}`}
         role="img"
-        aria-labelledby="valuation-chart-title valuation-chart-description"
+        aria-labelledby={`${chartId}-title ${chartId}-description`}
+        aria-describedby={`${chartId}-help`}
+        onPointerDown={(event) => {
+          if (event.button !== 0) return
+          event.currentTarget.setPointerCapture(event.pointerId)
+          inspectPointer(event)
+        }}
+        onPointerMove={(event) => {
+          if (event.pointerType === "mouse" || event.currentTarget.hasPointerCapture(event.pointerId)) {
+            inspectPointer(event)
+          }
+        }}
+        onPointerUp={(event) => {
+          if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+            event.currentTarget.releasePointerCapture(event.pointerId)
+          }
+        }}
       >
-        <title id="valuation-chart-title">Asset value over time</title>
-        <desc id="valuation-chart-description">
+        <title id={`${chartId}-title`}>Asset value over time</title>
+        <desc id={`${chartId}-description`}>
           At day {scenario.elapsedDays}, the adjusted value is{" "}
           {formatMoney(current)}, compared with {formatMoney(baseline)} without
           repair adjustment. The shaded interval represents one sample repair
@@ -195,8 +233,10 @@ function ValueChart({ scenario, method }: ValueChartProps) {
             className="chart-repair-window"
           />
         )}
-        <path d={path(false)} className="chart-baseline" />
-        <path d={path(true)} className="chart-adjusted" />
+        <g key={revision} className="chart-curves">
+          <path d={path(false)} className="chart-baseline" />
+          <path d={path(true)} className="chart-adjusted" />
+        </g>
         <line
           x1={x(scenario.elapsedDays)}
           x2={x(scenario.elapsedDays)}
@@ -210,6 +250,14 @@ function ValueChart({ scenario, method }: ValueChartProps) {
           r="5"
           className="chart-point"
         />
+        <g aria-hidden="true">
+          <line x1={x(inspectedDay)} x2={x(inspectedDay)} y1={top}
+            y2={height - bottom} className="chart-inspection-line" />
+          <circle cx={x(inspectedDay)} cy={y(inspectedBaseline)} r="5"
+            className="chart-inspection-baseline" />
+          <circle cx={x(inspectedDay)} cy={y(inspectedValue)} r="6"
+            className="chart-point" />
+        </g>
         {[0, 0.25, 0.5, 0.75, 1].map((fraction) => (
           <text
             key={fraction}
@@ -227,16 +275,44 @@ function ValueChart({ scenario, method }: ValueChartProps) {
           Value (₱ thousands)
         </text>
       </svg>
+      <div className="chart-explorer">
+        <div className="chart-explorer-heading">
+          <label htmlFor={`${chartId}-day`}>Explore the timeline</label>
+          <button type="button" onClick={() => inspect(scenario.elapsedDays)}
+            disabled={inspectedDay === scenario.elapsedDays}>
+            Return to evaluation day
+          </button>
+        </div>
+        <p id={`${chartId}-help`} className="chart-explorer-help">
+          Move across the chart or drag the slider. Use arrow keys for one day;
+          Home and End jump to the endpoints. Exploring leaves your asset inputs unchanged.
+        </p>
+        <input id={`${chartId}-day`} type="range" min={0} max={horizon} step={1}
+          value={inspectedDay}
+          aria-describedby={`${chartId}-help`}
+          aria-valuetext={`Day ${inspectedDay}: adjusted ${formatMoney(inspectedValue)}, without repairs ${formatMoney(inspectedBaseline)}, ${inspectedRepairDays} repair days elapsed`}
+          onChange={(event) => inspect(Number(event.target.value))} />
+        <div className="chart-explorer-day font-mono">
+          <strong>Day {inspectedDay}</strong>
+          <span>{inspectedDay === scenario.elapsedDays ? "Evaluation day" : `Evaluation remains day ${scenario.elapsedDays}`}</span>
+        </div>
+        <dl className="chart-inspection-values">
+          <div><dt>With repair adjustment</dt><dd>{formatMoney(inspectedValue)}</dd></div>
+          <div><dt>Without repairs</dt><dd>{formatMoney(inspectedBaseline)}</dd></div>
+          <div><dt>Repair days elapsed</dt><dd>{inspectedRepairDays}</dd></div>
+        </dl>
+      </div>
       <p className="chart-caption">
         Shading marks the repair window. The blue line pauses while the asset is
-        under repair.
+        under repair. The dashed vertical line marks your evaluation day;
+        the solid line follows the day you explore.
       </p>
       <details className="valuation-table-details">
         <summary>View the values as a table</summary>
         <div className="valuation-table-wrap">
           <table>
             <caption>
-              Annual checkpoints, the evaluation day, and the chart endpoint.
+              Annual checkpoints, the evaluation day, the explored day, and the chart endpoint.
             </caption>
             <thead>
               <tr>
@@ -251,7 +327,8 @@ function ValueChart({ scenario, method }: ValueChartProps) {
                 <tr key={day}>
                   <th scope="row">
                     {day}
-                    {day === scenario.elapsedDays ? " · now" : ""}
+                    {day === scenario.elapsedDays ? " · evaluation" : ""}
+                    {day === inspectedDay ? " · explored" : ""}
                   </th>
                   <td>{repairDaysAt(scenario, day)}</td>
                   <td>{formatMoney(bookValueAt(scenario, method, day))}</td>
@@ -271,6 +348,7 @@ function ValueChart({ scenario, method }: ValueChartProps) {
 export default function AssetValuationDemo({ caseStudyHref = "/#project-centralog" }: { caseStudyHref?: string }) {
   const [form, setForm] = useState<ScenarioForm>(() => toForm(defaultScenario))
   const [method, setMethod] = useState<DepreciationMethod>("straight-line")
+  const motionRoot = useWorkflowMotion<HTMLDivElement>(form, method)
   const parse = (value: string) => (value.trim() ? Number(value) : NaN)
   const scenario: AssetScenario = {
     cost: parse(form.cost),
@@ -291,7 +369,7 @@ export default function AssetValuationDemo({ caseStudyHref = "/#project-centralo
   const repairDays = valid ? repairDaysAt(scenario, scenario.elapsedDays) : 0
 
   return (
-    <div className="valuation-demo">
+    <div className="valuation-demo" ref={motionRoot}>
       <div className="valuation-demo-bar font-mono">
         <span>CENTRALOG / ASSET VALUATION</span>
         <span>SAMPLE DATA · INTERACTIVE</span>

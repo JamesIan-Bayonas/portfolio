@@ -1,5 +1,6 @@
 import { useReducer, useState } from "react"
 import WalkthroughCompletion from "./WalkthroughCompletion"
+import { useWorkflowMotion } from "./useWorkflowMotion"
 import {
   advanceSaleWalkthrough,
   initialSaleWalkthrough,
@@ -54,6 +55,7 @@ export default function PharmaLinkWalkthrough() {
   const [fail, setFail] = useState(false)
   const [reason, setReason] = useState("")
   const stage = stages[state.step]
+  const motionRoot = useWorkflowMotion(state)
   function reset() {
     dispatch({ type: "reset" })
     setFail(false)
@@ -61,6 +63,7 @@ export default function PharmaLinkWalkthrough() {
   }
   return (
     <section
+      ref={motionRoot}
       id="walkthrough"
       className="isdalog-walkthrough"
       aria-labelledby="sale-walkthrough-title"
@@ -98,7 +101,7 @@ export default function PharmaLinkWalkthrough() {
             </p>
             <ol>
               {stages.map((item, index) => (
-                <li key={item.title}>
+                <li key={item.title} data-flow-state={index < state.step ? "completed" : index === state.step ? "current" : "upcoming"}>
                   <div
                     className={`receipt-stage ${
                       index === state.step ? "receipt-stage-current" : ""

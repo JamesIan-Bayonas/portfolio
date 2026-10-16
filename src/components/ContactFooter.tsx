@@ -3,6 +3,7 @@ import { motion, useInView, useReducedMotion } from "motion/react"
 import SpotlightCard from "./ui/SpotlightCard"
 import ContactAction from "./ContactAction"
 import { contactEmail } from "../lib/contact"
+import SignatureWordmark from "./SignatureWordmark"
 
 const cards = [
   {
@@ -203,6 +204,8 @@ export default function ContactFooter() {
             <ContactCard key={card.label} card={card} index={i} />
           ))}
         </div>
+
+        <SignatureWordmark />
 
         {/* Footer bar */}
         <motion.div

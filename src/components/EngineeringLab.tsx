@@ -56,7 +56,7 @@ export default function EngineeringLab({
         ) : (
           <div className="lab-loading" aria-hidden="true" />
         )}
-        {!embedded && <a className="asset-lab-link font-mono" href="/lab/">Explore all engineering demos ↗</a>}
+        {!embedded && <div className="toolbox-actions font-mono"><a className="asset-lab-link" href="/lab/">Explore all engineering demos ↗</a><a className="asset-lab-link" href="#tools">Inspect the tools & stacks ↓</a></div>}
       </div>
     </section>
   )

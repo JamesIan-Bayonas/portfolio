@@ -1,5 +1,6 @@
 import { useReducer } from "react"
 import WalkthroughCompletion from "./WalkthroughCompletion"
+import { useWorkflowMotion } from "./useWorkflowMotion"
 import {
   advanceAssetWalkthrough,
   initialAssetWalkthrough,
@@ -75,8 +76,10 @@ export default function CentraLogWalkthrough() {
     initialAssetWalkthrough,
   )
   const stage = stages[state.step]
+  const motionRoot = useWorkflowMotion(state)
   return (
     <section
+      ref={motionRoot}
       id="walkthrough"
       className="isdalog-walkthrough"
       aria-labelledby="asset-walkthrough-title"
@@ -113,7 +116,7 @@ export default function CentraLogWalkthrough() {
             </p>
             <ol>
               {stages.map((item, index) => (
-                <li key={item.title}>
+                <li key={item.title} data-flow-state={index < state.step ? "completed" : index === state.step ? "current" : "upcoming"}>
                   <div
                     className={`receipt-stage ${
                       index === state.step ? "receipt-stage-current" : ""

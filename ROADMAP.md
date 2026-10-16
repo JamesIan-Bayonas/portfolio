@@ -203,3 +203,52 @@ Remaining bounded follow-ups:
 - [x] Optional, lazy-loaded profile command explorer using maintained English/Filipino professional content and real project/technology links.
 
 Validation: 102 tests, TypeScript, production build, and 28 static pages passed. Browser review included 320px reflow, search navigation, filter removal, Lab reset, and localized profile commands. Manual pointer-motion, actual zoom, screen-reader, and reduced-motion preference checks remain listed in QUALITY_REVIEW.md. Accent customization, reading modes, and a full 3D scene are future options, not part of this release.
+
+## Local: selectable tools and stack showcase
+
+- [x] Place Tools behind the systems within Skills & Evidence, after the homepage Lab.
+- [x] Add four persistent-selection tool cards with colored glow, corner accents, and keyboard support.
+- [x] Connect the selected tool to its documented project architecture, technology filters, contribution credit, sample workflow, and case study.
+- [x] Add Lab-to-tools and portfolio-search discovery.
+
+Validated locally with 102 existing tests, TypeScript, production build, static route verification, and desktop/320px browser checks. Changes intentionally remain uncommitted for the owner to review and publish manually.
+
+## Local: animated architecture connections — 16 October 2026
+
+- [x] Data-driven Toolbox circuit with sequential node feedback, drawn connectors, and finite travelling signals.
+- [x] Replay control with keyboard focus retained; offscreen/background suspension and static reduced-motion styling.
+- [x] Brief tool-card scan and icon-stroke feedback for selection, hover, and keyboard focus.
+
+Validated locally with TypeScript, 102 existing tests, build/static checks, and desktop/320px browser inspection. Heading decoding, the technology strip, and Lab workflow animation remain queued in ANIMATION_REVIEW.md. Changes remain uncommitted.
+
+## Local: text-decoding reveal — 16 October 2026
+
+- [x] Short decoding reveal on Toolbox entry and selected tool title changes.
+- [x] Stable text layout/accessibility label, immediate static reduced-motion rendering, and cancellation offscreen/backgrounded.
+
+TypeScript, 102 existing tests, build/static checks, and desktop/320px browser checks passed. The technology strip and Lab workflow enhancements remain queued. No commit or push was made.
+
+## Local: moving technology strip — 16 October 2026
+
+- [x] Project-derived technology labels/counts and working Explore filter links.
+- [x] Moving strip, Pause/Play, and Show all technologies catalog.
+- [x] Keyboard-friendly static browsing, hidden visual duplicate, responsive static reduced-motion layout, and offscreen/background suspension.
+
+Validated locally with TypeScript, 102 existing tests, build/static checks, and desktop/320px interaction checks. The next queued stage is Lab workflow animation. No commit or push was made.
+
+## Local: Lab workflow animations — 16 October 2026
+
+- [x] Completed/current stage feedback in receipt, settlement, sale/stock, and asset-lifecycle walkthroughs.
+- [x] Short highlights for changed visible fields, ledgers, history, validation feedback, and valuation results.
+- [x] Preserve user-driven progression, exact values, existing rules, native controls, and static reduced-motion rendering.
+
+TypeScript, 102 existing tests, build/static verification, and desktop/320px browser checks passed. Failed checkout, manual receipt decisions, pickup-code validation, sale/void accounting, valuation errors/reset, and transfer/repair history were checked. No commit or push was made.
+
+## Interactive Lab illustrations — 16 October 2026
+
+- [x] Explore valuation days with pointer, slider, arrow/Home/End keys, exact values, and an independent evaluation marker.
+- [x] Illustrate DormFix receipt extraction and parsing with finite scans, connector signals, and field reveals.
+- [x] Animate IsdaLog checkpoints while separately displaying current custody, held catch-price funds, and buyer-confirmed settlement.
+- [x] Keep failed handshakes, historical-step review, reset, native controls, responsive layout, and reduced-motion rendering intact.
+
+The owner has now authorized scoped commits and a GitHub push for the completed animation work. Previous local-only notes above record the instructions at the time of those changes.

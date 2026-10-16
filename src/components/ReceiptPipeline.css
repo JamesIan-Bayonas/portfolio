@@ -1,0 +1,47 @@
+.receipt-pipeline { margin: 24px 0; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-bg); overflow: hidden; }
+.receipt-pipeline-caption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; padding: 16px; border-bottom: 1px solid var(--color-border); }
+.receipt-pipeline-caption > span:first-child { font-size: 10px; color: var(--color-accent); }
+.receipt-pipeline-caption > span:last-child { font-size: 11px; color: var(--color-text2); }
+.receipt-pipeline-grid { display: grid; grid-template-columns: minmax(0, 1fr) 60px minmax(0, 1fr); padding: 20px; align-items: center; }
+.receipt-pipeline-source { position: relative; border: 1px solid var(--color-border); padding: 16px; overflow: hidden; min-width: 0; }
+.receipt-pipeline-label { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 10px; color: var(--color-accent); }
+.receipt-pipeline-source pre { margin: 16px 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 11px/2 var(--font-mono); }
+.receipt-pipeline-source pre span { display: block; }
+.receipt-pipeline-source p, .receipt-pipeline-output > p, .receipt-pipeline-review p { color: var(--color-text2); font-size: 11px; line-height: 1.8; }
+.receipt-pipeline-extracting pre span { animation: receipt-line-extract 500ms ease-out both; }
+.receipt-pipeline-scan { pointer-events: none; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--color-accent); box-shadow: 0 0 16px var(--color-accent); animation: receipt-text-scan 800ms ease-in-out both; }
+.receipt-pipeline-link { align-self: center; text-align: center; color: var(--color-text2); }
+.receipt-pipeline-link svg { width: 100%; height: 40px; }
+.receipt-pipeline-link path { stroke: var(--color-border); stroke-width: 1.5; }
+.receipt-pipeline-link-ready path { stroke: var(--color-accent); }
+.receipt-pipeline-link .receipt-pipeline-signal { stroke-width: 4; stroke-dasharray: .15 1; animation: receipt-field-transfer 650ms ease-out both; }
+.receipt-pipeline-link span { font: 8px var(--font-mono); }
+.receipt-pipeline-output { min-width: 0; }
+.receipt-pipeline-output h4 { font-size: 13px; margin-bottom: 16px; }
+.receipt-pipeline-output .receipt-fields { display: grid; gap: 8px; margin: 0 0 12px; border: 0; padding: 0; background: transparent; }
+.receipt-pipeline-output .receipt-fields > div { border: 1px solid var(--color-border); padding: 10px 12px; min-width: 0; }
+.receipt-pipeline-output dt { font-size: 10px; color: var(--color-text2); }
+.receipt-pipeline-output dd { font: 12px/1.6 var(--font-mono); margin: 4px 0 0; overflow-wrap: anywhere; }
+.receipt-pipeline-output [data-missing="true"] { border-style: dashed; }
+.receipt-pipeline-resolving .receipt-fields > div { animation: receipt-field-resolve 550ms ease-out both; }
+.receipt-pipeline-review { padding: 16px; border-top: 1px solid var(--color-border); display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 12px; }
+.receipt-pipeline-review > span { font-size: 10px; color: var(--color-text2); }
+.receipt-pipeline-review[data-review-active="true"] { border-top-color: var(--color-accent); }
+.receipt-pipeline-review[data-review-active="true"] > span { color: var(--color-accent); }
+@keyframes receipt-line-extract { from { opacity: .4; color: var(--color-accent); } to { opacity: 1; } }
+@keyframes receipt-text-scan { from { top: 0; opacity: 0; } 15%, 75% { opacity: .7; } to { top: 100%; opacity: 0; } }
+@keyframes receipt-field-transfer { from { stroke-dashoffset: .15; opacity: 1; } to { stroke-dashoffset: -1; opacity: 0; } }
+@keyframes receipt-field-resolve { from { opacity: .45; transform: translateY(6px); border-color: var(--color-accent); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 1100px) {
+  .receipt-pipeline-grid { grid-template-columns: 1fr; padding: 16px; gap: 16px; }
+  .receipt-pipeline-link { display: flex; justify-content: center; align-items: center; gap: 8px; }
+  .receipt-pipeline-link svg { width: 40px; transform: rotate(90deg); }
+}
+@media (max-width: 480px) {
+  .receipt-pipeline-grid, .receipt-pipeline-source { padding: 12px; }
+  .receipt-pipeline-review { grid-template-columns: 1fr; gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .receipt-pipeline-extracting pre span, .receipt-pipeline-resolving .receipt-fields > div { animation: none; }
+  .receipt-pipeline-scan, .receipt-pipeline-signal { display: none; }
+}

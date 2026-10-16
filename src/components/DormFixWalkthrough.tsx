@@ -1,5 +1,7 @@
 import { useReducer } from "react"
 import WalkthroughCompletion from "./WalkthroughCompletion"
+import ReceiptPipeline from "./ReceiptPipeline"
+import { useWorkflowMotion } from "./useWorkflowMotion"
 import {
   advanceReceiptReview,
   EXPECTED_RENT,
@@ -57,10 +59,11 @@ export default function DormFixWalkthrough() {
   const receipt = receiptScenarios[state.scenario]
   const stage = stages[state.step]
   const flags = receiptFlags(receipt)
-  const parsed = receipt.amount !== null && receipt.ageDays !== null
+  const motionRoot = useWorkflowMotion(state)
 
   return (
     <section
+      ref={motionRoot}
       id="walkthrough"
       className="isdalog-walkthrough"
       aria-labelledby="receipt-walkthrough-title"
@@ -94,7 +97,7 @@ export default function DormFixWalkthrough() {
             </p>
             <ol>
               {stages.map((item, index) => (
-                <li key={item.title}>
+                <li key={item.title} data-flow-state={index < state.step ? "completed" : index === state.step ? "current" : "upcoming"}>
                   <div
                     className={`receipt-stage ${
                       index === state.step ? "receipt-stage-current" : ""
@@ -145,53 +148,7 @@ export default function DormFixWalkthrough() {
               <h3>{stage.title}</h3>
               <p>{stage.description}</p>
             </div>
-            {state.step < 2 ? (
-              <figure className="receipt-paper">
-                <figcaption className="font-mono">
-                  {state.step === 0
-                    ? "ILLUSTRATIVE RECEIPT CONTENT"
-                    : "SAMPLE EXTRACTED TEXT"}
-                </figcaption>
-                <pre>{receipt.text}</pre>
-              </figure>
-            ) : (
-              <div className="receipt-fields">
-                <h4>
-                  {parsed
-                    ? "Sample structured fields"
-                    : "Parsing needs manual review"}
-                </h4>
-                <dl>
-                  <div>
-                    <dt>Amount</dt>
-                    <dd>
-                      {receipt.amount === null
-                        ? "Unavailable"
-                        : money.format(receipt.amount)}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Receipt age</dt>
-                    <dd>
-                      {receipt.ageDays === null
-                        ? "Unavailable"
-                        : `${receipt.ageDays} day(s)`}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Reference</dt>
-                    <dd>{receipt.reference ?? "Unavailable"}</dd>
-                  </div>
-                </dl>
-                {!parsed && (
-                  <p>
-                    Required fields are missing. The simulation carries this
-                    issue to landlord review rather than filling in guessed
-                    values.
-                  </p>
-                )}
-              </div>
-            )}
+            <ReceiptPipeline receipt={receipt} state={state} />
             {state.step === 3 && (
               <div className="receipt-audit">
                 <h4>

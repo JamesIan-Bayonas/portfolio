@@ -1,0 +1,37 @@
+.delivery-flow { margin: 24px 0; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-bg); overflow: hidden; }
+.delivery-flow-caption { padding: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; border-bottom: 1px solid var(--color-border); }
+.delivery-flow-caption > span:first-child { font-size: 10px; color: var(--color-accent); }
+.delivery-flow-caption > span:last-child, .delivery-flow-heading > span { font-size: 11px; color: var(--color-text2); }
+.delivery-flow-route, .delivery-flow-funds { padding: 20px; }
+.delivery-flow-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+.delivery-flow-heading h4 { font-size: 14px; font-weight: 600; }
+.delivery-flow-track { position: relative; height: 2px; background: var(--color-border); margin: 40px 0 24px; }
+.delivery-flow-progress { position: absolute; left: 0; top: 0; bottom: 0; width: var(--delivery-position); background: var(--color-accent); transition: width 500ms ease-in-out; }
+.delivery-flow-marker { position: absolute; left: var(--delivery-position); top: 50%; transform: translate(-50%, -50%); width: 40px; height: 34px; display: grid; place-items: center; background: var(--color-bg); border: 1px solid var(--color-accent); border-radius: 4px; transition: left 500ms ease-in-out; }
+.delivery-flow-marker svg { width: 28px; height: 22px; stroke: var(--color-accent); stroke-width: 1.5; }
+.delivery-flow-checkpoints { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; list-style: none; margin: 0; padding: 0; }
+.delivery-flow-checkpoints li { color: var(--color-text2); min-width: 0; text-align: center; }
+.delivery-flow-checkpoints span { display: block; font: 10px var(--font-mono); margin-bottom: 8px; }
+.delivery-flow-checkpoints strong { font-size: 11px; font-weight: 500; overflow-wrap: anywhere; }
+.delivery-flow-checkpoints [data-reached="true"] span { color: var(--color-accent); }
+.delivery-flow-checkpoints [aria-current="step"] strong { color: var(--color-accent); }
+.delivery-flow-route > p, .delivery-flow-funds > p, .delivery-flow-note { font-size: 11px; line-height: 1.8; color: var(--color-text2); margin-top: 16px; }
+.delivery-flow-funds { border-top: 1px solid var(--color-border); }
+.delivery-flow-funds dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 16px 0; }
+.delivery-flow-funds dl > div { border: 1px solid var(--color-border); padding: 12px; min-width: 0; }
+.delivery-flow-funds dt { color: var(--color-text2); font-size: 10px; }
+.delivery-flow-funds dd { font: 12px/1.8 var(--font-mono); margin-top: 8px; overflow-wrap: anywhere; }
+.delivery-flow-funds[data-funds="held"] .delivery-flow-held, .delivery-flow-funds[data-funds="settled"] .delivery-flow-payout { border-color: var(--color-accent); }
+.delivery-flow-funds[data-funds="held"] .delivery-flow-held, .delivery-flow-funds[data-funds="settled"] .delivery-flow-payout { animation: delivery-funds-confirm 600ms ease-out; }
+@keyframes delivery-funds-confirm { from { background: color-mix(in srgb, var(--color-accent) 14%, transparent); } to { background: transparent; } }
+.delivery-flow-note { margin: 0; padding: 12px 20px; border-top: 1px solid var(--color-border); }
+@media (max-width: 600px) {
+  .delivery-flow-route, .delivery-flow-funds { padding: 14px; }
+  .delivery-flow-funds dl { grid-template-columns: 1fr; }
+  .delivery-flow-checkpoints { gap: 8px; }
+  .delivery-flow-checkpoints strong { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .delivery-flow-marker, .delivery-flow-progress { transition: none; }
+  .delivery-flow-funds dl > div { animation: none !important; }
+}

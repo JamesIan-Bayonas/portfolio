@@ -1,0 +1,27 @@
+.valuation-chart svg { touch-action: pan-y; cursor: crosshair; }
+.chart-curves { animation: valuation-curve-reveal 360ms ease-out; }
+.chart-inspection-line { stroke: var(--color-accent); stroke-width: 1; opacity: .8; }
+.chart-inspection-baseline { fill: var(--color-bg); stroke: var(--color-text2); stroke-width: 2; }
+.chart-explorer { margin-top: 12px; padding: 16px; border: 1px solid var(--color-border); border-radius: 4px; min-width: 0; }
+.chart-explorer-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.chart-explorer-heading label { font-size: 13px; font-weight: 600; }
+.chart-explorer-heading button { background: transparent; color: var(--color-accent); border: 1px solid var(--color-border); padding: 8px 10px; font-size: 11px; cursor: pointer; }
+.chart-explorer-heading button:disabled { color: var(--color-text2); cursor: default; }
+.chart-explorer-help { color: var(--color-text2); font-size: 11px; line-height: 1.7; margin: 12px 0; }
+.chart-explorer input[type="range"] { display: block; width: 100%; min-height: 36px; margin: 0; accent-color: var(--color-accent); cursor: ew-resize; }
+.chart-explorer input:focus-visible, .chart-explorer button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+.chart-explorer-day { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 11px; margin: 8px 0 16px; }
+.chart-explorer-day span { color: var(--color-text2); }
+.chart-inspection-values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; }
+.chart-inspection-values dt { color: var(--color-text2); font-size: 10px; line-height: 1.6; }
+.chart-inspection-values dd { margin: 4px 0 0; font-size: 14px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.chart-inspection-values > div:first-child dd { color: var(--color-accent); }
+@keyframes valuation-curve-reveal { from { opacity: .45; } to { opacity: 1; } }
+@media (max-width: 600px) {
+  .chart-inspection-values { grid-template-columns: 1fr; }
+  .chart-inspection-values > div { display: block; }
+  .chart-explorer { padding: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chart-curves { animation: none; }
+}

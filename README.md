@@ -196,3 +196,15 @@ The local content workspace also maintains paired English/Filipino About, Now, a
 The homepage and Explore include an interactive project atlas. Select a system to follow its workflow and case study, or choose a technology to filter the collection. Particle motion can be paused and follows reduced-motion preferences.
 
 Interactive refinements include removable Explore filter chips, terminal-style search, Lab reset and expandable explanations, and morphing project symbols. About, Now, and How I can help also offer an optional profile terminal with shortcuts such as `ls --skills`, `projects`, and `./now`; these display the maintained profile data and link to real project evidence. The terminal loads only after opening it.
+
+The homepage Skills & Evidence section includes **Tools behind the systems** at `/#tools`. Select a project tool to highlight its card and inspect the documented stack, architecture layers, contribution context, sample Lab, and case study. The technology chips open filtered project results. This showcase describes tools within the existing projects.
+
+A local footer design preview adds a large **JAMES IAN** wordmark with an SVG code-text fill, theme-aware outline, and a slow automatic highlight sweep that follows the mouse when hovered. It sits below the homepage contact cards and above the copyright bar. A pause control stops the animation; reduced-motion users receive a static treatment. The animation suspends offscreen and in background tabs.
+
+The selected Toolbox stack now includes animated circuit connections and sequential layer highlights, with a **Replay stack flow** control. Tool cards add a brief scanning accent and icon-stroke reveal. These finite effects pause offscreen/backgrounded; reduced-motion preferences display a complete static diagram.
+
+Above Toolbox, the moving technology strip lists the technologies in the documented projects and how many projects use each one. Labels open Explore filters. Use **Pause technology motion** or **Show all technologies** to browse at your own pace; keyboard focus and reduced-motion preferences provide static browsing.
+
+Lab walkthroughs now accent the current stage, connect completed stages, and briefly highlight changed output fields and history. The calculator highlights updated values. All progression and review decisions still use the existing user controls; reduced-motion preferences show immediate static results.
+
+The valuation chart supports pointer and keyboard day exploration with an independent evaluation marker and exact values. DormFix illustrates receipt text becoming structured fields. IsdaLog displays a moving delivery marker alongside separate custody and catch-price fund states; delivery does not release held funds before buyer inspection.

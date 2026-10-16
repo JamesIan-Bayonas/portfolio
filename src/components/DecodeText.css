@@ -1,0 +1,4 @@
+.decode-text { position: relative; display: inline-block; max-width: 100%; vertical-align: bottom; }
+.decode-text-layout { visibility: hidden; }
+.decode-text-visual { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .decode-text-layout { visibility: visible; } .decode-text-visual { display: none; } }

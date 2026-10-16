@@ -1,5 +1,7 @@
 import { useReducer, useState } from "react"
 import WalkthroughCompletion from "./WalkthroughCompletion"
+import DeliveryFlow from "./DeliveryFlow"
+import { useWorkflowMotion } from "./useWorkflowMotion"
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
 import ScreenshotPreview from "./ScreenshotPreview"
 import {
@@ -15,7 +17,6 @@ import {
   perspectiveScreenshot,
   isdalogScreenshotGallery,
   roleLabels,
-  routeCheckpoints,
   walkthroughSteps,
 } from "../data/isdalogWalkthrough"
 
@@ -40,6 +41,7 @@ export default function IsdaLogWalkthrough() {
   const screenshot = perspectiveScreenshot(role, viewedStep)
   const current = viewedStep === state.step
   const actor = walkthroughSteps[state.step].actor
+  const motionRoot = useWorkflowMotion(state, `${viewedStep}:${role}`)
   const expectedCode =
     state.step === 3 ? SAMPLE_PICKUP_CODE : SAMPLE_DELIVERY_CODE
 
@@ -187,24 +189,6 @@ export default function IsdaLogWalkthrough() {
       case 4:
         return (
           <>
-            <ol
-              className="walkthrough-route"
-              aria-label="Illustrative delivery route"
-            >
-              {routeCheckpoints.map((point, index) => (
-                <li
-                  key={point}
-                  aria-current={index === state.checkpoint ? "step" : undefined}
-                  className={index <= state.checkpoint ? "route-reached" : ""}
-                >
-                  <span aria-hidden="true">{index + 1}</span>
-                  <strong>{point}</strong>
-                </li>
-              ))}
-            </ol>
-            <p className="walkthrough-action-note">
-              Illustrative checkpoints · no live GPS data.
-            </p>
             {state.checkpoint < 3 ? (
               <button
                 type="button"
@@ -239,6 +223,7 @@ export default function IsdaLogWalkthrough() {
 
   return (
     <section
+      ref={motionRoot}
       id="walkthrough"
       className="isdalog-walkthrough"
       aria-labelledby="walkthrough-title"
@@ -274,7 +259,7 @@ export default function IsdaLogWalkthrough() {
             </p>
             <ol>
               {walkthroughSteps.map((item, index) => (
-                <li key={item.title}>
+                <li key={item.title} data-flow-state={index < state.step ? "completed" : index === state.step ? "current" : "upcoming"}>
                   <button
                     type="button"
                     disabled={index > state.step}
@@ -332,6 +317,7 @@ export default function IsdaLogWalkthrough() {
                 <p>{step.perspectives[role]}</p>
               </div>
             </div>
+            <DeliveryFlow state={state} reviewing={!current} />
             <div className="walkthrough-controls">{controls()}</div>
             {state.feedback && (
               <p

@@ -7,6 +7,14 @@ import { reflectionPages } from "./reflectionPages"
 
 export const portfolioSearchEntries: SearchEntry[] = [
   {
+    id: "project-toolbox",
+    label: "Tools behind the systems",
+    description: "Select a built-in project tool to inspect its technology stack, contribution context, and sample workflow.",
+    category: "Tools & technologies",
+    target: "tools",
+    keywords: ["toolbox", "tools", "tech stack", "valuation", "receipt", "settlement", "sale", "stock"],
+  },
+  {
     id: "portfolio-questions",
     label: "Ask about the portfolio",
     description:
