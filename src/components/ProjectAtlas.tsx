@@ -1,6 +1,7 @@
 import { buildAtlasScenes, type AtlasProjectId } from "../data/atlasScenes"
 import { useEffect, useId, useRef, useState, type CSSProperties } from "react"
 import { projects } from "../data/projects"
+import { atlasDepthOffset, ATLAS_DEPTH_LAYERS } from "../lib/atlasDepth.ts"
 import "./ProjectAtlas.css"
 
 const scenes = buildAtlasScenes(projects)
@@ -19,7 +20,8 @@ function StarField({ active, stopped }: StarFieldProps) {
   const selected = useRef(active)
   const clock = useRef(0)
   const repaint = useRef<() => void>(() => {})
-  const pointer = useRef({ x: -1000, y: -1000 })
+  const pointer = useRef({ x: 0, y: 0 })
+  const depthPose = useRef({ x: 0, y: 0, scale: 1 })
   useEffect(() => {
     selected.current = active
     repaint.current()
@@ -36,6 +38,7 @@ function StarField({ active, stopped }: StarFieldProps) {
       time = clock.current,
       previous = 0
     let dark = document.documentElement.dataset.theme !== "light"
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)")
     const points = scenes.flatMap((scene, group) =>
       Array.from({ length: 15 }, (_, index) => {
         const angle = index * 2.399 + group
@@ -58,17 +61,47 @@ function StarField({ active, stopped }: StarFieldProps) {
       time += stopped ? 0 : delta
       clock.current = time
       previous = now
+      if (!stopped) {
+        const blend = 1 - Math.exp(-delta * 7)
+        const target = finePointer.matches ? pointer.current : { x: 0, y: 0 }
+        depthPose.current.x += (target.x - depthPose.current.x) * blend
+        depthPose.current.y += (target.y - depthPose.current.y) * blend
+        depthPose.current.scale = 1 + Math.sin(time * 0.35) * 0.006
+      }
+      const pose = depthPose.current
+      const backgroundOffset = atlasDepthOffset(
+        pose.x,
+        pose.y,
+        ATLAS_DEPTH_LAYERS.background,
+      )
+      const middleOffset = atlasDepthOffset(
+        pose.x,
+        pose.y,
+        ATLAS_DEPTH_LAYERS.middle,
+      )
+      const foregroundOffset = atlasDepthOffset(
+        pose.x,
+        pose.y,
+        ATLAS_DEPTH_LAYERS.foreground,
+      )
+      host!.style.setProperty(
+        "--atlas-halo-x",
+        `${middleOffset.x.toFixed(3)}px`,
+      )
+      host!.style.setProperty(
+        "--atlas-halo-y",
+        `${middleOffset.y.toFixed(3)}px`,
+      )
       context!.clearRect(0, 0, width, height)
       const plotted = points.map((point) => {
-        let x = point.x * width + Math.sin(time * 0.22 + point.phase) * 12
-        let y = point.y * height + Math.cos(time * 0.18 + point.phase) * 10
-        const dx = x - pointer.current.x,
-          dy = y - pointer.current.y
-        const distance = Math.hypot(dx, dy)
-        if (!stopped && distance > 0 && distance < 105) {
-          x += (dx / distance) * (105 - distance) * 0.18
-          y += (dy / distance) * (105 - distance) * 0.18
-        }
+        const x =
+          point.x * width +
+          Math.sin(time * 0.22 + point.phase) * 6 +
+          backgroundOffset.x
+        const y =
+          point.y * height +
+          Math.cos(time * 0.18 + point.phase) * 5 +
+          backgroundOffset.y
         return { ...point, x, y }
       })
       plotted.forEach((point, i) => {
@@ -89,7 +122,7 @@ function StarField({ active, stopped }: StarFieldProps) {
         context!.globalAlpha = point.group === selected.current ? 0.32 : 0.15
         context!.fillStyle = point.accent
         context!.beginPath()
-        context!.arc(point.x, point.y, i % 4 === 0 ? 2.1 : 1.2, 0, Math.PI * 2)
+        context!.arc(point.x, point.y, i % 4 === 0 ? 1.5 : 0.9, 0, Math.PI * 2)
         context!.fill()
       })
       context!.globalAlpha = 1
@@ -97,7 +130,7 @@ function StarField({ active, stopped }: StarFieldProps) {
       context!.fillStyle = dark
         ? selectedScene.accent
         : selectedScene.lightAccent
-      const scale = Math.min(width * 0.32, height * 0.36)
+      const scale = Math.min(width * 0.32, height * 0.36) * pose.scale
       const blend = stopped ? 1 : 1 - Math.exp(-delta * 6)
       morph.current.forEach((point, index) => {
         const target = selectedScene.symbol[index]
@@ -105,8 +138,8 @@ function StarField({ active, stopped }: StarFieldProps) {
         point.y += (target.y - point.y) * blend
         context!.beginPath()
         context!.arc(
-          width / 2 + point.x * scale,
-          height / 2 + point.y * scale,
+          width / 2 + point.x * scale + foregroundOffset.x,
+          height / 2 + point.y * scale + foregroundOffset.y,
           1.7,
           0,
           Math.PI * 2,
@@ -132,17 +165,27 @@ function StarField({ active, stopped }: StarFieldProps) {
       draw(performance.now())
     }
     function move(event: PointerEvent) {
+      if (stopped || !finePointer.matches || event.pointerType === "touch")
+        return
       const rect = host!.getBoundingClientRect()
+      if (!rect.width || !rect.height) return
       pointer.current = {
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top,
+        x: Math.max(
+          -1,
+          Math.min(1, ((event.clientX - rect.left) / rect.width) * 2 - 1),
+        ),
+        y: Math.max(
+          -1,
+          Math.min(1, ((event.clientY - rect.top) / rect.height) * 2 - 1),
+        ),
       }
     }
     function leave() {
-      pointer.current = { x: -1000, y: -1000 }
+      pointer.current = { x: 0, y: 0 }
     }
     function visibility() {
       if (document.hidden) {
+        leave()
         cancelAnimationFrame(frame)
         frame = 0
       } else {
@@ -156,6 +199,7 @@ function StarField({ active, stopped }: StarFieldProps) {
         previous = performance.now()
         schedule()
       } else {
+        leave()
         cancelAnimationFrame(frame)
         frame = 0
       }
@@ -179,6 +223,7 @@ function StarField({ active, stopped }: StarFieldProps) {
     sizing.observe(host)
     host.addEventListener("pointermove", move, { passive: true })
     host.addEventListener("pointerleave", leave)
+    finePointer.addEventListener("change", leave)
     document.addEventListener("visibilitychange", visibility)
     resize()
     return () => {
@@ -189,7 +234,10 @@ function StarField({ active, stopped }: StarFieldProps) {
       theme.disconnect()
       host.removeEventListener("pointermove", move)
       host.removeEventListener("pointerleave", leave)
+      finePointer.removeEventListener("change", leave)
       document.removeEventListener("visibilitychange", visibility)
+      host.style.removeProperty("--atlas-halo-x")
+      host.style.removeProperty("--atlas-halo-y")
     }
   }, [stopped])
   return <canvas ref={canvas} className="atlas-stars" aria-hidden="true" />

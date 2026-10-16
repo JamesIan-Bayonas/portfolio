@@ -308,3 +308,7 @@ Stage 2 is implemented: identity-keyed scene records now own each project's symb
 ## Particle hero static composition — 16 October 2026
 
 Stage 3 is implemented: larger symbols, quieter surrounding particles, fixed halo, project controls above the illustration, and linked workflow labels below it in both Atlas variants. Removed the competing orbit/signal decorations and added darker light-theme accents. Container-based layouts support phones and narrow desktop columns. All 105 tests, type checks, build, and 28-page static verification passed. Browser checks covered all project identities, both themes/variants, keyboard links, filtering, 320px and 1040px reflow, and accent-label contrast (6.39:1–9.44:1 against detail backgrounds). Eight comparison captures and measured checks are in docs/particle-hero/composition/. No new depth movement or animation loop was added. Next: subtle depth.
+
+## Particle hero subtle depth — 17 October 2026
+
+Stage 4 is implemented: three restrained depths, bounded fine-pointer parallax, gentle foreground breathing, and quieter background movement. Labels and controls stay fixed. The existing loop retains its particle/cadence limits, pause/reduced-motion handling, and suspension/cleanup. All 107 tests and type/build/static checks passed. Browser checks covered pointer settling/neutral return, paused selection and persistence, stationary labels, both themes/variants, offscreen suspension, and 320px reflow. Details and remaining physical-device/accessibility checks: docs/particle-hero/README.md. Next: selection transitions.

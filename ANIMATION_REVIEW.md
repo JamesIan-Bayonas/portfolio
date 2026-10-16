@@ -104,3 +104,9 @@ Prepared the richer hero's identity-keyed scene model and connected the existing
 ## Particle hero static composition — 16 October 2026
 
 Completed the first visible redesign stage: larger foreground symbols, subdued background particles, fixed halo, separate project controls, and linked workflow labels outside the illustration. Removed the old orbit and connection-signal animations. Both variants support responsive button/link layouts and darker light-theme accent text. The paused view was reviewed across projects and themes; existing canvas motion remains available without a new loop. All 105 tests and type/build/static checks passed. Keyboard destinations, technology filtering, phone/narrow-column reflow, and computed accent-label contrast were checked. Evidence is in docs/particle-hero/composition/. New depth/parallax effects remain the next stage.
+
+## Particle hero subtle depth — 17 October 2026
+
+Added background/middle/foreground depth weights (0.2/0.55/1) inside the existing canvas loop. Fine-pointer input eases toward at most ±6px horizontal / ±4px vertical foreground offsets; the middle halo uses CSS properties set by that same draw. Foreground breathing stays within ±0.6%; background drift is halved. Controls and workflow labels stay stationary. Pause freezes the current pose; pointer leave, visibility suspension, and capability changes reset the input target. Touch input is ignored. No new loop, dependency, particle count, or DPR/cadence increase.
+
+All 107 tests and type/build/static checks passed. Browser observations confirmed bounded halo settling, neutral return, pause freezing, fixed label rectangles, four paused keyboard selections, persisted pause across routes, both themes, offscreen suspension, and 320px reflow. Actual reduced-motion emulation, physical touch/coarse input, background-tab timing, assistive-technology speech, and measured device performance remain pending. Next: selection transitions.
