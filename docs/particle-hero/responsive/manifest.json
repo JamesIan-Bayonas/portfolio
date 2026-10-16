@@ -1,0 +1,1203 @@
+{
+  "date": "2026-10-17",
+  "sourceBase": "d603883c8fa969c27cd2d19fbe8ec8dd24b24aa0",
+  "scope": "Working-tree responsive refinement; paused, light-theme matrix. Viewport dimensions are CSS sizes, not physical touch or browser-zoom emulation.",
+  "cases": [
+    {
+      "route": "/",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 276,
+      "clipped": [],
+      "documentWidth": 310,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 310,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 276,
+      "clipped": [],
+      "documentWidth": 310,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 310,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 276,
+      "clipped": [],
+      "documentWidth": 310,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 310,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 276,
+      "clipped": [],
+      "documentWidth": 310,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 310,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 346,
+      "clipped": [],
+      "documentWidth": 380,
+      "haloHeight": 165.60000610351562,
+      "haloWidth": 165.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 230,
+      "scrollWidth": 380,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 346,
+      "clipped": [],
+      "documentWidth": 380,
+      "haloHeight": 165.60000610351562,
+      "haloWidth": 165.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 230,
+      "scrollWidth": 380,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 346,
+      "clipped": [],
+      "documentWidth": 380,
+      "haloHeight": 165.60000610351562,
+      "haloWidth": 165.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 230,
+      "scrollWidth": 380,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 346,
+      "clipped": [],
+      "documentWidth": 380,
+      "haloHeight": 165.60000610351562,
+      "haloWidth": 165.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 230,
+      "scrollWidth": 380,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 524,
+      "clipped": [],
+      "documentWidth": 558,
+      "haloHeight": 129.60000610351562,
+      "haloWidth": 129.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 180,
+      "scrollWidth": 558,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 524,
+      "clipped": [],
+      "documentWidth": 558,
+      "haloHeight": 129.60000610351562,
+      "haloWidth": 129.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 180,
+      "scrollWidth": 558,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 524,
+      "clipped": [],
+      "documentWidth": 558,
+      "haloHeight": 129.60000610351562,
+      "haloWidth": 129.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 180,
+      "scrollWidth": 558,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 524,
+      "clipped": [],
+      "documentWidth": 558,
+      "haloHeight": 129.60000610351562,
+      "haloWidth": 129.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 180,
+      "scrollWidth": 558,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 784,
+      "clipped": [],
+      "documentWidth": 834,
+      "haloHeight": 134.91250610351562,
+      "haloWidth": 134.91250610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 187.3874969482422,
+      "scrollWidth": 834,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 784,
+      "clipped": [],
+      "documentWidth": 834,
+      "haloHeight": 134.91250610351562,
+      "haloWidth": 134.91250610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 187.3874969482422,
+      "scrollWidth": 834,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 784,
+      "clipped": [],
+      "documentWidth": 834,
+      "haloHeight": 134.91250610351562,
+      "haloWidth": 134.91250610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 187.3874969482422,
+      "scrollWidth": 834,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 784,
+      "clipped": [],
+      "documentWidth": 834,
+      "haloHeight": 134.91250610351562,
+      "haloWidth": 134.91250610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 187.3874969482422,
+      "scrollWidth": 834,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 708,
+      "clipped": [],
+      "documentWidth": 758,
+      "haloHeight": 180,
+      "haloWidth": 180,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 250,
+      "scrollWidth": 758,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 708,
+      "clipped": [],
+      "documentWidth": 758,
+      "haloHeight": 180,
+      "haloWidth": 180,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 250,
+      "scrollWidth": 758,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 708,
+      "clipped": [],
+      "documentWidth": 758,
+      "haloHeight": 180,
+      "haloWidth": 180,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 250,
+      "scrollWidth": 758,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 708,
+      "clipped": [],
+      "documentWidth": 758,
+      "haloHeight": 180,
+      "haloWidth": 180,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 250,
+      "scrollWidth": 758,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1040,
+        "height": 600
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 397,
+      "clipped": [],
+      "documentWidth": 1030,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 1030,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1040,
+        "height": 600
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 397,
+      "clipped": [],
+      "documentWidth": 1030,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 1030,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1040,
+        "height": 600
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 397,
+      "clipped": [],
+      "documentWidth": 1030,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 1030,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1040,
+        "height": 600
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 397,
+      "clipped": [],
+      "documentWidth": 1030,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 1030,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 505,
+      "clipped": [],
+      "documentWidth": 1270,
+      "haloHeight": 180,
+      "haloWidth": 180,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 250,
+      "scrollWidth": 1270,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 505,
+      "clipped": [],
+      "documentWidth": 1270,
+      "haloHeight": 180,
+      "haloWidth": 180,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 250,
+      "scrollWidth": 1270,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 505,
+      "clipped": [],
+      "documentWidth": 1270,
+      "haloHeight": 180,
+      "haloWidth": 180,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 250,
+      "scrollWidth": 1270,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 505,
+      "clipped": [],
+      "documentWidth": 1270,
+      "haloHeight": 180,
+      "haloWidth": 180,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 250,
+      "scrollWidth": 1270,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 577,
+      "clipped": [],
+      "documentWidth": 1430,
+      "haloHeight": 180,
+      "haloWidth": 180,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 250,
+      "scrollWidth": 1430,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 577,
+      "clipped": [],
+      "documentWidth": 1430,
+      "haloHeight": 180,
+      "haloWidth": 180,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 250,
+      "scrollWidth": 1430,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 577,
+      "clipped": [],
+      "documentWidth": 1430,
+      "haloHeight": 180,
+      "haloWidth": 180,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 250,
+      "scrollWidth": 1430,
+      "smallTargets": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 577,
+      "clipped": [],
+      "documentWidth": 1430,
+      "haloHeight": 180,
+      "haloWidth": 180,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 250,
+      "scrollWidth": 1430,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 276,
+      "clipped": [],
+      "documentWidth": 310,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 310,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 276,
+      "clipped": [],
+      "documentWidth": 310,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 310,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 276,
+      "clipped": [],
+      "documentWidth": 310,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 310,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 276,
+      "clipped": [],
+      "documentWidth": 310,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 310,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 346,
+      "clipped": [],
+      "documentWidth": 380,
+      "haloHeight": 165.60000610351562,
+      "haloWidth": 165.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 230,
+      "scrollWidth": 380,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 346,
+      "clipped": [],
+      "documentWidth": 380,
+      "haloHeight": 165.60000610351562,
+      "haloWidth": 165.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 230,
+      "scrollWidth": 380,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 346,
+      "clipped": [],
+      "documentWidth": 380,
+      "haloHeight": 165.60000610351562,
+      "haloWidth": 165.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 230,
+      "scrollWidth": 380,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 346,
+      "clipped": [],
+      "documentWidth": 380,
+      "haloHeight": 165.60000610351562,
+      "haloWidth": 165.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 230,
+      "scrollWidth": 380,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 524,
+      "clipped": [],
+      "documentWidth": 558,
+      "haloHeight": 129.60000610351562,
+      "haloWidth": 129.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 180,
+      "scrollWidth": 558,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 524,
+      "clipped": [],
+      "documentWidth": 558,
+      "haloHeight": 129.60000610351562,
+      "haloWidth": 129.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 180,
+      "scrollWidth": 558,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 524,
+      "clipped": [],
+      "documentWidth": 558,
+      "haloHeight": 129.60000610351562,
+      "haloWidth": 129.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 180,
+      "scrollWidth": 558,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 524,
+      "clipped": [],
+      "documentWidth": 558,
+      "haloHeight": 129.60000610351562,
+      "haloWidth": 129.60000610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 180,
+      "scrollWidth": 558,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 784,
+      "clipped": [],
+      "documentWidth": 834,
+      "haloHeight": 134.91250610351562,
+      "haloWidth": 134.91250610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 187.3874969482422,
+      "scrollWidth": 834,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 784,
+      "clipped": [],
+      "documentWidth": 834,
+      "haloHeight": 134.91250610351562,
+      "haloWidth": 134.91250610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 187.3874969482422,
+      "scrollWidth": 834,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 784,
+      "clipped": [],
+      "documentWidth": 834,
+      "haloHeight": 134.91250610351562,
+      "haloWidth": 134.91250610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 187.3874969482422,
+      "scrollWidth": 834,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 784,
+      "clipped": [],
+      "documentWidth": 834,
+      "haloHeight": 134.91250610351562,
+      "haloWidth": 134.91250610351562,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 187.3874969482422,
+      "scrollWidth": 834,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 708,
+      "clipped": [],
+      "documentWidth": 758,
+      "haloHeight": 230,
+      "haloWidth": 230,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 340,
+      "scrollWidth": 758,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 708,
+      "clipped": [],
+      "documentWidth": 758,
+      "haloHeight": 230,
+      "haloWidth": 230,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 340,
+      "scrollWidth": 758,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 708,
+      "clipped": [],
+      "documentWidth": 758,
+      "haloHeight": 230,
+      "haloWidth": 230,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 340,
+      "scrollWidth": 758,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 708,
+      "clipped": [],
+      "documentWidth": 758,
+      "haloHeight": 230,
+      "haloWidth": 230,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 340,
+      "scrollWidth": 758,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 1040,
+        "height": 600
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 948,
+      "clipped": [],
+      "documentWidth": 1030,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 1030,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 1040,
+        "height": 600
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 948,
+      "clipped": [],
+      "documentWidth": 1030,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 1030,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 1040,
+        "height": 600
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 948,
+      "clipped": [],
+      "documentWidth": 1030,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 1030,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 1040,
+        "height": 600
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 948,
+      "clipped": [],
+      "documentWidth": 1030,
+      "haloHeight": 172.8000030517578,
+      "haloWidth": 172.8000030517578,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 240,
+      "scrollWidth": 1030,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 1188,
+      "clipped": [],
+      "documentWidth": 1270,
+      "haloHeight": 230,
+      "haloWidth": 230,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 340,
+      "scrollWidth": 1270,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 1188,
+      "clipped": [],
+      "documentWidth": 1270,
+      "haloHeight": 230,
+      "haloWidth": 230,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 340,
+      "scrollWidth": 1270,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 1188,
+      "clipped": [],
+      "documentWidth": 1270,
+      "haloHeight": 230,
+      "haloWidth": 230,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 340,
+      "scrollWidth": 1270,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 1188,
+      "clipped": [],
+      "documentWidth": 1270,
+      "haloHeight": 230,
+      "haloWidth": 230,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 340,
+      "scrollWidth": 1270,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "IsdaLog FISHERIES",
+      "atlasWidth": 1348,
+      "clipped": [],
+      "documentWidth": 1430,
+      "haloHeight": 230,
+      "haloWidth": 230,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 340,
+      "scrollWidth": 1430,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "DormFix HOUSING",
+      "atlasWidth": 1348,
+      "clipped": [],
+      "documentWidth": 1430,
+      "haloHeight": 230,
+      "haloWidth": 230,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 340,
+      "scrollWidth": 1430,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "CentraLog ASSETS",
+      "atlasWidth": 1348,
+      "clipped": [],
+      "documentWidth": 1430,
+      "haloHeight": 230,
+      "haloWidth": 230,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 340,
+      "scrollWidth": 1430,
+      "smallTargets": []
+    },
+    {
+      "route": "/explore/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "PharmaLink PHARMACY",
+      "atlasWidth": 1348,
+      "clipped": [],
+      "documentWidth": 1430,
+      "haloHeight": 230,
+      "haloWidth": 230,
+      "overlap": false,
+      "pressed": 1,
+      "sceneHeight": 340,
+      "scrollWidth": 1430,
+      "smallTargets": []
+    }
+  ],
+  "shortLandscapeKeyboard": [
+    {
+      "bottom": 241.1750030517578,
+      "outline": "solid",
+      "text": "01Review inventory↗",
+      "top": 155.1750030517578,
+      "viewport": 320
+    },
+    {
+      "bottom": 241.1750030517578,
+      "outline": "solid",
+      "text": "02Record a sale↗",
+      "top": 155.1750030517578,
+      "viewport": 320
+    },
+    {
+      "bottom": 241.1750030517578,
+      "outline": "solid",
+      "text": "03Reverse when needed↗",
+      "top": 155.1750030517578,
+      "viewport": 320
+    },
+    {
+      "bottom": 220.375,
+      "outline": "solid",
+      "text": "Read the case study ↗",
+      "top": 176.375,
+      "viewport": 320
+    },
+    {
+      "bottom": 269.375,
+      "outline": "solid",
+      "text": "Try the workflow →",
+      "top": 225.375,
+      "viewport": 320
+    },
+    {
+      "bottom": 296.0749969482422,
+      "outline": "solid",
+      "text": "ASP.NET Core 8 ↗",
+      "top": 252.0749969482422,
+      "viewport": 320
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+@media (max-height: 700px) {
+  .portfolio-hero { min-height: 0; padding-block: 96px 40px; }
+  .portfolio-hero > div { align-items: start; }
+}

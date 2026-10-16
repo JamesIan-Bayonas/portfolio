@@ -128,3 +128,9 @@ Browser checks observed one 0.48s iteration, final 0.45 opacity, immediate text 
 Static redraws now advance neither the animation clock nor depth/breathing when offscreen/backgrounded. Motion control explanations and concise selection status improve access to the complete static view, while unavailable reduced-motion controls retain keyboard focusability. Added forced-colors selection/focus styling and keyboard scroll margins.
 
 All 109 tests and type/build/static checks passed. A real-component StrictMode fixture verified simulated reduced-motion changes/initial state, saved pause, storage failures, background resize freeze, resume, and frame/listener cleanup. These tests do not emulate actual OS/CSS media preferences or background-tab timing. Full evidence and manual limits are in docs/particle-hero/accessibility-checks.md. Next: responsive refinement; physical performance and release verification remain later stages.
+
+## Particle hero responsive refinement — 17 October 2026
+
+Short viewports now reduce decorative scene height while the existing canvas resize path scales symbols normally. Constrained halos keep a 1:1 aspect ratio; the connector stem remains tied to the same bounded radius. Short-screen introduction alignment, narrow-container actions, and technology hit areas were refined without changing particle counts, frame cadence, animation duration, or adding motion/listeners.
+
+All 109 tests and type/build/static checks passed. The 64-case responsive matrix, short-landscape keyboard sequence, and both-theme visual review passed. Evidence: docs/particle-hero/responsive/manifest.json. CSS viewport resizing does not establish actual zoom, touch behavior, or device performance. Next: measured performance review.

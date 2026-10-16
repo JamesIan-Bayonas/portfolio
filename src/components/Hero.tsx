@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "motion/react"
 import { projects } from "../data/projects"
 import ProjectAtlas from "./ProjectAtlas"
+import "./Hero.css"
 
 export default function Hero() {
   const reduced = useReducedMotion()
@@ -22,7 +23,7 @@ export default function Hero() {
   return (
     <section
       id="about"
-      className="relative z-10 min-h-[100svh] flex items-center pt-28 pb-16 lg:pt-[72px] lg:pb-0"
+      className="portfolio-hero relative z-10 min-h-[100svh] flex items-center pt-28 pb-16 lg:pt-[72px] lg:pb-0"
     >
       <div className="max-w-[1440px] mx-auto min-w-0 px-4 sm:px-6 lg:px-10 w-full grid grid-cols-1 gap-10 lg:gap-16 items-center lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)]">
         {/* Left */}
