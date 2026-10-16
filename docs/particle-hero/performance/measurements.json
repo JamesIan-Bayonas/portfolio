@@ -1,0 +1,383 @@
+{
+  "date": "2026-10-17",
+  "sourceBase": "e2cad06ec717c3e2b66c46eba951a726466c12f5",
+  "method": "Isolated real ProjectAtlas, Vite development server, React StrictMode, five-second samples in local Windows IAB Chromium. Instrumented JS draw callbacks exclude paint/GPU work. Phone viewport is desktop hardware. Phases identify the group-check and real-timestamp fixes.",
+  "samples": [
+    {
+      "phase": "baseline",
+      "scenario": "full-desktop-steady",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1.0000000149011612,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      "variant": "full",
+      "elapsedMs": 5000,
+      "stopped": "false",
+      "sceneVisible": true,
+      "scene": {
+        "width": 622,
+        "height": 340
+      },
+      "canvas": {
+        "width": 622,
+        "height": 340
+      },
+      "pendingFrames": 1,
+      "callbacks": 702,
+      "draws": 144,
+      "distanceCalls": 254880,
+      "drawsPerSecond": 28.8,
+      "drawCallbackMs": {
+        "samples": 144,
+        "median": 0.4,
+        "p95": 0.6,
+        "max": 0.8
+      },
+      "drawIntervalMs": {
+        "median": 34.7,
+        "p95": 35.2,
+        "max": 41.7
+      },
+      "selectionCommitMs": {
+        "samples": 0,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "longTasks": []
+    },
+    {
+      "phase": "baseline",
+      "scenario": "compact-phone-steady",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1.0000000149011612,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "variant": "compact",
+      "elapsedMs": 5002,
+      "stopped": "false",
+      "sceneVisible": true,
+      "scene": {
+        "width": 346,
+        "height": 230
+      },
+      "canvas": {
+        "width": 346,
+        "height": 230
+      },
+      "pendingFrames": 1,
+      "callbacks": 717,
+      "draws": 144,
+      "distanceCalls": 254880,
+      "drawsPerSecond": 28.79,
+      "drawCallbackMs": {
+        "samples": 144,
+        "median": 0.4,
+        "p95": 0.6,
+        "max": 1.2
+      },
+      "drawIntervalMs": {
+        "median": 34.7,
+        "p95": 34.9,
+        "max": 37.8
+      },
+      "selectionCommitMs": {
+        "samples": 0,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "longTasks": []
+    },
+    {
+      "phase": "optimized",
+      "scenario": "full-desktop-steady",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1.0000000149011612,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      "variant": "full",
+      "elapsedMs": 5001,
+      "stopped": "false",
+      "sceneVisible": true,
+      "scene": {
+        "width": 622,
+        "height": 340
+      },
+      "canvas": {
+        "width": 622,
+        "height": 340
+      },
+      "pendingFrames": 1,
+      "callbacks": 705,
+      "draws": 143,
+      "distanceCalls": 60060,
+      "drawsPerSecond": 28.59,
+      "drawCallbackMs": {
+        "samples": 143,
+        "median": 0.4,
+        "p95": 0.6,
+        "max": 1.2
+      },
+      "drawIntervalMs": {
+        "median": 34.7,
+        "p95": 41.4,
+        "max": 42
+      },
+      "selectionCommitMs": {
+        "samples": 0,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "longTasks": []
+    },
+    {
+      "phase": "optimized",
+      "scenario": "compact-phone-steady",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1.0000000149011612,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "variant": "compact",
+      "elapsedMs": 5004,
+      "stopped": "false",
+      "sceneVisible": true,
+      "scene": {
+        "width": 346,
+        "height": 230
+      },
+      "canvas": {
+        "width": 346,
+        "height": 230
+      },
+      "pendingFrames": 1,
+      "callbacks": 713,
+      "draws": 144,
+      "distanceCalls": 60480,
+      "drawsPerSecond": 28.78,
+      "drawCallbackMs": {
+        "samples": 144,
+        "median": 0.3,
+        "p95": 0.5,
+        "max": 0.6
+      },
+      "drawIntervalMs": {
+        "median": 34.7,
+        "p95": 35,
+        "max": 41.7
+      },
+      "selectionCommitMs": {
+        "samples": 0,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "longTasks": []
+    },
+    {
+      "phase": "optimized",
+      "scenario": "full-desktop-eight-rapid-selections",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1.0000000149011612,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      "variant": "full",
+      "elapsedMs": 5000,
+      "stopped": "false",
+      "sceneVisible": true,
+      "scene": {
+        "width": 622,
+        "height": 340
+      },
+      "canvas": {
+        "width": 622,
+        "height": 340
+      },
+      "pendingFrames": 1,
+      "callbacks": 732,
+      "draws": 136,
+      "distanceCalls": 57120,
+      "drawsPerSecond": 27.2,
+      "drawCallbackMs": {
+        "samples": 128,
+        "median": 0.3,
+        "p95": 0.5,
+        "max": 0.8
+      },
+      "drawIntervalMs": {
+        "median": 34.7,
+        "p95": 69.6,
+        "max": 72.7
+      },
+      "selectionCommitMs": {
+        "samples": 8,
+        "median": 5.9,
+        "p95": 7.9,
+        "max": 7.9
+      },
+      "longTasks": []
+    },
+    {
+      "phase": "optimized",
+      "scenario": "paused-idle",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1.0000000149011612,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      "variant": "full",
+      "elapsedMs": 5013,
+      "stopped": "true",
+      "sceneVisible": true,
+      "scene": {
+        "width": 622,
+        "height": 340
+      },
+      "canvas": {
+        "width": 622,
+        "height": 340
+      },
+      "pendingFrames": 0,
+      "callbacks": 0,
+      "draws": 0,
+      "distanceCalls": 0,
+      "drawsPerSecond": 0,
+      "drawCallbackMs": {
+        "samples": 0,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "drawIntervalMs": {
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "selectionCommitMs": {
+        "samples": 0,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "longTasks": []
+    },
+    {
+      "phase": "optimized-with-timestamp-fix",
+      "scenario": "full-desktop-eight-rapid-selections",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1.0000000149011612,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      "variant": "full",
+      "elapsedMs": 5007,
+      "stopped": "false",
+      "sceneVisible": true,
+      "scene": {
+        "width": 622,
+        "height": 340
+      },
+      "canvas": {
+        "width": 622,
+        "height": 340
+      },
+      "pendingFrames": 1,
+      "callbacks": 732,
+      "draws": 146,
+      "distanceCalls": 61320,
+      "drawsPerSecond": 29.16,
+      "drawCallbackMs": {
+        "samples": 138,
+        "median": 0.4,
+        "p95": 0.6,
+        "max": 0.7
+      },
+      "drawIntervalMs": {
+        "median": 34.7,
+        "p95": 36.5,
+        "max": 42.6
+      },
+      "selectionCommitMs": {
+        "samples": 8,
+        "median": 4.9,
+        "p95": 6.7,
+        "max": 6.7
+      },
+      "longTasks": []
+    },
+    {
+      "phase": "optimized-with-timestamp-fix",
+      "scenario": "offscreen-idle",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1.0000000149011612,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      "variant": "full",
+      "elapsedMs": 5014,
+      "stopped": "false",
+      "sceneVisible": false,
+      "scene": {
+        "width": 622,
+        "height": 340
+      },
+      "canvas": {
+        "width": 622,
+        "height": 340
+      },
+      "pendingFrames": 0,
+      "callbacks": 0,
+      "draws": 0,
+      "distanceCalls": 0,
+      "drawsPerSecond": 0,
+      "drawCallbackMs": {
+        "samples": 0,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "drawIntervalMs": {
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "selectionCommitMs": {
+        "samples": 0,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "longTasks": []
+    }
+  ]
+}

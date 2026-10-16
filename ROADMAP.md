@@ -328,3 +328,7 @@ Stage 7 implementation is complete with manual validation still listed separatel
 ## Particle hero responsive refinement — 17 October 2026
 
 Stage 8 is implemented: short-screen introduction alignment, bounded landscape scene height, circular constrained halos, stacked actions in narrow desktop containers, and 44px-wide technology targets. All 109 existing tests and type/build/static checks passed. A 64-case matrix covered every project in compact/full variants across eight phone, landscape, tablet, and desktop sizes without horizontal overflow, clipped controls, undersized targets, or scene/workflow overlap. Short landscape keyboard access and both themes were reviewed. Evidence: docs/particle-hero/responsive/manifest.json and docs/particle-hero/README.md. Actual physical-device/zoom checks remain separate. Next: measured performance review.
+
+## Particle hero local performance review — 17 October 2026
+
+Stage 9 local review is complete; representative-device checks remain pending. Removed 76.27% of particle distance calculations by checking project groups first, and corrected future-timestamp selection redraws. Local rapid-selection draw-interval p95 improved from 69.6ms to 36.5ms. Recorded steady rendering was about 29 draws/second, with zero scheduled work in paused/offscreen five-second windows. Keep current density/cadence limits. All 109 tests and type/build/static checks passed. Full measurements and scope limits: docs/particle-hero/performance/. Next: final release verification.

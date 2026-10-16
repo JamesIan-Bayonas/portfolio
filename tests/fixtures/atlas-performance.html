@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head><meta charset="UTF-8"><title>Atlas performance fixture</title></head>
+  <body>
+    <h1>Atlas performance fixture</h1>
+    <p>Isolated component on this computer. Callback time excludes browser paint/compositing and instrumentation adds overhead.</p>
+    <label><input id="compact" type="checkbox"> Compact Atlas</label>
+    <button id="capture" type="button">Capture 5 seconds</button>
+    <p id="capture-status" role="status">Ready</p>
+    <div id="fixture"></div>
+    <pre id="report" aria-label="Performance report" style="white-space:pre-wrap"></pre>
+    <div style="height:120vh" aria-hidden="true"></div>
+    <button id="offscreen" type="button">Offscreen checkpoint</button>
+    <button id="capture-offscreen" type="button">Capture offscreen 5 seconds</button>
+    <script type="module" src="./atlas-performance.tsx"></script>
+  </body>
+</html>

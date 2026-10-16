@@ -134,3 +134,9 @@ All 109 tests and type/build/static checks passed. A real-component StrictMode f
 Short viewports now reduce decorative scene height while the existing canvas resize path scales symbols normally. Constrained halos keep a 1:1 aspect ratio; the connector stem remains tied to the same bounded radius. Short-screen introduction alignment, narrow-container actions, and technology hit areas were refined without changing particle counts, frame cadence, animation duration, or adding motion/listeners.
 
 All 109 tests and type/build/static checks passed. The 64-case responsive matrix, short-landscape keyboard sequence, and both-theme visual review passed. Evidence: docs/particle-hero/responsive/manifest.json. CSS viewport resizing does not establish actual zoom, touch behavior, or device performance. Next: measured performance review.
+
+## Particle hero local performance review — 17 October 2026
+
+The local timing review found future-dated immediate redraws delaying the next scheduled selection frame. Forced redraws now use real time and do not advance animation time twice; recorded rapid-selection draw-interval p95 improved from 69.6ms to 36.5ms. Skipping cross-group pairs before distance calculation reduces those calculations by 76.27%, preserving eligible visual connections. Particle counts, pixel-density cap, draw gate, and single-loop architecture remain unchanged.
+
+Eight local five-second captures are recorded in docs/particle-hero/performance/measurements.json, with methodology/limits alongside. Steady rendering was about 29 draws/second; paused and genuinely offscreen captures recorded no callbacks or draws. Simulated background/reduced-motion states and cleanup also passed. All 109 tests and type/build/static checks passed. Callback submission time is not GPU or screen-presented FPS; representative-device and production profiling remain pending. Next: final release verification.

@@ -65,17 +65,18 @@ function StarField({ active, stopped }: StarFieldProps) {
         }
       }),
     )
-    function draw(now: number) {
+    function draw(now: number, force = false) {
       frame = 0
       const motionActive = visible && !document.hidden && !stopped
-      if (now - previous < 32 && motionActive) {
+      if (!force && now - previous < 32 && motionActive) {
         schedule()
         return
       }
       // Static redraws may update geometry/theme, but never advance motion.
-      const delta = motionActive
-        ? Math.max(0, Math.min(now - previous, 50)) / 1000
-        : 0
+      const delta =
+        motionActive && !force
+          ? Math.max(0, Math.min(now - previous, 50)) / 1000
+          : 0
       time += delta
       clock.current = time
       previous = now
@@ -126,8 +127,9 @@ function StarField({ active, stopped }: StarFieldProps) {
         context!.strokeStyle = point.accent
         for (let j = i + 1; j < plotted.length; j++) {
           const other = plotted[j]
+          if (point.group !== other.group) continue
           const distance = Math.hypot(point.x - other.x, point.y - other.y)
-          if (point.group !== other.group || distance > width * 0.15) continue
+          if (distance > width * 0.15) continue
           context!.globalAlpha =
             (1 - distance / (width * 0.15)) *
             (point.group === selected.current ? 0.16 : 0.06) *
@@ -257,8 +259,8 @@ function StarField({ active, stopped }: StarFieldProps) {
     repaint.current = () => {
       cancelAnimationFrame(frame)
       frame = 0
-      previous = performance.now()
-      draw(previous + 33)
+      // Redraw immediately without placing the frame gate ahead of real time.
+      draw(performance.now(), true)
     }
     theme.observe(document.documentElement, {
       attributes: true,
