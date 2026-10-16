@@ -1,10 +1,10 @@
 import { useReducer, useState } from "react"
 import WalkthroughCompletion from "./WalkthroughCompletion"
+import SaleFlow from "./SaleFlow"
 import { useWorkflowMotion } from "./useWorkflowMotion"
 import {
   advanceSaleWalkthrough,
   initialSaleWalkthrough,
-  SAMPLE_UNIT_PRICE,
 } from "../lib/pharmalinkWalkthrough"
 
 const money = new Intl.NumberFormat("en-PH", {
@@ -132,27 +132,7 @@ export default function PharmaLinkWalkthrough() {
               <h3>{stage.title}</h3>
               <p>{stage.description}</p>
             </div>
-            <div className="receipt-fields">
-              <h4>Sample cart and sale</h4>
-              <dl>
-                <div>
-                  <dt>Units in cart</dt>
-                  <dd>{state.quantity}</dd>
-                </div>
-                <div>
-                  <dt>Unit price</dt>
-                  <dd>{money.format(SAMPLE_UNIT_PRICE)}</dd>
-                </div>
-                <div>
-                  <dt>Cart total</dt>
-                  <dd>{money.format(state.quantity * SAMPLE_UNIT_PRICE)}</dd>
-                </div>
-                <div>
-                  <dt>Record status</dt>
-                  <dd>{state.status}</dd>
-                </div>
-              </dl>
-            </div>
+            <SaleFlow state={state} />
             <div className="walkthrough-controls">
               {state.step === 0 && (
                 <>

@@ -252,3 +252,11 @@ TypeScript, 102 existing tests, build/static verification, and desktop/320px bro
 - [x] Keep failed handshakes, historical-step review, reset, native controls, responsive layout, and reduced-motion rendering intact.
 
 The owner has now authorized scoped commits and a GitHub push for the completed animation work. Previous local-only notes above record the instructions at the time of those changes.
+
+## PharmaLink transaction illustration — 16 October 2026
+
+- [x] Connect sample cart, sale record, and inventory with finite checkout signals.
+- [x] Show exact remaining stock, blocked failure, and reasoned void restoration while preserving the original sale.
+- [x] Keep existing reducer/validation, history, responsive layout, and reduced-motion support.
+
+Validated with 102 tests, type checking, build/static verification, and local browser interactions. CentraLog's asset-lifecycle illustration remains a follow-up.
