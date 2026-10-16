@@ -312,3 +312,7 @@ Stage 3 is implemented: larger symbols, quieter surrounding particles, fixed hal
 ## Particle hero subtle depth — 17 October 2026
 
 Stage 4 is implemented: three restrained depths, bounded fine-pointer parallax, gentle foreground breathing, and quieter background movement. Labels and controls stay fixed. The existing loop retains its particle/cadence limits, pause/reduced-motion handling, and suspension/cleanup. All 107 tests and type/build/static checks passed. Browser checks covered pointer settling/neutral return, paused selection and persistence, stationary labels, both themes/variants, offscreen suspension, and 320px reflow. Details and remaining physical-device/accessibility checks: docs/particle-hero/README.md. Next: selection transitions.
+
+## Particle hero selection transitions — 17 October 2026
+
+Stage 5 is implemented: finite symbol morphs, a brief selection ring, and interruption from the displayed shape toward the latest choice. Text, links, and controls update immediately with stable keyboard focus. Paused/reduced-motion selections settle directly, and Play does not replay settled transitions. No automatic cycling, new dependency, or extra animation loop. All 109 tests and type/build/static checks passed; browser coverage included rapid selection, pause mid-morph, immediate copy/routes, keyboard order, both themes/variants, and 320px reflow. Full notes and remaining manual checks: docs/particle-hero/README.md. Next: workflow connections.

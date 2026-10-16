@@ -2,6 +2,10 @@ import { buildAtlasScenes, type AtlasProjectId } from "../data/atlasScenes"
 import { useEffect, useId, useRef, useState, type CSSProperties } from "react"
 import { projects } from "../data/projects"
 import { atlasDepthOffset, ATLAS_DEPTH_LAYERS } from "../lib/atlasDepth.ts"
+import {
+  createAtlasTransition,
+  sampleAtlasTransition,
+} from "../lib/atlasTransition.ts"
 import "./ProjectAtlas.css"
 
 const scenes = buildAtlasScenes(projects)
@@ -22,7 +26,17 @@ function StarField({ active, stopped }: StarFieldProps) {
   const repaint = useRef<() => void>(() => {})
   const pointer = useRef({ x: 0, y: 0 })
   const depthPose = useRef({ x: 0, y: 0, scale: 1 })
+  const transition = useRef<ReturnType<typeof createAtlasTransition> | null>(
+    null,
+  )
+  const transitionTime = useRef(0)
   useEffect(() => {
+    if (selected.current === active) return
+    transition.current = createAtlasTransition(
+      morph.current,
+      scenesById.get(active)!.symbol,
+    )
+    transitionTime.current = 0
     selected.current = active
     repaint.current()
   }, [active])
@@ -127,15 +141,27 @@ function StarField({ active, stopped }: StarFieldProps) {
       })
       context!.globalAlpha = 1
       const selectedScene = scenesById.get(selected.current)!
+      if (stopped || !visible || document.hidden) {
+        morph.current = selectedScene.symbol.map((point) => ({ ...point }))
+        transition.current = null
+      }
+      let selectionProgress = 1
+      if (transition.current) {
+        transitionTime.current += delta * 1000
+        const sample = sampleAtlasTransition(
+          transition.current,
+          transitionTime.current,
+        )
+        morph.current = sample.points
+        selectionProgress = sample.progress
+        if (sample.progress === 1) transition.current = null
+      }
+      host!.dataset.selectionState = transition.current ? "morphing" : "settled"
       context!.fillStyle = dark
         ? selectedScene.accent
         : selectedScene.lightAccent
       const scale = Math.min(width * 0.32, height * 0.36) * pose.scale
-      const blend = stopped ? 1 : 1 - Math.exp(-delta * 6)
-      morph.current.forEach((point, index) => {
-        const target = selectedScene.symbol[index]
-        point.x += (target.x - point.x) * blend
-        point.y += (target.y - point.y) * blend
+      morph.current.forEach((point) => {
         context!.beginPath()
         context!.arc(
           width / 2 + point.x * scale + foregroundOffset.x,
@@ -146,6 +172,21 @@ function StarField({ active, stopped }: StarFieldProps) {
         )
         context!.fill()
       })
+      if (selectionProgress < 1) {
+        context!.globalAlpha =
+          Math.sin(selectionProgress * Math.PI) * (dark ? 0.25 : 0.18)
+        context!.strokeStyle = context!.fillStyle
+        context!.beginPath()
+        context!.arc(
+          width / 2 + foregroundOffset.x,
+          height / 2 + foregroundOffset.y,
+          scale * (0.85 + selectionProgress * 0.35),
+          0,
+          Math.PI * 2,
+        )
+        context!.stroke()
+        context!.globalAlpha = 1
+      }
       if (!stopped) schedule()
     }
     function schedule() {
@@ -238,6 +279,7 @@ function StarField({ active, stopped }: StarFieldProps) {
       document.removeEventListener("visibilitychange", visibility)
       host.style.removeProperty("--atlas-halo-x")
       host.style.removeProperty("--atlas-halo-y")
+      delete host.dataset.selectionState
     }
   }, [stopped])
   return <canvas ref={canvas} className="atlas-stars" aria-hidden="true" />
