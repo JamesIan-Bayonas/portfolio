@@ -1,0 +1,12 @@
+.signature-block { margin-top: -20px; }
+.signature-caption { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; margin-bottom: 12px; color: var(--color-text2); font-size: 9px; line-height: 1.8; letter-spacing: .12em; }
+.signature-caption span:nth-child(2) { margin-left: auto; color: var(--color-accent); }
+.signature-caption button { margin-left: auto; min-height: 44px; padding: 8px 12px; border: 1px solid var(--color-border); border-radius: 4px; color: var(--color-accent); cursor: pointer; font: inherit; letter-spacing: .02em; }
+.signature-caption button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.signature-caption button:disabled { cursor: default; color: var(--color-text2); }
+.signature-wordmark { color: var(--color-accent); overflow: hidden; width: 100%; }
+.signature-wordmark svg { display: block; width: 100%; height: auto; }
+.signature-lettering { font-family: var(--font-display); font-size: 270px; font-weight: 700; letter-spacing: -12px; }
+.signature-code { font-family: var(--font-mono); font-size: 7px; letter-spacing: .15px; }
+[data-theme="light"] .signature-wordmark { color: color-mix(in srgb,var(--color-accent) 75%,var(--color-text1)); }
+@media (max-width: 600px) { .signature-block { margin-top: -12px; } .signature-caption { font-size: 8px; letter-spacing: .05em; } .signature-caption span:nth-child(2) { display: none; } }

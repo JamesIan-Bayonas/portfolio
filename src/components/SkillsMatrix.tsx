@@ -1,6 +1,8 @@
 import { motion, useReducedMotion } from "motion/react"
 import { skillGroups } from "../data/skills"
 import CapabilitiesMap from "./CapabilitiesMap"
+import Toolbox from "./Toolbox"
+import TechnologyStrip from "./TechnologyStrip"
 
 export default function SkillsMatrix() {
   const reduced = useReducedMotion()
@@ -24,6 +26,8 @@ export default function SkillsMatrix() {
             a sample workflow. Each example includes my role and project context.
           </p>
         </div>
+        <TechnologyStrip />
+        <Toolbox />
         <CapabilitiesMap />
         <div className="technology-evidence-heading">
           <h3>Explore by technology</h3>
