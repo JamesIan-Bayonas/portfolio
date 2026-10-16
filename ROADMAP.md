@@ -268,3 +268,12 @@ Validated with 102 tests, type checking, build/static verification, and local br
 - [x] Retain completed repair days and history during report review; support reset, responsive cards, and reduced motion.
 
 This completes the queued project-specific Lab illustrations. Verified all six walkthrough stages, keyboard activation, reset, report history preservation, both themes, and 320px reflow. All 102 tests, type checking, production build, and 28-page static verification passed. Actual screen-reader speech and reduced-motion preference emulation remain manual checks.
+
+## Smoother panel and filter transitions — 16 October 2026
+
+- Visitor need: follow changes when switching Toolbox tools or narrowing the project collection.
+- [x] Animate the Toolbox's surrounding height for 280ms while new text and links update immediately at their natural size.
+- [x] Keep the Explore grid and retained project cards mounted; move visible cards into their new positions and briefly fade newly visible results.
+- [x] Preserve native controls, filter URLs, comparison selections, focus behavior, existing card interactions, and an immediate reduced-motion view.
+
+Ready locally; standard type/test/build/static checks and local browser review passed. Browser checks covered keyboard selection, panel interpolation/settling, rapid selection, filter movement, zero-result recovery, chip removal, comparison preservation, reload restoration, both themes, and 320px reflow. Actual reduced-motion preference emulation and screen-reader speech remain manual checks. Next in the discussed sequence: Process progression as visitors read.

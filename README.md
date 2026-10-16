@@ -212,3 +212,5 @@ The valuation chart supports pointer and keyboard day exploration with an indepe
 PharmaLink's Lab now connects the cart, recorded sale, and exact remaining stock in one illustration. A failed checkout leaves them unchanged; a reasoned void restores the sample units while preserving the original receipt and a separate adjustment. Motion is finite and respects reduced-motion preferences.
 
 CentraLog's asset walkthrough now illustrates the sample laptop's lifecycle with connected equipment, custody, and repair records. Transfer updates location and custodian together; maintenance preserves that assignment, resolution retains the 30-day repair window, and reporting keeps the existing history. Finite motion respects reduced-motion preferences, and cards stack on narrow screens.
+
+Switching Toolbox tools now smoothly adjusts the detail panel's height. Explore keeps matching project cards in place across filter updates and briefly animates their new positions. Controls respond immediately, existing comparisons and shareable filters remain available, and reduced-motion preferences use the immediate layout.

@@ -1,5 +1,6 @@
 import ProjectAtlas from "./ProjectAtlas"
 import { useEffect, useState, useRef } from "react"
+import { useResultTransitions } from "./useResultTransitions"
 
 import { projects, projectScreenshot } from "../data/projects"
 
@@ -41,6 +42,11 @@ export default function Explore() {
   const [filters, setFilters] = useState(() =>
     readExploreFilters(window.location.search, domains, technologies),
   )
+  const resultMotion = useResultTransitions(JSON.stringify(filters))
+  const updateFilters: typeof setFilters = (value) => {
+    resultMotion.capture()
+    setFilters(value)
+  }
 
   const [filtersOpen, setFiltersOpen] = useState(false)
   const filterSummary = useRef<HTMLElement>(null)
@@ -70,7 +76,7 @@ export default function Explore() {
     function restoreFilters() {
       setComparison(readComparison(window.location.search, projectIds))
 
-      setFilters(
+      updateFilters(
         readExploreFilters(window.location.search, domains, technologies),
       )
     }
@@ -99,7 +105,7 @@ export default function Explore() {
           </p>
           <ProjectAtlas
             onTechnology={(technology) => {
-              setFilters({ ...emptyExploreFilters, technology })
+              updateFilters({ ...emptyExploreFilters, technology })
               document
                 .getElementById("explore-projects-title")
                 ?.scrollIntoView({
@@ -177,7 +183,7 @@ export default function Explore() {
                   placeholder="Try OCR, React, or inventory"
                   value={filters.query}
                   onChange={(event) =>
-                    setFilters({ ...filters, query: event.target.value })
+                    updateFilters({ ...filters, query: event.target.value })
                   }
                 />
               </div>
@@ -187,7 +193,7 @@ export default function Explore() {
                   id="explore-domain"
                   value={filters.domain}
                   onChange={(event) =>
-                    setFilters({ ...filters, domain: event.target.value })
+                    updateFilters({ ...filters, domain: event.target.value })
                   }
                 >
                   <option value="">All domains</option>
@@ -202,7 +208,10 @@ export default function Explore() {
                   id="explore-technology"
                   value={filters.technology}
                   onChange={(event) =>
-                    setFilters({ ...filters, technology: event.target.value })
+                    updateFilters({
+                      ...filters,
+                      technology: event.target.value,
+                    })
                   }
                 >
                   <option value="">All technologies</option>
@@ -213,7 +222,7 @@ export default function Explore() {
               </div>
               <button
                 type="button"
-                onClick={() => setFilters({ ...emptyExploreFilters })}
+                onClick={() => updateFilters({ ...emptyExploreFilters })}
                 disabled={!filtered}
               >
                 Clear filters
@@ -230,7 +239,7 @@ export default function Explore() {
                     key={key}
                     aria-label={`Remove ${key} filter: ${filters[key]}`}
                     onClick={() => {
-                      setFilters({ ...filters, [key]: "" })
+                      updateFilters({ ...filters, [key]: "" })
                       filterSummary.current?.focus()
                     }}
                   >
@@ -249,7 +258,7 @@ export default function Explore() {
                 type="button"
                 className="clear-all-filters"
                 onClick={() => {
-                  setFilters({ ...emptyExploreFilters })
+                  updateFilters({ ...emptyExploreFilters })
                   filterSummary.current?.focus()
                 }}
               >
@@ -265,100 +274,107 @@ export default function Explore() {
             {results.length} {results.length === 1 ? "project" : "projects"}{" "}
             found{filtered ? " with your filters" : ""}.
           </p>
-          {results.length ? (
-            <div className="explore-grid" key={JSON.stringify(filters)}>
-              {results.map((project) => (
-                <article
-                  key={project.id}
-                  className="explore-card interactive-surface"
-                  aria-labelledby={`explore-${project.id}`}
-                >
-                  <ScreenshotPreview
-                    className="explore-image"
-                    images={results.map(projectScreenshot)}
-                    selectedId={project.id}
-                    label={`Inspect ${project.name} screenshot`}
+          <div ref={resultMotion.root}>
+            {results.length ? (
+              <div className="explore-grid">
+                {results.map((project) => (
+                  <div
+                    key={project.id}
+                    data-result-id={project.id}
+                    className="explore-result"
                   >
-                    <ResponsiveScreenshot
-                      asset={project.screenshot}
-                      alt={project.imageAlt}
-                      sizes="(min-width: 1520px) 704px, (min-width: 1024px) calc((100vw - 110px) / 2), (min-width: 768px) calc((100vw - 78px) / 2), (min-width: 640px) calc(100vw - 50px), calc(100vw - 34px)"
-                    />
-                  </ScreenshotPreview>
-                  <div className="explore-card-body">
-                    <p className="project-eyebrow font-mono">
-                      {project.category}
-                    </p>
-                    <h3 id={`explore-${project.id}`}>{project.name}</h3>
-                    <p className="explore-card-title">{project.title}</p>
-                    <p className="project-version-label font-mono">
-                      {project.versionLabel}
-                    </p>
-                    <dl className="project-credits">
-                      <div>
-                        <dt>My role</dt>
-                        <dd>{project.role}</dd>
-                      </div>
-                      <div>
-                        <dt>Context</dt>
-                        <dd>{project.context}</dd>
-                      </div>
-                    </dl>
-                    <ul
-                      className="project-tech"
-                      aria-label={`${project.name} technologies`}
+                    <article
+                      className="explore-card interactive-surface"
+                      aria-labelledby={`explore-${project.id}`}
                     >
-                      {project.tech.map((tech) => (
-                        <li key={tech} className="font-mono">
-                          {tech}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="project-links font-mono">
-                      <a href={project.caseStudyPath}>Read case study ↗</a>
-                      <a href={`${project.caseStudyPath}#walkthrough`}>
-                        Try walkthrough ↓
-                      </a>
-                      {project.demoAvailable !== false ? (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Live system ↗
-                        </a>
-                      ) : (
-                        <span className="demo-unavailable">
-                          Live demo unavailable
-                        </span>
-                      )}
-                      <a
-                        href={project.source}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <ScreenshotPreview
+                        className="explore-image"
+                        images={results.map(projectScreenshot)}
+                        selectedId={project.id}
+                        label={`Inspect ${project.name} screenshot`}
                       >
-                        Source code ↗
-                      </a>
-                    </div>
+                        <ResponsiveScreenshot
+                          asset={project.screenshot}
+                          alt={project.imageAlt}
+                          sizes="(min-width: 1520px) 704px, (min-width: 1024px) calc((100vw - 110px) / 2), (min-width: 768px) calc((100vw - 78px) / 2), (min-width: 640px) calc(100vw - 50px), calc(100vw - 34px)"
+                        />
+                      </ScreenshotPreview>
+                      <div className="explore-card-body">
+                        <p className="project-eyebrow font-mono">
+                          {project.category}
+                        </p>
+                        <h3 id={`explore-${project.id}`}>{project.name}</h3>
+                        <p className="explore-card-title">{project.title}</p>
+                        <p className="project-version-label font-mono">
+                          {project.versionLabel}
+                        </p>
+                        <dl className="project-credits">
+                          <div>
+                            <dt>My role</dt>
+                            <dd>{project.role}</dd>
+                          </div>
+                          <div>
+                            <dt>Context</dt>
+                            <dd>{project.context}</dd>
+                          </div>
+                        </dl>
+                        <ul
+                          className="project-tech"
+                          aria-label={`${project.name} technologies`}
+                        >
+                          {project.tech.map((tech) => (
+                            <li key={tech} className="font-mono">
+                              {tech}
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="project-links font-mono">
+                          <a href={project.caseStudyPath}>Read case study ↗</a>
+                          <a href={`${project.caseStudyPath}#walkthrough`}>
+                            Try walkthrough ↓
+                          </a>
+                          {project.demoAvailable !== false ? (
+                            <a
+                              href={project.demo}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Live system ↗
+                            </a>
+                          ) : (
+                            <span className="demo-unavailable">
+                              Live demo unavailable
+                            </span>
+                          )}
+                          <a
+                            href={project.source}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Source code ↗
+                          </a>
+                        </div>
+                      </div>
+                    </article>
                   </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="explore-empty">
-              <h3>No projects match this combination.</h3>
-              <p>
-                Try another domain or technology, or clear the filters to see
-                all four systems.
-              </p>
-              <button
-                type="button"
-                onClick={() => setFilters({ ...emptyExploreFilters })}
-              >
-                Show all projects
-              </button>
-            </div>
-          )}
+                ))}
+              </div>
+            ) : (
+              <div className="explore-empty">
+                <h3>No projects match this combination.</h3>
+                <p>
+                  Try another domain or technology, or clear the filters to see
+                  all four systems.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => updateFilters({ ...emptyExploreFilters })}
+                >
+                  Show all projects
+                </button>
+              </div>
+            )}
+          </div>
         </section>
         <section className="explore-lab" aria-labelledby="explore-lab-title">
           <div>

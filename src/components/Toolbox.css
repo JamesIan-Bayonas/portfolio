@@ -25,7 +25,8 @@
 .toolbox-card[aria-pressed="true"] .toolbox-card-footer span:last-child { color: var(--color-text1); }
 .toolbox-watermark { position: absolute; z-index: -1; pointer-events: none; width: 85px; height: 85px; right: -10px; bottom: -14px; color: var(--tool-accent); opacity: .08; transition: opacity .22s, scale .22s; }
 .toolbox-card:is(:hover,:focus-visible,[aria-pressed="true"]) .toolbox-watermark { opacity: .24; scale: 1.05; }
-.toolbox-detail { display: grid; grid-template-columns: .9fr 1.1fr; margin-top: 18px; border: 1px solid var(--color-border); border-top: 2px solid var(--tool-accent); border-radius: 4px; background: var(--color-surface); }
+.toolbox-detail-shell { margin-top: 18px; overflow-anchor: none; }
+.toolbox-detail { display: grid; grid-template-columns: .9fr 1.1fr; border: 1px solid var(--color-border); border-top: 2px solid var(--tool-accent); border-radius: 4px; background: var(--color-surface); }
 .toolbox-detail-intro { padding: 32px; animation: toolbox-reveal .25s ease-out; }
 .toolbox-detail-intro > .project-eyebrow { color: var(--color-accent); font-size: 9px; }
 .toolbox-detail h4 { font-family: var(--font-serif); font-size: clamp(30px,3vw,42px); letter-spacing: -.04em; line-height: 1.15; margin-block: 18px; }

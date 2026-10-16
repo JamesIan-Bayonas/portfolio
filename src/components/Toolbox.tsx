@@ -4,6 +4,7 @@ import { projects } from "../data/projects"
 import "./Toolbox.css"
 import StackFlow from "./StackFlow"
 import DecodeText from "./DecodeText"
+import ResizingPanel from "./ResizingPanel"
 
 const accents = ["#59cbd6", "#b59aff", "#e9b65d", "#74cda4"]
 const marks = [
@@ -103,68 +104,71 @@ export default function Toolbox() {
       <p className="sr-only" role="status">
         {demo.title} selected. Technology and project details updated below.
       </p>
-      <div
-        id={panelId}
-        className="toolbox-detail"
-        style={accent}
-        role="region"
-        aria-label={`${demo.title} technology and evidence`}
-      >
-        <div className="toolbox-detail-intro" key={demo.id}>
-          <p className="project-eyebrow font-mono">
-            0{selected + 1} / {project.name.toUpperCase()} / TOOL DETAILS
-          </p>
-          <h4>
-            <DecodeText text={demo.title} />
-            <span className="toolbox-title-stop" aria-hidden="true">
-              .
-            </span>
-          </h4>
-          <p>{demo.detail}</p>
-          <p className="toolbox-credit">
-            {project.context} <span aria-hidden="true">·</span> {project.role}
-          </p>
-          <p className="toolbox-scope">
-            {project.versionLabel}. The linked browser example uses sample data.
-          </p>
-          <div className="toolbox-actions font-mono">
-            <a href={`/lab/#demo-${demo.id}`}>
-              Try the{" "}
-              {demo.kind === "Calculator" ? "calculator" : "walkthrough"}{" "}
-              <span aria-hidden="true">↗</span>
-            </a>
-            <a href={project.caseStudyPath}>
-              Inspect the case study <span aria-hidden="true">↗</span>
-            </a>
+      <ResizingPanel revision={demo.id}>
+        <div
+          id={panelId}
+          className="toolbox-detail"
+          style={accent}
+          role="region"
+          aria-label={`${demo.title} technology and evidence`}
+        >
+          <div className="toolbox-detail-intro" key={demo.id}>
+            <p className="project-eyebrow font-mono">
+              0{selected + 1} / {project.name.toUpperCase()} / TOOL DETAILS
+            </p>
+            <h4>
+              <DecodeText text={demo.title} />
+              <span className="toolbox-title-stop" aria-hidden="true">
+                .
+              </span>
+            </h4>
+            <p>{demo.detail}</p>
+            <p className="toolbox-credit">
+              {project.context} <span aria-hidden="true">·</span> {project.role}
+            </p>
+            <p className="toolbox-scope">
+              {project.versionLabel}. The linked browser example uses sample
+              data.
+            </p>
+            <div className="toolbox-actions font-mono">
+              <a href={`/lab/#demo-${demo.id}`}>
+                Try the{" "}
+                {demo.kind === "Calculator" ? "calculator" : "walkthrough"}{" "}
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a href={project.caseStudyPath}>
+                Inspect the case study <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+          <div className="toolbox-stack">
+            <p className="project-eyebrow font-mono">
+              PROJECT STACK / HOW THE PIECES CONNECT
+            </p>
+            <StackFlow
+              key={project.id}
+              projectName={project.name}
+              layers={project.caseStudy.architecture}
+            />
+            <p className="toolbox-stack-label">
+              Explore this project's technologies
+            </p>
+            <ul
+              className="toolbox-technologies"
+              aria-label={`${project.name} technology filters`}
+            >
+              {project.tech.map((tech) => (
+                <li key={tech}>
+                  <a href={`/explore/?tech=${encodeURIComponent(tech)}`}>
+                    {tech}
+                    <span aria-hidden="true"> ↗</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div className="toolbox-stack">
-          <p className="project-eyebrow font-mono">
-            PROJECT STACK / HOW THE PIECES CONNECT
-          </p>
-          <StackFlow
-            key={project.id}
-            projectName={project.name}
-            layers={project.caseStudy.architecture}
-          />
-          <p className="toolbox-stack-label">
-            Explore this project's technologies
-          </p>
-          <ul
-            className="toolbox-technologies"
-            aria-label={`${project.name} technology filters`}
-          >
-            {project.tech.map((tech) => (
-              <li key={tech}>
-                <a href={`/explore/?tech=${encodeURIComponent(tech)}`}>
-                  {tech}
-                  <span aria-hidden="true"> ↗</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      </ResizingPanel>
       <p className="toolbox-footnote">
         Tools are features within the projects shown here. Stack details follow
         each documented project version.
