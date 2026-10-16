@@ -67,15 +67,19 @@ function StarField({ active, stopped }: StarFieldProps) {
     )
     function draw(now: number) {
       frame = 0
-      if (now - previous < 32 && !stopped) {
+      const motionActive = visible && !document.hidden && !stopped
+      if (now - previous < 32 && motionActive) {
         schedule()
         return
       }
-      const delta = Math.min(now - previous, 50) / 1000
-      time += stopped ? 0 : delta
+      // Static redraws may update geometry/theme, but never advance motion.
+      const delta = motionActive
+        ? Math.max(0, Math.min(now - previous, 50)) / 1000
+        : 0
+      time += delta
       clock.current = time
       previous = now
-      if (!stopped) {
+      if (motionActive) {
         const blend = 1 - Math.exp(-delta * 7)
         const target = finePointer.matches ? pointer.current : { x: 0, y: 0 }
         depthPose.current.x += (target.x - depthPose.current.x) * blend
@@ -141,7 +145,7 @@ function StarField({ active, stopped }: StarFieldProps) {
       })
       context!.globalAlpha = 1
       const selectedScene = scenesById.get(selected.current)!
-      if (stopped || !visible || document.hidden) {
+      if (!motionActive) {
         morph.current = selectedScene.symbol.map((point) => ({ ...point }))
         transition.current = null
       }
@@ -352,9 +356,10 @@ export default function ProjectAtlas({
         </span>
         <button
           type="button"
-          disabled={reduced}
-          aria-pressed={paused || reduced}
+          aria-disabled={reduced}
+          aria-describedby={`${id}-motion-note`}
           onClick={() => {
+            if (reduced) return
             setPaused(!paused)
             try {
               localStorage.setItem("portfolio-atlas-paused", String(!paused))
@@ -370,6 +375,20 @@ export default function ProjectAtlas({
               : "Pause motion Ⅱ"}
         </button>
       </div>
+      <p
+        id={`${id}-motion-note`}
+        className={reduced ? "atlas-motion-note" : "sr-only"}
+      >
+        {reduced
+          ? "Animation is off because your device requests reduced motion. All project links remain available."
+          : stopped
+            ? "Animation is paused. Project selection and links remain available."
+            : "Animation is playing. You can pause it at any time."}
+      </p>
+      <p className="sr-only" role="status" aria-atomic="true">
+        {project.name} selected. {project.context}; {project.role}. Workflow
+        links and project details updated.
+      </p>
       <div className="atlas-nodes" role="group" aria-label="Select a system">
         {scenes.map((item, index) => (
           <button
@@ -422,12 +441,7 @@ export default function ProjectAtlas({
             ))}
           </ol>
         </div>
-        <div
-          id={`${id}-detail`}
-          className="atlas-detail"
-          aria-live="polite"
-          aria-atomic="true"
-        >
+        <div id={`${id}-detail`} className="atlas-detail">
           <div className="atlas-detail-copy" key={project.id}>
             <p className="atlas-kicker font-mono">
               0{scenes.indexOf(scene) + 1} / {project.category}

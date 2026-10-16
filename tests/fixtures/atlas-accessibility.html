@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head><meta charset="UTF-8"><title>Atlas motion lifecycle test fixture</title></head>
+  <body>
+    <h1>Atlas motion lifecycle test fixture</h1>
+    <p>Simulated preferences, visibility, and storage. These controls do not change device settings.</p>
+    <label><input id="reduced" type="checkbox"> Simulate reduced motion</label>
+    <label><input id="hidden" type="checkbox"> Simulate background tab</label>
+    <label><input id="blocked" type="checkbox"> Simulate unavailable storage</label>
+    <button id="mount" type="button">Unmount Atlas</button>
+    <output id="frames" aria-label="Pending animation frames">0</output> pending animation frames;
+    <output id="listeners" aria-label="Motion preference listeners">0</output> motion preference listeners.
+    <div id="fixture"></div>
+    <script type="module" src="./atlas-accessibility.tsx"></script>
+  </body>
+</html>
