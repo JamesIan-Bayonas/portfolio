@@ -125,6 +125,13 @@ for (const route of [
     )
   })
 const failures = []
+const developmentRoutes = (await readdir(path.join(root, "tests/fixtures")))
+  .filter((name) => /\.(html|tsx)$/.test(name))
+  .map((name) => `/tests/fixtures/${name}`)
+for (const route of developmentRoutes)
+  checks.push(async () => {
+    assert.equal((await response(route)).status, 404, `Development fixture exposed: ${route}`)
+  })
 for (let index = 0; index < checks.length; index += 6) {
   const results = await Promise.allSettled(
     checks.slice(index, index + 6).map((check) => check()),
@@ -141,6 +148,7 @@ const result = {
   feeds: 2,
   executionDownload: true,
   ownerRoutes: 5,
+  developmentRoutes: developmentRoutes.length,
   failures,
 }
 await writeFile(
@@ -149,5 +157,5 @@ await writeFile(
 )
 assert.equal(failures.length, 0, failures.join("\n"))
 console.log(
-  `Verified ${result.pages} live routes, ${result.assets} built assets, ${result.briefs} PDF hashes, both RSS feeds, execution evidence, and ${result.ownerRoutes} excluded owner routes at ${result.origin}.`,
+  `Verified ${result.pages} live routes, ${result.assets} built assets, ${result.briefs} PDF hashes, both RSS feeds, execution evidence, ${result.ownerRoutes} excluded owner routes, and ${result.developmentRoutes} excluded development routes at ${result.origin}.`,
 )

@@ -332,3 +332,7 @@ Stage 8 is implemented: short-screen introduction alignment, bounded landscape s
 ## Particle hero local performance review — 17 October 2026
 
 Stage 9 local review is complete; representative-device checks remain pending. Removed 76.27% of particle distance calculations by checking project groups first, and corrected future-timestamp selection redraws. Local rapid-selection draw-interval p95 improved from 69.6ms to 36.5ms. Recorded steady rendering was about 29 draws/second, with zero scheduled work in paused/offscreen five-second windows. Keep current density/cadence limits. All 109 tests and type/build/static checks passed. Full measurements and scope limits: docs/particle-hero/performance/. Next: final release verification.
+
+## Particle hero release verification — 17 October 2026
+
+Stage 10 automated/live checks are complete. TypeScript, 109 tests, build/static verification, and live comparison of 28 routes/64 asset hashes passed. Four PDFs, both feeds, execution evidence, five excluded owner routes, and four excluded development routes passed. Fixture-exclusion guards now run in build/live verification, including a successful negative build test. Thirty-two production browser cases and keyboard/filter/pause/offscreen interactions passed. Evidence: docs/particle-hero/release/README.md. The planned richer hero is released; actual-device, OS preference, speech/zoom, and sustained performance checks remain manual. No next visual extension is implicitly approved.

@@ -1,6 +1,6 @@
 import { validateProfessionalContent } from "../src/lib/professionalEditing.ts"
 import assert from "node:assert/strict"
-import { readFile, access } from "node:fs/promises"
+import { readFile, access, readdir } from "node:fs/promises"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { createHash } from "node:crypto"
@@ -74,6 +74,17 @@ await assert.rejects(
 )
 const manifest = JSON.parse(
   await readFile(path.join(root, "dist/.vite/manifest.json"), "utf8"),
+)
+const developmentFixtures = (await readdir(path.join(root, "tests/fixtures")))
+  .filter((name) => /\.(html|tsx)$/.test(name))
+for (const name of developmentFixtures)
+  await assert.rejects(
+    access(path.join(root, "dist/tests/fixtures", name)),
+    `Development fixture leaked: ${name}`,
+  )
+assert.ok(
+  !Object.keys(manifest).some((key) => key.includes("tests/fixtures/")),
+  "Development fixture entry leaked into public build",
 )
 assert.ok(
   manifest["src/components/Reflections.tsx"],

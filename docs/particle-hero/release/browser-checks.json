@@ -1,0 +1,1194 @@
+{
+  "date": "2026-10-17",
+  "runtimeRevision": "5648892e70819331f6713adb18cca2be0cd97acb",
+  "origin": "https://jamesian-portfolio.vercel.app",
+  "cases": [
+    {
+      "route": "/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "IsdaLog FISHERIES",
+      "actions": [
+        "/projects/isdalog/",
+        "/projects/isdalog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Independent project · Sole developer",
+      "focus": "01IsdaLogFISHERIES",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "IsdaLog selected. Independent project; Sole developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "01Register the catch↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "02Publish and bid↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "03Hold funds and dispatch↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "DormFix HOUSING",
+      "actions": [
+        "/projects/dormfix/",
+        "/projects/dormfix/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Collaborative capstone · Feature developer",
+      "focus": "02DormFixHOUSING",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "DormFix selected. Collaborative capstone; Feature developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "01Pair and approve↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "02Assign a room↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "03Review a payment↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "CentraLog ASSETS",
+      "actions": [
+        "/projects/centralog/",
+        "/projects/centralog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "03CentraLogASSETS",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "CentraLog selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "01Register and activate↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "02Move with a record↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "03Track maintenance↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "PharmaLink PHARMACY",
+      "actions": [
+        "/projects/pharmalink/",
+        "/projects/pharmalink/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "04PharmaLinkPHARMACY",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "PharmaLink selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "01Review inventory↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "02Record a sale↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "03Reverse when needed↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "IsdaLog FISHERIES",
+      "actions": [
+        "/projects/isdalog/",
+        "/projects/isdalog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Independent project · Sole developer",
+      "focus": "01IsdaLogFISHERIES",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "IsdaLog selected. Independent project; Sole developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "01Register the catch↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "02Publish and bid↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "03Hold funds and dispatch↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "DormFix HOUSING",
+      "actions": [
+        "/projects/dormfix/",
+        "/projects/dormfix/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Collaborative capstone · Feature developer",
+      "focus": "02DormFixHOUSING",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "DormFix selected. Collaborative capstone; Feature developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "01Pair and approve↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "02Assign a room↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "03Review a payment↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "CentraLog ASSETS",
+      "actions": [
+        "/projects/centralog/",
+        "/projects/centralog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "03CentraLogASSETS",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "CentraLog selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "01Register and activate↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "02Move with a record↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "03Track maintenance↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "PharmaLink PHARMACY",
+      "actions": [
+        "/projects/pharmalink/",
+        "/projects/pharmalink/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "04PharmaLinkPHARMACY",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "PharmaLink selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "01Review inventory↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "02Record a sale↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "03Reverse when needed↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "IsdaLog FISHERIES",
+      "actions": [
+        "/projects/isdalog/",
+        "/projects/isdalog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Independent project · Sole developer",
+      "focus": "01IsdaLogFISHERIES",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "IsdaLog selected. Independent project; Sole developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "01Register the catch↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "02Publish and bid↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "03Hold funds and dispatch↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "DormFix HOUSING",
+      "actions": [
+        "/projects/dormfix/",
+        "/projects/dormfix/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Collaborative capstone · Feature developer",
+      "focus": "02DormFixHOUSING",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "DormFix selected. Collaborative capstone; Feature developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "01Pair and approve↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "02Assign a room↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "03Review a payment↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "CentraLog ASSETS",
+      "actions": [
+        "/projects/centralog/",
+        "/projects/centralog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "03CentraLogASSETS",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "CentraLog selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "01Register and activate↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "02Move with a record↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "03Track maintenance↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "PharmaLink PHARMACY",
+      "actions": [
+        "/projects/pharmalink/",
+        "/projects/pharmalink/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "04PharmaLinkPHARMACY",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "PharmaLink selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "01Review inventory↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "02Record a sale↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "03Reverse when needed↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "light",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "IsdaLog FISHERIES",
+      "actions": [
+        "/projects/isdalog/",
+        "/projects/isdalog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Independent project · Sole developer",
+      "focus": "01IsdaLogFISHERIES",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "IsdaLog selected. Independent project; Sole developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "01Register the catch↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "02Publish and bid↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "03Hold funds and dispatch↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "light",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "DormFix HOUSING",
+      "actions": [
+        "/projects/dormfix/",
+        "/projects/dormfix/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Collaborative capstone · Feature developer",
+      "focus": "02DormFixHOUSING",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "DormFix selected. Collaborative capstone; Feature developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "01Pair and approve↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "02Assign a room↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "03Review a payment↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "light",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "CentraLog ASSETS",
+      "actions": [
+        "/projects/centralog/",
+        "/projects/centralog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "03CentraLogASSETS",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "CentraLog selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "01Register and activate↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "02Move with a record↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "03Track maintenance↗"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "scheme": "light",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "PharmaLink PHARMACY",
+      "actions": [
+        "/projects/pharmalink/",
+        "/projects/pharmalink/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "04PharmaLinkPHARMACY",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "PharmaLink selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "01Review inventory↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "02Record a sale↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "03Reverse when needed↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "IsdaLog FISHERIES",
+      "actions": [
+        "/projects/isdalog/",
+        "/projects/isdalog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Independent project · Sole developer",
+      "focus": "01IsdaLogFISHERIES",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "IsdaLog selected. Independent project; Sole developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "01Register the catch↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "02Publish and bid↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "03Hold funds and dispatch↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "DormFix HOUSING",
+      "actions": [
+        "/projects/dormfix/",
+        "/projects/dormfix/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Collaborative capstone · Feature developer",
+      "focus": "02DormFixHOUSING",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "DormFix selected. Collaborative capstone; Feature developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "01Pair and approve↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "02Assign a room↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "03Review a payment↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "CentraLog ASSETS",
+      "actions": [
+        "/projects/centralog/",
+        "/projects/centralog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "03CentraLogASSETS",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "CentraLog selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "01Register and activate↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "02Move with a record↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "03Track maintenance↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "PharmaLink PHARMACY",
+      "actions": [
+        "/projects/pharmalink/",
+        "/projects/pharmalink/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "04PharmaLinkPHARMACY",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "PharmaLink selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "01Review inventory↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "02Record a sale↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "03Reverse when needed↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "IsdaLog FISHERIES",
+      "actions": [
+        "/projects/isdalog/",
+        "/projects/isdalog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Independent project · Sole developer",
+      "focus": "01IsdaLogFISHERIES",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "IsdaLog selected. Independent project; Sole developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "01Register the catch↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "02Publish and bid↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "03Hold funds and dispatch↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "DormFix HOUSING",
+      "actions": [
+        "/projects/dormfix/",
+        "/projects/dormfix/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Collaborative capstone · Feature developer",
+      "focus": "02DormFixHOUSING",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "DormFix selected. Collaborative capstone; Feature developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "01Pair and approve↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "02Assign a room↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "03Review a payment↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "CentraLog ASSETS",
+      "actions": [
+        "/projects/centralog/",
+        "/projects/centralog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "03CentraLogASSETS",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "CentraLog selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "01Register and activate↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "02Move with a record↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "03Track maintenance↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "dark",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "PharmaLink PHARMACY",
+      "actions": [
+        "/projects/pharmalink/",
+        "/projects/pharmalink/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "04PharmaLinkPHARMACY",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "PharmaLink selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "01Review inventory↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "02Record a sale↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "03Reverse when needed↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "IsdaLog FISHERIES",
+      "actions": [
+        "/projects/isdalog/",
+        "/projects/isdalog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Independent project · Sole developer",
+      "focus": "01IsdaLogFISHERIES",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "IsdaLog selected. Independent project; Sole developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "01Register the catch↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "02Publish and bid↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "03Hold funds and dispatch↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "DormFix HOUSING",
+      "actions": [
+        "/projects/dormfix/",
+        "/projects/dormfix/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Collaborative capstone · Feature developer",
+      "focus": "02DormFixHOUSING",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "DormFix selected. Collaborative capstone; Feature developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "01Pair and approve↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "02Assign a room↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "03Review a payment↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "CentraLog ASSETS",
+      "actions": [
+        "/projects/centralog/",
+        "/projects/centralog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "03CentraLogASSETS",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "CentraLog selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "01Register and activate↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "02Move with a record↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "03Track maintenance↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "project": "PharmaLink PHARMACY",
+      "actions": [
+        "/projects/pharmalink/",
+        "/projects/pharmalink/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "04PharmaLinkPHARMACY",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 1430,
+      "status": "PharmaLink selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 1430,
+      "workflow": [
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "01Review inventory↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "02Record a sale↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "03Reverse when needed↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "light",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "IsdaLog FISHERIES",
+      "actions": [
+        "/projects/isdalog/",
+        "/projects/isdalog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Independent project · Sole developer",
+      "focus": "01IsdaLogFISHERIES",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "IsdaLog selected. Independent project; Sole developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "01Register the catch↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "02Publish and bid↗"
+        },
+        {
+          "href": "/projects/isdalog/#isdalog-workflow",
+          "title": "03Hold funds and dispatch↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "light",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "DormFix HOUSING",
+      "actions": [
+        "/projects/dormfix/",
+        "/projects/dormfix/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "Collaborative capstone · Feature developer",
+      "focus": "02DormFixHOUSING",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "DormFix selected. Collaborative capstone; Feature developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "01Pair and approve↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "02Assign a room↗"
+        },
+        {
+          "href": "/projects/dormfix/#dormfix-workflow",
+          "title": "03Review a payment↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "light",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "CentraLog ASSETS",
+      "actions": [
+        "/projects/centralog/",
+        "/projects/centralog/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "03CentraLogASSETS",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "CentraLog selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "01Register and activate↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "02Move with a record↗"
+        },
+        {
+          "href": "/projects/centralog/#centralog-workflow",
+          "title": "03Track maintenance↗"
+        }
+      ]
+    },
+    {
+      "route": "/explore/",
+      "scheme": "light",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "PharmaLink PHARMACY",
+      "actions": [
+        "/projects/pharmalink/",
+        "/projects/pharmalink/#walkthrough"
+      ],
+      "clipped": [],
+      "credit": "School project · Sole developer",
+      "focus": "04PharmaLinkPHARMACY",
+      "haloCircular": true,
+      "pressed": 1,
+      "references": true,
+      "scrollWidth": 310,
+      "status": "PharmaLink selected. School project; Sole developer. Workflow links and project details updated.",
+      "width": 310,
+      "workflow": [
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "01Review inventory↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "02Record a sale↗"
+        },
+        {
+          "href": "/projects/pharmalink/#pharmalink-workflow",
+          "title": "03Reverse when needed↗"
+        }
+      ]
+    }
+  ],
+  "shortViewport": {
+    "headingTop": 135.9875030517578,
+    "sceneHeight": 240,
+    "scrollWidth": 1030,
+    "viewport": {
+      "height": 600,
+      "width": 1040
+    },
+    "width": 1030
+  },
+  "suspension": {
+    "animating": "false",
+    "connectorPlayback": "paused"
+  },
+  "additionalChecks": {
+    "destinationFailures": 0,
+    "pausedSelectionSettled": true,
+    "pausePersistedBetweenRoutes": true,
+    "keyboardWorkflowNavigation": [
+      "DormFix",
+      "PharmaLink"
+    ],
+    "laravelFilter": {
+      "query": "?tech=Laravel+11",
+      "projects": [
+        "IsdaLog"
+      ],
+      "preservedAfterReload": true
+    }
+  },
+  "limits": [
+    "Viewport resizing is not physical-device or browser-zoom emulation.",
+    "No screen-reader speech or actual OS preference testing.",
+    "No live GPU, thermal, battery, or physical-phone performance measurements."
+  ]
+}

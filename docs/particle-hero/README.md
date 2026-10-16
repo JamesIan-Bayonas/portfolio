@@ -84,7 +84,7 @@ Not established by this stage: measured frame rate or CPU/GPU cost, physical-pho
 | 7. Motion/accessibility | Implemented; manual checks remain | Paused/static operation, preference-change handling, suspension/cleanup, accessible content and controls |
 | 8. Responsive refinement | Complete | Narrow and short viewports, compact/full variants, no clipping/overflow, ordinary scrolling |
 | 9. Performance review | Local review complete; device checks pending | Measured results on representative hardware; tune density before expanding effects; record limitations |
-| 10. Release verification | Next | Relevant tests, type/build/static checks, keyboard/theme/device review, scoped commits, deployment and live-route verification |
+| 10. Release verification | Automated and live checks complete; manual checks remain | Relevant tests, type/build/static checks, keyboard/theme/device review, scoped commits, deployment and live-route verification |
 
 The static composition is the first visual review milestone. A full 3D engine or drawing playground requires a separate scope decision; it is not an automatic continuation of this plan.
 
@@ -170,3 +170,11 @@ Completed local instrumented component measurements and two scoped optimizations
 Steady rendering measured approximately 29 draws/second, with drawing callback p95 of 0.6ms on desktop and 0.5ms at phone size after the group-check optimization. Desktop callback timing was unchanged; small sub-millisecond differences do not prove a general speedup. Eight rapid selections after the timestamp fix had a maximum click-to-DOM-update time of 6.7ms. Paused and genuinely offscreen five-second captures each recorded zero callbacks, draws, distance calls, and pending frames. Simulated background/reduced motion and cleanup were rechecked with the existing lifecycle fixture.
 
 All 109 existing tests, TypeScript, production build, and 28-page static verification passed. Keep the current particle, density, cadence, and single-loop budgets. [Performance report](performance/README.md) and [eight recorded samples](performance/measurements.json) describe the environment, instrumentation, source phases, reproduction, and limits. These isolated development measurements exclude GPU/presentation and do not establish physical-phone or full-page production performance. Representative hardware, high-DPR, sustained load/battery, and full-page production profiling remain pending. Next: final release verification.
+
+## Stage 10: release verification — 17 October 2026
+
+The implemented hero is verified on the live portfolio. All 109 tests, TypeScript, production build, and static verification passed. The live verifier matched 28 routes and all 64 built asset hashes to the production build, plus four PDF hashes, both feeds, and execution evidence. Five owner routes and all four development fixture HTML/TSX routes returned 404. Build verification now rejects fixture files/manifest entries; a deliberately copied fixture was rejected and removed before the passing run.
+
+Thirty-two live browser cases covered all four projects, homepage/Explore, both themes, and desktop/phone layouts. Contributions, statuses, control references, case-study/walkthrough/workflow destinations, selected state, halo shape, and fitting passed. Additional checks covered paused selection/persistence, keyboard workflow navigation, Laravel filtering with reload restoration, short-desktop alignment, and offscreen suspension. Inspected console warning/error logs were empty. The live origin's original dark/unpaused settings were restored.
+
+[Release evidence](release/README.md) links the HTTP/hash report, browser measurements, and representative live captures. Runtime revision: 5648892e70819331f6713adb18cca2be0cd97acb. This verification stage changes scripts/documentation rather than the application bundle. The planned visual implementation is released; physical devices, actual OS/CSS preferences, screen-reader speech, browser zoom, and sustained/representative performance checks remain explicit manual follow-ups. No further visual expansion is automatically queued.

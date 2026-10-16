@@ -140,3 +140,9 @@ All 109 tests and type/build/static checks passed. The 64-case responsive matrix
 The local timing review found future-dated immediate redraws delaying the next scheduled selection frame. Forced redraws now use real time and do not advance animation time twice; recorded rapid-selection draw-interval p95 improved from 69.6ms to 36.5ms. Skipping cross-group pairs before distance calculation reduces those calculations by 76.27%, preserving eligible visual connections. Particle counts, pixel-density cap, draw gate, and single-loop architecture remain unchanged.
 
 Eight local five-second captures are recorded in docs/particle-hero/performance/measurements.json, with methodology/limits alongside. Steady rendering was about 29 draws/second; paused and genuinely offscreen captures recorded no callbacks or draws. Simulated background/reduced-motion states and cleanup also passed. All 109 tests and type/build/static checks passed. Callback submission time is not GPU or screen-presented FPS; representative-device and production profiling remain pending. Next: final release verification.
+
+## Particle hero release verification — 17 October 2026
+
+Verified the published richer hero across all four projects, both Atlas variants/themes, desktop/phone reflow, paused selection/persistence, and offscreen connector suspension. Thirty-two production browser cases and keyboard/filter interactions passed. TypeScript, all 109 tests, production build, static checks, and exact live-route/asset verification passed. Development fixture URLs are explicitly excluded by build/live guards. No animation changes were required in this stage.
+
+Evidence: docs/particle-hero/release/. Actual OS media preferences, screen-reader speech, browser zoom, physical-device input, and representative sustained performance remain manual checks. The scoped hero implementation is released.
