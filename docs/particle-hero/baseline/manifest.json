@@ -1,0 +1,283 @@
+{
+  "capturedOn": "2026-10-16",
+  "timezone": "Asia/Singapore",
+  "sourceCommit": "a5845ac6890e562dbb944dd7c0ac848c3ebcb7c2",
+  "conditions": "Local development preview; IsdaLog selected; motion paused for still comparison; browser viewports, not physical phone tests.",
+  "images": [
+    {
+      "file": "home-desktop-dark.jpg",
+      "surface": "home",
+      "theme": "dark",
+      "viewport": {
+        "documentWidth": 1430,
+        "height": 1000,
+        "scrollWidth": 1430,
+        "width": 1440
+      },
+      "image": {
+        "width": 1430,
+        "height": 993,
+        "format": "jpeg",
+        "bytes": 93295,
+        "sha256": "24300366fdd15614c5d5bf34514c889d8e0216cca3b371a412893eceb2e44d80"
+      }
+    },
+    {
+      "file": "home-desktop-light.jpg",
+      "surface": "home",
+      "theme": "light",
+      "viewport": {
+        "documentWidth": 1430,
+        "height": 1000,
+        "scrollWidth": 1430,
+        "width": 1440
+      },
+      "image": {
+        "width": 1430,
+        "height": 993,
+        "format": "jpeg",
+        "bytes": 92973,
+        "sha256": "e59886cc45eccc265c683f8d8a8178b83d20e355b7a80ea6cb8fa208f6aa467b"
+      }
+    },
+    {
+      "file": "home-phone-light-scene.jpg",
+      "surface": "home",
+      "theme": "light",
+      "viewport": {
+        "documentWidth": 380,
+        "height": 844,
+        "scrollWidth": 380,
+        "width": 390
+      },
+      "image": {
+        "width": 380,
+        "height": 822,
+        "format": "jpeg",
+        "bytes": 27113,
+        "sha256": "0d0238b4ccfc1f01231eafc6d654548c9bd0d4dd3f501bc86a9522676a384a95"
+      }
+    },
+    {
+      "file": "home-phone-light-detail.jpg",
+      "surface": "home",
+      "theme": "light",
+      "viewport": {
+        "documentWidth": 380,
+        "height": 844,
+        "scrollWidth": 380,
+        "width": 390
+      },
+      "image": {
+        "width": 380,
+        "height": 822,
+        "format": "jpeg",
+        "bytes": 26239,
+        "sha256": "69a62b281a34309e78c59cd8b0aef1bcd9be94163c1d92fd3053bc74f6c813cb"
+      }
+    },
+    {
+      "file": "home-phone-dark-scene.jpg",
+      "surface": "home",
+      "theme": "dark",
+      "viewport": {
+        "documentWidth": 380,
+        "height": 844,
+        "scrollWidth": 380,
+        "width": 390
+      },
+      "image": {
+        "width": 380,
+        "height": 822,
+        "format": "jpeg",
+        "bytes": 28781,
+        "sha256": "c5b55209c9b8308a4c6e6f9eec232a7a60c9b36cf4e2e4b2cb21a37cc30e4c35"
+      }
+    },
+    {
+      "file": "home-phone-dark-detail.jpg",
+      "surface": "home",
+      "theme": "dark",
+      "viewport": {
+        "documentWidth": 380,
+        "height": 844,
+        "scrollWidth": 380,
+        "width": 390
+      },
+      "image": {
+        "width": 380,
+        "height": 822,
+        "format": "jpeg",
+        "bytes": 27932,
+        "sha256": "a10430b05d6843d31fbc8c05ddd2f60f23cf7f5f071f9c8261c45db2c3e8c0a5"
+      }
+    },
+    {
+      "file": "explore-desktop-dark.jpg",
+      "surface": "explore",
+      "theme": "dark",
+      "viewport": {
+        "documentWidth": 1430,
+        "height": 1000,
+        "scrollWidth": 1430,
+        "width": 1440
+      },
+      "image": {
+        "width": 1430,
+        "height": 993,
+        "format": "jpeg",
+        "bytes": 85338,
+        "sha256": "f380fcbb8b9fce4fce333bf40427f1a13da0941c24be704e3f31e9e967f177ad"
+      }
+    },
+    {
+      "file": "explore-desktop-light.jpg",
+      "surface": "explore",
+      "theme": "light",
+      "viewport": {
+        "documentWidth": 1430,
+        "height": 1000,
+        "scrollWidth": 1430,
+        "width": 1440
+      },
+      "image": {
+        "width": 1430,
+        "height": 993,
+        "format": "jpeg",
+        "bytes": 81869,
+        "sha256": "bb7f7c5a604ece2857ac81767264b07be544fdb4ebeb0eaee193a908421fade0"
+      }
+    },
+    {
+      "file": "explore-phone-light-scene.jpg",
+      "surface": "explore",
+      "theme": "light",
+      "viewport": {
+        "documentWidth": 380,
+        "height": 844,
+        "scrollWidth": 380,
+        "width": 390
+      },
+      "image": {
+        "width": 380,
+        "height": 822,
+        "format": "jpeg",
+        "bytes": 31382,
+        "sha256": "e85409b552e65e5ae186da27b36c147a1833826034370fa68b3f0b34f5ac02b8"
+      }
+    },
+    {
+      "file": "explore-phone-light-detail.jpg",
+      "surface": "explore",
+      "theme": "light",
+      "viewport": {
+        "documentWidth": 380,
+        "height": 844,
+        "scrollWidth": 380,
+        "width": 390
+      },
+      "image": {
+        "width": 380,
+        "height": 822,
+        "format": "jpeg",
+        "bytes": 27555,
+        "sha256": "2dd229020232b0f2d893258880bbf057db870ffbfe5b6b52dcada04c8fdc024d"
+      }
+    },
+    {
+      "file": "explore-phone-dark-scene.jpg",
+      "surface": "explore",
+      "theme": "dark",
+      "viewport": {
+        "documentWidth": 380,
+        "height": 844,
+        "scrollWidth": 380,
+        "width": 390
+      },
+      "image": {
+        "width": 380,
+        "height": 822,
+        "format": "jpeg",
+        "bytes": 32636,
+        "sha256": "50cfbbd6879f5ad31ec72fb067726a2e83f097378ec36cd13ef83f05ea661b9d"
+      }
+    },
+    {
+      "file": "explore-phone-dark-detail.jpg",
+      "surface": "explore",
+      "theme": "dark",
+      "viewport": {
+        "documentWidth": 380,
+        "height": 844,
+        "scrollWidth": 380,
+        "width": 390
+      },
+      "image": {
+        "width": 380,
+        "height": 822,
+        "format": "jpeg",
+        "bytes": 29290,
+        "sha256": "a75f62186422bad65db0a709d7e9f0d1b32d519bd807ef883d158ee739ee3d79"
+      }
+    }
+  ],
+  "selectionChecks": [
+    {
+      "credit": "Independent project · Sole developer",
+      "focused": "01IsdaLogFISHERIES",
+      "links": [
+        "/projects/isdalog/",
+        "/projects/isdalog/#walkthrough"
+      ],
+      "name": "IsdaLog.",
+      "pressed": 1
+    },
+    {
+      "credit": "Collaborative capstone · Feature developer",
+      "focused": "02DormFixHOUSING",
+      "links": [
+        "/projects/dormfix/",
+        "/projects/dormfix/#walkthrough"
+      ],
+      "name": "DormFix.",
+      "pressed": 1
+    },
+    {
+      "credit": "School project · Sole developer",
+      "focused": "03CentraLogASSETS",
+      "links": [
+        "/projects/centralog/",
+        "/projects/centralog/#walkthrough"
+      ],
+      "name": "CentraLog.",
+      "pressed": 1
+    },
+    {
+      "credit": "School project · Sole developer",
+      "focused": "04PharmaLinkPHARMACY",
+      "links": [
+        "/projects/pharmalink/",
+        "/projects/pharmalink/#walkthrough"
+      ],
+      "name": "PharmaLink.",
+      "pressed": 1
+    }
+  ],
+  "pausePersistedToExplore": true,
+  "exploreFilterCheck": {
+    "results": [
+      "IsdaLog"
+    ],
+    "url": "http://127.0.0.1:4191/explore/?tech=Laravel+11"
+  },
+  "console": [],
+  "pausedSelectionCheck": {
+    "project": "DormFix",
+    "stopped": true,
+    "credit": "Collaborative capstone · Feature developer"
+  },
+  "settingsRestored": {
+    "theme": "dark",
+    "paused": false
+  }
+}

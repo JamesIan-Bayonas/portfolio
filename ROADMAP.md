@@ -296,3 +296,7 @@ Ready locally with type checking, 102 tests, production build, and 28-page stati
 - [x] Replay and Show result controls, stable accessible summaries, offscreen/background suspension, responsive stacking, and static reduced-motion rendering.
 
 Ready locally with type checking, 102 existing tests, production build, and 28-page static verification passing. Browser checks covered all four exact results, keyboard replay/tool selection, immediate result display, offscreen pause/resume, finite playback, both themes, and 320px layouts. Actual reduced-motion preference emulation and spoken screen-reader output remain manual checks. Previews illustrate fixed browser samples; the full Lab workflows remain independently user-controlled.
+
+## Richer particle hero: scope and baseline — 16 October 2026
+
+Stage 1 is complete in docs/particle-hero/README.md: bounded first-release scope, existing-behavior checklist, source/performance constraints, acceptance criteria, and 12 desktop/phone captures across homepage/Explore and both themes. The actual homepage uses the compact Atlas; Explore uses the full variant. Browser checks covered all four keyboard selections/credits/links, persisted pause, selection while paused, the Laravel 11 Explore filter, and 390px reflow. Runtime code is unchanged; this is a baseline, not the richer hero implementation. Actual preference emulation, assistive-technology speech, contrast measurements, and device-performance measurements remain future checks. Next: project scene data, followed by a static visual composition.
