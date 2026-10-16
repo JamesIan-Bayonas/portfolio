@@ -214,3 +214,5 @@ PharmaLink's Lab now connects the cart, recorded sale, and exact remaining stock
 CentraLog's asset walkthrough now illustrates the sample laptop's lifecycle with connected equipment, custody, and repair records. Transfer updates location and custodian together; maintenance preserves that assignment, resolution retains the 30-day repair window, and reporting keeps the existing history. Finite motion respects reduced-motion preferences, and cards stack on narrow screens.
 
 Switching Toolbox tools now smoothly adjusts the detail panel's height. Explore keeps matching project cards in place across filter updates and briefly animates their new positions. Controls respond immediately, existing comparisons and shareable filters remain available, and reduced-motion preferences use the immediate layout.
+
+The homepage's Process section now follows Understand → Design → Build → Validate → Deliver. Scroll to highlight each stage and fill its connector, or follow the accompanying project examples. The desktop summary tracks the stage in view; mobile and reduced-motion layouts keep the complete narrative readable in normal document flow.

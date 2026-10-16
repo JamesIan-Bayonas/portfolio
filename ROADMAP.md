@@ -277,3 +277,13 @@ This completes the queued project-specific Lab illustrations. Verified all six w
 - [x] Preserve native controls, filter URLs, comparison selections, focus behavior, existing card interactions, and an immediate reduced-motion view.
 
 Ready locally; standard type/test/build/static checks and local browser review passed. Browser checks covered keyboard selection, panel interpolation/settling, rapid selection, filter movement, zero-result recovery, chip removal, comparison preservation, reload restoration, both themes, and 320px reflow. Actual reduced-motion preference emulation and screen-reader speech remain manual checks. Next in the discussed sequence: Process progression as visitors read.
+
+## Process progression — 16 October 2026
+
+- Visitor need: follow the working method and connect each stage to concrete project evidence.
+- [x] Five readable stages: Understand, Design, Build, Validate, Deliver.
+- [x] Scroll-linked connector fill, current-stage emphasis, and a desktop sticky reading summary; scrolling backward reverses the progression.
+- [x] Relevant project/problem, design, sample review/failure, and collection links; ordinary document scrolling and keyboard navigation.
+- [x] Single-column narrow layout, non-sticky introduction on short screens, and static reduced-motion rendering with all content immediately visible.
+
+Ready locally with type checking, 102 tests, production build, and 28-page static verification passing. Browser review covered all five stages, reverse progression, keyboard links, the DormFix walkthrough destination, both themes, and 320 CSS-pixel reflow without horizontal overflow. Actual reduced-motion preference emulation, screen-reader speech, and native phone gestures remain manual checks. This completes Process progression in the discussed animation sequence.
