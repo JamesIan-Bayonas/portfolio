@@ -1,0 +1,218 @@
+{
+  "login-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/centralog-admin/login-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/centralog-admin/login-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/centralog-admin/login-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "login-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/centralog-admin/login-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/centralog-admin/login-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/centralog-admin/login-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "overview-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/centralog-admin/overview-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/centralog-admin/overview-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/centralog-admin/overview-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "overview-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/centralog-admin/overview-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/centralog-admin/overview-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/centralog-admin/overview-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "asset-details-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/centralog-admin/asset-details-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/centralog-admin/asset-details-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/centralog-admin/asset-details-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "asset-details-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/centralog-admin/asset-details-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/centralog-admin/asset-details-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/centralog-admin/asset-details-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "property-details-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/centralog-admin/property-details-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/centralog-admin/property-details-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/centralog-admin/property-details-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "property-details-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/centralog-admin/property-details-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/centralog-admin/property-details-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/centralog-admin/property-details-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "financial-ledger-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/centralog-admin/financial-ledger-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/centralog-admin/financial-ledger-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/centralog-admin/financial-ledger-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "financial-ledger-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/centralog-admin/financial-ledger-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/centralog-admin/financial-ledger-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/centralog-admin/financial-ledger-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "audit-log-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/centralog-admin/audit-log-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/centralog-admin/audit-log-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/centralog-admin/audit-log-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "audit-log-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/centralog-admin/audit-log-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/centralog-admin/audit-log-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/centralog-admin/audit-log-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  }
+}

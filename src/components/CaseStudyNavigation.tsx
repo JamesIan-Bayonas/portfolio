@@ -13,6 +13,7 @@ export default function CaseStudyNavigation({
   const t = (en: string, fil: string) => (locale === "fil" ? fil : en)
   const sections = [
     { id: "overview", label: "Overview" },
+    ...(projectId === "centralog" ? [{ id: "admin-showcase", label: "Admin workspace" }] : []),
     { id: "walkthrough", label: "Walkthrough" },
     ...(projectId === "centralog"
       ? [{ id: "lab", label: "Valuation lab" }]

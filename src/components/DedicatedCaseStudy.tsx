@@ -5,6 +5,8 @@ import { projectScreenshot, type Project } from "../data/projects"
 import { CaseStudyContent } from "./ProjectCaseStudy"
 
 import LoadingState from "./LoadingState"
+import { usePortfolioTheme } from "../lib/usePortfolioTheme"
+import centralogCaptures from "../data/centralogAdminScreenshots.json"
 
 import { engineeringNotes } from "../data/notes"
 
@@ -27,6 +29,7 @@ const IsdaLogWalkthrough = lazy(() => import("./IsdaLogWalkthrough"))
 const DormFixWalkthrough = lazy(() => import("./DormFixWalkthrough"))
 
 const CentraLogWalkthrough = lazy(() => import("./CentraLogWalkthrough"))
+const CentraLogAdminShowcase = lazy(() => import("./CentraLogAdminShowcase"))
 
 const EngineeringLab = lazy(() => import("./EngineeringLab"))
 
@@ -62,6 +65,19 @@ export default function DedicatedCaseStudy({
   const t = (en: string, fil: string) => (locale === "fil" ? fil : en)
 
   const [shareMessage, setShareMessage] = useState("")
+  const mode = usePortfolioTheme()
+  const loginImage = project.id === "centralog" ? centralogCaptures[`login-${mode}`] : undefined
+  const heroAlt = loginImage
+    ? `CentraLog staff sign-in screen in ${mode} mode, with username and password fields and a project demo account option`
+    : project.imageAlt
+  const heroCaption = loginImage
+    ? t("CentraLog's staff sign-in introduces the asset workspace. This screenshot follows the portfolio theme; explore the admin screens below.", "Ipinapakilala ng staff sign-in ng CentraLog ang asset workspace. Sumusunod ang screenshot sa tema ng portfolio; tingnan ang mga admin screen sa ibaba.")
+    : project.imageCaption
+  const heroGalleryImage = loginImage ? {
+    id: project.id, src: loginImage.variants[loginImage.variants.length - 1].src,
+    width: loginImage.width, height: loginImage.height, alt: heroAlt,
+    title: `CentraLog · Staff sign-in · ${mode} mode`, caption: heroCaption,
+  } : projectScreenshot(project)
 
   useEffect(() => {
     if (!window.location.hash) return
@@ -202,7 +218,7 @@ export default function DedicatedCaseStudy({
           <figure className="dedicated-case-image">
             <ScreenshotPreview
               images={[
-                projectScreenshot(project),
+                heroGalleryImage,
                 ...(project.id === "isdalog" ? isdalogScreenshotGallery : []),
               ]}
               selectedId={project.id}
@@ -211,14 +227,14 @@ export default function DedicatedCaseStudy({
               }`}
             >
               <ResponsiveScreenshot
-                asset={project.screenshot}
-                alt={project.imageAlt}
+                asset={loginImage ?? project.screenshot}
+                alt={heroAlt}
                 sizes="(min-width: 1520px) 663px, (min-width: 1024px) calc((100vw - 128px) / 2.1), (min-width: 640px) calc(100vw - 50px), calc(100vw - 34px)"
                 loading="eager"
               />
             </ScreenshotPreview>
             <figcaption className="font-mono">
-              {project.imageCaption}
+              {heroCaption}
             </figcaption>
           </figure>
         </header>
@@ -231,6 +247,11 @@ export default function DedicatedCaseStudy({
           </p>
         )}
         <div lang="en">
+          {project.id === "centralog" && (
+            <Suspense fallback={<div id="admin-showcase"><LoadingState label="Preparing the admin workspace tour…" /></div>}>
+              <CentraLogAdminShowcase />
+            </Suspense>
+          )}
           <Suspense
             fallback={
               <div id="walkthrough">
