@@ -1,29 +1,26 @@
 import type { Project } from "./projects"
 import { atlasSymbolPoints } from "../lib/atlasSymbols.ts"
+import { projectAccents } from "./projectAccents.ts"
 
 // Identity owns the visual association; changing project-record order cannot swap it.
 const definitions = {
   isdalog: {
-    accent: "#37cbd6",
-    lightAccent: "#0d6973",
+    ...projectAccents.isdalog,
     label: "FISHERIES",
     position: { x: 23, y: 24 },
   },
   dormfix: {
-    accent: "#b28aff",
-    lightAccent: "#7144a5",
+    ...projectAccents.dormfix,
     label: "HOUSING",
     position: { x: 77, y: 24 },
   },
   centralog: {
-    accent: "#f3b453",
-    lightAccent: "#80520d",
+    ...projectAccents.centralog,
     label: "ASSETS",
     position: { x: 77, y: 76 },
   },
   pharmalink: {
-    accent: "#f184ab",
-    lightAccent: "#a3345c",
+    ...projectAccents.pharmalink,
     label: "PHARMACY",
     position: { x: 23, y: 76 },
   },

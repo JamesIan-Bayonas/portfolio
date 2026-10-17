@@ -132,6 +132,20 @@
   --color-grid: rgba(0, 0, 0, 0.04);
 }
 
+/* Project identity changes accents while the selected mode owns neutral surfaces. */
+:root[data-project] {
+  --color-accent: var(--project-accent-dark);
+  --color-card-glow: color-mix(in srgb, var(--color-accent) 8%, transparent);
+  --color-accent-shadow: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  --color-spotlight-glow: color-mix(in srgb, var(--color-accent) 8%, transparent);
+}
+
+:root[data-project][data-theme="light"] {
+  --color-accent: var(--project-accent-light);
+  --color-accent-shadow: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  --color-spotlight-glow: color-mix(in srgb, var(--color-accent) 6%, transparent);
+}
+
 html,
 body,
 #root {
@@ -166,8 +180,8 @@ body {
   height: 480px;
   background: radial-gradient(
     ellipse at center,
-    rgba(37, 99, 235, 0.12) 0%,
-    rgba(37, 99, 235, 0.03) 45%,
+    color-mix(in srgb, var(--color-accent) 12%, transparent) 0%,
+    color-mix(in srgb, var(--color-accent) 3%, transparent) 45%,
     transparent 75%
   );
   filter: blur(60px);
