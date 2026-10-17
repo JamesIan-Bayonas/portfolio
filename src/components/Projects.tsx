@@ -3,6 +3,7 @@ import { projects, projectScreenshot, type Project } from "../data/projects"
 import ProjectCaseStudy from "./ProjectCaseStudy"
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
 import ScreenshotPreview from "./ScreenshotPreview"
+import { cardAccentStyles } from "../lib/projectCardAccents"
 
 interface ProjectCardProps {
   project: Project
@@ -16,7 +17,8 @@ function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <motion.article
       id={`project-${project.id}`}
-      className={`interactive-surface project-card${featured ? " project-card-featured" : ""}`}
+      className={`interactive-surface project-card project-accent-card${featured ? " project-card-featured" : ""}`}
+      style={cardAccentStyles[project.id]}
       aria-labelledby={`${project.id}-title`}
       initial={reduced ? false : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -122,7 +124,7 @@ export default function Projects() {
             Explore & filter all projects <span aria-hidden="true">↗</span>
           </a>
           {projects.map((project, index) => (
-            <a key={project.id} href={`#project-${project.id}`}>
+            <a key={project.id} href={`#project-${project.id}`} className="project-index-link" style={cardAccentStyles[project.id]}>
               <span className="project-index-number">
                 {String(index + 1).padStart(2, "0")}
               </span>

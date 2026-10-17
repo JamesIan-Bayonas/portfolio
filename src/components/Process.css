@@ -1,4 +1,10 @@
 .process-section { border-top: 1px solid var(--color-border); scroll-margin-top: 90px; }
+.process-section {
+  --project-card-accent: var(--card-accent-dark, #58a6ff);
+  --color-accent: var(--project-card-accent);
+  transition: --project-card-accent .3s ease;
+}
+[data-theme="light"] .process-section { --project-card-accent: var(--card-accent-light, #2563eb); }
 .process-layout { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(36px, 6vw, 100px); align-items: start; }
 .process-intro { position: sticky; top: 120px; min-width: 0; }
 .process-intro > .project-eyebrow { color: var(--color-text2); font-size: 10px; }

@@ -1,5 +1,6 @@
 import { projects } from "../data/projects"
 import ContactAction from "./ContactAction"
+import { cardAccentStyles } from "../lib/projectCardAccents"
 
 interface ProjectComparisonProps {
   selected: string[]
@@ -18,7 +19,7 @@ export default function ProjectComparison({ selected, onChange }: ProjectCompari
     </div>
     <p>Choose two systems to compare my contribution and the decisions behind each build. Your selection stays available when you filter projects.</p>
     <div className="comparison-selectors">
-      {[0, 1].map(index => <div key={index}>
+      {[0, 1].map(index => <div key={index} className={cardAccentStyles[selected[index]] ? "comparison-project-theme" : undefined} style={cardAccentStyles[selected[index]]}>
         <label htmlFor={`comparison-${index}`}>Project {index + 1}</label>
         <select id={`comparison-${index}`} value={selected[index] ?? ""} onChange={event => {
           const next = [...selected]
@@ -34,7 +35,7 @@ export default function ProjectComparison({ selected, onChange }: ProjectCompari
       {comparison.length === 2 ? `Comparing ${comparison[0].name} and ${comparison[1].name}. This page link includes your selection.` : "Choose two different projects to open the comparison."}
     </p>
     {comparison.length === 2 && <div className="comparison-grid">
-      {comparison.map(project => <article key={project.id} className="comparison-card" aria-labelledby={`compare-${project.id}`}>
+      {comparison.map(project => <article key={project.id} className="comparison-card comparison-project-theme" style={cardAccentStyles[project.id]} aria-labelledby={`compare-${project.id}`}>
         <p className="project-eyebrow font-mono">{project.category}</p>
         <h3 id={`compare-${project.id}`}>{project.name}</h3>
         <dl>

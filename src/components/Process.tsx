@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import { useReducedMotion } from "motion/react"
+import { cardAccentStyles } from "../lib/projectCardAccents"
 import "./Process.css"
 
 const steps = [
   {
     title: "Understand",
+    projectId: "isdalog",
     sub: "People · responsibilities · constraints",
     detail:
       "Start with the people using the system, the decisions they make, and the records they need to trust.",
@@ -15,6 +17,7 @@ const steps = [
   },
   {
     title: "Design",
+    projectId: "centralog",
     sub: "Data models · state changes · contracts",
     detail:
       "Map how information moves and which records must change together. Make lifecycle rules and trade-offs explicit before building the interface.",
@@ -25,6 +28,7 @@ const steps = [
   },
   {
     title: "Build",
+    projectId: "dormfix",
     sub: "Interfaces · services · connected workflows",
     detail:
       "Connect the interface to the rules underneath it. Keep validation and review decisions visible so people can follow what happens next.",
@@ -35,6 +39,7 @@ const steps = [
   },
   {
     title: "Validate",
+    projectId: "pharmalink",
     sub: "Failure paths · exact results · evidence",
     detail:
       "Check the paths that succeed, fail, or reverse an action. Explain what each test covers and where the evidence stops.",
@@ -45,6 +50,7 @@ const steps = [
   },
   {
     title: "Deliver",
+    projectId: undefined,
     sub: "Clear scope · documentation · handoff",
     detail:
       "Make the finished work inspectable. Connect the implementation to a clear explanation, source references, and a useful next step.",
@@ -139,6 +145,8 @@ export default function Process() {
       aria-labelledby="process-title"
       className="process-section relative z-10 px-4 py-12 sm:px-6 sm:py-16 lg:px-10"
       data-process-motion={reduced ? "static" : "scroll"}
+      data-process-project={steps[active]?.projectId}
+      style={cardAccentStyles[steps[active]?.projectId ?? ""]}
     >
       <div className="process-layout max-w-[1440px] mx-auto">
         <header className="process-intro">
