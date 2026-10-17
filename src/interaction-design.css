@@ -4,6 +4,37 @@
 .interactive-surface:is(:hover,:focus-within) { border-color: color-mix(in srgb,var(--color-accent) 65%,var(--color-border)); box-shadow: 0 12px 40px -25px var(--color-accent-shadow); }
 .interactive-surface:is(:hover,:focus-within)::before,.interactive-surface:is(:hover,:focus-within)::after { opacity: 1; }
 .interactive-surface img { transition: transform .4s ease; }
+/* Animate one inherited color so accents in homepage and collection cards stay in sync. */
+@property --project-card-accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #58a6ff;
+}
+.explore-grid, .project-list, .lab-demo-picker { --card-rest-accent: var(--color-accent); }
+.project-accent-card.interactive-surface {
+  --project-card-accent: var(--card-rest-accent);
+  --color-accent: var(--project-card-accent);
+  --color-accent-shadow: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  transition: --project-card-accent .24s ease, transform .24s ease-out, border-color .22s, box-shadow .22s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .project-accent-card:hover { --project-card-accent: var(--card-accent-dark); }
+  [data-theme="light"] .project-accent-card:hover { --project-card-accent: var(--card-accent-light); }
+}
+.project-accent-card:focus-within { --project-card-accent: var(--card-accent-dark); }
+[data-theme="light"] .project-accent-card:focus-within { --project-card-accent: var(--card-accent-light); }
+.lab-demo-picker .project-accent-card[aria-pressed="true"] { --project-card-accent: var(--card-accent-dark); }
+[data-theme="light"] .lab-demo-picker .project-accent-card[aria-pressed="true"] { --project-card-accent: var(--card-accent-light); }
+.lab-project-theme {
+  --project-card-accent: var(--card-accent-dark);
+  --color-accent: var(--project-card-accent);
+  --color-accent-shadow: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  transition: --project-card-accent .24s ease;
+}
+[data-theme="light"] .lab-project-theme { --project-card-accent: var(--card-accent-light); }
+.lab-project-theme input { accent-color: var(--color-accent); }
+.lab-demo-picker .project-accent-card:is(:hover, :focus-within, [aria-pressed="true"]) .project-eyebrow,
+.lab-project-theme .lab-demo-intro .project-eyebrow { color: var(--color-accent); }
 @media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
   .interactive-surface:hover { transform: perspective(1100px) rotateX(var(--surface-x)) rotateY(var(--surface-y)) translateY(-3px); }
   .interactive-surface.project-card:hover { transform: perspective(1800px) rotateX(calc(var(--surface-x) * .3)) rotateY(calc(var(--surface-y) * .3)); }

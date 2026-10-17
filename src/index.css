@@ -229,9 +229,19 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .project-section-heading h2 { font-size: clamp(30px, 3.6vw, 52px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em; }
 .project-section-heading > p { color: var(--color-text2); font-size: 15px; line-height: 1.75; max-width: 440px; }
 .project-index { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); border: 1px solid var(--color-border); border-radius: 4px; margin-bottom: 48px; overflow: hidden; }
-.project-index a { display: flex; align-items: center; gap: 14px; padding: 18px 20px; font-size: 12px; min-height: 52px; transition: background-color .2s, color .2s; }
+.project-index a { display: flex; align-items: center; gap: 14px; padding: 18px 20px; font-size: 12px; min-height: 52px; transition: background-color .2s, color .2s, box-shadow .2s; }
 .project-index a + a { border-left: 1px solid var(--color-border); }
-.project-index a:hover { background: var(--color-surface); color: var(--color-accent); }
+.project-index a:is(:hover, :focus-visible) { background: var(--color-surface); color: var(--color-accent); }
+.project-index a:focus-visible { outline-offset: -3px; }
+.project-index-link { --index-accent: var(--card-accent-dark); }
+[data-theme="light"] .project-index-link { --index-accent: var(--card-accent-light); }
+.project-index .project-index-link:is(:hover, :focus-visible) {
+  --color-accent: var(--index-accent);
+  background: color-mix(in srgb, var(--color-accent) 9%, var(--color-bg));
+  box-shadow: inset 0 -2px var(--color-accent);
+}
+.project-index-link:is(:hover, :focus-visible) .project-index-number { color: var(--color-accent); }
+.project-index a > span { transition: color .2s; }
 .project-index-number { color: var(--color-text2); }
 .project-index a > span:last-child { margin-left: auto; color: var(--color-accent); }
 .project-list { display: grid; gap: 40px; }
@@ -590,6 +600,19 @@ body:has(.portfolio-search[open]) { overflow: hidden; }
 .comparison-card dd { font-size: 14px; line-height: 1.8; color: var(--color-text2); }
 .comparison-card .project-tech { margin: 0; }
 .comparison-card .case-study-contact { border: 0; padding: 0; text-align: left; color: var(--color-accent); }
+.comparison-project-theme { --color-accent: var(--card-accent-dark); }
+[data-theme="light"] .comparison-project-theme { --color-accent: var(--card-accent-light); }
+.comparison-card.comparison-project-theme {
+  border-color: color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
+  border-top: 2px solid var(--color-accent);
+}
+.comparison-project-theme :is(h3, .project-eyebrow, label) { color: var(--color-accent); }
+.comparison-project-theme select {
+  color: var(--color-accent);
+  border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+  transition: color .24s ease, border-color .24s ease;
+}
+.comparison-project-theme select option { color: var(--color-text1); background: var(--color-bg); }
 @media(max-width:767px) { .comparison-selectors, .comparison-grid { grid-template-columns: 1fr; } .project-comparison { padding: 20px; } .comparison-card { padding: 20px; } }
 .explore-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; }
 .explore-card { min-width: 0; border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; background: var(--color-surface); }

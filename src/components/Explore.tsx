@@ -1,5 +1,6 @@
 import ProjectAtlas from "./ProjectAtlas"
 import { useEffect, useState, useRef } from "react"
+import { cardAccentStyles } from "../lib/projectCardAccents"
 import { useResultTransitions } from "./useResultTransitions"
 
 import { projects, projectScreenshot } from "../data/projects"
@@ -284,7 +285,8 @@ export default function Explore() {
                     className="explore-result"
                   >
                     <article
-                      className="explore-card interactive-surface"
+                      className="explore-card interactive-surface project-accent-card"
+                      style={cardAccentStyles[project.id]}
                       aria-labelledby={`explore-${project.id}`}
                     >
                       <ScreenshotPreview

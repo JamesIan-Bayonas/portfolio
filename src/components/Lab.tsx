@@ -3,6 +3,7 @@ import { labDemos, labDemoFromHash, type LabDemoId } from "../data/labDemos"
 import { projects } from "../data/projects"
 import { engineeringNotes } from "../data/notes"
 import LoadingState from "./LoadingState"
+import { cardAccentStyles } from "../lib/projectCardAccents"
 
 const AssetValuationDemo = lazy(() => import("./AssetValuationDemo"))
 const DormFixWalkthrough = lazy(() => import("./DormFixWalkthrough"))
@@ -71,7 +72,8 @@ export default function Lab() {
             {labDemos.map((item) => (
               <button
                 key={item.id}
-                className="interactive-surface"
+                className="interactive-surface project-accent-card"
+                style={cardAccentStyles[item.id]}
                 id={`demo-${item.id}`}
                 type="button"
                 aria-pressed={selected === item.id}
@@ -88,7 +90,8 @@ export default function Lab() {
           </div>
         </section>
         <section
-          className="lab-demo-panel"
+          className="lab-demo-panel lab-project-theme"
+          style={cardAccentStyles[selected]}
           id="lab-demo-panel"
           aria-labelledby="lab-demo-title"
         >
