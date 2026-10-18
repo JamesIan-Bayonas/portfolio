@@ -1,3 +1,5 @@
+import { projectPreview } from "../data/projectPreviews"
+import { usePortfolioTheme } from "../lib/usePortfolioTheme"
 import { motion, useReducedMotion } from "motion/react"
 import { projects, projectScreenshot, type Project } from "../data/projects"
 import ProjectCaseStudy from "./ProjectCaseStudy"
@@ -10,7 +12,9 @@ interface ProjectCardProps {
   index: number
 }
 
-function ProjectCard({ project, index }: ProjectCardProps) {
+function ProjectCard({ project: sourceProject, index }: ProjectCardProps) {
+  const mode = usePortfolioTheme()
+  const project = projectPreview(sourceProject, mode)
   const reduced = useReducedMotion()
   const featured = index === 0
 
@@ -34,7 +38,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             <span>{featured ? "FEATURED PROJECT" : project.context}</span>
           </div>
           <ScreenshotPreview
-            images={projects.map(projectScreenshot)}
+            images={projects.map(item => projectScreenshot(projectPreview(item, mode)))}
             selectedId={project.id}
             label={`Inspect ${project.name} screenshot`}
           >

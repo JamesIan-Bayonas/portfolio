@@ -1,3 +1,5 @@
+import { projectPreview } from "../data/projectPreviews"
+import { usePortfolioTheme } from "../lib/usePortfolioTheme"
 import ProjectAtlas from "./ProjectAtlas"
 import { useEffect, useState, useRef } from "react"
 import { cardAccentStyles } from "../lib/projectCardAccents"
@@ -40,6 +42,7 @@ const technologies = [
 ].sort((a, b) => a.localeCompare(b))
 
 export default function Explore() {
+  const mode = usePortfolioTheme()
   const [filters, setFilters] = useState(() =>
     readExploreFilters(window.location.search, domains, technologies),
   )
@@ -51,7 +54,7 @@ export default function Explore() {
 
   const [filtersOpen, setFiltersOpen] = useState(false)
   const filterSummary = useRef<HTMLElement>(null)
-  const results = filterProjects(searchableProjects, filters)
+  const results = filterProjects(searchableProjects, filters).map(project => projectPreview(project, mode))
 
   const [comparison, setComparison] = useState(() =>
     readComparison(window.location.search, projectIds),
