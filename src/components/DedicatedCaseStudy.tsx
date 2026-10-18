@@ -7,6 +7,7 @@ import { CaseStudyContent } from "./ProjectCaseStudy"
 import LoadingState from "./LoadingState"
 import { usePortfolioTheme } from "../lib/usePortfolioTheme"
 import centralogCaptures from "../data/centralogAdminScreenshots.json"
+import dormfixCaptures from "../data/dormfixLandlordScreenshots.json"
 
 import { engineeringNotes } from "../data/notes"
 
@@ -27,6 +28,7 @@ import ProjectBriefDownload from "./ProjectBriefDownload"
 const IsdaLogWalkthrough = lazy(() => import("./IsdaLogWalkthrough"))
 
 const DormFixWalkthrough = lazy(() => import("./DormFixWalkthrough"))
+const DormFixWorkspaceShowcase = lazy(() => import("./DormFixWorkspaceShowcase"))
 
 const CentraLogWalkthrough = lazy(() => import("./CentraLogWalkthrough"))
 const CentraLogAdminShowcase = lazy(() => import("./CentraLogAdminShowcase"))
@@ -66,17 +68,22 @@ export default function DedicatedCaseStudy({
 
   const [shareMessage, setShareMessage] = useState("")
   const mode = usePortfolioTheme()
-  const loginImage = project.id === "centralog" ? centralogCaptures[`login-${mode}`] : undefined
+  const loginImage = project.id === "centralog" ? centralogCaptures[`login-${mode}`]
+    : project.id === "dormfix" ? dormfixCaptures[`login-${mode}`] : undefined
   const heroAlt = loginImage
-    ? `CentraLog staff sign-in screen in ${mode} mode, with username and password fields and a project demo account option`
+    ? project.id === "dormfix"
+      ? `DormFix sign-in screen in ${mode} mode with email and password fields, a dormitory photograph, and a create-account link`
+      : `${project.name} staff sign-in screen in ${mode} mode, with username and password fields and project demo account options`
     : project.imageAlt
   const heroCaption = loginImage
-    ? t("CentraLog's staff sign-in introduces the asset workspace. This screenshot follows the portfolio theme; explore the admin screens below.", "Ipinapakilala ng staff sign-in ng CentraLog ang asset workspace. Sumusunod ang screenshot sa tema ng portfolio; tingnan ang mga admin screen sa ibaba.")
+    ? project.id === "dormfix"
+      ? t("DormFix's sign-in introduces room assignments, payment records, and maintenance. This screenshot follows the portfolio theme; explore the landlord and tenant workspaces below.", "Ipinapakilala ng sign-in ng DormFix ang room assignments, payment records, at maintenance. Sumusunod ang screenshot sa tema ng portfolio; tingnan ang landlord at tenant workspaces sa ibaba.")
+      : t("CentraLog's staff sign-in introduces the asset workspace. This screenshot follows the portfolio theme; explore the admin screens below.", "Ipinapakilala ng staff sign-in ng CentraLog ang asset workspace. Sumusunod ang screenshot sa tema ng portfolio; tingnan ang mga admin screen sa ibaba.")
     : project.imageCaption
   const heroGalleryImage = loginImage ? {
     id: project.id, src: loginImage.variants[loginImage.variants.length - 1].src,
     width: loginImage.width, height: loginImage.height, alt: heroAlt,
-    title: `CentraLog · Staff sign-in · ${mode} mode`, caption: heroCaption,
+    title: `${project.name} · Sign-in · ${mode} mode`, caption: heroCaption,
   } : projectScreenshot(project)
 
   useEffect(() => {
@@ -247,6 +254,11 @@ export default function DedicatedCaseStudy({
           </p>
         )}
         <div lang="en">
+          {project.id === "dormfix" && (
+            <Suspense fallback={<div id="workspace-showcase"><LoadingState label="Preparing the DormFix workspace tour…" /></div>}>
+              <DormFixWorkspaceShowcase />
+            </Suspense>
+          )}
           {project.id === "centralog" && (
             <Suspense fallback={<div id="admin-showcase"><LoadingState label="Preparing the admin workspace tour…" /></div>}>
               <CentraLogAdminShowcase />

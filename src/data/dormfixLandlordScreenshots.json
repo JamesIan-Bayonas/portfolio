@@ -1,0 +1,362 @@
+{
+  "login-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/login-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/login-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/login-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "login-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/login-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/login-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/login-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "overview-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/overview-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/overview-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/overview-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "overview-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/overview-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/overview-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/overview-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "overview-details-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/overview-details-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/overview-details-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/overview-details-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "overview-details-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/overview-details-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/overview-details-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/overview-details-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "tenants-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/tenants-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/tenants-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/tenants-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "tenants-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/tenants-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/tenants-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/tenants-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "rooms-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/rooms-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/rooms-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/rooms-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "rooms-dark": {
+    "width": 1917,
+    "height": 1071,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/rooms-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/rooms-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/rooms-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "payments-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/payments-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/payments-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/payments-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "payments-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/payments-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/payments-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/payments-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "maintenance-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/maintenance-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/maintenance-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/maintenance-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "maintenance-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/maintenance-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/maintenance-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/maintenance-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "messages-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/messages-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/messages-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/messages-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "messages-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/messages-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/messages-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/messages-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "announcements-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/announcements-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/announcements-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/announcements-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "announcements-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/announcements-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/announcements-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/announcements-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "house-rules-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/house-rules-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/house-rules-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/house-rules-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "house-rules-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-landlord/house-rules-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/house-rules-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-landlord/house-rules-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  }
+}

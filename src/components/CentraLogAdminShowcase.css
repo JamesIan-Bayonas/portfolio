@@ -1,4 +1,5 @@
-.admin-showcase { padding-block: 48px; border-top: 1px solid var(--color-border); scroll-margin-top: var(--case-section-offset, 156px); }
+.admin-showcase { padding-block: 48px; border-top: 1px solid var(--color-border); }
+.dedicated-case-study .admin-showcase[id] { scroll-margin-top: var(--case-section-offset, 156px); }
 .admin-showcase-heading { display: flex; justify-content: space-between; align-items: start; gap: 24px; }
 .admin-showcase-heading h2 { font-size: clamp(28px, 3.4vw, 44px); font-weight: 600; line-height: 1.15; letter-spacing: -.03em; margin-bottom: 16px; }
 .admin-showcase-heading > div > p:last-child, .admin-showcase-context, .admin-screen-summary { color: var(--color-text2); font-size: 14px; line-height: 1.8; max-width: 850px; }
@@ -22,5 +23,7 @@
 .admin-screen-guidance article > p:first-child { color: var(--color-accent); font-size: 9px; margin-bottom: 16px; }
 .admin-screen-guidance h4 { font-size: 17px; font-weight: 500; margin-bottom: 12px; }
 .admin-screen-guidance article > p:last-child { color: var(--color-text2); font-size: 13px; line-height: 1.85; }
-.admin-screen-actions { margin-top: 20px; color: var(--color-accent); }
+.admin-screen-actions { margin-top: 20px; color: var(--color-accent); display: flex; flex-wrap: wrap; gap: 12px; }
+.workspace-role-picker { margin-bottom: 12px; }
+.workspace-role-summary { max-width: 900px; margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--color-accent); color: var(--color-text2); font-size: 13px; line-height: 1.8; }
 @media (max-width: 767px) { .admin-showcase-heading { flex-direction: column; } .admin-screen-guidance { grid-template-columns: 1fr; gap: 12px; } .admin-screen-picker button { flex: 1 1 140px; } }

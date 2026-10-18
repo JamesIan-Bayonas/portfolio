@@ -1,0 +1,326 @@
+{
+  "overview-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/overview-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/overview-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/overview-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "overview-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/overview-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/overview-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/overview-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "overview-actions-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/overview-actions-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/overview-actions-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/overview-actions-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "overview-actions-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/overview-actions-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/overview-actions-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/overview-actions-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "submit-payment-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/submit-payment-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/submit-payment-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/submit-payment-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "submit-payment-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/submit-payment-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/submit-payment-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/submit-payment-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "report-issue-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/report-issue-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/report-issue-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/report-issue-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "report-issue-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/report-issue-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/report-issue-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/report-issue-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "messages-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/messages-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/messages-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/messages-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "messages-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/messages-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/messages-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/messages-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "house-rules-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/house-rules-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/house-rules-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/house-rules-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "house-rules-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/house-rules-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/house-rules-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/house-rules-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "payments-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/payments-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/payments-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/payments-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "payments-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/payments-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/payments-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/payments-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "maintenance-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/maintenance-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/maintenance-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/maintenance-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "maintenance-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/maintenance-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/maintenance-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/maintenance-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "announcements-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/announcements-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/announcements-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/announcements-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "announcements-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/dormfix-tenant/announcements-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/announcements-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/dormfix-tenant/announcements-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  }
+}

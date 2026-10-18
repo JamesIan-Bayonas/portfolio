@@ -1,0 +1,21 @@
+.dormfix-workspace { overflow-anchor: none; }
+.dormfix-role-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 320px; }
+.dormfix-role-tabs button { justify-content: center; }
+.dormfix-role-tabs button[aria-selected="true"] {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 9%, var(--color-surface));
+  box-shadow: inset 0 2px var(--color-accent);
+}
+.dormfix-role-tabs button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+.dormfix-role-panel[hidden] { display: none; }
+.dormfix-role-panel:not([hidden]) { animation: dormfix-role-enter 240ms ease-out both; }
+@keyframes dormfix-role-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dormfix-role-panel:not([hidden]) { animation: none; }
+}
