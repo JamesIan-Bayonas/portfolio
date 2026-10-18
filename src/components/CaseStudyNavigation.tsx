@@ -14,7 +14,7 @@ export default function CaseStudyNavigation({
   const sections = [
     { id: "overview", label: "Overview" },
     ...(projectId === "dormfix" ? [{ id: "workspace-showcase", label: "Role workspaces" }] : []),
-    ...(projectId === "centralog" ? [{ id: "admin-showcase", label: "Admin workspace" }] : []),
+    ...(["centralog", "pharmalink"].includes(projectId) ? [{ id: "admin-showcase", label: projectId === "pharmalink" ? "Role workspaces" : "Admin workspace" }] : []),
     { id: "walkthrough", label: "Walkthrough" },
     ...(projectId === "centralog"
       ? [{ id: "lab", label: "Valuation lab" }]

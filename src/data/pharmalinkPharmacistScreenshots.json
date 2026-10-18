@@ -1,0 +1,146 @@
+{
+  "overview-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-pharmacist/overview-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/overview-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/overview-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "overview-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-pharmacist/overview-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/overview-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/overview-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "pos-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-pharmacist/pos-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/pos-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/pos-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "pos-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-pharmacist/pos-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/pos-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/pos-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "sales-history-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-pharmacist/sales-history-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/sales-history-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/sales-history-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "sales-history-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-pharmacist/sales-history-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/sales-history-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/sales-history-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "profile-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-pharmacist/profile-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/profile-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/profile-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "profile-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-pharmacist/profile-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/profile-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-pharmacist/profile-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  }
+}

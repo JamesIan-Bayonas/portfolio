@@ -7,6 +7,7 @@ import { CaseStudyContent } from "./ProjectCaseStudy"
 import LoadingState from "./LoadingState"
 import { usePortfolioTheme } from "../lib/usePortfolioTheme"
 import centralogCaptures from "../data/centralogAdminScreenshots.json"
+import pharmalinkCaptures from "../data/pharmalinkAdminScreenshots.json"
 import dormfixCaptures from "../data/dormfixLandlordScreenshots.json"
 
 import { engineeringNotes } from "../data/notes"
@@ -32,6 +33,7 @@ const DormFixWorkspaceShowcase = lazy(() => import("./DormFixWorkspaceShowcase")
 
 const CentraLogWalkthrough = lazy(() => import("./CentraLogWalkthrough"))
 const CentraLogAdminShowcase = lazy(() => import("./CentraLogAdminShowcase"))
+const PharmaLinkAdminShowcase = lazy(() => import("./PharmaLinkAdminShowcase"))
 
 const EngineeringLab = lazy(() => import("./EngineeringLab"))
 
@@ -69,6 +71,7 @@ export default function DedicatedCaseStudy({
   const [shareMessage, setShareMessage] = useState("")
   const mode = usePortfolioTheme()
   const loginImage = project.id === "centralog" ? centralogCaptures[`login-${mode}`]
+    : project.id === "pharmalink" ? pharmalinkCaptures[`login-${mode}`]
     : project.id === "dormfix" ? dormfixCaptures[`login-${mode}`] : undefined
   const heroAlt = loginImage
     ? project.id === "dormfix"
@@ -78,6 +81,8 @@ export default function DedicatedCaseStudy({
   const heroCaption = loginImage
     ? project.id === "dormfix"
       ? t("DormFix's sign-in introduces room assignments, payment records, and maintenance. This screenshot follows the portfolio theme; explore the landlord and tenant workspaces below.", "Ipinapakilala ng sign-in ng DormFix ang room assignments, payment records, at maintenance. Sumusunod ang screenshot sa tema ng portfolio; tingnan ang landlord at tenant workspaces sa ibaba.")
+      : project.id === "pharmalink"
+      ? "PharmaLink's staff sign-in introduces the pharmacy workspace, with demo entry points for admin and pharmacist accounts. This screenshot follows the portfolio theme; explore both role workspaces below."
       : t("CentraLog's staff sign-in introduces the asset workspace. This screenshot follows the portfolio theme; explore the admin screens below.", "Ipinapakilala ng staff sign-in ng CentraLog ang asset workspace. Sumusunod ang screenshot sa tema ng portfolio; tingnan ang mga admin screen sa ibaba.")
     : project.imageCaption
   const heroGalleryImage = loginImage ? {
@@ -257,6 +262,11 @@ export default function DedicatedCaseStudy({
           {project.id === "dormfix" && (
             <Suspense fallback={<div id="workspace-showcase"><LoadingState label="Preparing the DormFix workspace tour…" /></div>}>
               <DormFixWorkspaceShowcase />
+            </Suspense>
+          )}
+          {project.id === "pharmalink" && (
+            <Suspense fallback={<div id="admin-showcase"><LoadingState label="Preparing the admin workspace tour…" /></div>}>
+              <PharmaLinkAdminShowcase />
             </Suspense>
           )}
           {project.id === "centralog" && (

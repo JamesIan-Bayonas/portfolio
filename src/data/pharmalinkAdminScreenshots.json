@@ -1,0 +1,254 @@
+{
+  "login-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/login-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/login-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/login-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "login-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/login-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/login-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/login-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "overview-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/overview-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/overview-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/overview-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "overview-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/overview-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/overview-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/overview-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "pos-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/pos-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/pos-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/pos-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "pos-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/pos-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/pos-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/pos-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "inventory-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/inventory-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/inventory-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/inventory-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "inventory-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/inventory-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/inventory-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/inventory-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "sales-history-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/sales-history-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/sales-history-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/sales-history-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "sales-history-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/sales-history-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/sales-history-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/sales-history-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "user-management-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/user-management-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/user-management-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/user-management-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "user-management-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/user-management-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/user-management-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/user-management-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "profile-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/profile-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/profile-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/profile-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "profile-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/pharmalink-admin/profile-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/profile-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/pharmalink-admin/profile-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  }
+}
