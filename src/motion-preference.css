@@ -1,0 +1,128 @@
+/* Explicit motion reduction mirrors the existing device-level static fallbacks.
+   Keep these selectors aligned when adding new animated components. */
+:root[data-motion="reduced"], :root[data-motion="reduced"] * { scroll-behavior: auto !important; }
+/* src/index.css */
+:root[data-motion="reduced"] {
+ .nav-logo-cursor,#mobile-navigation { animation: none; } .menu-line { transition: none; } 
+}
+/* src/index.css */
+:root[data-motion="reduced"] {
+
+  
+  .animate-ping, .animate-pulse { animation: none; }
+  *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
+
+}
+/* src/index.css */
+:root[data-motion="reduced"] {
+
+  .project-section *, .project-section *::before, .project-section *::after { transition: none !important; }
+
+}
+/* src/index.css */
+:root[data-motion="reduced"] {
+ .evidence-grid *, .engineering-lab * { transition: none !important; } 
+}
+/* src/interaction-design.css */
+:root[data-motion="reduced"] {
+ .interactive-surface,.interactive-surface img,.interactive-surface::before,.interactive-surface::after,.nav-interactive-link::before,.nav-interactive-link::after,.project-links a,.filter-toggle,.search-result > span:last-child { transition: none !important; transform: none !important; translate: none !important; } 
+}
+/* src/interaction-design.css */
+:root[data-motion="reduced"] {
+ .profile-command-result > * { animation: none; } 
+}
+/* src/components/AssetLifecycle.css */
+:root[data-motion="reduced"] {
+
+  .asset-lifecycle .asset-lifecycle-card { animation: none; }
+  .asset-lifecycle .asset-lifecycle-signal { display: none; }
+
+}
+/* src/components/DecodeText.css */
+:root[data-motion="reduced"] {
+ .decode-text-layout { visibility: visible; } .decode-text-visual { display: none; } 
+}
+/* src/components/DeliveryFlow.css */
+:root[data-motion="reduced"] {
+
+  .delivery-flow-marker, .delivery-flow-progress { transition: none; }
+  .delivery-flow-funds dl > div { animation: none !important; }
+
+}
+/* src/components/DormFixWorkspaceShowcase.css */
+:root[data-motion="reduced"] {
+
+  .dormfix-role-panel:not([hidden]) { animation: none; }
+
+}
+/* src/components/Exploration.css */
+:root[data-motion="reduced"] {
+ .exploration-next-card { transition: none; } 
+}
+/* src/components/PortfolioDirectory.css */
+:root[data-motion="reduced"] {
+ .directory-card,.directory-card-top > span:last-child { transition: none; } 
+}
+/* src/components/PortfolioMenu.css */
+:root[data-motion="reduced"] {
+ .portfolio-menu[open] { animation: none; } .portfolio-menu-arrow { transition: none; } 
+}
+/* src/components/Process.css */
+:root[data-motion="reduced"] {
+
+  .process-intro { position: static; }
+  .process-stage-card { transition: none; }
+  .process-connector > span { transform: none; }
+
+}
+/* src/components/ProjectAtlas.css */
+:root[data-motion="reduced"] {
+ .project-atlas *,.project-atlas .atlas-workflow li::before,.project-atlas .atlas-workflow li::after,.explore-card { animation: none !important; transition: none !important; } 
+}
+/* src/components/ReceiptPipeline.css */
+:root[data-motion="reduced"] {
+
+  .receipt-pipeline-extracting pre span, .receipt-pipeline-resolving .receipt-fields > div { animation: none; }
+  .receipt-pipeline-scan, .receipt-pipeline-signal { display: none; }
+
+}
+/* src/components/RecentExploration.css */
+:root[data-motion="reduced"] {
+ .recent-exploration-card { transition: none; } 
+}
+/* src/components/SaleFlow.css */
+:root[data-motion="reduced"] {
+
+  .sale-flow .sale-flow-card, .sale-flow .sale-flow-units span { animation: none; }
+  .sale-flow .sale-flow-signal { display: none; }
+
+}
+/* src/components/StackFlow.css */
+:root[data-motion="reduced"] {
+ .stack-flow[data-started="true"] :is(.stack-flow-node,.stack-flow-layer,.stack-flow-trace,.stack-flow-signal) { animation: none; } .stack-flow-signal,.stack-flow-replay { display: none; } .stack-flow-static { display: inline; } 
+}
+/* src/components/TechnologyStrip.css */
+:root[data-motion="reduced"] {
+ .technology-track { animation: none !important; transform: none; width: 100%; } .technology-list { flex-wrap: wrap; flex-shrink: 1; padding: 0; } .technology-list-copy { display: none; } .technology-strip-viewport { mask-image: none; overflow: visible; } 
+}
+/* src/components/Toolbox.css */
+:root[data-motion="reduced"] {
+ .toolbox-card,.toolbox-card::before,.toolbox-card::after,.toolbox-watermark { transition: none; } .toolbox-card:hover { translate: none; } .toolbox-detail-intro,.toolbox-card:is(:hover,:focus-visible,[aria-pressed="true"]) :is(.toolbox-card-scan,.toolbox-icon path) { animation: none; } .toolbox-card-scan { display: none; } 
+}
+/* src/components/ToolPreview.css */
+:root[data-motion="reduced"] {
+
+  .tool-preview .tool-preview-scene * { animation: none !important; }
+  .tool-preview-scan,.tool-preview-signal { display: none; }
+
+}
+/* src/components/ValuationChart.css */
+:root[data-motion="reduced"] {
+
+  .chart-curves { animation: none; }
+
+}
+/* src/components/WorkflowMotion.css */
+:root[data-motion="reduced"] {
+ .walkthrough-steps li[data-flow-state]::after,.walkthrough-steps li[data-flow-state="current"] :is(button,.receipt-stage) > span:first-child { animation: none; } 
+}

@@ -1,0 +1,8 @@
+.motion-preferences { border: 1px solid var(--color-border); padding: 16px; margin: 24px 32px; min-width: 0; }
+.motion-preferences legend { padding-inline: 8px; font: 10px/1.8 var(--font-mono); color: var(--color-accent); }
+.motion-preference-options { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.motion-preference-options label { display: inline-flex; align-items: center; min-height: 44px; gap: 10px; cursor: pointer; font-size: 12px; }
+.motion-preference-options input { width: 16px; height: 16px; accent-color: var(--color-accent); }
+.motion-preferences p { color: var(--color-text2); font: 10px/1.8 var(--font-mono); margin-top: 8px; }
+.motion-preferences input:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+@media (max-width: 767px) { .motion-preferences { margin: 20px 24px; } }
