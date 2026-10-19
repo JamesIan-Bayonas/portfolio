@@ -1,3 +1,4 @@
+import { portfolioMotionQuery } from "../lib/motionPreference"
 import { useEffect, useId, useRef, useState, type CSSProperties } from "react"
 import { projects } from "../data/projects"
 import "./TechnologyStrip.css"
@@ -16,13 +17,13 @@ export default function TechnologyStrip() {
   const [expanded, setExpanded] = useState(false)
   const [active, setActive] = useState(false)
   const [reduced, setReduced] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => portfolioMotionQuery().matches,
   )
 
   useEffect(() => {
     const element = root.current
     if (!element) return
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const media = portfolioMotionQuery()
     let visible = false
     const update = () => {
       setReduced(media.matches)

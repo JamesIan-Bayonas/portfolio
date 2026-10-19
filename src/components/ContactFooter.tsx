@@ -1,5 +1,6 @@
 import { useRef } from "react"
-import { motion, useInView, useReducedMotion } from "motion/react"
+import { motion, useInView } from "motion/react"
+import { usePortfolioReducedMotion as useReducedMotion } from "../lib/usePortfolioReducedMotion"
 import SpotlightCard from "./ui/SpotlightCard"
 import ContactAction from "./ContactAction"
 import { contactEmail } from "../lib/contact"

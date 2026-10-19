@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from "react"
-import { useReducedMotion } from "motion/react"
+import { usePortfolioReducedMotion as useReducedMotion } from "../lib/usePortfolioReducedMotion"
 import type { LabDemoId } from "../data/labDemos"
 import { toolPreviews, valuationPreviewPoints } from "../data/toolPreviews"
 import "./ToolPreview.css"

@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from "motion/react"
+import { motion } from "motion/react"
+import { usePortfolioReducedMotion as useReducedMotion } from "../lib/usePortfolioReducedMotion"
 import { skillGroups } from "../data/skills"
 import CapabilitiesMap from "./CapabilitiesMap"
 import Toolbox from "./Toolbox"

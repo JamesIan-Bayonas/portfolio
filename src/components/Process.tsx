@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { useReducedMotion } from "motion/react"
+import { usePortfolioReducedMotion as useReducedMotion } from "../lib/usePortfolioReducedMotion"
 import { cardAccentStyles } from "../lib/projectCardAccents"
 import "./Process.css"
 

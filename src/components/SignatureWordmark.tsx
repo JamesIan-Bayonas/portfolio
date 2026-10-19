@@ -1,3 +1,4 @@
+import { portfolioMotionQuery } from "../lib/motionPreference"
 import { useEffect, useId, useRef, useState } from "react"
 import "./SignatureWordmark.css"
 
@@ -20,11 +21,11 @@ export default function SignatureWordmark() {
   const elapsed = useRef(0)
   const [paused, setPaused] = useState(false)
   const [reduced, setReduced] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => portfolioMotionQuery().matches,
   )
 
   useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const media = portfolioMotionQuery()
     const update = () => setReduced(media.matches)
     media.addEventListener("change", update)
     return () => media.removeEventListener("change", update)

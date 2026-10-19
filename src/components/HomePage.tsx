@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useRef } from "react"
-import { motion, useScroll, useTransform, useReducedMotion, MotionConfig } from "motion/react"
+import { motion, useScroll, useTransform, MotionConfig } from "motion/react"
+import { usePortfolioReducedMotion as useReducedMotion } from "../lib/usePortfolioReducedMotion"
 import Hero from "./Hero"
 import LoadingState from "./LoadingState"
 
@@ -128,7 +129,8 @@ function AmbientAtmosphere() {
 }
 
 export default function HomePage() {
-  return <MotionConfig reducedMotion="user">
+  const reduced = useReducedMotion()
+  return <MotionConfig reducedMotion={reduced ? "always" : "user"}>
     <AmbientAtmosphere />
     <Hero />
     <Suspense fallback={<LoadingState label="Opening the project collection…" variant="section" />}><HomeSections /></Suspense>
