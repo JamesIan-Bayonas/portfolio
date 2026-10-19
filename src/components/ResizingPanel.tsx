@@ -1,4 +1,6 @@
+import { portfolioMotionQuery } from "../lib/motionPreference"
 import { useLayoutEffect, useRef, type ReactNode } from "react"
+import { motionTiming } from "../lib/motionTiming"
 
 // Animate the surrounding space, keeping the new content at its natural size.
 export default function ResizingPanel({
@@ -17,7 +19,7 @@ export default function ResizingPanel({
     const height = element.getBoundingClientRect().height
     const before = previousHeight.current
     previousHeight.current = height
-    const preference = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const preference = portfolioMotionQuery()
     const bounds = element.getBoundingClientRect()
     let animation: Animation | undefined
     const finish = () => {
@@ -37,8 +39,8 @@ export default function ResizingPanel({
       animation = element.animate(
         [{ height: `${before}px` }, { height: `${height}px` }],
         {
-          duration: 280,
-          easing: "cubic-bezier(.2,.7,.2,1)",
+          duration: motionTiming.panel * 1000,
+          easing: motionTiming.cssEase,
         },
       )
       animation.onfinish = finish

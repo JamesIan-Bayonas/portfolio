@@ -1,0 +1,22 @@
+.appearance-preferences { min-width: 0; margin: 24px 32px; padding: 18px; border: 1px solid var(--color-border); }
+.appearance-preferences legend { padding-inline: 8px; font: 10px/1.8 var(--font-mono); color: var(--color-accent); }
+.appearance-preference-options { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.appearance-preference-option { display: flex; flex-direction: column; gap: 10px; padding: 14px; min-width: 0; border: 1px solid var(--color-border); cursor: pointer; }
+.appearance-preference-option[data-selected="true"] { border-color: var(--color-accent); background: color-mix(in srgb,var(--color-accent) 5%,var(--color-bg)); }
+.appearance-preview { display: flex; height: 60px; gap: 10px; padding: 12px; border: 1px solid #30363d; background: #0d1117; }
+.appearance-preview > i { width: 22%; background: #263341; border-top: 2px solid #58a6ff; }
+.appearance-preview > span { flex: 1; display: flex; flex-direction: column; gap: 7px; padding-top: 3px; }
+.appearance-preview > span i { height: 3px; background: #8b949e; }
+.appearance-preview > span i:last-child { width: 65%; }
+.appearance-preview[data-preview="light"] { background: #f6f8fa; border-color: #d8dce5; }
+.appearance-preview[data-preview="light"] > i { background: #e4eaf2; border-top-color: #2563eb; }
+.appearance-preview[data-preview="light"] > span i { background: #57606a; }
+.appearance-preview[data-preview="auto"] { background: linear-gradient(115deg,#f6f8fa 50%,#0d1117 50%); }
+.appearance-preview[data-preview="auto"] > i { background: #e4eaf2; border-top-color: #2563eb; }
+.appearance-option-label { display: flex; align-items: center; gap: 10px; min-height: 28px; }
+.appearance-option-label input { width: 16px; height: 16px; accent-color: var(--color-accent); flex-shrink: 0; }
+.appearance-option-label strong { font: 400 12px/1.7 var(--font-body); }
+.appearance-preference-option small,.appearance-preferences > p { color: var(--color-text2); font: 10px/1.8 var(--font-mono); }
+.appearance-preferences > p { margin-top: 16px; }
+.appearance-preferences input:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+@media (max-width: 639px) { .appearance-preferences { margin: 20px 24px; padding: 16px; } .appearance-preference-options { grid-template-columns: 1fr; } .appearance-preference-option { display: grid; grid-template-columns: 76px minmax(0,1fr); gap: 4px 12px; padding: 12px; } .appearance-preview { grid-row: 1 / 3; height: 54px; padding: 9px; } .appearance-preference-option small { grid-column: 2; } }

@@ -1,4 +1,6 @@
+import { portfolioMotionQuery } from "../lib/motionPreference"
 import { useLayoutEffect, useRef } from "react"
+import { motionTiming } from "../lib/motionTiming"
 
 type Position = {
   x: number
@@ -31,7 +33,7 @@ export function useResultTransitions(revision: string) {
   }
 
   useLayoutEffect(() => {
-    const preference = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const preference = portfolioMotionQuery()
     if (captured.current && !preference.matches && !document.hidden) {
       root.current
         ?.querySelectorAll<HTMLElement>("[data-result-id]")
@@ -55,7 +57,7 @@ export function useResultTransitions(revision: string) {
                     { transform: "translate(0, 0)" },
                   ]
                 : [{ opacity: 0 }, { opacity: 1 }],
-              { duration: 280, easing: "cubic-bezier(.2,.7,.2,1)" },
+              { duration: motionTiming.panel * 1000, easing: motionTiming.cssEase },
             ),
           )
         })

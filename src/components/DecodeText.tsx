@@ -1,3 +1,4 @@
+import { portfolioMotionQuery } from "../lib/motionPreference"
 import { useEffect, useRef } from "react"
 import "./DecodeText.css"
 
@@ -15,7 +16,7 @@ export default function DecodeText({ text }: DecodeTextProps) {
     const element = root.current
     const label = visual.current
     if (!element || !label) return
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const media = portfolioMotionQuery()
     const characters = Array.from(text)
     let frame = 0
     let started = false

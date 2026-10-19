@@ -1,3 +1,4 @@
+import { portfolioMotionQuery } from "./motionPreference"
 import { useEffect } from "react"
 
 export function useInteractiveSurfaces() {
@@ -19,7 +20,7 @@ export function useInteractiveSurfaces() {
       surface = null
     }
     function move(event: PointerEvent) {
-      if (!media.matches || event.pointerType !== "mouse") return
+      if (!media.matches || portfolioMotionQuery().matches || event.pointerType !== "mouse") return
       const next =
         event.target instanceof Element
           ? event.target.closest<HTMLElement>(".interactive-surface")
@@ -47,6 +48,8 @@ export function useInteractiveSurfaces() {
     document.addEventListener("pointermove", move, { passive: true })
     document.addEventListener("pointerleave", reset)
     window.addEventListener("blur", reset)
+    const preference = portfolioMotionQuery()
+    preference.addEventListener("change", reset)
     media.addEventListener("change", reset)
     return () => {
       reset()
@@ -54,6 +57,7 @@ export function useInteractiveSurfaces() {
       document.removeEventListener("pointerleave", reset)
       window.removeEventListener("blur", reset)
       media.removeEventListener("change", reset)
+      preference.removeEventListener("change", reset)
     }
   }, [])
 }

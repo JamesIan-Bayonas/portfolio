@@ -1,5 +1,7 @@
+import { portfolioMotionQuery } from "../lib/motionPreference"
 import { useEffect, useRef } from "react"
 import "./WorkflowMotion.css"
+import { motionTiming } from "../lib/motionTiming"
 
 const targets = [
   ".walkthrough-step-content",
@@ -31,7 +33,7 @@ export function useWorkflowMotion<T extends HTMLElement = HTMLElement>(
     )
     const baseline = previous.current
     previous.current = values
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const media = portfolioMotionQuery()
     if (!baseline.size || media.matches || document.hidden) return
     const accent =
       getComputedStyle(host).getPropertyValue("--color-accent").trim() ||
@@ -59,7 +61,7 @@ export function useWorkflowMotion<T extends HTMLElement = HTMLElement>(
               boxShadow: "0 0 0 1px transparent",
             },
           ],
-          { duration: 560, easing: "ease-out" },
+          { duration: motionTiming.signal * 1000, easing: motionTiming.cssEase },
         ),
       )
     }

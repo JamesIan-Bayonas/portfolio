@@ -1,10 +1,10 @@
 .walkthrough-steps li[data-flow-state] { position: relative; }
 .walkthrough-steps li[data-flow-state]:not(:last-child)::after { content: ''; pointer-events: none; position: absolute; left: 21px; top: 43px; bottom: -17px; width: 1px; background: var(--color-border); transform-origin: top; }
-.walkthrough-steps li[data-flow-state="completed"]::after { background: var(--color-accent); opacity: .6; animation: workflow-link-arrive .45s ease-out; }
+.walkthrough-steps li[data-flow-state="completed"]::after { background: var(--color-accent); opacity: .6; animation: workflow-link-arrive var(--motion-reveal,440ms) var(--motion-ease,ease-out); }
 .walkthrough-steps li[data-flow-state] :is(button,.receipt-stage) > span:first-child { display: grid; place-items: center; width: 26px; height: 26px; flex-shrink: 0; padding: 0; border: 1px solid var(--color-border); border-radius: 5px; background: var(--color-bg); position: relative; z-index: 1; }
 .walkthrough-steps li[data-flow-state] :is(button,.receipt-stage) > span:last-child { min-width: 0; overflow-wrap: anywhere; }
 .walkthrough-steps li[data-flow-state="completed"] :is(button,.receipt-stage) > span:first-child { border-color: var(--color-accent); }
-.walkthrough-steps li[data-flow-state="current"] :is(button,.receipt-stage) > span:first-child { border-color: var(--color-accent); animation: workflow-node-arrive .65s ease-out; }
+.walkthrough-steps li[data-flow-state="current"] :is(button,.receipt-stage) > span:first-child { border-color: var(--color-accent); animation: workflow-node-arrive var(--motion-signal,560ms) var(--motion-ease,ease-out); }
 .walkthrough-step-content,.receipt-fields dd,.walkthrough-ledger strong,.asset-history li { border-radius: 3px; }
 @keyframes workflow-link-arrive { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes workflow-node-arrive { from { box-shadow: 0 0 18px -2px var(--color-accent); } to { box-shadow: 0 0 0 transparent; } }
