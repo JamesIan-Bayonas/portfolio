@@ -3,8 +3,9 @@ import type { ScreenshotAsset } from "../components/ResponsiveScreenshot"
 import dormfix from "./dormfixLandlordScreenshots.json"
 import centralog from "./centralogAdminScreenshots.json"
 import pharmalink from "./pharmalinkAdminScreenshots.json"
+import isdalog from "./isdalogWorkspaceScreenshots.json"
 
-const captures: Record<string, Record<string, ScreenshotAsset>> = { dormfix, centralog, pharmalink }
+const captures: Record<string, Record<string, ScreenshotAsset>> = { dormfix, centralog, pharmalink, isdalog }
 
 export function projectPreview<T extends Project>(project: T, mode: "light" | "dark"): T {
   const screenshot = captures[project.id]?.[`login-${mode}`]

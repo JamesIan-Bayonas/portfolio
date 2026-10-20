@@ -8,4 +8,10 @@ build/
 *.log
 .tmp-*
 output/pdf/
+# Local visual-review screenshots; application assets remain tracked in src/assets and public.
+output/**/*.png
+output/**/*.jpg
+output/**/*.jpeg
+output/**/*.webp
+output/**/*.gif
 tmp/pdfs/

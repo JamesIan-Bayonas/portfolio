@@ -1,8 +1,14 @@
 # Portfolio feature roadmap
 
-Updated: 15 October 2026 (Asia/Singapore)
+Updated: 19 October 2026 (Asia/Singapore)
 
 ## Purpose
+
+Current implementation status: the [visual refresh](docs/visual-refresh-2026-10-19.md), [optional introduction](docs/signature-introduction-2026-10-19.md), [orbital atlas](docs/orbital-atlas-2026-10-19.md), and [local release preparation](docs/release-candidate-2026-10-19.md) are complete locally. No additional visual feature is queued. Publication and verification of this combined working tree on the hosting service are still outstanding.
+
+Subsequently requested visual extension: [article reading position](docs/reading-progress-2026-10-19.md) is ready locally. Case-study and note contents navigation now includes a percentage and track. No further extension is queued.
+
+Requested home-scroll enhancement: [chapter signal sweeps](docs/home-scroll-2026-10-19.md) are ready locally, with one-time section markers, accent-line draws, and reduced-motion support.
 
 Build a portfolio where visitors can discover relevant systems, understand their workflows, inspect engineering evidence, and discuss similar work. Adapt useful patterns from Universo Drago to James Ian Bayonas's own projects and professional context.
 

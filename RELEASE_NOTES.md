@@ -1,5 +1,9 @@
 # Portfolio release preparation
 
+Local release check, 21 October 2026: the latest IsdaLog role tour and theme-matched login previews are included with the portfolio enhancements documented below. The full release check passes 148 tests, verifies 30 generated routes and 97 built assets over local HTTP, and checks PDF downloads, feeds, and excluded routes. These checks do not establish a Vercel deployment; publication remains a user-controlled push.
+
+Current local candidate, 19 October 2026: the visual refresh, optional introduction, and orbital atlas are complete. The repeatable release check passes 146 tests and verifies 30 built-site routes and 92 assets over local HTTP. See [the release candidate review](docs/release-candidate-2026-10-19.md) for tooling, production-preview interactions, and remaining limits. This candidate has not been deployed; the historical entries below describe earlier releases.
+
 Prepared on 13 October 2026 for the existing Vercel project connected to the repository's `main` branch.
 
 ## Included work
