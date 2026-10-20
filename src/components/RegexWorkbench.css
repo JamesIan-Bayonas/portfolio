@@ -1,0 +1,35 @@
+.developer-tools-nav { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin-bottom: 24px; }
+.developer-tools-nav a { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; padding: 18px 20px; border: 1px solid var(--color-border); min-height: 72px; }
+.developer-tools-nav a[aria-current="page"] { border-color: var(--color-accent); background: color-mix(in srgb,var(--color-accent) 5%,var(--color-bg)); }
+.developer-tools-nav span { font: 9px/1.8 var(--font-mono); color: var(--color-text2); }
+.developer-tools-nav strong { font: 500 18px/1.3 var(--font-display); }
+.developer-tools-nav a > span:last-child { margin-left: auto; }
+.developer-tools-nav a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.regex-pattern-editor { padding: 20px 24px; border-top: 1px solid var(--color-border); }
+.regex-pattern-editor > label { color: var(--color-accent); font: 9px/1.8 var(--font-mono); }
+.regex-pattern-editor > div { display: flex; align-items: center; gap: 12px; margin-block: 12px 20px; }
+.regex-pattern-editor > div > span { color: var(--color-accent); font: 16px/1.8 var(--font-mono); }
+.regex-pattern-editor input[type="text"],.regex-pattern-editor #regex-pattern { min-width: 0; width: 100%; min-height: 48px; border: 1px solid var(--color-border); padding: 10px 14px; background: var(--color-bg); color: var(--color-text1); font: 13px/1.8 var(--font-mono); }
+.regex-pattern-editor fieldset { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.regex-pattern-editor legend { font: 10px/1.8 var(--font-mono); color: var(--color-text2); margin-bottom: 8px; }
+.regex-pattern-editor fieldset label { display: flex; align-items: center; gap: 8px; min-height: 44px; font-size: 11px; }
+.regex-pattern-editor input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--color-accent); }
+.regex-pattern-editor code { color: var(--color-accent); font: 12px/1.8 var(--font-mono); }
+.regex-highlighted { height: 420px; padding: 20px; white-space: pre-wrap; overflow-wrap: anywhere; overflow: auto; font: 13px/1.9 var(--font-mono); color: var(--color-text1); }
+.regex-highlighted mark { color: var(--color-text1); background: color-mix(in srgb,var(--color-accent) 28%,var(--color-bg)); border-bottom: 1px solid var(--color-accent); }
+.regex-empty-match { color: var(--color-accent); }
+.regex-workbench .json-editor-actions { min-height: 73px; align-items: center; }
+.regex-workbench .json-editor-actions > span { font: 10px/1.8 var(--font-mono); color: var(--color-text2); }
+.regex-match-list { margin-block: 40px; }
+.regex-match-list > h2 { font: 500 30px/1.2 var(--font-display); letter-spacing: -.035em; margin-bottom: 24px; }
+.regex-match-list details { margin-bottom: 12px; border: 1px solid var(--color-border); padding: 16px 20px; }
+.regex-match-list summary { cursor: pointer; min-height: 44px; color: var(--color-accent); font: 12px/1.8 var(--font-mono); }
+.regex-match-list summary span { color: var(--color-text2); margin-left: 20px; font-size: 10px; }
+.regex-match-list pre { padding: 14px; background: var(--color-surface); white-space: pre-wrap; overflow-wrap: anywhere; font: 12px/1.8 var(--font-mono); }
+.regex-match-list dl { margin-top: 16px; }
+.regex-match-list dl > div { display: grid; grid-template-columns: 140px minmax(0,1fr); gap: 20px; padding-block: 10px; border-bottom: 1px solid var(--color-border); font-size: 12px; line-height: 1.8; }
+.regex-match-list dt { color: var(--color-text2); }
+.regex-match-list dd { overflow-wrap: anywhere; }
+.regex-match-list code { white-space: pre-wrap; }
+.regex-match-list summary:focus-visible,.regex-workbench input:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+@media (max-width: 767px) { .developer-tools-nav { grid-template-columns: 1fr; } .developer-tools-nav a > span:last-child { width: 100%; margin-left: 0; } .regex-pattern-editor { padding: 20px 16px; } .regex-pattern-editor #regex-pattern { font-size: 16px; } .regex-highlighted { height: 320px; font-size: 14px; } .regex-match-list summary span { display: block; margin-left: 0; } .regex-match-list dl > div { grid-template-columns: 1fr; gap: 4px; } }
