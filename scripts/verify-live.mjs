@@ -152,7 +152,7 @@ const result = {
   failures,
 }
 await writeFile(
-  path.join(root, ".tmp-live-verification.json"),
+  process.argv[3] ? path.resolve(process.argv[3]) : path.join(root, ".tmp-live-verification.json"),
   JSON.stringify(result, null, 2) + "\n",
 )
 assert.equal(failures.length, 0, failures.join("\n"))

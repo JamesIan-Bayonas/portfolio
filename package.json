@@ -18,6 +18,9 @@
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "verify:build": "node scripts/verify-build.mjs",
     "verify:live": "node scripts/verify-live.mjs",
+    "preview:release": "node scripts/release-preview.mjs",
+    "verify:preview": "node scripts/release-preview.mjs --verify",
+    "verify:release": "npm run check && npm test && npm run build && npm run verify:build && npm run verify:preview",
     "format": "oxfmt"
   },
   "dependencies": {

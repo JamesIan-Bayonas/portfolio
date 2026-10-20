@@ -1,0 +1,14 @@
+[
+  {
+    "check": "returned-to-top",
+    "focused": "main-content",
+    "scrollY": 0
+  },
+  {
+    "buttonHeight": 48,
+    "buttonWidth": 48,
+    "check": "mobile",
+    "scrollWidth": 310,
+    "width": 320
+  }
+]

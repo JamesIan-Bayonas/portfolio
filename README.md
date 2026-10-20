@@ -153,7 +153,7 @@ pnpm build
 
 5. **Preview Production Build:**
 ```bash
-pnpm preview
+pnpm preview:release
 
 ```
 
@@ -162,6 +162,10 @@ pnpm preview
 ---
 
 ## Verification & Testing
+
+Run `pnpm verify:release` for the complete local release check: type checking, tests, a fresh build, static verification, and HTTP verification against a temporary production preview. It checks generated page metadata, every built asset, PDFs, feeds, execution evidence, and excluded editor/test routes. The temporary server closes after verification; nothing is deployed.
+
+Use `pnpm preview:release` to review an existing build at `http://127.0.0.1:4173/`. This serves only `dist`, uses generated page routes without a single-page fallback, and applies the feed headers from `vercel.json`. The preview validates local artifacts rather than Vercel infrastructure or configuration beyond those exact-path headers. `pnpm verify:preview` checks an existing build without rebuilding it. Its report is `.tmp-release-preview-verification.json`; public-site verification continues to use the separate `.tmp-live-verification.json` report. See [the current release review](docs/release-candidate-2026-10-19.md).
 
 ```bash
 # Run source code formatting via oxfmt
