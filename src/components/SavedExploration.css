@@ -1,0 +1,29 @@
+.save-exploration-control { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 20px; margin-block: 20px; }
+.save-exploration-button { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 10px 14px; color: var(--color-text2); border: 1px solid var(--color-border); background: var(--color-bg); font: 11px/1.8 var(--font-mono); cursor: pointer; }
+.save-exploration-button[aria-pressed="true"] { color: var(--color-accent); border-color: var(--color-accent); background: color-mix(in srgb,var(--color-accent) 6%,var(--color-bg)); }
+.save-exploration-control > a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-accent); font: 10px/1.8 var(--font-mono); }
+.save-exploration-feedback { font-size: 11px; color: var(--color-text2); }
+.saved-exploration { position: relative; z-index: 1; max-width: 1440px; margin-inline: auto; padding: 0 40px 72px; }
+.saved-exploration-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; padding-top: 32px; border-top: 1px solid var(--color-border); margin-bottom: 24px; }
+.saved-exploration-kicker { font: 9px/1.8 var(--font-mono); letter-spacing: .1em; color: var(--color-accent); }
+.saved-exploration-heading h2 { font: 500 clamp(28px,3.4vw,44px)/1.15 var(--font-display); letter-spacing: -.04em; margin-top: 12px; }
+.saved-exploration-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.saved-exploration-actions button,.saved-exploration-card-actions button { min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-border); color: var(--color-text2); font: 10px/1.8 var(--font-mono); cursor: pointer; }
+.saved-exploration-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+.saved-exploration-card { display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--color-border); background: var(--color-bg); min-width: 0; }
+.saved-exploration-card h3 { font: 500 24px/1.25 var(--font-display); letter-spacing: -.025em; margin-block: 24px 16px; }
+.saved-exploration-card h3 a { display: flex; justify-content: space-between; gap: 16px; }
+.saved-exploration-card h3 a span { color: var(--color-accent); font: 18px/1.5 var(--font-mono); }
+.saved-exploration-card > p:not(.saved-exploration-kicker) { font-size: 13px; line-height: 1.85; color: var(--color-text2); margin-bottom: 24px; }
+.saved-exploration-card-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-top: 16px; border-top: 1px solid var(--color-border); margin-top: auto; }
+.saved-exploration-card-actions a { display: inline-flex; align-items: center; min-height: 44px; font: 10px/1.8 var(--font-mono); color: var(--color-accent); }
+.saved-exploration-empty { display: flex; align-items: center; gap: 24px; padding: 24px; border: 1px dashed var(--color-border); }
+.saved-exploration-empty > span { color: var(--color-accent); font: 36px/1 var(--font-mono); }
+.saved-exploration-empty p { max-width: 65ch; font-size: 13px; line-height: 1.85; color: var(--color-text2); }
+.saved-exploration-empty strong { font-weight: 500; color: var(--color-text1); }
+.saved-exploration-empty a { display: inline-flex; align-items: center; min-height: 44px; margin-left: auto; flex-shrink: 0; font: 10px/1.8 var(--font-mono); color: var(--color-accent); }
+.saved-exploration-note,.saved-exploration-status { margin-top: 18px; color: var(--color-text2); font: 10px/1.8 var(--font-mono); }
+.saved-exploration-status:empty { display: none; }
+.saved-exploration :is(a,button):focus-visible,.save-exploration-control :is(a,button):focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+@media (max-width: 767px) { .saved-exploration { padding: 0 24px 56px; } .saved-exploration-heading { align-items: start; flex-direction: column; gap: 16px; } .saved-exploration-grid { grid-template-columns: 1fr; } .saved-exploration-empty { align-items: start; flex-direction: column; gap: 16px; } .saved-exploration-empty a { margin-left: 0; } }
+@media (max-width: 639px) { .saved-exploration { padding-inline: 16px; } }
