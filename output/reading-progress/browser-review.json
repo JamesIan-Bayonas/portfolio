@@ -1,0 +1,46 @@
+{
+  "reviewedAt": "2026-10-19T15:49:06.371Z",
+  "checks": [
+    {
+      "navBottom": 221.6000061035156,
+      "page": "/projects/dormfix/",
+      "position": "",
+      "sectionTop": 237.83750915527344
+    },
+    {
+      "check": "case-end",
+      "percent": "100"
+    },
+    {
+      "check": "case-start",
+      "percent": "0"
+    },
+    {
+      "check": "case-mobile",
+      "percent": "38",
+      "scrollWidth": 310,
+      "width": 320
+    },
+    {
+      "check": "filipino-mobile",
+      "label": "Posisyon sa artikulo",
+      "scrollWidth": 310,
+      "width": 320
+    },
+    {
+      "check": "note-start",
+      "percent": "0"
+    },
+    {
+      "check": "note-section",
+      "percent": "54",
+      "scrollWidth": 310,
+      "width": 320
+    },
+    {
+      "check": "note-end",
+      "percent": "100"
+    }
+  ],
+  "errors": []
+}

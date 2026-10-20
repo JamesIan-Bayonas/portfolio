@@ -1,0 +1,28 @@
+{
+  "reduced": {
+    "animation": "none",
+    "static": "true"
+  },
+  "mobile": {
+    "markers": [
+      {
+        "scrollWidth": 310,
+        "width": 309.6000061035156
+      },
+      {
+        "scrollWidth": 310,
+        "width": 309.6000061035156
+      },
+      {
+        "scrollWidth": 310,
+        "width": 309.6000061035156
+      },
+      {
+        "scrollWidth": 310,
+        "width": 309.6000061035156
+      }
+    ],
+    "scrollWidth": 310,
+    "width": 320
+  }
+}

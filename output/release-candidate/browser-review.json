@@ -1,0 +1,68 @@
+{
+  "origin": "http://127.0.0.1:4173/",
+  "reviewedAt": "2026-10-19T14:33:33.493Z",
+  "checks": [
+    {
+      "page": "/explore/?tech=React+19",
+      "projects": [
+        "DormFix",
+        "CentraLog",
+        "PharmaLink"
+      ],
+      "technology": "React 19"
+    },
+    {
+      "output": "{\n  \"project\": \"DormFix\",\n  \"workflow\": \"receipt-review\",\n  \"sample\": true,\n  \"checks\": {\n    \"amoun",
+      "page": "/tools/",
+      "status": "JSON formatted. Original number values and string escapes are preserved."
+    },
+    {
+      "heading": "Natututo sa mga system na binubuo ko.",
+      "monogram": true,
+      "page": "/fil/about/",
+      "scrollWidth": 310,
+      "width": 320
+    },
+    {
+      "appearanceButtons": [
+        {
+          "height": 44,
+          "label": "Orbit"
+        },
+        {
+          "height": 44,
+          "label": "Constellation"
+        }
+      ],
+      "page": "/",
+      "primaryBottom": 710.8500366210938,
+      "scrollWidth": 310,
+      "width": 320
+    },
+    {
+      "page": "/",
+      "scrollWidth": 380,
+      "view": "orbit",
+      "width": 390
+    }
+  ],
+  "lab": [
+    {
+      "illustration": "CentraLogINPUT → RESULT",
+      "title": "Asset valuation"
+    },
+    {
+      "illustration": "DormFixINPUT → RESULT",
+      "title": "Receipt review"
+    },
+    {
+      "illustration": "IsdaLogINPUT → RESULT",
+      "title": "Custody & settlement"
+    },
+    {
+      "illustration": "PharmaLinkINPUT → RESULT",
+      "title": "Sale & stock"
+    }
+  ],
+  "consoleErrors": []
+}

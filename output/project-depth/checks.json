@@ -1,0 +1,20 @@
+[
+  {
+    "check": "before-scroll",
+    "transform": "matrix(0.999999, -0.00156985, 0.00156985, 0.999999, 0, 2.05591)"
+  },
+  {
+    "check": "after-scroll",
+    "transform": "matrix(0.999999, 0.0016029, -0.0016029, 0.999999, 0, -2.09919)"
+  },
+  {
+    "check": "mobile",
+    "scrollWidth": 310,
+    "transform": "none",
+    "width": 320
+  },
+  {
+    "check": "reduced-motion",
+    "transform": "none"
+  }
+]

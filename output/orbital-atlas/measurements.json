@@ -1,0 +1,324 @@
+{
+  "date": "2026-10-19",
+  "method": "Five-second real-component development fixture captures on local Windows Chromium 155, device pixel ratio 1.25. Callback durations exclude GPU, paint and compositing. One baseline and one orbital sample per size, plus paused/offscreen samples. Not a statistical performance study.",
+  "baseline": [
+    {
+      "run": 1,
+      "report": {
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "devicePixelRatio": 1.25,
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "variant": "full",
+        "elapsedMs": 5001,
+        "stopped": "false",
+        "sceneVisible": true,
+        "scene": {
+          "width": 622,
+          "height": 340
+        },
+        "canvas": {
+          "width": 778,
+          "height": 425
+        },
+        "pendingFrames": 1,
+        "callbacks": 714,
+        "draws": 143,
+        "distanceCalls": 60060,
+        "drawsPerSecond": 28.59,
+        "drawCallbackMs": {
+          "samples": 143,
+          "median": 0.3,
+          "p95": 0.5,
+          "max": 1
+        },
+        "drawIntervalMs": {
+          "median": 34.8,
+          "p95": 35.8,
+          "max": 41.7
+        },
+        "selectionCommitMs": {
+          "samples": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "longTasks": []
+      }
+    },
+    {
+      "run": 1,
+      "report": {
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "devicePixelRatio": 1.25,
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "variant": "compact",
+        "elapsedMs": 5003,
+        "stopped": "false",
+        "sceneVisible": true,
+        "scene": {
+          "width": 598,
+          "height": 180
+        },
+        "canvas": {
+          "width": 748,
+          "height": 225
+        },
+        "pendingFrames": 1,
+        "callbacks": 713,
+        "draws": 143,
+        "distanceCalls": 60060,
+        "drawsPerSecond": 28.58,
+        "drawCallbackMs": {
+          "samples": 143,
+          "median": 0.3,
+          "p95": 0.5,
+          "max": 0.7
+        },
+        "drawIntervalMs": {
+          "median": 34.8,
+          "p95": 35.1,
+          "max": 51.4
+        },
+        "selectionCommitMs": {
+          "samples": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "longTasks": []
+      }
+    }
+  ],
+  "orbital": [
+    {
+      "scenario": "compact-orbit",
+      "report": {
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "devicePixelRatio": 1.25,
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "variant": "compact",
+        "elapsedMs": 5002,
+        "stopped": "false",
+        "sceneVisible": true,
+        "scene": {
+          "width": 598,
+          "height": 180
+        },
+        "canvas": {
+          "width": 748,
+          "height": 225
+        },
+        "pendingFrames": 1,
+        "callbacks": 719,
+        "draws": 144,
+        "distanceCalls": 0,
+        "drawsPerSecond": 28.79,
+        "drawCallbackMs": {
+          "samples": 144,
+          "median": 0.2,
+          "p95": 0.3,
+          "max": 0.4
+        },
+        "drawIntervalMs": {
+          "median": 34.8,
+          "p95": 35.2,
+          "max": 36
+        },
+        "selectionCommitMs": {
+          "samples": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "longTasks": []
+      }
+    },
+    {
+      "scenario": "full-orbit",
+      "report": {
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "devicePixelRatio": 1.25,
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "variant": "full",
+        "elapsedMs": 5001,
+        "stopped": "false",
+        "sceneVisible": true,
+        "scene": {
+          "width": 622,
+          "height": 340
+        },
+        "canvas": {
+          "width": 778,
+          "height": 425
+        },
+        "pendingFrames": 1,
+        "callbacks": 718,
+        "draws": 144,
+        "distanceCalls": 0,
+        "drawsPerSecond": 28.8,
+        "drawCallbackMs": {
+          "samples": 144,
+          "median": 0.2,
+          "p95": 0.4,
+          "max": 0.5
+        },
+        "drawIntervalMs": {
+          "median": 34.8,
+          "p95": 35.3,
+          "max": 37.2
+        },
+        "selectionCommitMs": {
+          "samples": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "longTasks": []
+      }
+    },
+    {
+      "scenario": "full-orbit-paused",
+      "report": {
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "devicePixelRatio": 1.25,
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "variant": "full",
+        "elapsedMs": 5016,
+        "stopped": "true",
+        "sceneVisible": true,
+        "scene": {
+          "width": 622,
+          "height": 340
+        },
+        "canvas": {
+          "width": 778,
+          "height": 425
+        },
+        "pendingFrames": 0,
+        "callbacks": 0,
+        "draws": 0,
+        "distanceCalls": 0,
+        "drawsPerSecond": 0,
+        "drawCallbackMs": {
+          "samples": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "drawIntervalMs": {
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "selectionCommitMs": {
+          "samples": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "longTasks": []
+      }
+    },
+    {
+      "scenario": "full-orbit-offscreen",
+      "report": {
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "devicePixelRatio": 1.25,
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "variant": "full",
+        "elapsedMs": 5008,
+        "stopped": "false",
+        "sceneVisible": false,
+        "scene": {
+          "width": 622,
+          "height": 340
+        },
+        "canvas": {
+          "width": 778,
+          "height": 425
+        },
+        "pendingFrames": 0,
+        "callbacks": 0,
+        "draws": 0,
+        "distanceCalls": 0,
+        "drawsPerSecond": 0,
+        "drawCallbackMs": {
+          "samples": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "drawIntervalMs": {
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "selectionCommitMs": {
+          "samples": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "longTasks": []
+      }
+    }
+  ],
+  "lifecycle": [
+    {
+      "case": "reduced-selection",
+      "frames": "0",
+      "project": "PharmaLink.",
+      "state": "settled",
+      "stopped": "true"
+    },
+    {
+      "case": "reduced-view-switch",
+      "frames": "0",
+      "view": "constellation"
+    },
+    {
+      "case": "background",
+      "frames": "0"
+    },
+    {
+      "case": "blocked-storage-pause",
+      "frames": "0",
+      "stopped": "true"
+    },
+    {
+      "case": "unmount",
+      "frames": "0",
+      "listeners": "0"
+    }
+  ]
+}
