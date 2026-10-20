@@ -10,6 +10,7 @@ import { usePortfolioTheme } from "../lib/usePortfolioTheme"
 import centralogCaptures from "../data/centralogAdminScreenshots.json"
 import pharmalinkCaptures from "../data/pharmalinkAdminScreenshots.json"
 import dormfixCaptures from "../data/dormfixLandlordScreenshots.json"
+import isdalogCaptures from "../data/isdalogWorkspaceScreenshots.json"
 
 import { engineeringNotes } from "../data/notes"
 
@@ -29,6 +30,7 @@ import RelatedProjects from "./RelatedProjects"
 import ProjectBriefDownload from "./ProjectBriefDownload"
 
 const IsdaLogWalkthrough = lazy(() => import("./IsdaLogWalkthrough"))
+const IsdaLogWorkspaceShowcase = lazy(() => import("./IsdaLogWorkspaceShowcase"))
 
 const DormFixWalkthrough = lazy(() => import("./DormFixWalkthrough"))
 const DormFixWorkspaceShowcase = lazy(
@@ -81,11 +83,15 @@ export default function DedicatedCaseStudy({
         ? pharmalinkCaptures[`login-${mode}`]
         : project.id === "dormfix"
           ? dormfixCaptures[`login-${mode}`]
-          : undefined
+          : project.id === "isdalog"
+            ? isdalogCaptures[`login-${mode}`]
+            : undefined
   const heroAlt = loginImage
     ? project.id === "dormfix"
       ? `DormFix sign-in screen in ${mode} mode with email and password fields, a dormitory photograph, and a create-account link`
-      : `${project.name} staff sign-in screen in ${mode} mode, with username and password fields and project demo account options`
+      : project.id === "isdalog"
+        ? `IsdaLog sign-in screen in ${mode} mode with role introductions, email and password fields, and a create-account link`
+        : `${project.name} staff sign-in screen in ${mode} mode, with username and password fields and project demo account options`
     : project.imageAlt
   const heroCaption = loginImage
     ? project.id === "dormfix"
@@ -93,9 +99,14 @@ export default function DedicatedCaseStudy({
           "DormFix's sign-in introduces room assignments, payment records, and maintenance. This screenshot follows the portfolio theme; explore the landlord and tenant workspaces below.",
           "Ipinapakilala ng sign-in ng DormFix ang room assignments, payment records, at maintenance. Sumusunod ang screenshot sa tema ng portfolio; tingnan ang landlord at tenant workspaces sa ibaba.",
         )
-      : project.id === "pharmalink"
-        ? "PharmaLink's staff sign-in introduces the pharmacy workspace, with demo entry points for admin and pharmacist accounts. This screenshot follows the portfolio theme; explore both role workspaces below."
-        : t(
+      : project.id === "isdalog"
+        ? t(
+            "IsdaLog's sign-in introduces the maritime marketplace and its roles. This screenshot follows the portfolio theme; explore the fisherman, buyer, and rider workspaces below.",
+            "Ipinapakilala ng sign-in ng IsdaLog ang maritime marketplace at mga role nito. Sumusunod ang screenshot sa tema ng portfolio; tingnan ang fisherman, buyer, at rider workspaces sa ibaba.",
+          )
+        : project.id === "pharmalink"
+          ? "PharmaLink's staff sign-in introduces the pharmacy workspace, with demo entry points for admin and pharmacist accounts. This screenshot follows the portfolio theme; explore both role workspaces below."
+          : t(
             "CentraLog's staff sign-in introduces the asset workspace. This screenshot follows the portfolio theme; explore the admin screens below.",
             "Ipinapakilala ng staff sign-in ng CentraLog ang asset workspace. Sumusunod ang screenshot sa tema ng portfolio; tingnan ang mga admin screen sa ibaba.",
           )
@@ -279,6 +290,11 @@ export default function DedicatedCaseStudy({
           </p>
         )}
         <div lang="en">
+          {project.id === "isdalog" && (
+            <Suspense fallback={<div id="workspace-showcase"><LoadingState label="Preparing the IsdaLog workspace tour…" /></div>}>
+              <IsdaLogWorkspaceShowcase />
+            </Suspense>
+          )}
           {project.id === "dormfix" && (
             <Suspense
               fallback={

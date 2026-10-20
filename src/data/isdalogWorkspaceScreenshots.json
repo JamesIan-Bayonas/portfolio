@@ -1,0 +1,290 @@
+{
+  "login-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/login-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/login-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/login-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "login-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/login-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/login-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/login-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "buyer-dashboard-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/buyer-dashboard-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/buyer-dashboard-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/buyer-dashboard-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "buyer-dashboard-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/buyer-dashboard-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/buyer-dashboard-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/buyer-dashboard-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "buyer-marketplace-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/buyer-marketplace-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/buyer-marketplace-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/buyer-marketplace-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "buyer-marketplace-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/buyer-marketplace-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/buyer-marketplace-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/buyer-marketplace-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "fisherman-dashboard-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/fisherman-dashboard-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/fisherman-dashboard-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/fisherman-dashboard-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "fisherman-dashboard-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/fisherman-dashboard-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/fisherman-dashboard-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/fisherman-dashboard-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "fisherman-details-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/fisherman-details-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/fisherman-details-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/fisherman-details-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "fisherman-details-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/fisherman-details-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/fisherman-details-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/fisherman-details-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "rider-dashboard-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-dashboard-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-dashboard-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-dashboard-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "rider-dashboard-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-dashboard-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-dashboard-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-dashboard-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "rider-marketplace-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-marketplace-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-marketplace-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-marketplace-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "rider-marketplace-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-marketplace-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-marketplace-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-marketplace-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "rider-dispatch-light": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-dispatch-light-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-dispatch-light-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-dispatch-light-1917.webp",
+        "width": 1917
+      }
+    ]
+  },
+  "rider-dispatch-dark": {
+    "width": 1917,
+    "height": 1078,
+    "variants": [
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-dispatch-dark-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-dispatch-dark-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/screenshots/isdalog-workspaces/rider-dispatch-dark-1917.webp",
+        "width": 1917
+      }
+    ]
+  }
+}

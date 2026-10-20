@@ -14,7 +14,7 @@ export default function CaseStudyNavigation({
   const t = (en: string, fil: string) => (locale === "fil" ? fil : en)
   const sections = [
     { id: "overview", label: "Overview" },
-    ...(projectId === "dormfix" ? [{ id: "workspace-showcase", label: "Role workspaces" }] : []),
+    ...(["dormfix", "isdalog"].includes(projectId) ? [{ id: "workspace-showcase", label: "Role workspaces" }] : []),
     ...(["centralog", "pharmalink"].includes(projectId) ? [{ id: "admin-showcase", label: projectId === "pharmalink" ? "Role workspaces" : "Admin workspace" }] : []),
     { id: "walkthrough", label: "Walkthrough" },
     ...(projectId === "centralog"
