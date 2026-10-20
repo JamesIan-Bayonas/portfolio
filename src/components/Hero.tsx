@@ -1,7 +1,9 @@
-import { motion, useReducedMotion } from "motion/react"
+import { motion } from "motion/react"
+import { usePortfolioReducedMotion as useReducedMotion } from "../lib/usePortfolioReducedMotion"
 import { projects } from "../data/projects"
 import ProjectAtlas from "./ProjectAtlas"
 import "./Hero.css"
+import { motionTiming } from "../lib/motionTiming"
 
 export default function Hero() {
   const reduced = useReducedMotion()
@@ -9,14 +11,14 @@ export default function Hero() {
   function fadeUp(delay: number) {
     if (reduced)
       return {
-        initial: { opacity: 0 },
+        initial: false,
         animate: { opacity: 1 },
-        transition: { duration: 0.3, delay },
+        transition: { duration: 0 },
       }
     return {
       initial: { opacity: 0, y: 20 },
       animate: { opacity: 1, y: 0 },
-      transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as const },
+      transition: { duration: motionTiming.reveal, delay, ease: motionTiming.ease },
     }
   }
 
@@ -27,7 +29,11 @@ export default function Hero() {
     >
       <div className="max-w-[1440px] mx-auto min-w-0 px-4 sm:px-6 lg:px-10 w-full grid grid-cols-1 gap-10 lg:gap-16 items-center lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)]">
         {/* Left */}
-        <div className="flex flex-col gap-0">
+        <div className="hero-introduction flex flex-col gap-0">
+          <p className="hero-coordinate">
+            <span aria-hidden="true">✳</span> INDEPENDENT MIND. CONNECTED
+            SYSTEMS.
+          </p>
           <motion.p
             {...fadeUp(0)}
             className="text-xs tracking-widest mb-6"
@@ -48,7 +54,8 @@ export default function Hero() {
               color: "var(--color-text1)",
             }}
           >
-            I build systems that make complex workflows clear.
+            I build systems that make{" "}
+            <span className="hero-emphasis">complex workflows clear.</span>
           </h1>
 
           <p
@@ -65,7 +72,7 @@ export default function Hero() {
           </p>
 
           <motion.div
-            {...fadeUp(0.3)}
+            {...fadeUp(0.12)}
             className="flex flex-col min-[400px]:flex-row flex-wrap items-stretch min-[400px]:items-center gap-3 mb-8"
           >
             <motion.a
@@ -86,7 +93,7 @@ export default function Hero() {
                     }
               }
               whileTap={reduced ? {} : { scale: 0.98 }}
-              transition={{ duration: 0.18 }}
+              transition={{ duration: motionTiming.feedback }}
             >
               Explore case studies →
             </motion.a>
@@ -115,7 +122,7 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          <motion.p {...fadeUp(0.4)} className="hero-project-count font-mono">
+          <motion.p {...fadeUp(0.18)} className="hero-project-count font-mono">
             {projects.length} systems ·{" "}
             {
               projects.filter((project) => project.role === "Sole developer")
@@ -123,7 +130,7 @@ export default function Hero() {
             }{" "}
             built independently · 1 collaborative capstone
           </motion.p>
-          <motion.div {...fadeUp(0.4)} className="flex items-center gap-5">
+          <motion.div {...fadeUp(0.18)} className="flex items-center gap-5">
             <a
               href="https://github.com/JamesIan-Bayonas"
               aria-label="GitHub profile"
@@ -179,12 +186,22 @@ export default function Hero() {
 
         {/* Interactive project discovery */}
         <motion.div
-          initial={reduced ? { opacity: 0 } : { opacity: 0, x: 40 }}
+          initial={reduced ? false : { opacity: 0, x: 16 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: motionTiming.reveal, delay: 0.08, ease: motionTiming.ease }}
+          className="hero-atlas-frame"
         >
           <ProjectAtlas compact />
         </motion.div>
+      </div>
+      <div className="hero-bottom-rail">
+        <span>
+          BASED IN THE PHILIPPINES <span aria-hidden="true">↗</span>
+        </span>
+        <a href="#directory">
+          SCROLL TO EXPLORE <span aria-hidden="true">↓</span>
+        </a>
+        <span>CODE / SYSTEMS / CURIOSITY</span>
       </div>
     </section>
   )

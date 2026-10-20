@@ -1,0 +1,33 @@
+.signature-introduction { max-width: 1440px; margin-inline: auto; padding: 0 40px; color: var(--color-text1); position: relative; z-index: 10; }
+.signature-introduction details { border-block: 1px solid var(--color-border); background: var(--color-bg); }
+.signature-introduction summary { min-height: 72px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px 28px; padding: 16px 0; cursor: pointer; list-style: none; }
+.signature-introduction summary::-webkit-details-marker { display: none; }
+.signature-intro-eyebrow { color: var(--color-accent); font: 10px/1.8 var(--font-mono); letter-spacing: .1em; }
+.signature-introduction summary > span:nth-child(2) { font-size: 14px; }
+.signature-intro-open { color: var(--color-accent); font: 24px/1 var(--font-mono); margin-left: auto; transition: transform var(--motion-feedback) var(--motion-ease); }
+.signature-introduction details[open] .signature-intro-open { transform: rotate(45deg); }
+.signature-intro-scene { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.4fr); gap: clamp(24px,5vw,72px); align-items: center; padding-block: 32px 40px; border-top: 1px solid var(--color-border); }
+.signature-intro-identity { min-width: 0; padding: 24px 0; background: radial-gradient(ellipse,color-mix(in srgb,var(--color-accent) 4%,transparent),transparent 70%); }
+.signature-intro-identity > p { margin-top: 16px; text-align: center; color: var(--color-text2); font-size: 10px; letter-spacing: .14em; }
+.signature-intro-copy { min-width: 0; }
+.signature-intro-copy h2 { font: 500 clamp(30px,3.8vw,52px)/1.15 var(--font-display); letter-spacing: -.04em; margin-top: 12px; }
+.signature-intro-copy h2 > span { color: var(--color-accent); }
+.signature-intro-role { color: var(--color-text2); font: 12px/1.8 var(--font-mono); margin-top: 12px; }
+.signature-intro-copy ol { list-style: none; padding: 0; margin-block: 24px 12px; }
+.signature-intro-line { display: flex; gap: 16px; padding: 12px 16px; margin-bottom: 6px; border-left: 1px solid var(--color-border); }
+.signature-intro-line > span { color: var(--color-accent); font: 10px/1.9 var(--font-mono); padding-top: 2px; }
+.signature-intro-line p { font-size: 13px; line-height: 1.85; color: var(--color-text2); }
+.signature-intro-line strong { color: var(--color-text1); font-weight: 500; }
+.signature-intro-links { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 28px; }
+.signature-intro-links a { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 44px; font-size: 11px; color: var(--color-accent); }
+.signature-intro-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-border); }
+.signature-intro-controls button { min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-border); color: var(--color-text1); font-size: 10px; cursor: pointer; background: var(--color-surface); }
+.signature-intro-controls button:is(:disabled,[aria-disabled="true"]) { color: var(--color-text2); cursor: default; }
+.signature-intro-controls button:not(:disabled):not([aria-disabled="true"]):hover { border-color: var(--color-accent); }
+.signature-intro-controls p { flex-basis: 100%; font-size: 10px; line-height: 1.8; color: var(--color-text2); margin-top: 6px; }
+.signature-introduction :is(summary,a,button):focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+.signature-introduction :is(summary,a,button) { scroll-margin-block: 100px 24px; }
+.signature-introduction { scroll-margin-top: 92px; }
+@media (max-width: 900px) { .signature-intro-scene { grid-template-columns: minmax(0,.65fr) minmax(0,1.4fr); gap: 24px; } }
+@media (max-width: 639px) { .signature-introduction { padding-inline: 16px; } .signature-introduction summary { gap: 8px 16px; } .signature-intro-eyebrow { font-size: 9px; } .signature-intro-scene { grid-template-columns: 1fr; gap: 12px; padding-block: 20px 24px; } .signature-intro-identity { padding: 0; } .signature-intro-identity .profile-mark svg { max-width: 230px; } .signature-intro-line { padding: 12px; gap: 12px; } .signature-intro-controls button { flex: 1; } }
+@media (prefers-reduced-motion: reduce) { .signature-intro-open { transition: none; } }

@@ -1,0 +1,58 @@
+/* Shared visual rhythm. Keep technical labels quiet and primary content immediate. */
+:root {
+  --motion-feedback: 160ms;
+  --motion-panel: 280ms;
+  --motion-reveal: 440ms;
+  --motion-signal: 560ms;
+  --motion-ease: cubic-bezier(.2,.7,.2,1);
+  --heading-page: clamp(2.5rem,4.8vw,4.5rem);
+  --heading-section: clamp(1.8rem,3.5vw,3rem);
+}
+.page-introduction { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(0,.85fr); align-items: center; gap: clamp(24px,5vw,72px); }
+.page-introduction-copy { min-width: 0; }
+.page-introduction-text { grid-template-columns: 1fr; }
+.explore-page .page-introduction h1 { font-size: var(--heading-page); line-height: 1.08; letter-spacing: -.05em; max-width: 18ch; margin-block: 18px 24px; }
+.page-introduction h1 em { color: var(--color-accent); font-family: var(--font-serif); font-weight: 400; }
+.page-introduction-copy > p:not(.project-eyebrow) { max-width: 58ch; font: 15px/1.85 var(--font-body); color: var(--color-text2); }
+.page-introduction-art { min-width: 0; }
+.page-introduction-action { display: inline-flex; align-items: center; gap: 24px; min-height: 44px; margin-top: 18px; font-size: 11px; color: var(--color-accent); }
+.page-introduction-action:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+#lab-picker-title { scroll-margin-top: 100px; }
+.profile-mark { position: relative; min-width: 0; color: var(--color-accent); background: radial-gradient(ellipse,color-mix(in srgb,var(--color-accent) 10%,transparent),transparent 65%); }
+.profile-mark svg { display: block; width: 100%; max-width: 400px; margin-inline: auto; }
+.profile-mark text { fill: var(--color-text1); font: 500 64px var(--font-display); letter-spacing: -.07em; }
+.profile-mark tspan { fill: var(--color-accent); }
+.profile-mark-grid { stroke: var(--color-border); stroke-width: .5; opacity: .5; }
+.profile-mark-orbit,.profile-mark-inner { stroke: currentColor; stroke-width: .7; opacity: .35; }
+.profile-mark-inner { stroke-dasharray: 2 8; }
+.profile-mark-trace,.profile-mark-corners { stroke: currentColor; stroke-width: 1; }
+.explore-page .explore-header { padding-bottom: 40px; margin-bottom: 40px; }
+.explore-page .explore-header .case-study-breadcrumb { margin-bottom: 26px; }
+.explore-page .atlas-explore-header { margin-bottom: 40px; }
+.explore-page .atlas-explore-header h1 { font-size: clamp(3rem,6.8vw,6rem); }
+.explore-page .explore-section-heading h2,.directory-heading h2,.about-section-heading h2 { font-size: var(--heading-section); letter-spacing: -.04em; line-height: 1.15; }
+.project-story-preview > div:has(.project-story-flow) { align-items: start; }
+.project-story-preview > div:has(.project-story-flow) > dt { padding-top: 8px; }
+.project-story-preview .project-signal li { color: var(--color-text1); }
+.interactive-surface { transition-duration: var(--motion-panel); transition-timing-function: var(--motion-ease); }
+.atlas-node,.atlas-project-actions a,.atlas-technologies :is(a,button),.directory-card,.exploration-next-card { transition: background var(--motion-feedback) var(--motion-ease),border-color var(--motion-feedback) var(--motion-ease),color var(--motion-feedback) var(--motion-ease); }
+.explore-card .screenshot-preview img { transition: transform var(--motion-panel) var(--motion-ease); }
+.explore-card:is(:hover,:focus-within) .screenshot-preview img { transform: scale(1.015); }
+.explore-card:is(:hover,:focus-within) .project-signal li { border-top-color: var(--signal-ink); }
+.project-signal li { transition: border-color var(--motion-feedback) var(--motion-ease); }
+@keyframes portfolio-panel-arrive { from { opacity: .45; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: no-preference) {
+  :root:not([data-motion="reduced"]) .project-atlas[data-stopped="false"] .atlas-detail-copy { animation: portfolio-panel-arrive var(--motion-panel) var(--motion-ease) both; }
+  :root:not([data-motion="reduced"]) .page-introduction-art .signal-domain { animation: portfolio-panel-arrive var(--motion-reveal) var(--motion-ease) both; }
+}
+@media (max-width: 900px) { .page-introduction { grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: 24px; } .page-introduction-text { grid-template-columns: 1fr; } }
+@media (max-width: 639px) {
+  .page-introduction { grid-template-columns: 1fr; gap: 28px; }
+  .page-introduction-copy > p:not(.project-eyebrow) { font-size: 14px; }
+  .page-introduction-art { width: 100%; }
+  .profile-mark svg { max-width: 300px; }
+  .explore-page .explore-header { padding-bottom: 28px; margin-bottom: 32px; }
+}
+@media (prefers-reduced-motion: reduce) { .explore-card .screenshot-preview img { transition: none; transform: none !important; } }
+:root[data-motion="reduced"] .explore-card .screenshot-preview img { transform: none; }
+@media (forced-colors: active) { .profile-mark { color: CanvasText; } .profile-mark text,.profile-mark tspan { fill: CanvasText; } }

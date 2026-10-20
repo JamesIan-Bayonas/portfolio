@@ -1,7 +1,14 @@
+import { portfolioMotionQuery } from "../lib/motionPreference"
 import { buildAtlasScenes, type AtlasProjectId } from "../data/atlasScenes"
 import { useEffect, useId, useRef, useState, type CSSProperties } from "react"
 import { projects } from "../data/projects"
 import { atlasDepthOffset, ATLAS_DEPTH_LAYERS } from "../lib/atlasDepth.ts"
+import {
+  createAtlasOrbit,
+  atlasOrbitCamera,
+  projectAtlasOrbit,
+  atlasOrbitEdges,
+} from "../lib/atlasOrbit"
 import {
   createAtlasTransition,
   sampleAtlasTransition,
@@ -10,13 +17,16 @@ import "./ProjectAtlas.css"
 
 const scenes = buildAtlasScenes(projects)
 const scenesById = new Map(scenes.map((scene) => [scene.id, scene]))
+const orbitPoints = createAtlasOrbit()
+const orbitEdges = atlasOrbitEdges()
 
 interface StarFieldProps {
   active: AtlasProjectId
   stopped: boolean
+  orbital: boolean
 }
 
-function StarField({ active, stopped }: StarFieldProps) {
+function StarField({ active, stopped, orbital }: StarFieldProps) {
   const morph = useRef(
     scenesById.get(active)!.symbol.map((point) => ({ ...point })),
   )
@@ -59,6 +69,7 @@ function StarField({ active, stopped }: StarFieldProps) {
         return {
           group: scene.id,
           accent: scene.accent,
+          lightAccent: scene.lightAccent,
           x: scene.position.x / 100 + Math.cos(angle) * (0.035 + index * 0.008),
           y: scene.position.y / 100 + Math.sin(angle) * (0.03 + index * 0.009),
           phase: index * 1.7 + group,
@@ -112,39 +123,96 @@ function StarField({ active, stopped }: StarFieldProps) {
         `${middleOffset.y.toFixed(3)}px`,
       )
       context!.clearRect(0, 0, width, height)
-      const plotted = points.map((point) => {
-        const x =
-          point.x * width +
-          Math.sin(time * 0.22 + point.phase) * 6 +
-          backgroundOffset.x
-        const y =
-          point.y * height +
-          Math.cos(time * 0.18 + point.phase) * 5 +
-          backgroundOffset.y
-        return { ...point, x, y }
-      })
-      plotted.forEach((point, i) => {
-        context!.strokeStyle = point.accent
-        for (let j = i + 1; j < plotted.length; j++) {
-          const other = plotted[j]
-          if (point.group !== other.group) continue
-          const distance = Math.hypot(point.x - other.x, point.y - other.y)
-          if (distance > width * 0.15) continue
+      const orbitCamera = atlasOrbitCamera(
+        ((time * 0.08) % (Math.PI * 2)) + pose.x * 0.12,
+        pose.y * 0.1,
+      )
+      const orbit = orbital
+        ? orbitPoints.map((point) => ({
+            ...projectAtlasOrbit(point, orbitCamera),
+            group: point.group,
+          }))
+        : []
+      function drawOrbit(front: boolean) {
+        for (const [a, b] of orbitEdges) {
+          const from = orbit[a],
+            to = orbit[b]
+          if (from.depth + to.depth > 0 !== front) continue
+          const scene = scenes[from.group]
+          const emphasized = scene.id === selected.current
+          context!.strokeStyle = dark ? scene.accent : scene.lightAccent
           context!.globalAlpha =
-            (1 - distance / (width * 0.15)) *
-            (point.group === selected.current ? 0.16 : 0.06) *
-            (dark ? 1 : 1.4)
+            (emphasized ? 0.26 : 0.075) * (front ? 1 : 0.55)
           context!.beginPath()
-          context!.moveTo(point.x, point.y)
-          context!.lineTo(other.x, other.y)
+          context!.moveTo(
+            width / 2 + from.x * width * 0.28 + backgroundOffset.x,
+            height / 2 + from.y * height * 0.26 + backgroundOffset.y,
+          )
+          context!.lineTo(
+            width / 2 + to.x * width * 0.28 + backgroundOffset.x,
+            height / 2 + to.y * height * 0.26 + backgroundOffset.y,
+          )
           context!.stroke()
         }
-        context!.globalAlpha = point.group === selected.current ? 0.32 : 0.15
-        context!.fillStyle = point.accent
-        context!.beginPath()
-        context!.arc(point.x, point.y, i % 4 === 0 ? 1.5 : 0.9, 0, Math.PI * 2)
-        context!.fill()
-      })
+        for (const point of orbit) {
+          if (point.depth > 0 !== front) continue
+          const scene = scenes[point.group]
+          const emphasized = scene.id === selected.current
+          context!.fillStyle = dark ? scene.accent : scene.lightAccent
+          context!.globalAlpha = (emphasized ? 0.8 : 0.3) * (front ? 1 : 0.55)
+          context!.beginPath()
+          context!.arc(
+            width / 2 + point.x * width * 0.28 + backgroundOffset.x,
+            height / 2 + point.y * height * 0.26 + backgroundOffset.y,
+            (emphasized ? 2 : 1.3) * point.scale,
+            0,
+            Math.PI * 2,
+          )
+          context!.fill()
+        }
+      }
+      if (orbital) drawOrbit(false)
+      else {
+        const plotted = points.map((point) => {
+          const x =
+            point.x * width +
+            Math.sin(time * 0.22 + point.phase) * 6 +
+            backgroundOffset.x
+          const y =
+            point.y * height +
+            Math.cos(time * 0.18 + point.phase) * 5 +
+            backgroundOffset.y
+          return { ...point, x, y }
+        })
+        plotted.forEach((point, i) => {
+          context!.strokeStyle = dark ? point.accent : point.lightAccent
+          for (let j = i + 1; j < plotted.length; j++) {
+            const other = plotted[j]
+            if (point.group !== other.group) continue
+            const distance = Math.hypot(point.x - other.x, point.y - other.y)
+            if (distance > width * 0.15) continue
+            context!.globalAlpha =
+              (1 - distance / (width * 0.15)) *
+              (point.group === selected.current ? 0.16 : 0.06) *
+              (dark ? 1 : 1.4)
+            context!.beginPath()
+            context!.moveTo(point.x, point.y)
+            context!.lineTo(other.x, other.y)
+            context!.stroke()
+          }
+          context!.globalAlpha = point.group === selected.current ? 0.32 : 0.15
+          context!.fillStyle = dark ? point.accent : point.lightAccent
+          context!.beginPath()
+          context!.arc(
+            point.x,
+            point.y,
+            i % 4 === 0 ? 1.5 : 0.9,
+            0,
+            Math.PI * 2,
+          )
+          context!.fill()
+        })
+      }
       context!.globalAlpha = 1
       const selectedScene = scenesById.get(selected.current)!
       if (!motionActive) {
@@ -178,10 +246,14 @@ function StarField({ active, stopped }: StarFieldProps) {
         )
         context!.fill()
       })
+      if (orbital) drawOrbit(true)
+      context!.globalAlpha = 1
       if (selectionProgress < 1) {
         context!.globalAlpha =
           Math.sin(selectionProgress * Math.PI) * (dark ? 0.25 : 0.18)
-        context!.strokeStyle = context!.fillStyle
+        context!.strokeStyle = dark
+          ? selectedScene.accent
+          : selectedScene.lightAccent
         context!.beginPath()
         context!.arc(
           width / 2 + foregroundOffset.x,
@@ -287,7 +359,7 @@ function StarField({ active, stopped }: StarFieldProps) {
       host.style.removeProperty("--atlas-halo-y")
       delete host.dataset.selectionState
     }
-  }, [stopped])
+  }, [stopped, orbital])
   return <canvas ref={canvas} className="atlas-stars" aria-hidden="true" />
 }
 
@@ -307,9 +379,8 @@ export default function ProjectAtlas({
       return false
     }
   })
-  const [reduced, setReduced] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-  )
+  const [reduced, setReduced] = useState(() => portfolioMotionQuery().matches)
+  const [orbital, setOrbital] = useState(true)
   const id = useId()
   useEffect(() => {
     const element = root.current
@@ -330,7 +401,7 @@ export default function ProjectAtlas({
     }
   }, [])
   useEffect(() => {
-    const query = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const query = portfolioMotionQuery()
     const update = () => setReduced(query.matches)
     query.addEventListener("change", update)
     return () => query.removeEventListener("change", update)
@@ -338,11 +409,58 @@ export default function ProjectAtlas({
   const scene = scenesById.get(selected)!
   const project = scene.project
   const stopped = paused || reduced
+  const workflow = (
+    <ol
+      id={`${id}-workflow`}
+      className="atlas-workflow"
+      aria-label={`${project.name} workflow overview`}
+    >
+      {scene.workflow.map((step, index) => (
+        <li key={step.title}>
+          <a href={step.href}>
+            <span className="font-mono" aria-hidden="true">
+              0{index + 1}
+            </span>
+            <span>{step.title}</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  )
+  const technologies = (
+    <div className="atlas-bottomline">
+      <p className="font-mono">
+        CONNECTED THROUGH <span aria-hidden="true">↳</span>
+      </p>
+      <div className="atlas-technologies">
+        {scene.technologies.map((technology) =>
+          onTechnology ? (
+            <button
+              type="button"
+              key={technology}
+              onClick={() => onTechnology(technology)}
+            >
+              {technology} ↗
+            </button>
+          ) : (
+            <a
+              key={technology}
+              href={`/explore/?tech=${encodeURIComponent(technology)}`}
+            >
+              {technology} ↗
+            </a>
+          ),
+        )}
+      </div>
+    </div>
+  )
   return (
     <section
       ref={root}
       className={`project-atlas${compact ? " project-atlas-compact" : ""}`}
       data-stopped={stopped}
+      data-scene-view={orbital ? "orbit" : "constellation"}
       style={
         {
           "--atlas-color": scene.accent,
@@ -356,33 +474,55 @@ export default function ProjectAtlas({
           <i aria-hidden="true" /> SYSTEM ATLAS{" "}
           <span className="atlas-version">/ 01—04</span>
         </span>
-        <button
-          type="button"
-          aria-disabled={reduced}
-          aria-describedby={`${id}-motion-note`}
-          onClick={() => {
-            if (reduced) return
-            setPaused(!paused)
-            try {
-              localStorage.setItem("portfolio-atlas-paused", String(!paused))
-            } catch {
-              /* Motion control works without storage. */
-            }
-          }}
-        >
-          {reduced
-            ? "Reduced motion"
-            : paused
-              ? "Play motion ▷"
-              : "Pause motion Ⅱ"}
-        </button>
+        <div className="atlas-display-controls">
+          <div
+            className="atlas-view-picker"
+            role="group"
+            aria-label="Scene appearance"
+          >
+            <button
+              type="button"
+              aria-pressed={orbital}
+              onClick={() => setOrbital(true)}
+            >
+              Orbit
+            </button>
+            <button
+              type="button"
+              aria-pressed={!orbital}
+              onClick={() => setOrbital(false)}
+            >
+              Constellation
+            </button>
+          </div>
+          <button
+            type="button"
+            aria-disabled={reduced}
+            aria-describedby={`${id}-motion-note`}
+            onClick={() => {
+              if (reduced) return
+              setPaused(!paused)
+              try {
+                localStorage.setItem("portfolio-atlas-paused", String(!paused))
+              } catch {
+                /* Motion control works without storage. */
+              }
+            }}
+          >
+            {reduced
+              ? "Reduced motion"
+              : paused
+                ? "Play motion ▷"
+                : "Pause motion Ⅱ"}
+          </button>
+        </div>
       </div>
       <p
         id={`${id}-motion-note`}
         className={reduced ? "atlas-motion-note" : "sr-only"}
       >
         {reduced
-          ? "Animation is off because your device requests reduced motion. All project links remain available."
+          ? "Animation is off because reduced motion is active. All project links remain available."
           : stopped
             ? "Animation is paused. Project selection and links remain available."
             : "Animation is playing. You can pause it at any time."}
@@ -418,30 +558,14 @@ export default function ProjectAtlas({
       <div className="atlas-layout">
         <div className="atlas-visual">
           <div className="atlas-scene" aria-hidden="true">
-            <StarField active={selected} stopped={stopped} />
+            <StarField active={selected} stopped={stopped} orbital={orbital} />
             <div className="atlas-symbol-halo" />
             <div className="atlas-scene-caption font-mono">
               <span>PROJECT / 0{scenes.indexOf(scene) + 1}</span>
               <span>{scene.label}</span>
             </div>
           </div>
-          <ol
-            id={`${id}-workflow`}
-            className="atlas-workflow"
-            aria-label={`${project.name} workflow overview`}
-          >
-            {scene.workflow.map((step, index) => (
-              <li key={step.title}>
-                <a href={step.href}>
-                  <span className="font-mono" aria-hidden="true">
-                    0{index + 1}
-                  </span>
-                  <span>{step.title}</span>
-                  <span aria-hidden="true">↗</span>
-                </a>
-              </li>
-            ))}
-          </ol>
+          {!compact && workflow}
         </div>
         <div id={`${id}-detail`} className="atlas-detail">
           <div className="atlas-detail-copy" key={project.id}>
@@ -465,31 +589,17 @@ export default function ProjectAtlas({
           </div>
         </div>
       </div>
-      <div className="atlas-bottomline">
-        <p className="font-mono">
-          CONNECTED THROUGH <span aria-hidden="true">↳</span>
-        </p>
-        <div className="atlas-technologies">
-          {scene.technologies.map((technology) =>
-            onTechnology ? (
-              <button
-                type="button"
-                key={technology}
-                onClick={() => onTechnology(technology)}
-              >
-                {technology} ↗
-              </button>
-            ) : (
-              <a
-                key={technology}
-                href={`/explore/?tech=${encodeURIComponent(technology)}`}
-              >
-                {technology} ↗
-              </a>
-            ),
-          )}
-        </div>
-      </div>
+      {compact ? (
+        <details className="atlas-extended">
+          <summary>
+            Explore workflow & technologies <span aria-hidden="true">+</span>
+          </summary>
+          {workflow}
+          {technologies}
+        </details>
+      ) : (
+        technologies
+      )}
     </section>
   )
 }

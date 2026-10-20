@@ -1,4 +1,19 @@
-@media (max-height: 700px) {
-  .portfolio-hero { min-height: 0; padding-block: 96px 40px; }
-  .portfolio-hero > div { align-items: start; }
-}
+.portfolio-hero { isolation: isolate; overflow: clip; flex-direction: column; justify-content: center; padding-block: 104px 88px; }
+.portfolio-hero::before { content: ''; position: absolute; z-index: -1; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 75% 35%,color-mix(in srgb,var(--color-accent) 8%,transparent),transparent 55%); }
+.hero-coordinate { display: flex; align-items: center; gap: 12px; font: 10px/1.8 var(--font-mono); letter-spacing: .1em; color: var(--color-accent); margin-bottom: 20px; }
+.hero-coordinate > span { font-size: 24px; }
+.hero-introduction h1 { max-width: 17ch; font-size: clamp(2.5rem,4.3vw,4.25rem) !important; line-height: 1.06; letter-spacing: -.05em; }
+.hero-introduction > p.text-base { max-width: 49ch; font-size: 15px; line-height: 1.8; margin-bottom: 24px; }
+.hero-introduction > p.tracking-widest { font-size: 10px; margin-bottom: 18px; }
+.hero-project-count { color: var(--color-text2); font-size: 10px; line-height: 1.8; margin-block: 0 14px; }
+.hero-emphasis { color: var(--color-accent); }
+.hero-atlas-frame { position: relative; min-width: 0; }
+.hero-atlas-frame::before { content: ''; position: absolute; inset: -14px; border: 1px solid color-mix(in srgb,var(--color-accent) 12%,transparent); border-radius: 50% 50% 3px 3px; pointer-events: none; z-index: -1; }
+.hero-atlas-frame .project-atlas { box-shadow: 0 24px 90px -40px color-mix(in srgb,var(--color-accent) 25%,transparent); }
+.hero-bottom-rail { position: absolute; bottom: 0; left: 40px; right: 40px; display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 60px; border-top: 1px solid var(--color-border); color: var(--color-text2); font: 9px/1.6 var(--font-mono); letter-spacing: .1em; }
+.hero-bottom-rail a { display: flex; align-items: center; gap: 20px; min-height: 44px; color: var(--color-accent); }
+.hero-bottom-rail a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+@media (min-width: 1024px) { .portfolio-hero > div:first-child { grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: clamp(32px,4vw,64px); padding-block: 0; } }
+@media (max-width: 1023px) { .portfolio-hero { padding-block: 112px 100px; } .hero-introduction h1 { max-width: 19ch; } .hero-atlas-frame::before { inset: -8px; } }
+@media (max-width: 639px) { .hero-coordinate { font-size: 9px; letter-spacing: .04em; margin-bottom: 18px; } .hero-bottom-rail { left: 16px; right: 16px; font-size: 8px; gap: 10px; } .hero-bottom-rail > span:last-child { display: none; } }
+@media (min-width: 1024px) and (max-height: 700px) { .portfolio-hero { min-height: 0; padding-block: 96px 80px; } .portfolio-hero > div { align-items: start; } }
