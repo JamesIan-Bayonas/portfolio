@@ -1,3 +1,6 @@
+import { AboutOverview, AboutApproach } from "./AboutStory"
+import ExplorationNext from "./ExplorationNext"
+import ExplorationNav from "./ExplorationNav"
 import { lazy, Suspense, useState } from "react"
 import {
   professionalContent,
@@ -7,13 +10,11 @@ import {
 import { currentLocale, localizeCoreHref } from "../lib/locale"
 import { projects } from "../data/projects"
 import ContactAction from "./ContactAction"
+import ProfileMark from "./ProfileMark"
 
 const ProfileExplorer = lazy(() => import("./ProfileExplorer"))
 
-function ProjectLinks({ ids, fil }: {
-  ids: readonly string[]
-  fil: boolean
-}) {
+function ProjectLinks({ ids, fil }: { ids: readonly string[]; fil: boolean }) {
   return (
     <div className="professional-project-links font-mono">
       {ids.map((id) => {
@@ -53,12 +54,18 @@ export default function ProfessionalPages({
     <div className="explore-page professional-page px-4 sm:px-6 lg:px-10">
       <div className="max-w-[1440px] mx-auto">
         <header className="explore-header">
+          <ExplorationNav active="about" />
           <a className="case-study-breadcrumb font-mono" href={href("/")}>
             ← {t("Portfolio home", "Pangunahing pahina")}
           </a>
-          <p className="project-eyebrow font-mono">{page.label}</p>
-          <h1>{page.title}</h1>
-          <p>{page.summary}</p>
+          <div className={`page-introduction${path === "/about/" ? "" : " page-introduction-text"}`}>
+            <div className="page-introduction-copy">
+              <p className="project-eyebrow font-mono">{page.label}</p>
+              <h1>{page.title}</h1>
+              <p>{page.summary}</p>
+            </div>
+            {path === "/about/" && <ProfileMark />}
+          </div>
           <nav
             className="professional-page-links font-mono"
             aria-label={t("Professional profile", "Propesyonal na profile")}
@@ -88,24 +95,7 @@ export default function ProfessionalPages({
         </header>
         {path === "/about/" && (
           <>
-            <section
-              className="professional-education"
-              aria-labelledby="education-title"
-            >
-              <p className="project-eyebrow font-mono">
-                {t("EDUCATION", "PAG-AARAL")}
-              </p>
-              <h2 id="education-title" lang="en">
-                {profile.education.degree}
-              </h2>
-              <p>
-                {profile.education.institution} · {profile.location}
-              </p>
-              <p className="font-mono">
-                {t("Expected completion", "Inaasahang pagtatapos")}:{" "}
-                {profile.education.expectedCompletion}
-              </p>
-            </section>
+            <AboutOverview profile={profile} locale={locale} />
             <section aria-labelledby="journey-title">
               <div className="explore-section-heading">
                 <h2 id="journey-title">
@@ -135,6 +125,7 @@ export default function ProfessionalPages({
                 ))}
               </ol>
             </section>
+            <AboutApproach profile={profile} locale={locale} />
           </>
         )}
         {path === "/now/" && (
@@ -275,12 +266,16 @@ export default function ProfessionalPages({
         )}
         <details
           className="profile-explorer-panel"
-          onToggle={event => {
+          onToggle={(event) => {
             if (event.currentTarget.open) setExplorerUsed(true)
           }}
         >
           <summary>
-            <h2>{fil ? "Tuklasin ang profile bilang terminal (English controls)" : "Explore my profile as a terminal"}</h2>
+            <h2>
+              {fil
+                ? "Tuklasin ang profile bilang terminal (English controls)"
+                : "Explore my profile as a terminal"}
+            </h2>
             <span aria-hidden="true">↗</span>
           </summary>
           {explorerUsed && (
@@ -289,19 +284,22 @@ export default function ProfessionalPages({
             </Suspense>
           )}
         </details>
-        <footer className="dedicated-case-footer">
-          <div>
-            <p className="project-eyebrow font-mono">
-              {t("PROJECT EVIDENCE", "EBIDENSIYA NG MGA PROYEKTO")}
-            </p>
-            <h2>
-              {t("Explore what I've built.", "Tuklasin ang mga binuo ko.")}
-            </h2>
-          </div>
-          <a className="font-mono" href={href("/explore/")}>
-            {t("Browse the case studies", "Tuklasin ang mga proyekto")} ↗
-          </a>
-        </footer>
+        {!fil && <ExplorationNext context="about" />}
+        {fil && (
+          <footer className="dedicated-case-footer">
+            <div>
+              <p className="project-eyebrow font-mono">
+                {t("PROJECT EVIDENCE", "EBIDENSIYA NG MGA PROYEKTO")}
+              </p>
+              <h2>
+                {t("Explore what I've built.", "Tuklasin ang mga binuo ko.")}
+              </h2>
+            </div>
+            <a className="font-mono" href={href("/explore/")}>
+              {t("Browse the case studies", "Tuklasin ang mga proyekto")} ↗
+            </a>
+          </footer>
+        )}
       </div>
     </div>
   )

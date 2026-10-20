@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { motion, useReducedMotion } from "motion/react"
+import { motion } from "motion/react"
+import { usePortfolioReducedMotion as useReducedMotion } from "../lib/usePortfolioReducedMotion"
 import SpotlightCard from "./ui/SpotlightCard"
 
 const capabilities = ["01", "02", "03", "04"]

@@ -1,0 +1,16 @@
+.project-signal { --signal-ink: var(--signal-dark); color: var(--signal-ink); position: relative; min-width: 0; margin: 0; padding: 20px; border: 1px solid color-mix(in srgb,var(--signal-ink) 30%,var(--color-border)); background: radial-gradient(ellipse at 50% 40%,color-mix(in srgb,var(--signal-ink) 8%,transparent),transparent 65%),var(--color-bg); }
+[data-theme="light"] .project-signal { --signal-ink: var(--signal-light); }
+.project-signal figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font: 10px/1.7 var(--font-mono); letter-spacing: .08em; }
+.project-signal figcaption > span:last-child { color: var(--color-text2); font-size: 9px; }
+.project-signal svg { display: block; width: min(100%,300px); height: 180px; margin: 8px auto; overflow: visible; }
+.signal-guides { stroke: var(--signal-ink); stroke-width: .6; opacity: .28; }
+.signal-domain { filter: drop-shadow(0 0 8px color-mix(in srgb,var(--signal-ink) 16%,transparent)); }
+.project-signal ol { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 16px; padding: 0; list-style: none; }
+.project-signal li { position: relative; min-width: 0; display: flex; align-items: baseline; gap: 8px; padding: 12px 0; border-top: 1px solid color-mix(in srgb,var(--signal-ink) 24%,var(--color-border)); font: 10px/1.7 var(--font-mono); color: var(--color-text1); }
+.project-signal li > span:first-child { font-size: 9px; color: var(--signal-ink); }
+.project-signal li > span:last-child { overflow-wrap: anywhere; }
+.project-signal-compact { border: 0; background: none; padding: 0; }
+.project-signal-compact ol { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.project-signal-compact li { font-size: 10px; padding: 8px 0; }
+@media (max-width: 380px) { .project-signal { padding: 16px; } .project-signal-compact { padding: 0; } .project-signal ol { gap: 0 10px; } }
+@media (forced-colors: active) { .project-signal { color: CanvasText; border-color: CanvasText; } .signal-guides { stroke: CanvasText; opacity: 1; } }
