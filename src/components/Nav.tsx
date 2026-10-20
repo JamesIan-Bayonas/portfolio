@@ -1,3 +1,6 @@
+import { useResolvedTheme } from "../lib/useThemePreference"
+import { setThemePreference } from "../lib/themePreference"
+import PortfolioMenu from "./PortfolioMenu"
 import { useState, useEffect, useRef } from "react"
 import LanguageSwitch from "./LanguageSwitch"
 import { currentLocale, localizeCoreHref } from "../lib/locale"
@@ -68,57 +71,20 @@ function MoonIcon() {
   )
 }
 
-function applyTheme(t: "dark" | "light") {
-  document.documentElement.setAttribute("data-theme", t)
-}
-
 export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = false, labPage = false, notesPage = false, professionalPath }: NavProps) {
   const locale = currentLocale()
   const fil = locale === "fil"
-  const shownLinks = fil ? ["about", "now", "projects", "lab", "notes", "contact"] : links
+  const shownLinks = fil ? ["about", "now", "projects", "lab", "notes", "contact"] : ["about", "explore", "lab", "notes", "contact"]
   const labels: Record<string,string> = {about:"Tungkol",now:"Ngayon",projects:"Mga proyekto",lab:"Lab (EN)",notes:"Mga tala (EN)",contact:"Ugnayan"}
   const href = (link: string) => fil && link === "projects" ? "/fil/#projects" : localizeCoreHref(pageLinks[link] ?? `${portfolioPage ? "" : "/"}#${link}`, locale)
   const [active, setActive] = useState(professionalPath ? Object.keys(pageLinks).find(link => pageLinks[link] === professionalPath) ?? "" : notesPage ? "notes" : labPage ? "lab" : explorePage ? "explore" : "")
   const [menuOpen, setMenuOpen] = useState(false)
-  const [theme, setTheme] = useState<"dark" | "light">("dark")
+  const theme = useResolvedTheme()
   const toggleRef = useRef<HTMLButtonElement>(null)
 
-  // Initialise theme from localStorage on mount
-  useEffect(() => {
-    const saved = localStorage.getItem(
-      "portfolio-theme",
-    ) as "dark" | "light" | null
-    const initial = saved === "light" ? "light" : "dark"
-    setTheme(initial)
-    applyTheme(initial)
-  }, [])
-
   function toggleTheme() {
-    const next = theme === "dark" ? "light" : "dark"
-    setTheme(next)
-    applyTheme(next)
-    localStorage.setItem("portfolio-theme", next)
+    setThemePreference(theme === "dark" ? "light" : "dark")
   }
-
-  useEffect(() => {
-    if (!menuOpen) return
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMenuOpen(false)
-        toggleRef.current?.focus()
-      }
-    }
-    const desktop = window.matchMedia("(min-width: 1280px)")
-    const onResize = () => {
-      if (desktop.matches) setMenuOpen(false)
-    }
-    document.addEventListener("keydown", onKey)
-    desktop.addEventListener("change", onResize)
-    return () => {
-      document.removeEventListener("keydown", onKey)
-      desktop.removeEventListener("change", onResize)
-    }
-  }, [menuOpen])
 
   useEffect(() => {
     if (!portfolioPage) return
@@ -283,6 +249,7 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
           >
             {fil ? "Resume (EN)" : "Resume"}
           </a>
+          <button type="button" className="nav-menu-trigger" aria-label={fil ? "Buksan ang menu" : "Open navigation menu"} aria-expanded={menuOpen} aria-controls="portfolio-navigation" aria-haspopup="dialog" onClick={() => setMenuOpen(true)}><span>Menu</span><span aria-hidden="true">☰</span></button>
         </nav>
 
         {/* Mobile: theme toggle + hamburger */}
@@ -322,7 +289,8 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
           <button
             ref={toggleRef}
             aria-expanded={menuOpen}
-            aria-controls="mobile-navigation"
+            aria-controls="portfolio-navigation"
+            aria-haspopup="dialog"
             className="shrink-0 w-11 h-11 flex flex-col justify-center items-center gap-1.5 p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={fil ? "Buksan o isara ang menu" : "Toggle menu"}
@@ -346,55 +314,7 @@ export default function Nav({ onOpenSearch, portfolioPage = true, explorePage = 
         </div>
       </div>
 
-      {/* Mobile menu */}
-        {menuOpen && (
-          <div
-            id="mobile-navigation"
-            className="max-h-[calc(100dvh-72px)] overflow-y-auto xl:hidden border-t px-4 sm:px-6 lg:px-10 py-6 flex flex-col gap-4"
-            style={{
-              backgroundColor: "var(--color-bg)",
-              borderColor: "var(--color-border)",
-            }}
-          >
-            <LanguageSwitch />
-            {shownLinks.map((link) => (
-              <a
-                key={link}
-                href={href(link)}
-                hrefLang={fil && (link === "lab" || link === "notes") ? "en" : undefined}
-                aria-current={(link === "explore" && explorePage) || (link === "lab" && labPage) || (link === "notes" && notesPage) || (professionalPath && pageLinks[link] === professionalPath) ? "page" : undefined}
-                onClick={() => {
-                  setActive(link)
-                  setMenuOpen(false)
-                }}
-                className="text-sm lowercase flex items-center min-h-11"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  color:
-                    active === link
-                      ? "var(--color-accent)"
-                      : "var(--color-text2)",
-                }}
-              >
-                {fil ? labels[link] : link}
-              </a>
-            ))}
-
-            {/* Mobile Menu Resume Link */}
-            <a
-              href={resumeUrl}
-              download="James_Ian_Bayonas_Resume.pdf"
-              className="text-sm px-4 py-2 border w-fit cursor-pointer"
-              style={{
-                fontFamily: "var(--font-mono)",
-                color: "var(--color-text1)",
-                borderColor: "var(--color-border)",
-              }}
-            >
-              {fil ? "Resume (EN)" : "Resume"}
-            </a>
-          </div>
-        )}
+      <PortfolioMenu open={menuOpen} onClose={() => setMenuOpen(false)} onOpenSearch={onOpenSearch} />
     </header>
   )
 }

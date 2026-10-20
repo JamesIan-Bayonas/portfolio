@@ -1,9 +1,14 @@
+import ExplorationNext from "./ExplorationNext"
+import ExplorationNav from "./ExplorationNav"
 import { lazy, Suspense, useEffect, useState } from "react"
 import { labDemos, labDemoFromHash, type LabDemoId } from "../data/labDemos"
 import { projects } from "../data/projects"
 import { engineeringNotes } from "../data/notes"
 import LoadingState from "./LoadingState"
+import SaveExplorationButton from "./SaveExplorationButton"
 import { cardAccentStyles } from "../lib/projectCardAccents"
+import ProjectSignal from "./ProjectSignal"
+import { labVisualStages } from "../data/projectStories"
 
 const AssetValuationDemo = lazy(() => import("./AssetValuationDemo"))
 const DormFixWalkthrough = lazy(() => import("./DormFixWalkthrough"))
@@ -41,27 +46,29 @@ export default function Lab() {
       "",
       `${window.location.pathname}#demo-${id}`,
     )
+    window.dispatchEvent(new Event("portfolio:experiment-selected"))
   }
   return (
     <div className="explore-page lab-page px-4 sm:px-6 lg:px-10">
       <div className="max-w-[1440px] mx-auto">
         <header className="explore-header">
+          <ExplorationNav active="lab" />
           <a href="/explore/" className="case-study-breadcrumb font-mono">
             ← Explore the projects
           </a>
-          <p className="project-eyebrow font-mono">
-            ENGINEERING LAB / INTERACTIVE EXAMPLES
-          </p>
-          <h1>
-            Try the logic.
-            <br />
-            See what changes.
-          </h1>
-          <p>
-            Four demonstrations drawn from the systems I've built. Change
-            inputs, test a failure, or follow a workflow to see the reasoning
-            behind each project.
-          </p>
+          <div className="page-introduction">
+            <div className="page-introduction-copy">
+              <p className="project-eyebrow font-mono">ENGINEERING LAB / INTERACTIVE EXAMPLES</p>
+              <h1>Try the logic.<br /><em>See what changes.</em></h1>
+              <p>Four demonstrations drawn from the systems I've built. Change
+                inputs, test a failure, or follow a workflow to see the reasoning
+                behind each project.</p>
+              <a className="page-introduction-action font-mono" href="#lab-picker-title">Choose an experiment <span aria-hidden="true">↓</span></a>
+            </div>
+            <div className="page-introduction-art" key={selected}>
+              <ProjectSignal projectId={selected} projectName={project.name} stages={labVisualStages[selected]} />
+            </div>
+          </div>
         </header>
         <section aria-labelledby="lab-picker-title">
           <div className="explore-section-heading">
@@ -126,6 +133,7 @@ export default function Lab() {
               Read the {project.name} case study ↗
             </a>
           </div>
+          <SaveExplorationButton id={`lab:${selected}`} />
           <p className="lab-sample-notice">
             These examples run in your browser with sample data. They perform no
             live inference, transactions, inventory updates, payments, or
@@ -176,15 +184,7 @@ export default function Lab() {
               </aside>
             ))}
         </section>
-        <footer className="dedicated-case-footer">
-          <div>
-            <p className="project-eyebrow font-mono">GO DEEPER</p>
-            <h2>See the systems behind the examples.</h2>
-          </div>
-          <a className="font-mono" href="/explore/">
-            Explore the case studies ↗
-          </a>
-        </footer>
+        <ExplorationNext context="lab" project={project} />
       </div>
     </div>
   )

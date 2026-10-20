@@ -1,3 +1,7 @@
+import { portfolioMotionQuery } from "../lib/motionPreference"
+import ProjectStoryPreview from "./ProjectStoryPreview"
+import ExplorationNext from "./ExplorationNext"
+import ExplorationNav from "./ExplorationNav"
 import { projectPreview } from "../data/projectPreviews"
 import { usePortfolioTheme } from "../lib/usePortfolioTheme"
 import ProjectAtlas from "./ProjectAtlas"
@@ -54,7 +58,9 @@ export default function Explore() {
 
   const [filtersOpen, setFiltersOpen] = useState(false)
   const filterSummary = useRef<HTMLElement>(null)
-  const results = filterProjects(searchableProjects, filters).map(project => projectPreview(project, mode))
+  const results = filterProjects(searchableProjects, filters).map((project) =>
+    projectPreview(project, mode),
+  )
 
   const [comparison, setComparison] = useState(() =>
     readComparison(window.location.search, projectIds),
@@ -94,6 +100,7 @@ export default function Explore() {
     <div className="explore-page px-4 sm:px-6 lg:px-10">
       <div className="max-w-[1440px] mx-auto">
         <header className="explore-header atlas-explore-header">
+          <ExplorationNav active="projects" />
           <a href="/" className="case-study-breadcrumb font-mono">
             ← Portfolio home
           </a>
@@ -113,9 +120,7 @@ export default function Explore() {
               document
                 .getElementById("explore-projects-title")
                 ?.scrollIntoView({
-                  behavior: window.matchMedia(
-                    "(prefers-reduced-motion: reduce)",
-                  ).matches
+                  behavior: portfolioMotionQuery().matches
                     ? "instant"
                     : "smooth",
                   block: "start",
@@ -310,6 +315,7 @@ export default function Explore() {
                         </p>
                         <h3 id={`explore-${project.id}`}>{project.name}</h3>
                         <p className="explore-card-title">{project.title}</p>
+                        <ProjectStoryPreview project={project} />
                         <p className="project-version-label font-mono">
                           {project.versionLabel}
                         </p>
@@ -395,15 +401,7 @@ export default function Explore() {
             Open the valuation lab ↗
           </a>
         </section>
-        <footer className="dedicated-case-footer">
-          <div>
-            <p className="project-eyebrow font-mono">HAVE A SIMILAR PROBLEM?</p>
-            <h2>Let's talk about the system you need.</h2>
-          </div>
-          <a href="/#contact" className="font-mono">
-            Contact James ↗
-          </a>
-        </footer>
+        <ExplorationNext context="projects" />
       </div>
     </div>
   )
