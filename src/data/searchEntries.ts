@@ -6,6 +6,8 @@ import filipinoPages from "./filipinoPages.json"
 import { reflectionPages } from "./reflectionPages"
 
 export const portfolioSearchEntries: SearchEntry[] = [
+  { id: "regex-lab", label: "Regex Lab", description: "Test patterns, highlight matches, and inspect capture groups using a disposable background worker.", category: "Developer tools", path: "/tools/regex/", target: "case-study", keywords: ["regex", "regular expressions", "patterns", "capture", "groups", "tools", "developer"] },
+  { id: "json-workbench", label: "JSON Workbench", description: "Format, minify, and validate JSON in your browser. Copy or download the output.", category: "Developer tools", path: "/tools/", target: "case-study", keywords: ["json", "formatter", "minify", "validate", "tools", "developer", "data"] },
   {
     id: "project-toolbox",
     label: "Tools behind the systems",

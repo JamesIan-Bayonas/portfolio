@@ -33,5 +33,15 @@
     "path": "/notes/",
     "title": "Engineering Notes | James Ian Bayonas",
     "description": "Search engineering notes by topic and project. Explore DormFix receipt review, IsdaLog settlement, CentraLog valuation, and PharmaLink sale adjustments."
+  },
+  {
+    "path": "/tools/",
+    "title": "Developer Tools & JSON Workbench | James Ian Bayonas",
+    "description": "Format, minify, and validate JSON in your browser. Preserve number values, inspect syntax errors, and copy or download the result."
+  },
+  {
+    "path": "/tools/regex/",
+    "title": "Regex Lab | James Ian Bayonas",
+    "description": "Test JavaScript regular expressions, highlight matches, and inspect numbered and named capture groups in your browser, with background execution and a timeout."
   }
 ]

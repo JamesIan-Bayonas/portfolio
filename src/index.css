@@ -3,6 +3,8 @@
 @source './components';
 @import './fonts.css';
 @import './interaction-design.css';
+@import './motion-preference.css';
+@import './visual-system.css';
 
 .case-hero-contact { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding: 10px 14px; margin-bottom: 20px; border: 1px solid var(--color-accent); border-radius: 4px; color: var(--color-accent); font-size: 12px; cursor: pointer; }
 .case-hero-contact:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }

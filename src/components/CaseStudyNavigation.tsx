@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { caseStudyText } from "../lib/caseStudyCopy"
+import ReadingProgress from "./ReadingProgress"
 
 interface CaseStudyNavigationProps {
   projectId: string
@@ -172,6 +173,7 @@ export default function CaseStudyNavigation({
       <span className="case-section-status" role="status">
         {message}
       </span>
+      <ReadingProgress locale={locale} />
     </nav>
   )
 }

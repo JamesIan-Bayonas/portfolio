@@ -1,3 +1,6 @@
+import ExplorationNext from "./ExplorationNext"
+import ReadingProgress from "./ReadingProgress"
+import ExplorationNav from "./ExplorationNav"
 import { useEffect } from "react"
 import {
   engineeringNotes,
@@ -6,6 +9,7 @@ import {
 } from "../data/notes"
 import NotesArchive from "./NotesArchive"
 import RelatedNotes from "./RelatedNotes"
+import SaveExplorationButton from "./SaveExplorationButton"
 import FollowNotes from "./FollowNotes"
 import { projects } from "../data/projects"
 import { normalizePagePath } from "../lib/caseStudyPages"
@@ -41,6 +45,7 @@ export default function Notes({ previewNote }: {
     <article className="explore-page notes-page px-4 sm:px-6 lg:px-10">
       <div className="max-w-[1440px] mx-auto">
         <header className="note-header">
+          <ExplorationNav active="notes" />
           {previewNote && (
             <p role="status">
               Local article preview · {previewNote.status ?? "published"}.
@@ -64,10 +69,12 @@ export default function Notes({ previewNote }: {
             </a>
             <a href={`/lab/#demo-${note.projectId}`}>{note.demoLabel} ↗</a>
           </div>
+          <SaveExplorationButton id={`note:${note.id}`} />
         </header>
         <div className="note-layout">
           <nav className="note-contents" aria-label="On this page">
             <p className="project-eyebrow font-mono">ON THIS PAGE</p>
+            <ReadingProgress contentSelector=".note-body" />
             <ol>
               {note.sections.map((section) => (
                 <li key={section.id}>
@@ -126,15 +133,7 @@ export default function Notes({ previewNote }: {
         </div>
         <RelatedNotes note={note} />
         <FollowNotes />
-        <footer className="dedicated-case-footer">
-          <div>
-            <p className="project-eyebrow font-mono">CONTINUE EXPLORING</p>
-            <h2>Follow the complete {project?.name} story.</h2>
-          </div>
-          <a className="font-mono" href={project?.caseStudyPath}>
-            Open the case study ↗
-          </a>
-        </footer>
+        <ExplorationNext context="notes" project={project} />
       </div>
     </article>
   )

@@ -1,3 +1,5 @@
+import ExplorationNext from "./ExplorationNext"
+import ExplorationNav from "./ExplorationNav"
 import { useEffect, useState } from "react"
 import { engineeringNotes, noteReadingMinutes } from "../data/notes"
 import { projects } from "../data/projects"
@@ -75,6 +77,7 @@ export default function NotesArchive() {
     <div className="explore-page notes-page px-4 sm:px-6 lg:px-10">
       <div className="max-w-[1440px] mx-auto">
         <header className="explore-header">
+          <ExplorationNav active="notes" />
           <a className="case-study-breadcrumb font-mono" href="/explore/">
             ← Explore the projects
           </a>
@@ -223,15 +226,7 @@ export default function NotesArchive() {
             </div>
           )}
         </section>
-        <footer className="dedicated-case-footer">
-          <div>
-            <p className="project-eyebrow font-mono">TRY THE IDEAS</p>
-            <h2>See the logic in action.</h2>
-          </div>
-          <a className="font-mono" href="/lab/">
-            Open the Engineering Lab ↗
-          </a>
-        </footer>
+        <ExplorationNext context="notes" />
       </div>
     </div>
   )

@@ -1,3 +1,4 @@
+import ExplorationNext from "./ExplorationNext"
 import { lazy, Suspense, useEffect, useState } from "react"
 
 import { projectScreenshot, type Project } from "../data/projects"
@@ -21,6 +22,7 @@ import { isdalogScreenshotGallery } from "../data/isdalogWalkthrough"
 import ContactAction from "./ContactAction"
 
 import CaseStudyNavigation from "./CaseStudyNavigation"
+import SaveExplorationButton from "./SaveExplorationButton"
 
 import RelatedProjects from "./RelatedProjects"
 
@@ -29,7 +31,9 @@ import ProjectBriefDownload from "./ProjectBriefDownload"
 const IsdaLogWalkthrough = lazy(() => import("./IsdaLogWalkthrough"))
 
 const DormFixWalkthrough = lazy(() => import("./DormFixWalkthrough"))
-const DormFixWorkspaceShowcase = lazy(() => import("./DormFixWorkspaceShowcase"))
+const DormFixWorkspaceShowcase = lazy(
+  () => import("./DormFixWorkspaceShowcase"),
+)
 
 const CentraLogWalkthrough = lazy(() => import("./CentraLogWalkthrough"))
 const CentraLogAdminShowcase = lazy(() => import("./CentraLogAdminShowcase"))
@@ -70,9 +74,14 @@ export default function DedicatedCaseStudy({
 
   const [shareMessage, setShareMessage] = useState("")
   const mode = usePortfolioTheme()
-  const loginImage = project.id === "centralog" ? centralogCaptures[`login-${mode}`]
-    : project.id === "pharmalink" ? pharmalinkCaptures[`login-${mode}`]
-    : project.id === "dormfix" ? dormfixCaptures[`login-${mode}`] : undefined
+  const loginImage =
+    project.id === "centralog"
+      ? centralogCaptures[`login-${mode}`]
+      : project.id === "pharmalink"
+        ? pharmalinkCaptures[`login-${mode}`]
+        : project.id === "dormfix"
+          ? dormfixCaptures[`login-${mode}`]
+          : undefined
   const heroAlt = loginImage
     ? project.id === "dormfix"
       ? `DormFix sign-in screen in ${mode} mode with email and password fields, a dormitory photograph, and a create-account link`
@@ -80,16 +89,28 @@ export default function DedicatedCaseStudy({
     : project.imageAlt
   const heroCaption = loginImage
     ? project.id === "dormfix"
-      ? t("DormFix's sign-in introduces room assignments, payment records, and maintenance. This screenshot follows the portfolio theme; explore the landlord and tenant workspaces below.", "Ipinapakilala ng sign-in ng DormFix ang room assignments, payment records, at maintenance. Sumusunod ang screenshot sa tema ng portfolio; tingnan ang landlord at tenant workspaces sa ibaba.")
+      ? t(
+          "DormFix's sign-in introduces room assignments, payment records, and maintenance. This screenshot follows the portfolio theme; explore the landlord and tenant workspaces below.",
+          "Ipinapakilala ng sign-in ng DormFix ang room assignments, payment records, at maintenance. Sumusunod ang screenshot sa tema ng portfolio; tingnan ang landlord at tenant workspaces sa ibaba.",
+        )
       : project.id === "pharmalink"
-      ? "PharmaLink's staff sign-in introduces the pharmacy workspace, with demo entry points for admin and pharmacist accounts. This screenshot follows the portfolio theme; explore both role workspaces below."
-      : t("CentraLog's staff sign-in introduces the asset workspace. This screenshot follows the portfolio theme; explore the admin screens below.", "Ipinapakilala ng staff sign-in ng CentraLog ang asset workspace. Sumusunod ang screenshot sa tema ng portfolio; tingnan ang mga admin screen sa ibaba.")
+        ? "PharmaLink's staff sign-in introduces the pharmacy workspace, with demo entry points for admin and pharmacist accounts. This screenshot follows the portfolio theme; explore both role workspaces below."
+        : t(
+            "CentraLog's staff sign-in introduces the asset workspace. This screenshot follows the portfolio theme; explore the admin screens below.",
+            "Ipinapakilala ng staff sign-in ng CentraLog ang asset workspace. Sumusunod ang screenshot sa tema ng portfolio; tingnan ang mga admin screen sa ibaba.",
+          )
     : project.imageCaption
-  const heroGalleryImage = loginImage ? {
-    id: project.id, src: loginImage.variants[loginImage.variants.length - 1].src,
-    width: loginImage.width, height: loginImage.height, alt: heroAlt,
-    title: `${project.name} · Sign-in · ${mode} mode`, caption: heroCaption,
-  } : projectScreenshot(project)
+  const heroGalleryImage = loginImage
+    ? {
+        id: project.id,
+        src: loginImage.variants[loginImage.variants.length - 1].src,
+        width: loginImage.width,
+        height: loginImage.height,
+        alt: heroAlt,
+        title: `${project.name} · Sign-in · ${mode} mode`,
+        caption: heroCaption,
+      }
+    : projectScreenshot(project)
 
   useEffect(() => {
     if (!window.location.hash) return
@@ -245,12 +266,11 @@ export default function DedicatedCaseStudy({
                 loading="eager"
               />
             </ScreenshotPreview>
-            <figcaption className="font-mono">
-              {heroCaption}
-            </figcaption>
+            <figcaption className="font-mono">{heroCaption}</figcaption>
           </figure>
         </header>
         <CaseStudyNavigation projectId={project.id} locale={locale} />
+        <SaveExplorationButton id={`case:${locale === "fil" ? "fil:" : ""}${project.id}`} />
         {locale === "fil" && (
           <p className="project-note-link">
             Nasa English ang interactive walkthrough, orihinal na screenshot,
@@ -260,17 +280,35 @@ export default function DedicatedCaseStudy({
         )}
         <div lang="en">
           {project.id === "dormfix" && (
-            <Suspense fallback={<div id="workspace-showcase"><LoadingState label="Preparing the DormFix workspace tour…" /></div>}>
+            <Suspense
+              fallback={
+                <div id="workspace-showcase">
+                  <LoadingState label="Preparing the DormFix workspace tour…" />
+                </div>
+              }
+            >
               <DormFixWorkspaceShowcase />
             </Suspense>
           )}
           {project.id === "pharmalink" && (
-            <Suspense fallback={<div id="admin-showcase"><LoadingState label="Preparing the admin workspace tour…" /></div>}>
+            <Suspense
+              fallback={
+                <div id="admin-showcase">
+                  <LoadingState label="Preparing the admin workspace tour…" />
+                </div>
+              }
+            >
               <PharmaLinkAdminShowcase />
             </Suspense>
           )}
           {project.id === "centralog" && (
-            <Suspense fallback={<div id="admin-showcase"><LoadingState label="Preparing the admin workspace tour…" /></div>}>
+            <Suspense
+              fallback={
+                <div id="admin-showcase">
+                  <LoadingState label="Preparing the admin workspace tour…" />
+                </div>
+              }
+            >
               <CentraLogAdminShowcase />
             </Suspense>
           )}
@@ -322,6 +360,7 @@ export default function DedicatedCaseStudy({
                 <p>{note.summary}</p>
               </aside>
             ))}
+          <ExplorationNext context="projects" project={project} />
           <RelatedProjects project={project} />
         </div>
       </div>

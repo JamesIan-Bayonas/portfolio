@@ -21,6 +21,8 @@ const Explore = lazy(() => import("./components/Explore"))
 const PortfolioQuestions = lazy(() => import("./components/PortfolioQuestions"))
 
 const Lab = lazy(() => import("./components/Lab"))
+const JsonWorkbench = lazy(() => import("./components/JsonWorkbench"))
+const RegexWorkbench = lazy(() => import("./components/RegexWorkbench"))
 
 const Notes = lazy(() => import("./components/Notes"))
 const Reflections = lazy(() => import("./components/Reflections"))
@@ -33,6 +35,7 @@ const FilipinoDormFix = lazy(() => import("./components/FilipinoDormFix"))
 const HomePage = lazy(() => import("./components/HomePage"))
 
 const PortfolioSearch = lazy(() => import("./components/PortfolioSearch"))
+const ExplorationTracker = lazy(() => import("./components/ExplorationTracker"))
 
 // ─── App ───────────────────────────────────────────────────────────────────
 
@@ -56,6 +59,8 @@ export default function App() {
   const questionsPage = caseStudyPage?.path === "/ask/"
 
   const labPage = caseStudyPage?.path === "/lab/"
+  const toolsPage = caseStudyPage?.path === "/tools/"
+  const regexPage = caseStudyPage?.path === "/tools/regex/"
 
   const notesPage = Boolean(caseStudyPage?.path.startsWith("/notes/"))
 
@@ -247,6 +252,10 @@ export default function App() {
           >
             <Notes />
           </Suspense>
+        ) : regexPage ? (
+          <Suspense fallback={<LoadingState label="Opening the Regex Lab…" variant="page" />}><RegexWorkbench /></Suspense>
+        ) : toolsPage ? (
+          <Suspense fallback={<LoadingState label="Opening the JSON workbench…" variant="page" />}><JsonWorkbench /></Suspense>
         ) : labPage ? (
           <Suspense
             fallback={
@@ -292,6 +301,7 @@ export default function App() {
           </>
         )}
       </main>
+      <Suspense fallback={null}><ExplorationTracker /></Suspense>
       {searchUsed && (
         <Suspense fallback={null}>
           <PortfolioSearch
