@@ -1,0 +1,33 @@
+.reading-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  color: var(--color-text2);
+  font-size: 10px;
+  line-height: 1.6;
+}
+.reading-progress > span { flex-shrink: 0; }
+.reading-progress strong { color: var(--color-accent); font-weight: 500; font-variant-numeric: tabular-nums; }
+.reading-progress progress {
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  display: block;
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  height: 3px;
+  background: var(--color-border);
+  color: var(--color-accent);
+  accent-color: var(--color-accent);
+}
+.reading-progress progress::-webkit-progress-bar { background: var(--color-border); }
+.reading-progress progress::-webkit-progress-value { background: var(--color-accent); }
+.reading-progress progress::-moz-progress-bar { background: var(--color-accent); }
+.case-section-nav:has(> .reading-progress) { flex-wrap: wrap; }
+.case-section-nav > .reading-progress { flex-basis: 100%; }
+.note-contents > .reading-progress { margin: 16px 0 24px; }
+@media (forced-colors: active) {
+  .reading-progress progress { forced-color-adjust: auto; }
+}

@@ -1,0 +1,7 @@
+/* Move the complete frame so every screenshot pixel remains available. */
+.project-scroll-depth { transform-origin: center; }
+.project-scroll-depth:focus-within { transform: none !important; }
+@media (max-width: 767px), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .project-scroll-depth { transform: none !important; }
+}
+:root[data-motion="reduced"] .project-scroll-depth { transform: none !important; }

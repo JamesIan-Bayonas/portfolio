@@ -1,0 +1,70 @@
+.home-chapter { position: relative; isolation: isolate; }
+.home-chapter-signal {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 20px clamp(16px, 3.125vw, 40px) 0;
+  color: var(--color-text2);
+  font: 10px/1.4 var(--font-mono);
+  letter-spacing: .12em;
+  pointer-events: none;
+}
+.home-chapter-marker {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+}
+.home-chapter-line {
+  position: relative;
+  height: 1px;
+  flex: 1;
+  background: var(--color-border);
+}
+.home-chapter-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--color-accent), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.home-chapter-end { color: var(--color-accent); font-size: 16px; }
+.home-chapter[data-reached="true"] .home-chapter-marker {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.home-chapter[data-reached="true"] .home-chapter-line::after { transform: scaleX(1); }
+@keyframes home-signal-draw {
+  from { transform: scaleX(0); opacity: .25; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+@keyframes home-signal-arrive {
+  from { translate: 0 10px; opacity: .25; }
+  to { translate: 0 0; opacity: 1; }
+}
+@keyframes home-signal-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  45% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--color-accent) 12%, transparent); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  :root:not([data-motion="reduced"]) .home-chapter[data-reached="true"][data-static="false"] .home-chapter-line::after {
+    animation: home-signal-draw 1000ms var(--motion-ease, ease-out) both;
+  }
+  :root:not([data-motion="reduced"]) .home-chapter[data-reached="true"][data-static="false"] .home-chapter-label {
+    animation: home-signal-arrive 600ms var(--motion-ease, ease-out) both;
+  }
+  :root:not([data-motion="reduced"]) .home-chapter[data-reached="true"][data-static="false"] .home-chapter-marker {
+    animation: home-signal-pulse 1000ms ease-out both;
+  }
+}
+@media (max-width: 480px) {
+  .home-chapter-signal { gap: 10px; font-size: 9px; letter-spacing: .08em; }
+}

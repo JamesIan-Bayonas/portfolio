@@ -1,27 +1,48 @@
+import ProjectStoryPreview from "./ProjectStoryPreview"
 import { projectPreview } from "../data/projectPreviews"
 import { usePortfolioTheme } from "../lib/usePortfolioTheme"
-import { motion, useReducedMotion } from "motion/react"
+import { useRef } from "react"
+import { motion, useScroll, useTransform } from "motion/react"
+import "./ProjectScrollDepth.css"
+import { usePortfolioReducedMotion as useReducedMotion } from "../lib/usePortfolioReducedMotion"
+
 import { projects, projectScreenshot, type Project } from "../data/projects"
+
 import ProjectCaseStudy from "./ProjectCaseStudy"
+
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
+
 import ScreenshotPreview from "./ScreenshotPreview"
+
 import { cardAccentStyles } from "../lib/projectCardAccents"
 
 interface ProjectCardProps {
   project: Project
+
   index: number
 }
 
 function ProjectCard({ project: sourceProject, index }: ProjectCardProps) {
   const mode = usePortfolioTheme()
   const project = projectPreview(sourceProject, mode)
+
   const reduced = useReducedMotion()
+  const visualRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: visualRef,
+    offset: ["start end", "end start"],
+  })
+  const depthY = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [8, -8])
+  const depthRotation = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [-0.35, 0.35])
+
   const featured = index === 0
 
   return (
     <motion.article
       id={`project-${project.id}`}
-      className={`interactive-surface project-card project-accent-card${featured ? " project-card-featured" : ""}`}
+      className={`interactive-surface project-card project-accent-card${
+        featured ? " project-card-featured" : ""
+      }`}
       style={cardAccentStyles[project.id]}
       aria-labelledby={`${project.id}-title`}
       initial={reduced ? false : { opacity: 0, y: 20 }}
@@ -30,7 +51,7 @@ function ProjectCard({ project: sourceProject, index }: ProjectCardProps) {
       transition={{ duration: 0.45 }}
     >
       <div className="project-card-main">
-        <div className="project-visual">
+        <motion.div ref={visualRef} className="project-visual project-scroll-depth" style={{ y: depthY, rotate: depthRotation }}>
           <div className="project-image-bar font-mono">
             <span>
               {String(index + 1).padStart(2, "0")} / {project.name}
@@ -38,7 +59,9 @@ function ProjectCard({ project: sourceProject, index }: ProjectCardProps) {
             <span>{featured ? "FEATURED PROJECT" : project.context}</span>
           </div>
           <ScreenshotPreview
-            images={projects.map(item => projectScreenshot(projectPreview(item, mode)))}
+            images={projects.map((item) =>
+              projectScreenshot(projectPreview(item, mode)),
+            )}
             selectedId={project.id}
             label={`Inspect ${project.name} screenshot`}
           >
@@ -48,7 +71,7 @@ function ProjectCard({ project: sourceProject, index }: ProjectCardProps) {
               sizes="(min-width: 1520px) 672px, (min-width: 1024px) calc((100vw - 160px) / 2), (min-width: 640px) calc(100vw - 110px), calc(100vw - 76px)"
             />
           </ScreenshotPreview>
-        </div>
+        </motion.div>
         <div className="project-overview">
           <p className="project-eyebrow font-mono">{project.category}</p>
           <h3 id={`${project.id}-title`} className="project-name">
@@ -56,7 +79,10 @@ function ProjectCard({ project: sourceProject, index }: ProjectCardProps) {
           </h3>
           <p className="project-title">{project.title}</p>
           <p className="project-description">{project.description}</p>
-          <p className="project-version-label font-mono">{project.versionLabel}</p>
+          <ProjectStoryPreview project={project} />
+          <p className="project-version-label font-mono">
+            {project.versionLabel}
+          </p>
           <dl className="project-credits">
             <div>
               <dt>My role</dt>
@@ -128,7 +154,12 @@ export default function Projects() {
             Explore & filter all projects <span aria-hidden="true">↗</span>
           </a>
           {projects.map((project, index) => (
-            <a key={project.id} href={`#project-${project.id}`} className="project-index-link" style={cardAccentStyles[project.id]}>
+            <a
+              key={project.id}
+              href={`#project-${project.id}`}
+              className="project-index-link"
+              style={cardAccentStyles[project.id]}
+            >
               <span className="project-index-number">
                 {String(index + 1).padStart(2, "0")}
               </span>

@@ -1,0 +1,21 @@
+.home-back-to-top:not([hidden]) {
+  position: fixed;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  right: max(16px, env(safe-area-inset-right, 0px));
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-accent);
+  background: var(--color-bg);
+  box-shadow: 0 4px 18px #0002;
+  font: 22px/1 var(--font-mono);
+  text-decoration: none;
+  transition: border-color 160ms, background 160ms;
+}
+.home-back-to-top:hover { border-color: var(--color-accent); background: var(--color-surface); }
+.home-back-to-top:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+body:has(dialog[open]) .home-back-to-top { visibility: hidden; }
