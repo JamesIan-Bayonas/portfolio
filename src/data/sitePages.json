@@ -22,7 +22,12 @@
   {
     "path": "/explore/",
     "title": "Explore Projects | James Ian Bayonas",
-    "description": "Explore four full-stack projects by domain and technology. Find case studies, interactive walkthroughs, source code, and live systems built by James Ian Bayonas."
+    "description": "Explore four featured project case studies, guided walkthroughs, and an additional school capstone in campus procurement."
+  },
+  {
+    "path": "/projects/cpats/",
+    "title": "CPATS Procurement System | James Ian Bayonas",
+    "description": "A DMC school capstone for campus procurement, following requests through fiscal and executive review, purchasing, financial clearance, receiving, and audit."
   },
   {
     "path": "/lab/",

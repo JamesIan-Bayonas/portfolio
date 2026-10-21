@@ -1,0 +1,652 @@
+[
+  {
+    "id": "01-login",
+    "role": "Sign in",
+    "title": "Staff sign in",
+    "alt": "CPATS secure staff sign-in page with institutional email and masked password fields",
+    "caption": "The sign-in page introduces CPATS and shows a sample request moving through review, delivery, and audit.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/01-login.png",
+    "originalSha256": "aa8eee5082af975bdee891a9a44343bbb91e82c3c6c1d29910fe16a650938052",
+    "originalBytes": 732788,
+    "variants": [
+      {
+        "src": "/cpats/480/01-login.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 9488
+      },
+      {
+        "src": "/cpats/1200/01-login.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 36776
+      }
+    ]
+  },
+  {
+    "id": "02-request-new",
+    "role": "Requesting Office",
+    "title": "New purchase request",
+    "alt": "Requesting Office form for item details, quantities, justification, and request summary",
+    "caption": "Staff enter requested items, quantities, and a justification before submitting or saving a draft.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/02-request-new.png",
+    "originalSha256": "482254ea704348643f711832aeed1d644fe1953e11205bb868d4927450e3eb53",
+    "originalBytes": 226518,
+    "variants": [
+      {
+        "src": "/cpats/480/02-request-new.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 9232
+      },
+      {
+        "src": "/cpats/1200/02-request-new.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 41434
+      }
+    ]
+  },
+  {
+    "id": "03-request-track",
+    "role": "Requesting Office",
+    "title": "Track requests",
+    "alt": "Requesting Office request list with status filters and procurement records",
+    "caption": "The office can search its records and see whether a request needs action, is in progress, approved, declined, or received.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/03-request-track.png",
+    "originalSha256": "ea837a4a7fa131b466480df621cbcd5d50142b51891097c3c0d690cea4160aff",
+    "originalBytes": 305417,
+    "variants": [
+      {
+        "src": "/cpats/480/03-request-track.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 13294
+      },
+      {
+        "src": "/cpats/1200/03-request-track.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 68888
+      }
+    ]
+  },
+  {
+    "id": "04-request-help",
+    "role": "Requesting Office",
+    "title": "Requesting Office guide",
+    "alt": "CPATS help page for the Requesting Office role",
+    "caption": "Role-specific help links common tasks and answers to the request workspace.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/04-request-help.png",
+    "originalSha256": "b4ff712c9fe64385ebeada6228d13d3fb83975e434074414eb2757b6d8f14aa2",
+    "originalBytes": 248576,
+    "variants": [
+      {
+        "src": "/cpats/480/04-request-help.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 9022
+      },
+      {
+        "src": "/cpats/1200/04-request-help.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 40470
+      }
+    ]
+  },
+  {
+    "id": "05-business-evaluation",
+    "role": "Business Office",
+    "title": "Fiscal evaluation",
+    "alt": "Business Office fiscal evaluation queue with purchase-necessity and budget verification",
+    "caption": "The fiscal review records checks for purchase necessity and budget availability before an evaluation outcome.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/05-business-evaluation.png",
+    "originalSha256": "2635c1f748a40ebc05f7a2327c4984fa93479e1234cd1d94d0b078f25f3143df",
+    "originalBytes": 220169,
+    "variants": [
+      {
+        "src": "/cpats/480/05-business-evaluation.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 8722
+      },
+      {
+        "src": "/cpats/1200/05-business-evaluation.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 38558
+      }
+    ]
+  },
+  {
+    "id": "06-business-history",
+    "role": "Business Office",
+    "title": "Evaluation history",
+    "alt": "Business Office read-only evaluation history for procurement requests",
+    "caption": "Saved evaluations remain available as history after the request moves to another office.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/06-business-history.png",
+    "originalSha256": "174222ea0f122a3de7a188c28248ec82a272c256786e434877cc2f6bb766c3eb",
+    "originalBytes": 311176,
+    "variants": [
+      {
+        "src": "/cpats/480/06-business-history.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 12116
+      },
+      {
+        "src": "/cpats/1200/06-business-history.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 55414
+      }
+    ]
+  },
+  {
+    "id": "07-business-clearance",
+    "role": "Business Office",
+    "title": "Financial clearance",
+    "alt": "Business Office financial-clearance queue showing purchase order, billing, and payment controls",
+    "caption": "Financial clearance follows purchase-order preparation and records billing and payment checks.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/07-business-clearance.png",
+    "originalSha256": "54a44919be20a002521c13fbba5816493b12d31bff6133c0567312bddd62dd31",
+    "originalBytes": 219970,
+    "variants": [
+      {
+        "src": "/cpats/480/07-business-clearance.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 8560
+      },
+      {
+        "src": "/cpats/1200/07-business-clearance.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 40424
+      }
+    ]
+  },
+  {
+    "id": "08-business-help",
+    "role": "Business Office",
+    "title": "Business Office guide",
+    "alt": "CPATS help page for the Business Office role",
+    "caption": "The guide links fiscal evaluation, financial clearance, and notifications.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/08-business-help.png",
+    "originalSha256": "115b78b8d889211e448860d01d007ae21cc8cb171abd322c4d3ce91cbff3e1b3",
+    "originalBytes": 198774,
+    "variants": [
+      {
+        "src": "/cpats/480/08-business-help.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 8036
+      },
+      {
+        "src": "/cpats/1200/08-business-help.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 38498
+      }
+    ]
+  },
+  {
+    "id": "09-admin-review",
+    "role": "Admin Office",
+    "title": "Executive requisition review",
+    "alt": "Admin Office requisition review with three required executive authorization checks",
+    "caption": "The executive review presents the three authorization checks before recording a decision.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/09-admin-review.png",
+    "originalSha256": "7b05fcacb19d554e1b2ce7c6666d09f941cd407f04539dbb3c4d0f3263ecff63",
+    "originalBytes": 246735,
+    "variants": [
+      {
+        "src": "/cpats/480/09-admin-review.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 9946
+      },
+      {
+        "src": "/cpats/1200/09-admin-review.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 44566
+      }
+    ]
+  },
+  {
+    "id": "10-admin-history",
+    "role": "Admin Office",
+    "title": "Decision history",
+    "alt": "Admin Office read-only decision history showing the current procurement stage",
+    "caption": "Recorded decisions and the current request stage are shown together for later review.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/10-admin-history.png",
+    "originalSha256": "8bbde9b6569dc0c91e7c9579d5abe036f1de22478c628a948c86693e03e4d7cc",
+    "originalBytes": 330499,
+    "variants": [
+      {
+        "src": "/cpats/480/10-admin-history.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 12564
+      },
+      {
+        "src": "/cpats/1200/10-admin-history.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 55948
+      }
+    ]
+  },
+  {
+    "id": "11-admin-help",
+    "role": "Admin Office",
+    "title": "Admin Office guide",
+    "alt": "CPATS help page for the Admin Office role",
+    "caption": "The guide explains administrative review and links to decision history.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/11-admin-help.png",
+    "originalSha256": "cf3cda10a81d2df01615472ee392ff44ccbffa28e20d4ec4299b54279d8d5bc7",
+    "originalBytes": 206816,
+    "variants": [
+      {
+        "src": "/cpats/480/11-admin-help.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 7876
+      },
+      {
+        "src": "/cpats/1200/11-admin-help.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 35862
+      }
+    ]
+  },
+  {
+    "id": "12-purchasing-prepare-po",
+    "role": "Purchasing Office",
+    "title": "Prepare purchase order",
+    "alt": "Purchasing Office approved-request queue and purchase-order preparation form",
+    "caption": "Purchasing selects an approved request, assigns a purchase-order number, and prepares its asset tag.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/12-purchasing-prepare-po.png",
+    "originalSha256": "b4419ac764df9974b91981366b0d95da17b51b0a95c55fbb00b2408d5b6b9ac7",
+    "originalBytes": 263001,
+    "variants": [
+      {
+        "src": "/cpats/480/12-purchasing-prepare-po.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 11122
+      },
+      {
+        "src": "/cpats/1200/12-purchasing-prepare-po.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 53062
+      }
+    ]
+  },
+  {
+    "id": "13-purchasing-track-orders",
+    "role": "Purchasing Office",
+    "title": "Track purchase orders",
+    "alt": "Purchasing Office order list with request references, offices, stages, and update times",
+    "caption": "The order register follows purchase requests through preparation, finance, delivery, and closure.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/13-purchasing-track-orders.png",
+    "originalSha256": "37fb16a239ee9a2578b6a50e3874bda992d4f2658a76c5d4b8c46192682f794b",
+    "originalBytes": 325703,
+    "variants": [
+      {
+        "src": "/cpats/480/13-purchasing-track-orders.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 12408
+      },
+      {
+        "src": "/cpats/1200/13-purchasing-track-orders.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 54916
+      }
+    ]
+  },
+  {
+    "id": "14-purchasing-reports",
+    "role": "Purchasing Office",
+    "title": "Monthly purchasing reports",
+    "alt": "Monthly purchasing report with transaction totals, value, and register export",
+    "caption": "The monthly register summarizes purchase orders and can be exported as CSV for Excel.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/14-purchasing-reports.png",
+    "originalSha256": "f061f94789737613cbe261087022d25de59c19e892a25e157bb1f704b745a324",
+    "originalBytes": 316347,
+    "variants": [
+      {
+        "src": "/cpats/480/14-purchasing-reports.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 13230
+      },
+      {
+        "src": "/cpats/1200/14-purchasing-reports.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 56816
+      }
+    ]
+  },
+  {
+    "id": "15-purchasing-assets",
+    "role": "Purchasing Office",
+    "title": "Asset register and QR preview",
+    "alt": "Individual equipment records with asset IDs, purchase-order units, receipt condition, and QR preview",
+    "caption": "Each physical unit has an asset identifier linked to its purchase order and receipt condition.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/15-purchasing-assets.png",
+    "originalSha256": "f77c2fc306022993e539cc0a1f141e8ee681b6bc3f07256cd1d90ad3154f12e6",
+    "originalBytes": 382450,
+    "variants": [
+      {
+        "src": "/cpats/480/15-purchasing-assets.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 15906
+      },
+      {
+        "src": "/cpats/1200/15-purchasing-assets.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 69434
+      }
+    ]
+  },
+  {
+    "id": "16-purchasing-help",
+    "role": "Purchasing Office",
+    "title": "Purchasing Office guide",
+    "alt": "CPATS help page for the Purchasing Office role",
+    "caption": "The guide links purchase-order preparation, order tracking, reports, and the asset register.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/16-purchasing-help.png",
+    "originalSha256": "f83b6f8d101536ee3bd56a43d343c07b1b429b8f1fcedb4a42a0155850fc8004",
+    "originalBytes": 209907,
+    "variants": [
+      {
+        "src": "/cpats/480/16-purchasing-help.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 9068
+      },
+      {
+        "src": "/cpats/1200/16-purchasing-help.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 41188
+      }
+    ]
+  },
+  {
+    "id": "17-receiving-inspection",
+    "role": "Receiving Custodian",
+    "title": "Receive and inspect delivery",
+    "alt": "Receiving Custodian delivery form for attaching an invoice and equipment photo and recording inspection",
+    "caption": "The custodian attaches invoice and delivery evidence, then records the delivered quantity and condition.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/17-receiving-inspection.png",
+    "originalSha256": "0fe668c2f91f9ce43b692df12bb10f852cde8bb20304f585be15cdf7429067f8",
+    "originalBytes": 248952,
+    "variants": [
+      {
+        "src": "/cpats/480/17-receiving-inspection.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 11058
+      },
+      {
+        "src": "/cpats/1200/17-receiving-inspection.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 47318
+      }
+    ]
+  },
+  {
+    "id": "18-receiving-history",
+    "role": "Receiving Custodian",
+    "title": "Receiving history",
+    "alt": "Read-only receiving history with completed inspections, delivery condition, and saved evidence",
+    "caption": "Completed reports retain inspection remarks and links to the saved invoice and delivery photo.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/18-receiving-history.png",
+    "originalSha256": "2a82e739c605472442d7ee452034eeafa38ecf44037db96ed4d4b545f40429c4",
+    "originalBytes": 289215,
+    "variants": [
+      {
+        "src": "/cpats/480/18-receiving-history.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 11520
+      },
+      {
+        "src": "/cpats/1200/18-receiving-history.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 50996
+      }
+    ]
+  },
+  {
+    "id": "19-receiving-assets",
+    "role": "Receiving Custodian",
+    "title": "Receiving asset register",
+    "alt": "Receiving Custodian asset register with physical-unit QR preview and recorded condition",
+    "caption": "The asset view links individual equipment labels to purchase-order units and inspection outcomes.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/19-receiving-assets.png",
+    "originalSha256": "4a498c9f76f2340e4181975b52681c4221aeb14d1ab46c87ff27fcaa5c7becbc",
+    "originalBytes": 386602,
+    "variants": [
+      {
+        "src": "/cpats/480/19-receiving-assets.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 16146
+      },
+      {
+        "src": "/cpats/1200/19-receiving-assets.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 69218
+      }
+    ]
+  },
+  {
+    "id": "20-receiving-help",
+    "role": "Receiving Custodian",
+    "title": "Receiving Custodian guide",
+    "alt": "CPATS help page for the Receiving Custodian role",
+    "caption": "The guide explains delivery inspection, receiving history, and asset labels.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/20-receiving-help.png",
+    "originalSha256": "202eeca3d5a85b794ff124ab3e91e5d5272722d8dc9c54e2ea01c4b5822f1e1a",
+    "originalBytes": 212382,
+    "variants": [
+      {
+        "src": "/cpats/480/20-receiving-help.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 8374
+      },
+      {
+        "src": "/cpats/1200/20-receiving-help.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 40504
+      }
+    ]
+  },
+  {
+    "id": "21-audit-ledger",
+    "role": "Global Auditor",
+    "title": "Procurement audit ledger",
+    "alt": "Global Auditor read-only ledger with request search, status filters, and audit checkpoints",
+    "caption": "The auditor can inspect procurement status and saved workflow evidence without changing a request.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/21-audit-ledger.png",
+    "originalSha256": "6a95d3bc1f6a374618494a5a45d3011e280c69d2a930c53d7f517167d37af54e",
+    "originalBytes": 267631,
+    "variants": [
+      {
+        "src": "/cpats/480/21-audit-ledger.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 10618
+      },
+      {
+        "src": "/cpats/1200/21-audit-ledger.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 45548
+      }
+    ]
+  },
+  {
+    "id": "22-audit-assets",
+    "role": "Global Auditor",
+    "title": "Auditor asset register",
+    "alt": "Global Auditor equipment register with individual asset QR details and receiving condition",
+    "caption": "The read-only register makes purchase and receiving details available alongside asset identifiers.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/22-audit-assets.png",
+    "originalSha256": "c4860f3de8313f966c1c3d7a566144be4c52977b3c7d6245c16086d1e1f53bef",
+    "originalBytes": 361966,
+    "variants": [
+      {
+        "src": "/cpats/480/22-audit-assets.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 15136
+      },
+      {
+        "src": "/cpats/1200/22-audit-assets.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 67868
+      }
+    ]
+  },
+  {
+    "id": "23-audit-help",
+    "role": "Global Auditor",
+    "title": "Global Auditor guide",
+    "alt": "CPATS help page for the Global Auditor role",
+    "caption": "The guide describes the auditor's read-only ledger and asset-register views.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/23-audit-help.png",
+    "originalSha256": "f9c131d0e94ca79632872f8566a57e2e7c4448393e04e5503152b41f3638f08b",
+    "originalBytes": 198593,
+    "variants": [
+      {
+        "src": "/cpats/480/23-audit-help.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 7878
+      },
+      {
+        "src": "/cpats/1200/23-audit-help.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 37104
+      }
+    ]
+  },
+  {
+    "id": "24-system-accounts",
+    "role": "System Administrator",
+    "title": "Departments and staff accounts",
+    "alt": "System Administration workspace for adding departments, inviting staff, and reviewing account status",
+    "caption": "Administrators create department records, assign staff roles and departments, and manage eligible invitation or access actions.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/24-system-accounts.png",
+    "originalSha256": "6537676fed7c8554c7de49f68e21ea8a01d803dfb52f1a558d22118160f06eb0",
+    "originalBytes": 233521,
+    "variants": [
+      {
+        "src": "/cpats/480/24-system-accounts.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 9656
+      },
+      {
+        "src": "/cpats/1200/24-system-accounts.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 43886
+      }
+    ]
+  },
+  {
+    "id": "25-system-help",
+    "role": "System Administrator",
+    "title": "System Administrator guide",
+    "alt": "CPATS help page for the System Administrator role",
+    "caption": "The guide links staff-account and department management with access-related help.",
+    "width": 1917,
+    "height": 1078,
+    "original": "/cpats/originals/25-system-help.png",
+    "originalSha256": "0c0ef999b2f54d5708e8398c3271e3aeb4453a1ea747ab04e66851705fb8a24a",
+    "originalBytes": 193763,
+    "variants": [
+      {
+        "src": "/cpats/480/25-system-help.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 7544
+      },
+      {
+        "src": "/cpats/1200/25-system-help.webp",
+        "width": 1200,
+        "height": 675,
+        "bytes": 37416
+      }
+    ]
+  }
+]

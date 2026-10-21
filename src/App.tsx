@@ -16,6 +16,7 @@ import { findCaseStudyPage } from "./lib/caseStudyPages"
 import { canonicalContentPath, currentLocale } from "./lib/locale"
 
 const DedicatedCaseStudy = lazy(() => import("./components/DedicatedCaseStudy"))
+const CpatsCaseStudy = lazy(() => import("./components/CpatsCaseStudy"))
 
 const Explore = lazy(() => import("./components/Explore"))
 const PortfolioQuestions = lazy(() => import("./components/PortfolioQuestions"))
@@ -56,6 +57,7 @@ export default function App() {
   )
 
   const explorePage = caseStudyPage?.path === "/explore/"
+  const cpatsPage = caseStudyPage?.path === "/projects/cpats/"
   const questionsPage = caseStudyPage?.path === "/ask/"
 
   const labPage = caseStudyPage?.path === "/lab/"
@@ -277,6 +279,10 @@ export default function App() {
             }
           >
             <Explore />
+          </Suspense>
+        ) : cpatsPage ? (
+          <Suspense fallback={<LoadingState label="Opening the CPATS project page…" variant="page" />}>
+            <CpatsCaseStudy />
           </Suspense>
         ) : dedicatedProject && caseStudyPage ? (
           <Suspense

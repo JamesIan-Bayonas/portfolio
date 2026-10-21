@@ -140,6 +140,28 @@ export const portfolioSearchEntries: SearchEntry[] = [
     ],
   },
   {
+    id: "cpats",
+    label: "CPATS procurement capstone",
+    description:
+      "Explore a seven-role campus procurement workflow, from office requests through receiving and audit.",
+    category: "Other notable projects",
+    path: "/projects/cpats/",
+    target: "case-study",
+    keywords: [
+      "campus procurement",
+      "purchasing",
+      "DMC",
+      "capstone",
+      "requesting office",
+      "business office",
+      "purchasing office",
+      "receiving custodian",
+      "global auditor",
+      "system administrator",
+      "asset register",
+    ],
+  },
+  {
     id: "engineering-lab",
     label: "Engineering Lab",
     description:

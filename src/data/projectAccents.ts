@@ -4,4 +4,5 @@ export const projectAccents = {
   dormfix: { accent: "#b28aff", lightAccent: "#7144a5" },
   centralog: { accent: "#f3b453", lightAccent: "#80520d" },
   pharmalink: { accent: "#f184ab", lightAccent: "#a3345c" },
+  cpats: { accent: "#42d6a3", lightAccent: "#087653" },
 } as const

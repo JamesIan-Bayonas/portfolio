@@ -387,6 +387,38 @@ export default function Explore() {
             )}
           </div>
         </section>
+        <section className="notable-projects" aria-labelledby="notable-projects-title">
+          <div className="explore-section-heading">
+            <div>
+              <p className="project-eyebrow font-mono">SCHOOL CAPSTONE</p>
+              <h2 id="notable-projects-title">Other notable projects</h2>
+            </div>
+            <p>More work beyond the four featured case studies.</p>
+          </div>
+          <a className="notable-project-card interactive-surface project-accent-card" href="/projects/cpats/">
+            <img src="/cpats/1200/01-login.webp" alt="CPATS staff sign-in screen with demonstration account email and masked password" loading="lazy" width="1200" height="675" />
+            <div>
+              <span className="project-eyebrow font-mono">DMC · PROCUREMENT WORKFLOW</span>
+              <h3>CPATS</h3>
+              <p>Campus Procurement Automation &amp; Tracking System</p>
+              <span className="notable-project-summary">A school capstone connecting seven role-based workspaces, from request submission to receiving and read-only audit.</span>
+              <ul className="project-tech notable-project-tech" aria-label="CPATS technologies">
+                {[
+                  "Next.js 16",
+                  "React 19",
+                  "TypeScript",
+                  "Tailwind CSS 4",
+                  "Prisma",
+                  "MariaDB",
+                  "Zod",
+                  "Nodemailer",
+                  "QR asset labels",
+                ].map((tech) => <li key={tech} className="font-mono">{tech}</li>)}
+              </ul>
+              <span className="notable-project-action font-mono">Explore the project <span aria-hidden="true">↗</span></span>
+            </div>
+          </a>
+        </section>
         <section className="explore-lab" aria-labelledby="explore-lab-title">
           <div>
             <p className="project-eyebrow font-mono">TRY THE ENGINEERING</p>

@@ -10,6 +10,7 @@
   "scripts": {
     "content:edit": "node --experimental-strip-types scripts/content-editor.mjs",
     "images:generate": "node scripts/generate-screenshots.mjs",
+    "images:cpats": "node scripts/generate-cpats-screenshots.mjs",
     "briefs:generate": "node scripts/generate-project-briefs.mjs",
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
