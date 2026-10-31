@@ -117,6 +117,7 @@ for (const route of [
   "src/components/Explore.tsx",
   "src/components/PortfolioQuestions.tsx",
   "src/components/DedicatedCaseStudy.tsx",
+  "src/components/CpatsCaseStudy.tsx",
   "src/components/FilipinoCentraLog.tsx",
   "src/components/FilipinoDormFix.tsx",
   "src/components/Lab.tsx",
@@ -386,6 +387,29 @@ for (const [id, image] of Object.entries(screenshots)) {
     previousWidth = variant.width
     variantCount++
   }
+}
+const cpatsScreenshots = await readJson("cpatsScreenshots.json")
+assert.equal(cpatsScreenshots.length, 25, "Expected all 25 CPATS captures")
+for (const capture of cpatsScreenshots) {
+  const original = await readFile(
+    path.join(root, "public", capture.original.slice(1)),
+  )
+  assert.equal(
+    createHash("sha256").update(original).digest("hex"),
+    capture.originalSha256,
+    `Regenerate changed CPATS screenshot: ${capture.id}`,
+  )
+  for (const variant of capture.variants) {
+    const bytes = await readFile(path.join(root, "dist", variant.src))
+    const metadata = await sharp(bytes).metadata()
+    assert.equal(metadata.format, "webp", `Invalid screenshot: ${variant.src}`)
+    assert.equal(metadata.width, variant.width, `Incorrect width: ${variant.src}`)
+    assert.equal(metadata.height, variant.height, `Incorrect height: ${variant.src}`)
+    assert.equal(bytes.length, variant.bytes, `Incorrect size: ${variant.src}`)
+    assert.ok(variant.width <= capture.width, `Upscaled screenshot: ${variant.src}`)
+    variantCount++
+  }
+  await access(path.join(root, "dist", capture.original.slice(1)))
 }
 console.log(
   `Verified ${pages.length} static pages, ${assets.size} shared entry assets, ${variantCount} responsive screenshots, ${briefs.files.length} project briefs, fonts, metadata, favicon, and resume.`,
