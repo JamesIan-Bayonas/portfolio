@@ -66,7 +66,7 @@ export default function Hero() {
             }}
           >
             Based in the Philippines, I build full-stack applications for
-            fisheries, housing, asset management, and pharmacy operations. My
+            fisheries, housing, assets, pharmacy, and campus procurement. My
             focus is clear interfaces, connected workflows, and consistent data
             from the first action to the final record.
           </p>
@@ -123,12 +123,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.p {...fadeUp(0.18)} className="hero-project-count font-mono">
-            {projects.length} systems ·{" "}
-            {
-              projects.filter((project) => project.role === "Sole developer")
-                .length
-            }{" "}
-            built independently · 1 collaborative capstone
+            {projects.length} in-depth case studies · CPATS procurement capstone
           </motion.p>
           <motion.div {...fadeUp(0.18)} className="flex items-center gap-5">
             <a

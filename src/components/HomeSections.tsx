@@ -33,7 +33,7 @@ export default function HomeSections() {
   return (
     <>
       <SignatureIntroduction />
-      <HomeChapter number="01" label="FOLLOW YOUR CURIOSITY"><PortfolioDirectory /></HomeChapter>
+      <HomeChapter number="01" label="THE FIELDBOOK / WORK & WRITING"><PortfolioDirectory /></HomeChapter>
       <RecentExploration />
       <SavedExploration />
       <HomeChapter number="02" label="THE PERSON BEHIND THE SYSTEMS"><About /></HomeChapter>

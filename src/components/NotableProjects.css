@@ -1,0 +1,18 @@
+.notable-projects { margin-top: 72px; padding-block: 52px; border-top: 1px solid var(--color-border); }
+.notable-project-card { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); overflow: hidden; border: 1px solid var(--color-border); border-radius: 14px; color: var(--color-text1); background: var(--color-bg); }
+.notable-project-card > img { display: block; width: 100%; height: auto; align-self: center; object-fit: contain; object-position: top left; background: color-mix(in srgb,var(--color-accent) 5%,var(--color-bg)); }
+.notable-project-card > div { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(24px,4vw,48px); }
+.notable-project-card .project-eyebrow { color: var(--color-accent); font-size: 9px; }
+.notable-project-card h3 { margin-top: 22px; font: 500 clamp(32px,4vw,48px)/1.1 var(--font-display); letter-spacing: -.05em; }
+.notable-project-card > div > p { margin-top: 8px; color: var(--color-text1); font-size: 13px; }
+.notable-project-summary { margin-top: 18px; color: var(--color-text2); font-size: 12px; line-height: 1.85; }
+.notable-project-tech { margin: 20px 0 0; }
+.notable-project-tech li { border-color: color-mix(in srgb,var(--color-accent) 25%,var(--color-border)); }
+.notable-project-action { display: flex; width: 100%; justify-content: space-between; margin-top: auto; padding-top: 20px; color: var(--color-accent); font-size: 10px; }
+.notable-projects :is(a:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+@media (max-width: 767px) { .notable-projects { margin-top: 48px; padding-block: 36px; } .notable-project-card { grid-template-columns: 1fr; } .notable-project-card > img { min-height: 0; aspect-ratio: 16 / 9; } .notable-project-action { margin-top: 22px; } }
+.notable-projects { scroll-margin-top: 100px; }
+.notable-projects-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 28px; }
+.notable-projects-heading h2 { margin-top: 12px; color: var(--color-text1); font: 500 clamp(28px, 4vw, 44px)/1.15 var(--font-display); letter-spacing: -.04em; }
+.notable-projects-heading > p { max-width: 440px; color: var(--color-text2); font-size: 13px; line-height: 1.85; }
+@media (max-width: 767px) { .notable-projects-heading { grid-template-columns: 1fr; gap: 18px; } }
