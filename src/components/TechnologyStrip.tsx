@@ -1,6 +1,7 @@
 import { portfolioMotionQuery } from "../lib/motionPreference"
 import { useEffect, useId, useRef, useState, type CSSProperties } from "react"
 import { projects } from "../data/projects"
+import { technologyLogos } from "../data/technologyLogos"
 import "./TechnologyStrip.css"
 
 const technologies = [...new Set(projects.flatMap((project) => project.tech))]
@@ -125,10 +126,12 @@ export default function TechnologyStrip() {
                     }`}
                   >
                     <span
-                      className="technology-mark font-mono"
+                      className="technology-mark"
                       aria-hidden="true"
                     >
-                      &lt;/&gt;
+                      {technologyLogos[technology.name]?.map(src => (
+                        <img key={src} src={src} alt="" width="24" height="24" decoding="async" />
+                      ))}
                     </span>
                     <span>{technology.name}</span>
                     <span

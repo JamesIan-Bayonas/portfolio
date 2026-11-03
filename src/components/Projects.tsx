@@ -1,3 +1,4 @@
+import NotableProjects from "./NotableProjects"
 import ProjectStoryPreview from "./ProjectStoryPreview"
 import { projectPreview } from "../data/projectPreviews"
 import { usePortfolioTheme } from "../lib/usePortfolioTheme"
@@ -167,12 +168,18 @@ export default function Projects() {
               <span aria-hidden="true">↓</span>
             </a>
           ))}
+          <a href="#project-cpats" className="project-index-link" style={cardAccentStyles.cpats}>
+            <span className="project-index-number">05</span>
+            CPATS
+            <span aria-hidden="true">↓</span>
+          </a>
         </nav>
         <div className="project-list">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
+        <NotableProjects />
       </div>
     </section>
   )
