@@ -34,8 +34,7 @@ const captures = [
 ]
 
 const output = path.join(root, "public/cpats")
-await mkdir(path.join(output, "480"), { recursive: true })
-await mkdir(path.join(output, "1200"), { recursive: true })
+
 const manifest = []
 
 for (const capture of captures) {
@@ -45,11 +44,16 @@ for (const capture of captures) {
   if (!metadata.width || !metadata.height) throw new Error(`Missing dimensions: ${original}`)
 
   const variants = []
-  for (const width of [480, 1200]) {
+  // Keep native pixels available for high-density displays; never upscale a capture.
+  const widths = [...new Set([480, 800, 1200, 1600, metadata.width])]
+    .filter(width => width <= metadata.width)
+    .sort((a, b) => a - b)
+  for (const width of widths) {
+    await mkdir(path.join(output, String(width)), { recursive: true })
     const target = path.join(output, String(width), `${capture.id}.webp`)
     const info = await sharp(source)
       .resize({ width, withoutEnlargement: true })
-      .webp({ quality: 84, effort: 6, smartSubsample: true })
+      .webp({ lossless: true, effort: 6 })
       .toFile(target)
     variants.push({ src: `/cpats/${width}/${capture.id}.webp`, width: info.width, height: info.height, bytes: info.size })
   }

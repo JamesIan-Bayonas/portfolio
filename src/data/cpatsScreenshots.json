@@ -15,13 +15,31 @@
         "src": "/cpats/480/01-login.webp",
         "width": 480,
         "height": 270,
-        "bytes": 9488
+        "bytes": 38712
+      },
+      {
+        "src": "/cpats/800/01-login.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 90804
       },
       {
         "src": "/cpats/1200/01-login.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 36776
+        "bytes": 235432
+      },
+      {
+        "src": "/cpats/1600/01-login.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 365868
+      },
+      {
+        "src": "/cpats/1917/01-login.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 318474
       }
     ]
   },
@@ -41,13 +59,31 @@
         "src": "/cpats/480/02-request-new.webp",
         "width": 480,
         "height": 270,
-        "bytes": 9232
+        "bytes": 29012
+      },
+      {
+        "src": "/cpats/800/02-request-new.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 63136
       },
       {
         "src": "/cpats/1200/02-request-new.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 41434
+        "bytes": 106896
+      },
+      {
+        "src": "/cpats/1600/02-request-new.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 163068
+      },
+      {
+        "src": "/cpats/1917/02-request-new.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 79642
       }
     ]
   },
@@ -67,13 +103,31 @@
         "src": "/cpats/480/03-request-track.webp",
         "width": 480,
         "height": 270,
-        "bytes": 13294
+        "bytes": 50036
+      },
+      {
+        "src": "/cpats/800/03-request-track.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 109624
       },
       {
         "src": "/cpats/1200/03-request-track.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 68888
+        "bytes": 207398
+      },
+      {
+        "src": "/cpats/1600/03-request-track.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 327412
+      },
+      {
+        "src": "/cpats/1917/03-request-track.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 108796
       }
     ]
   },
@@ -93,13 +147,31 @@
         "src": "/cpats/480/04-request-help.webp",
         "width": 480,
         "height": 270,
-        "bytes": 9022
+        "bytes": 30858
+      },
+      {
+        "src": "/cpats/800/04-request-help.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 65810
       },
       {
         "src": "/cpats/1200/04-request-help.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 40470
+        "bytes": 118658
+      },
+      {
+        "src": "/cpats/1600/04-request-help.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 181920
+      },
+      {
+        "src": "/cpats/1917/04-request-help.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 80510
       }
     ]
   },
@@ -119,13 +191,31 @@
         "src": "/cpats/480/05-business-evaluation.webp",
         "width": 480,
         "height": 270,
-        "bytes": 8722
+        "bytes": 28468
+      },
+      {
+        "src": "/cpats/800/05-business-evaluation.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 62008
       },
       {
         "src": "/cpats/1200/05-business-evaluation.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 38558
+        "bytes": 108998
+      },
+      {
+        "src": "/cpats/1600/05-business-evaluation.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 165726
+      },
+      {
+        "src": "/cpats/1917/05-business-evaluation.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 84784
       }
     ]
   },
@@ -145,13 +235,31 @@
         "src": "/cpats/480/06-business-history.webp",
         "width": 480,
         "height": 270,
-        "bytes": 12116
+        "bytes": 39722
+      },
+      {
+        "src": "/cpats/800/06-business-history.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 86568
       },
       {
         "src": "/cpats/1200/06-business-history.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 55414
+        "bytes": 155230
+      },
+      {
+        "src": "/cpats/1600/06-business-history.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 237684
+      },
+      {
+        "src": "/cpats/1917/06-business-history.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 105498
       }
     ]
   },
@@ -171,13 +279,31 @@
         "src": "/cpats/480/07-business-clearance.webp",
         "width": 480,
         "height": 270,
-        "bytes": 8560
+        "bytes": 29142
+      },
+      {
+        "src": "/cpats/800/07-business-clearance.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 63306
       },
       {
         "src": "/cpats/1200/07-business-clearance.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 40424
+        "bytes": 114872
+      },
+      {
+        "src": "/cpats/1600/07-business-clearance.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 174762
+      },
+      {
+        "src": "/cpats/1917/07-business-clearance.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 83666
       }
     ]
   },
@@ -197,13 +323,31 @@
         "src": "/cpats/480/08-business-help.webp",
         "width": 480,
         "height": 270,
-        "bytes": 8036
+        "bytes": 26776
+      },
+      {
+        "src": "/cpats/800/08-business-help.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 57912
       },
       {
         "src": "/cpats/1200/08-business-help.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 38498
+        "bytes": 103196
+      },
+      {
+        "src": "/cpats/1600/08-business-help.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 157360
+      },
+      {
+        "src": "/cpats/1917/08-business-help.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 71302
       }
     ]
   },
@@ -223,13 +367,31 @@
         "src": "/cpats/480/09-admin-review.webp",
         "width": 480,
         "height": 270,
-        "bytes": 9946
+        "bytes": 31874
+      },
+      {
+        "src": "/cpats/800/09-admin-review.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 68870
       },
       {
         "src": "/cpats/1200/09-admin-review.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 44566
+        "bytes": 120986
+      },
+      {
+        "src": "/cpats/1600/09-admin-review.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 181700
+      },
+      {
+        "src": "/cpats/1917/09-admin-review.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 89714
       }
     ]
   },
@@ -249,13 +411,31 @@
         "src": "/cpats/480/10-admin-history.webp",
         "width": 480,
         "height": 270,
-        "bytes": 12564
+        "bytes": 39582
+      },
+      {
+        "src": "/cpats/800/10-admin-history.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 86124
       },
       {
         "src": "/cpats/1200/10-admin-history.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 55948
+        "bytes": 150776
+      },
+      {
+        "src": "/cpats/1600/10-admin-history.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 229558
+      },
+      {
+        "src": "/cpats/1917/10-admin-history.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 112252
       }
     ]
   },
@@ -275,13 +455,31 @@
         "src": "/cpats/480/11-admin-help.webp",
         "width": 480,
         "height": 270,
-        "bytes": 7876
+        "bytes": 27144
+      },
+      {
+        "src": "/cpats/800/11-admin-help.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 57764
       },
       {
         "src": "/cpats/1200/11-admin-help.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 35862
+        "bytes": 102562
+      },
+      {
+        "src": "/cpats/1600/11-admin-help.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 157896
+      },
+      {
+        "src": "/cpats/1917/11-admin-help.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 71608
       }
     ]
   },
@@ -301,13 +499,31 @@
         "src": "/cpats/480/12-purchasing-prepare-po.webp",
         "width": 480,
         "height": 270,
-        "bytes": 11122
+        "bytes": 37420
+      },
+      {
+        "src": "/cpats/800/12-purchasing-prepare-po.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 82202
       },
       {
         "src": "/cpats/1200/12-purchasing-prepare-po.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 53062
+        "bytes": 147636
+      },
+      {
+        "src": "/cpats/1600/12-purchasing-prepare-po.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 224460
+      },
+      {
+        "src": "/cpats/1917/12-purchasing-prepare-po.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 97754
       }
     ]
   },
@@ -327,13 +543,31 @@
         "src": "/cpats/480/13-purchasing-track-orders.webp",
         "width": 480,
         "height": 270,
-        "bytes": 12408
+        "bytes": 39058
+      },
+      {
+        "src": "/cpats/800/13-purchasing-track-orders.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 86094
       },
       {
         "src": "/cpats/1200/13-purchasing-track-orders.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 54916
+        "bytes": 151152
+      },
+      {
+        "src": "/cpats/1600/13-purchasing-track-orders.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 230986
+      },
+      {
+        "src": "/cpats/1917/13-purchasing-track-orders.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 85264
       }
     ]
   },
@@ -353,13 +587,31 @@
         "src": "/cpats/480/14-purchasing-reports.webp",
         "width": 480,
         "height": 270,
-        "bytes": 13230
+        "bytes": 40696
+      },
+      {
+        "src": "/cpats/800/14-purchasing-reports.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 88230
       },
       {
         "src": "/cpats/1200/14-purchasing-reports.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 56816
+        "bytes": 155508
+      },
+      {
+        "src": "/cpats/1600/14-purchasing-reports.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 233844
+      },
+      {
+        "src": "/cpats/1917/14-purchasing-reports.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 98292
       }
     ]
   },
@@ -379,13 +631,31 @@
         "src": "/cpats/480/15-purchasing-assets.webp",
         "width": 480,
         "height": 270,
-        "bytes": 15906
+        "bytes": 47958
+      },
+      {
+        "src": "/cpats/800/15-purchasing-assets.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 103062
       },
       {
         "src": "/cpats/1200/15-purchasing-assets.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 69434
+        "bytes": 176488
+      },
+      {
+        "src": "/cpats/1600/15-purchasing-assets.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 263778
+      },
+      {
+        "src": "/cpats/1917/15-purchasing-assets.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 81806
       }
     ]
   },
@@ -405,13 +675,31 @@
         "src": "/cpats/480/16-purchasing-help.webp",
         "width": 480,
         "height": 270,
-        "bytes": 9068
+        "bytes": 28826
+      },
+      {
+        "src": "/cpats/800/16-purchasing-help.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 61028
       },
       {
         "src": "/cpats/1200/16-purchasing-help.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 41188
+        "bytes": 108912
+      },
+      {
+        "src": "/cpats/1600/16-purchasing-help.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 166074
+      },
+      {
+        "src": "/cpats/1917/16-purchasing-help.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 72592
       }
     ]
   },
@@ -431,13 +719,31 @@
         "src": "/cpats/480/17-receiving-inspection.webp",
         "width": 480,
         "height": 270,
-        "bytes": 11058
+        "bytes": 33704
+      },
+      {
+        "src": "/cpats/800/17-receiving-inspection.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 73916
       },
       {
         "src": "/cpats/1200/17-receiving-inspection.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 47318
+        "bytes": 132100
+      },
+      {
+        "src": "/cpats/1600/17-receiving-inspection.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 201426
+      },
+      {
+        "src": "/cpats/1917/17-receiving-inspection.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 95464
       }
     ]
   },
@@ -457,13 +763,31 @@
         "src": "/cpats/480/18-receiving-history.webp",
         "width": 480,
         "height": 270,
-        "bytes": 11520
+        "bytes": 36300
+      },
+      {
+        "src": "/cpats/800/18-receiving-history.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 78202
       },
       {
         "src": "/cpats/1200/18-receiving-history.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 50996
+        "bytes": 138442
+      },
+      {
+        "src": "/cpats/1600/18-receiving-history.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 210160
+      },
+      {
+        "src": "/cpats/1917/18-receiving-history.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 95374
       }
     ]
   },
@@ -483,13 +807,31 @@
         "src": "/cpats/480/19-receiving-assets.webp",
         "width": 480,
         "height": 270,
-        "bytes": 16146
+        "bytes": 49786
+      },
+      {
+        "src": "/cpats/800/19-receiving-assets.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 108542
       },
       {
         "src": "/cpats/1200/19-receiving-assets.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 69218
+        "bytes": 183732
+      },
+      {
+        "src": "/cpats/1600/19-receiving-assets.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 275814
+      },
+      {
+        "src": "/cpats/1917/19-receiving-assets.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 79726
       }
     ]
   },
@@ -509,13 +851,31 @@
         "src": "/cpats/480/20-receiving-help.webp",
         "width": 480,
         "height": 270,
-        "bytes": 8374
+        "bytes": 27912
+      },
+      {
+        "src": "/cpats/800/20-receiving-help.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 60886
       },
       {
         "src": "/cpats/1200/20-receiving-help.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 40504
+        "bytes": 106544
+      },
+      {
+        "src": "/cpats/1600/20-receiving-help.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 161486
+      },
+      {
+        "src": "/cpats/1917/20-receiving-help.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 75888
       }
     ]
   },
@@ -535,13 +895,31 @@
         "src": "/cpats/480/21-audit-ledger.webp",
         "width": 480,
         "height": 270,
-        "bytes": 10618
+        "bytes": 34496
+      },
+      {
+        "src": "/cpats/800/21-audit-ledger.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 74744
       },
       {
         "src": "/cpats/1200/21-audit-ledger.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 45548
+        "bytes": 129870
+      },
+      {
+        "src": "/cpats/1600/21-audit-ledger.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 199000
+      },
+      {
+        "src": "/cpats/1917/21-audit-ledger.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 95942
       }
     ]
   },
@@ -561,13 +939,31 @@
         "src": "/cpats/480/22-audit-assets.webp",
         "width": 480,
         "height": 270,
-        "bytes": 15136
+        "bytes": 45644
+      },
+      {
+        "src": "/cpats/800/22-audit-assets.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 98550
       },
       {
         "src": "/cpats/1200/22-audit-assets.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 67868
+        "bytes": 174204
+      },
+      {
+        "src": "/cpats/1600/22-audit-assets.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 261536
+      },
+      {
+        "src": "/cpats/1917/22-audit-assets.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 79566
       }
     ]
   },
@@ -587,13 +983,31 @@
         "src": "/cpats/480/23-audit-help.webp",
         "width": 480,
         "height": 270,
-        "bytes": 7878
+        "bytes": 26274
+      },
+      {
+        "src": "/cpats/800/23-audit-help.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 56340
       },
       {
         "src": "/cpats/1200/23-audit-help.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 37104
+        "bytes": 99990
+      },
+      {
+        "src": "/cpats/1600/23-audit-help.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 152762
+      },
+      {
+        "src": "/cpats/1917/23-audit-help.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 70504
       }
     ]
   },
@@ -613,13 +1027,31 @@
         "src": "/cpats/480/24-system-accounts.webp",
         "width": 480,
         "height": 270,
-        "bytes": 9656
+        "bytes": 31918
+      },
+      {
+        "src": "/cpats/800/24-system-accounts.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 68606
       },
       {
         "src": "/cpats/1200/24-system-accounts.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 43886
+        "bytes": 120692
+      },
+      {
+        "src": "/cpats/1600/24-system-accounts.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 184042
+      },
+      {
+        "src": "/cpats/1917/24-system-accounts.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 81592
       }
     ]
   },
@@ -639,13 +1071,31 @@
         "src": "/cpats/480/25-system-help.webp",
         "width": 480,
         "height": 270,
-        "bytes": 7544
+        "bytes": 25472
+      },
+      {
+        "src": "/cpats/800/25-system-help.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 55080
       },
       {
         "src": "/cpats/1200/25-system-help.webp",
         "width": 1200,
         "height": 675,
-        "bytes": 37416
+        "bytes": 98304
+      },
+      {
+        "src": "/cpats/1600/25-system-help.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 149528
+      },
+      {
+        "src": "/cpats/1917/25-system-help.webp",
+        "width": 1917,
+        "height": 1078,
+        "bytes": 68162
       }
     ]
   }

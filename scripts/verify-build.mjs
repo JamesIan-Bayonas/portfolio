@@ -5,6 +5,7 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { createHash } from "node:crypto"
 import sharp from "sharp"
+import { technologyLogos } from "../src/data/technologyLogos.ts"
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const readJson = async (name) =>
@@ -391,6 +392,10 @@ for (const [id, image] of Object.entries(screenshots)) {
 const cpatsScreenshots = await readJson("cpatsScreenshots.json")
 assert.equal(cpatsScreenshots.length, 25, "Expected all 25 CPATS captures")
 for (const capture of cpatsScreenshots) {
+  const nativePreview = capture.variants.at(-1)
+  assert.equal(nativePreview.width, capture.width, `Missing native-resolution CPATS preview: ${capture.id}`)
+  assert.equal(nativePreview.height, capture.height, `Incorrect native CPATS height: ${capture.id}`)
+
   const original = await readFile(
     path.join(root, "public", capture.original.slice(1)),
   )
@@ -411,6 +416,14 @@ for (const capture of cpatsScreenshots) {
   }
   await access(path.join(root, "dist", capture.original.slice(1)))
 }
+const logoFiles = new Set(Object.values(technologyLogos).flat())
+for (const logoPath of logoFiles) {
+  const bytes = await readFile(path.join(root, "dist", logoPath.slice(1)))
+  const metadata = await sharp(bytes).metadata()
+  assert.ok(["svg", "webp"].includes(metadata.format), `Invalid technology logo: ${logoPath}`)
+  assert.ok(metadata.width > 0 && metadata.height > 0, `Empty technology logo: ${logoPath}`)
+}
+await access(path.join(root, "dist/technology-logos/sources.json"))
 console.log(
   `Verified ${pages.length} static pages, ${assets.size} shared entry assets, ${variantCount} responsive screenshots, ${briefs.files.length} project briefs, fonts, metadata, favicon, and resume.`,
 )
