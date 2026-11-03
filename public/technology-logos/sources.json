@@ -1,0 +1,147 @@
+{
+  "note": "Logos identify project technologies, not endorsements. Preserve source notices and brand proportions.",
+  "sources": [
+    {
+      "file": "csharp.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/csharp/csharp-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "daisyui.svg",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/90646e4bf7f3b89df6c37e65baf3e7bc759a517c/icons/daisyui.svg",
+      "license": "Simple Icons CC0; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "dapper.webp",
+      "source": "https://raw.githubusercontent.com/DapperLib/Dapper/eb47546a408bbf6c178bda4f04dc205bc51ffbfe/docs/assets/icon.png",
+      "license": "Apache-2.0",
+      "processing": "Resized to fit 96px; lossless WebP"
+    },
+    {
+      "file": "dotnetcore.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/dotnetcore/dotnetcore-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "entityframeworkcore.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/entityframeworkcore/entityframeworkcore-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "express.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/express/express-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "googlegemini.svg",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/90646e4bf7f3b89df6c37e65baf3e7bc759a517c/icons/googlegemini.svg",
+      "license": "Simple Icons CC0; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "inertiajs.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/inertiajs/inertiajs-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "jwt.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/jwt/jwt-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "laravel.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/laravel/laravel-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "leaflet.svg",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/90646e4bf7f3b89df6c37e65baf3e7bc759a517c/icons/leaflet.svg",
+      "license": "Simple Icons CC0; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "mariadb.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/mariadb/mariadb-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "microsoftsqlserver.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/microsoftsqlserver/microsoftsqlserver-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "mysql.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/mysql/mysql-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "nodejs.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/nodejs/nodejs-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "ollama.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/ollama/ollama-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "postgresql.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/postgresql/postgresql-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "react.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/react/react-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "redis.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/redis/redis-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "reverb.svg",
+      "source": "https://raw.githubusercontent.com/laravel/reverb/94ccfe195094a0685b75c15d7eea62124f0d9dbc/resources/views/components/icons/reverb.blade.php",
+      "license": "MIT"
+    },
+    {
+      "file": "socketio.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/socketio/socketio-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "sqlite.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/sqlite/sqlite-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "tailwindcss.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/tailwindcss/tailwindcss-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "tesseract.webp",
+      "source": "https://raw.githubusercontent.com/naptha/tesseract.js/a1ca80d9e31c34512d0ded75ff8821ddcf3f2f91/docs/images/tesseract.png",
+      "license": "Apache-2.0",
+      "processing": "Resized to fit 96px; lossless WebP"
+    },
+    {
+      "file": "typescript.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/typescript/typescript-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "vitest.svg",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/vitest/vitest-original.svg",
+      "license": "Devicon MIT; underlying trademarks belong to their owners"
+    },
+    {
+      "file": "xunit.svg",
+      "source": "https://raw.githubusercontent.com/xunit/media/1c51fd67f551973b0586334af8f3cb4098a5410b/logo-transparent.svg",
+      "license": "Upstream xUnit.net brand asset; see source repository"
+    },
+    {
+      "file": "zod.svg",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/90646e4bf7f3b89df6c37e65baf3e7bc759a517c/icons/zod.svg",
+      "license": "Simple Icons CC0; underlying trademarks belong to their owners"
+    }
+  ]
+}
