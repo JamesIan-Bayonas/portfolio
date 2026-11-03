@@ -1,0 +1,35 @@
+// Source URLs and notices live beside the self-hosted assets in /technology-logos/sources.json.
+const svg = (name: string) => `/technology-logos/${name}.svg`
+const raster = (name: string) => `/technology-logos/${name}.webp`
+
+export const technologyLogos: Record<string, string[]> = {
+  "ASP.NET Core 8": [svg("dotnetcore")],
+  "C#": [svg("csharp")],
+  DaisyUI: [svg("daisyui")],
+  Dapper: [raster("dapper")],
+  "EF Core 8": [svg("entityframeworkcore")],
+  "Express 5": [svg("express")],
+  Gemini: [svg("googlegemini")],
+  "Inertia.js": [svg("inertiajs")],
+  JWT: [svg("jwt")],
+  "Laravel 11": [svg("laravel")],
+  "Laravel Reverb": [svg("reverb")],
+  Leaflet: [svg("leaflet")],
+  MSSQL: [svg("microsoftsqlserver")],
+  "MySQL / MariaDB": [svg("mysql"), svg("mariadb")],
+  "MySQL / SQLite": [svg("mysql"), svg("sqlite")],
+  "Node.js": [svg("nodejs")],
+  Ollama: [svg("ollama")],
+  "Ollama LLaVA": [svg("ollama")],
+  PostgreSQL: [svg("postgresql")],
+  "React 18": [svg("react")],
+  "React 19": [svg("react")],
+  Redis: [svg("redis")],
+  "Socket.io": [svg("socketio")],
+  "Tailwind CSS": [svg("tailwindcss")],
+  "Tesseract.js": [raster("tesseract")],
+  TypeScript: [svg("typescript")],
+  Vitest: [svg("vitest")],
+  xUnit: [svg("xunit")],
+  Zod: [svg("zod")],
+}

@@ -80,7 +80,7 @@ export default function CpatsCaseStudy() {
         <header className="cpats-hero" id="overview">
           <figure className="cpats-hero-visual">
             <ScreenshotPreview images={images} selectedId={hero.id} label="Inspect the CPATS staff sign-in screenshot">
-              <ResponsiveScreenshot asset={screenshotAsset(hero)} alt={hero.alt} sizes="(min-width: 1100px) 54vw, 100vw" loading="eager" />
+              <ResponsiveScreenshot asset={screenshotAsset(hero)} alt={hero.alt} sizes="(min-width: 1520px) 742px, (min-width: 901px) 52vw, calc(100vw - 48px)" loading="eager" />
             </ScreenshotPreview>
             <figcaption className="font-mono">CPATS / Staff sign in</figcaption>
           </figure>
