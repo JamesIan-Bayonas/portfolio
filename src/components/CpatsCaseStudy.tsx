@@ -115,6 +115,18 @@ export default function CpatsCaseStudy() {
           </p>
         </aside>
 
+        <section className="cpats-request-example" aria-labelledby="cpats-request-example-title">
+          <p className="project-eyebrow font-mono">ROLE SPOTLIGHT / REQUESTING OFFICE</p>
+          <h2 id="cpats-request-example-title">Where a purchase begins.</h2>
+          <p>A department needs laboratory supplies. The Requesting Office turns that need into a purchase record that other offices can review and follow. This example describes the tasks shown in the captured workspace.</p>
+          <ol>
+            <li><span className="font-mono">01 / PREPARE</span><h3>Explain what the department needs.</h3><p>Enter item details, quantities, and justification. Review the request summary, then save a draft or submit the request.</p></li>
+            <li><span className="font-mono">02 / FOLLOW UP</span><h3>See where the request stands.</h3><p>Search department records and filter their status: needs action, in progress, approved, declined, or received.</p></li>
+            <li><span className="font-mono">03 / FIND GUIDANCE</span><h3>Get help for this role.</h3><p>The Requesting Office guide connects staff to common tasks and answers about their workspace.</p></li>
+          </ol>
+          <a className="font-mono" href="#screenshots">Inspect the Requesting Office screens ↓</a>
+        </section>
+
         <section className="cpats-gallery" id="screenshots" aria-labelledby="cpats-gallery-title">
           <div className="cpats-section-heading">
             <p className="project-eyebrow font-mono">25 CAPTURES / 7 ROLES</p>

@@ -3,7 +3,7 @@ import { cardAccentStyles } from "../lib/projectCardAccents"
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
 import "./NotableProjects.css"
 
-const preview = captures[0]
+const preview = captures.find(capture => capture.id === "02-request-new")!
 
 export default function NotableProjects() {
   return (

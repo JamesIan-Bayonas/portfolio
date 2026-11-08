@@ -83,3 +83,12 @@
   .cpats-role-heading { grid-template-columns: 1fr; gap: 6px; }
   .cpats-role-heading > p:last-child { grid-column: auto; }
 }
+.cpats-request-example { padding-block: 40px; margin-bottom: 32px; border-block: 1px solid var(--color-border); }
+.cpats-request-example h2 { font: 500 clamp(28px,4vw,44px)/1.15 var(--font-display); letter-spacing: -.04em; margin-bottom: 20px; }
+.cpats-request-example > p:not(.project-eyebrow) { max-width: 70ch; font-size: 15px; line-height: 1.85; color: var(--color-text2); }
+.cpats-request-example ol { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; padding: 28px 0; list-style: none; }
+.cpats-request-example li > span { color: var(--color-accent); font-size: 10px; }
+.cpats-request-example h3 { font-size: 19px; line-height: 1.4; margin-block: 14px 10px; }
+.cpats-request-example li p { font-size: 14px; line-height: 1.85; color: var(--color-text2); }
+.cpats-request-example > a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-accent); font-size: 12px; }
+@media (max-width: 767px) { .cpats-request-example ol { grid-template-columns: 1fr; } }
