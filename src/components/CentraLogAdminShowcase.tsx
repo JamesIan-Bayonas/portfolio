@@ -1,3 +1,4 @@
+import "./ShowcaseImageTransition.css"
 import { useState } from "react"
 import { usePortfolioTheme } from "../lib/usePortfolioTheme"
 import captures from "../data/centralogAdminScreenshots.json"
@@ -43,7 +44,7 @@ export default function CentraLogAdminShowcase() {
           <p className="font-mono" role="status">{screen.title} · {mode === "dark" ? "Dark" : "Light"} screenshot · follows portfolio theme</p>
         </div>
         <p className="admin-screen-summary">{screen.summary}</p>
-        <figure className="admin-screen-figure">
+        <figure key={asset.variants[0].src} className="admin-screen-figure showcase-image-enter">
           <ScreenshotPreview images={gallery} selectedId={selected} label={`Inspect admin ${screen.title} screenshot`}>
             <ResponsiveScreenshot asset={asset} alt={`${screen.alt} (${mode} mode)`} sizes="(min-width: 1520px) 1440px, (min-width: 1024px) calc(100vw - 80px), calc(100vw - 32px)" />
           </ScreenshotPreview>

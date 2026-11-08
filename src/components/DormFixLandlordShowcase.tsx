@@ -1,3 +1,4 @@
+import "./ShowcaseImageTransition.css"
 import { useState } from "react"
 import { usePortfolioTheme } from "../lib/usePortfolioTheme"
 import captures from "../data/dormfixLandlordScreenshots.json"
@@ -42,7 +43,7 @@ export default function DormFixLandlordShowcase() {
           <p className="font-mono" role="status">Landlord · {screen.title}{captureId === "overview-details" ? " / lower section" : ""} · {mode === "dark" ? "Dark" : "Light"} screenshot</p>
         </div>
         <p className="admin-screen-summary">{screen.summary}</p>
-        <figure className="admin-screen-figure">
+        <figure key={asset.variants[0].src} className="admin-screen-figure showcase-image-enter">
           <ScreenshotPreview images={gallery} selectedId={captureId} label={`Inspect landlord ${screen.title}${captureId === "overview-details" ? " lower section" : ""} screenshot`}>
             <ResponsiveScreenshot asset={asset} alt={`${captureId === "overview-details" ? detailAlt : screen.alt} (${mode} mode)`} sizes="(min-width: 1520px) 1440px, (min-width: 1024px) calc(100vw - 80px), calc(100vw - 32px)" />
           </ScreenshotPreview>

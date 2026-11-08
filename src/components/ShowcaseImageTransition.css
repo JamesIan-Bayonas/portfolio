@@ -1,0 +1,9 @@
+/* Re-enter only when the capture changes; picker buttons retain their focus. */
+.showcase-image-enter { animation: showcase-image-enter 200ms ease-out both; }
+@keyframes showcase-image-enter {
+  from { opacity: .7; transform: translateY(5px) scale(.995); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+:root[data-motion="reduced"] .showcase-image-enter { animation: none; }
+@media (prefers-reduced-motion: reduce) { .showcase-image-enter { animation: none; } }
+:root[data-motion="reduced"] .dormfix-role-panel:not([hidden]) { animation: none; }
