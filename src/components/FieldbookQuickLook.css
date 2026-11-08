@@ -1,0 +1,27 @@
+.fieldbook-quicklook { --quicklook-accent: var(--card-accent-dark,var(--color-accent)); width: min(860px,calc(100vw - 32px)); max-width: none; max-height: min(90dvh,1100px); margin: auto; padding: 0; border: 1px solid var(--color-border); border-radius: 12px; color: var(--color-text1); background: var(--color-bg); overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 24px 100px #0005; }
+[data-theme="light"] .fieldbook-quicklook { --quicklook-accent: var(--card-accent-light,var(--color-accent)); }
+.fieldbook-quicklook::backdrop { background: #0009; }
+.quicklook-bar { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px clamp(20px,4vw,48px); border-bottom: 1px solid var(--color-border); background: var(--color-bg); font: 10px/1.6 var(--font-mono); color: var(--color-text2); }
+.quicklook-bar button { min-height: 44px; padding: 8px 12px; border: 1px solid var(--color-border); border-radius: 4px; color: var(--color-text1); cursor: pointer; }
+.quicklook-content { padding: clamp(24px,4vw,48px); }
+.quicklook-meta { color: var(--quicklook-accent); font: 11px/1.7 var(--font-mono); }
+.quicklook-meta span { color: var(--color-text2); }
+.quicklook-content h2 { font: 500 clamp(28px,4vw,48px)/1.12 var(--font-display); letter-spacing: -.04em; margin-top: 16px; overflow-wrap: anywhere; }
+.quicklook-summary { font: 400 18px/1.65 var(--font-serif); color: var(--color-text2); margin-top: 20px; }
+.quicklook-content figure { margin-top: 28px; }
+.quicklook-content figure img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); border-radius: 5px; }
+.quicklook-content figcaption { font: 9px/1.6 var(--font-mono); color: var(--color-text2); margin-top: 8px; }
+.quicklook-section { margin-top: 28px; }
+.quicklook-section h3 { font: 500 15px/1.5 var(--font-display); }
+.quicklook-section p { font: 14px/1.85 var(--font-body); color: var(--color-text2); margin-top: 8px; }
+.quicklook-tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 24px 0; }
+.quicklook-tags li { padding: 6px 9px; border: 1px solid var(--color-border); border-radius: 3px; font: 10px/1.6 var(--font-mono); color: var(--color-text2); }
+.quicklook-primary { display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 52px; padding: 14px 18px; border: 1px solid var(--quicklook-accent); border-radius: 4px; font: 12px/1.6 var(--font-mono); color: var(--quicklook-accent); }
+.quicklook-related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--color-border); }
+.quicklook-related h3 { font: 400 24px/1.3 var(--font-serif); margin-bottom: 12px; }
+.quicklook-related a { display: grid; grid-template-columns: 72px minmax(0,1fr) auto; align-items: center; gap: 14px; padding-block: 16px; border-bottom: 1px solid var(--color-border); }
+.quicklook-related a > span { color: var(--quicklook-accent); font: 10px/1.6 var(--font-mono); }
+.quicklook-related strong { font: 400 14px/1.6 var(--font-body); }
+.fieldbook-quicklook :is(button,a):focus-visible { outline: 2px solid var(--quicklook-accent); outline-offset: 3px; }
+.fieldbook-related-topics .fieldbook-preview-button { margin-left: auto; color: var(--entry-accent); font-size: 11px; }
+@media (max-width: 639px) { .quicklook-related a { grid-template-columns: minmax(0,1fr) auto; gap: 6px; } .quicklook-related a > span:first-child { grid-column: 1 / -1; } .quicklook-bar { font-size: 9px; } }

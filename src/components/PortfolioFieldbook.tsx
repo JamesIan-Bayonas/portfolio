@@ -1,3 +1,5 @@
+import { fieldbookPreview } from "../data/projectPreviews"
+import { usePortfolioTheme } from "../lib/usePortfolioTheme"
 import { useEffect, useId, useState } from "react"
 import { fieldbookEntries } from "../data/fieldbook"
 import {
@@ -9,6 +11,8 @@ import {
 } from "../lib/fieldbook"
 import { cardAccentStyles } from "../lib/projectCardAccents"
 import ResponsiveScreenshot from "./ResponsiveScreenshot"
+import FieldbookQuickLook from "./FieldbookQuickLook"
+import type { FieldbookEntry } from "../data/fieldbook"
 import "./PortfolioFieldbook.css"
 
 const pageSize = 6
@@ -29,7 +33,9 @@ const symbols = {
 }
 
 export default function PortfolioFieldbook() {
+  const mode = usePortfolioTheme()
   const inputId = useId()
+  const [preview, setPreview] = useState<FieldbookEntry | null>(null)
   const [initial] = useState(() =>
     readFieldbookView(
       window.location.search,
@@ -111,6 +117,7 @@ export default function PortfolioFieldbook() {
 
   return (
     <div className="fieldbook">
+      {preview && <FieldbookQuickLook entry={fieldbookPreview(preview, mode)} onClose={() => setPreview(null)} />}
       <header className="fieldbook-intro">
         <div>
           <p className="fieldbook-kicker">THE FIELDBOOK / JAMES IAN BAYONAS</p>
@@ -307,7 +314,7 @@ export default function PortfolioFieldbook() {
           )}
         </div>
         <div className={`fieldbook-entries fieldbook-${view}`}>
-          {results.slice(0, visible).map((entry) => (
+          {results.slice(0, visible).map(entry => fieldbookPreview(entry, mode)).map((entry) => (
             <article
               key={entry.id}
               className={`fieldbook-entry fieldbook-kind-${entry.kind.toLowerCase()}`}
@@ -375,6 +382,7 @@ export default function PortfolioFieldbook() {
                     {tag} <span aria-hidden="true">↗</span>
                   </button>
                 ))}
+                <button className="fieldbook-preview-button" type="button" aria-haspopup="dialog" aria-label={`Quick look: ${entry.title}`} onClick={() => setPreview(entry)}>Quick look +</button>
               </div>
             </article>
           ))}

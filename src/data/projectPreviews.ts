@@ -19,3 +19,11 @@ export function projectPreview<T extends Project>(project: T, mode: "light" | "d
     imageCaption: `${project.name}'s latest captured sign-in page in ${mode} mode.`,
   }
 }
+
+// Fieldbook previews use current workspace captures, rather than the historical demo images.
+export function fieldbookPreview<T extends { projectId?: string; kind: string; title: string }>(entry: T, mode: "light" | "dark"): T & { image?: ScreenshotAsset; imageAlt?: string } {
+  if (entry.kind !== "Systems" || !entry.projectId) return entry
+  const screen = entry.projectId === "isdalog" ? "fisherman-dashboard" : entry.projectId === "pharmalink" ? "pos" : "overview"
+  const image = captures[entry.projectId]?.[`${screen}-${mode}`]
+  return image ? { ...entry, image, imageAlt: `${entry.title} ${screen.replace(/-/g, " ")} in ${mode} mode` } : entry
+}
